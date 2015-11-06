@@ -1,6 +1,5 @@
 # datahub_api_specification
-FORMAT: 1A
-HOST: http://10.1.235.96:80
+HOST: http://10.1.235.96:8080
 
 # datahub
 
@@ -10,6 +9,13 @@ Public
 
 ### List All Subscriptions [GET]
 
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Basic akmklmasadalkm==
+
+        
 + Response 200 (application/json)
 
         
@@ -71,6 +77,7 @@ Public
                     "usability": 1
                 }
             }
+ 
  
 
  

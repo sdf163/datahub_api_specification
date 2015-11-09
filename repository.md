@@ -1,131 +1,221 @@
-# 主机地址
-	
-    http://ec2-54-223-244-55.cn-north-1.compute.amazonaws.com.cn
-    http://54.223.244.55:8088
-    
 # API 列表
 	
 
-- 查询所有repositories  
+- [GET] /repositories
 
-- 查询repo下的item
+- [GET] [POST] /repositories/:repname
 
-- 创建dataitem
+- [GET] [POST] /repositories/:repname/:itemname
 
-- 创建tag 
+- [POST] /repositories/:repname/:itemname/:tag
+
 	
 ----------
 
-## 查询所有repositories
+## 指令：GET /Repositories
+
+说明
+
+	返回具备写权限的Repository的详细情况，因是向DataHub Server查询，故需要认证信息。
+
+输入参数说明：
 	
-	GET /repositories
+	page (分页页数) : 1 - N，  默认=1
+	size（页面大小）: 1 - N，   默认=5
 
-可选参数
-	
-	page(分页页数): 1 - N， 默认=1
-	size（页面大小）:1 - N， 默认=5
+Example Request：
 
-请求示例
+	GET /repositories?page=1&size=3 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
 
-	GET /repositories?page=1&size=2
+Example Response：
 
-返回值 Json Object
+	[
+	    {
+	        "repname": "myrep",
+	        "repaccesstype": "private",
+	        "items": []
+	    },
+	    {
+	        "repname": "myrep2",
+	        "repaccesstype": "private",
+	        "items": []
+	    },
+	    {
+	        "msg": ""
+	    }
+	]
 
-	{[item:{},item:{},item:{}]}
+
+返回状态码：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	repname：数据仓库的名字
+	repaccesstype：数据仓库的访问类型
+	items：数据仓库中包含的数据项
+	msg：可选，具体出错信息描述
 
 返回值示例
         
-            {
-                "item": {
-                    "repname": "NBA",
-                    "user_id": 1002,
-                    "dataitem_id": 1000002,
-                    "dataitem_name": "全国终端换机分析",
-                    "ico_name": "terminal.png",
-                    "permit_type": 2,
-                    "key_words": "手机;iphone",
-                    "supply_style": 1,
-                    "priceunit_type": 1,
-                    "optime": "2015-08-01 00:00:00",
-                    "data_format": 1,
-                    "refresh_type": "1",
-                    "refresh_num": 1,
-                    "meta_filename": "meta_terminal2.txt",
-                    "sample_filename": "sample_terminal2.txt",
-                    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-                }
-            },
-            {
-                "item": {
-                    "repname": "NBA",
-                    "user_id": 1002,
-                    "dataitem_id": 1000002,
-                    "dataitem_name": "全国终端换机分析",
-                    "ico_name": "terminal.png",
-                    "permit_type": 2,
-                    "key_words": "手机;iphone",
-                    "supply_style": 1,
-                    "priceunit_type": 1,
-                    "optime": "2015-08-01 00:00:00",
-                    "data_format": 1,
-                    "refresh_type": "1",
-                    "refresh_num": 1,
-                    "meta_filename": "meta_terminal2.txt",
-                    "sample_filename": "sample_terminal2.txt",
-                    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-                }
-            }
+	[
+	    {
+	        "repname": "myrep",
+	        "repaccesstype": "Public",
+	        "items": [
+	            {
+	                "repname": "NBA",
+	                "login_name": "panxy3",
+	                "dataitem_id": 1000002,
+	                "dataitem_name": "NBA",
+	                "ico_name": "terminal.png",
+	                "repaccesstype": "private",
+	                "label": {
+	                    "sys": {
+	                        "supply_style": 1
+	                    },
+	                    "opt": {},
+	                    "owner": {},
+	                    "other": {}
+	                },
+	                "priceunit_type": 1,
+	                "optime": "2015-08-01 00:00:00",
+	                "data_format": 1,
+	                "refresh_type": "1",
+	                "refresh_num": 1,
+	                "meta_filename": "meta_terminal2.txt",
+	                "sample_filename": "sample_terminal2.txt",
+	                "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
+	            }
+	        ]
+	    },
+	    {
+	        "repname": "myrep2",
+	        "repaccesstype": "private",
+	        "items": []
+	    },
+	    {
+	        "msg": ""
+	    }
+	]
+
  
 ----------
 
 
-## 查询repo下的item
+## 指令：GET /Repositories/:repname/:itemname
 	
 	GET /repositories/:repname/:itemname
 
-请求示例
+说明：
+	
+	查询数据项详细信息	
 
-	GET /repositories/chinamobile/beijingphone
+输入参数说明：
 
-返回值 Json Object
+	repname		
+	itemname
 
-	{item:{}}
+Example Request：
+
+	GET /repositories/chinamobile/beijingphone HTTP/1.1 
+
+Example Response：
+
+	[
+	    {
+	        		"repname": "NBA",
+	                "login_name": "panxy3",
+	                "dataitem_id": 1000002,
+	                "dataitem_name": "NBA",
+	                "ico_name": "terminal.png",
+	                "repaccesstype": "private",
+	                "label": {
+	                    "sys": {
+	                        "supply_style": 1
+	                    },
+	                    "opt": {},
+	                    "owner": {},
+	                    "other": {}
+	                },
+	                "priceunit_type": 1,
+	                "optime": "2015-08-01 00:00:00",
+	                "data_format": 1,
+	                "refresh_type": "1",
+	                "refresh_num": 1,
+	                "meta_filename": "{}",
+	                "sample_filename": "{}",
+	                "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
+	        "Tags": [
+	            {
+	                "tag": "20151030",
+	                "sourcename": "mydata "
+	            },
+	            {
+	                "tag": "20151030",
+	                "sourcename": "mydata2"a
+	            }
+	        ]
+	    }
+	]
+
 
 返回值示例
         
 	{
-	    "item": {
-	        "repname": "chinamobile",
-	        "login_name": 1004,
-	        "dataitem_id": 1011,
-	        "dataitem_name": "beijingphone",
-	        "ico_name": "terminal.png",
-	        "permit_type": 2,
-	        "label": "手机;iphone",
-	        "supply_style": 3,
-	        "priceunit_type": 1,
-	        "optime": "2015-08-01 00:00:00",
-	        "data_format": 2,
-	        "refresh_type": "1",
-	        "refresh_num": 1,
-	        "meta_filename": "meta_terminal.doc",
-	        "sample_filename": "sample_terminal.doc",
-	        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-	    }
+			{
+	                "repname": "NBA",
+	                "login_name": "panxy3",
+	                "dataitem_id": 1000002,
+	                "dataitem_name": "NBA",
+	                "ico_name": "terminal.png",
+	                "repaccesstype": "private",
+	                "label": {
+	                    "sys": {
+	                        "supply_style": 1
+	                    },
+	                    "opt": {},
+	                    "owner": {},
+	                    "other": {}
+	                },
+	                "priceunit_type": 1,
+	                "optime": "2015-08-01 00:00:00",
+	                "data_format": 1,
+	                "refresh_type": "1",
+	                "refresh_num": 1,
+	                "meta_filename": "{}",
+	                "sample_filename": "{}",
+	                "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
+					"Tags": [
+					            {
+					                "tag": "20151030",
+					                "sourcename": "mydata "
+					            },
+					            {
+					                "tag": "20151030",
+					                "sourcename": "mydata2"a
+					            }
+				        ]
+	          }	  
 	}
 
 ----------
 
-## 创建dataitem
+## 指令：POST /repositories/:repname/:itemname
 
-	POST /repositories/:repname/:itemname
+说明
 
-必选参数
+	发布数据项
 
-	repname
-	itemname
+输入参数说明
 
-可选参数
+	repname：数据仓库名字
+	itemname：数据项名字
 
 	login_name    	数据提供者起的名字
 	ico_name      	图标文件名
@@ -137,30 +227,72 @@
 	refresh_type  	数据的刷新周期，月、日、时、分、秒
 	refresh_num   	刷新周期refresh_type的个数
 	meta_filename  	新增字段用于数据项描述 存json格式较好，否则显示没有渲染
-	mample_filename 存放样例数据的文件名  文件内容可以是json格式，显示时可以根据特定的关键字在web上进行渲染
+	sample_filename 存放样例数据的文件名  文件内容可以是json格式，显示时可以根据特定的关键字在web上进行渲染
 	comment         概要
 
+Example Request：
 
-请求示例
-
-	POST /repositories/NBA/bear
+	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	[
+		{
+			"ico_name":"item1","permit_type":"2"
+			"supply_style":"1","priceunit_type":"1","price":"0",
+			"data_format":"1","refresh_type":"1","refresh_num":"1",
+			"meta_filename":"{}","sample_filename":"{}",comment:"cc"
+		}
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
 
 ----------
 
-## 创建tag 
+## POST /repositories/:repname/:itemname/:tag
 
-	POST /repositories/:repname/:itemname/:tag
+输入参数说明：
 
-必选参数
+	repname：数据仓库名字
+	itemname：数据项名字
+	tag： tag名
 
-	repname
-	itemname
-	tag
 
 可选参数
 
 	filename 在文件系统上存储时，存tag_filename
 
-请求示例
+Example Request：
 
-	POST /repositories/NBA/bear/27
+	POST /repositories/chinamobile/beijingphone/000 HTTP/1.1 
+	[
+		{
+			filename="xxx.txt"
+		}
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+

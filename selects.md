@@ -1,98 +1,311 @@
 # API 列表
-[你好](#jump33)
 
-[[get]] /select_lables
+[GET] /select_labels
 
-[post](#jump2) [put](#jump) [delete](#jump3) /select_lables/:lablename
+[POST] [DELETE] /select_labels/:labelname
 
+[POST] [PUT] [DELETE] [GET] /selects
 
 ----------
-定义一个锚(id)： 跳转到的地方
 
+## 指令：[GET] /select_labels
 
-## <span id="jump">查询符合精选名称的repname/itemname列表</span>
+说明
 	
-	GET /digest
-
-可选参数
+	【任意】返回精选栏目
+		
+Example Request：
 	
-	name(精选名称)
-
-请求示例
+	GET /select_labels HTTP/1.1 
+	Accept: application/json
 	
-	GET /digest?name=终端
+Example Response：
+	
+	[
+	    {
+	     	"labels":[]
+	        "msg": ""
+	    }
+	]	
 
-返回值 Json Object
+返回状态码：
+	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
 
-	{{repname:，dataitem:}，{repname:，dataitem:}，{repname:，dataitem:}}
+返回数据说明：
+	
+	labels  数据精选栏目名称数组
 
 返回值示例
-
-	{{repname: NBA，dataitem: bear}，{repname: NBA，dataitem: fox}，{repname: NBA，dataitem: hourse}}
-
-
-## 为repname/itemname的Label添加精选属性
 	
-	POST /digest/：repname/:itemname
+	[
+	    {
+	     	"labels":["股市行情","终端信息","天气预报","医疗"]
+	        "msg": ""
+	    }
+	]	
+        
+## 指令：[POST] /select_labels/:labelname
 
-请求示例
-
-	POST /digest/NBA/bear
-
-必选参数
-
-	repname
-	itemname
-
-可选参数
+说明
 	
-	name（精选项名称）
+	【管理员】创建精选栏目
 
-
-## 为repname/itemname的Label删除精选属性
+输入参数说明：
 	
-	DELETE /digest/：repname/:itemname
-
-请求示例
-
-	DELETE /digest/NBA/bear
-
-必选参数
-
-	repname
-	itemname
-
-可选参数
+	labelname 精选栏目条目名称
+		
+Example Request：
 	
-	name（精选项名称）
+	POST /select_labels HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
 
-
-## 为精选列表增加精选项
+Example Response：
 	
-	POST /digest/:name
-
-请求示例
-
-	POST /digest/终端
-
-必选参数
-
-	name（精选项）
+	[
+    	{
+    	   "msg": ""
+    	}
+    ]	
+    	
+返回状态码：
 	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
 
-## 为精选列表删除精选项
+返回数据说明：
 	
-	DELETE /digest/:name
+	[
+	    {
+	        "msg": ""
+	    }
+	]	
 
-请求示例
+## 指令：[DELETE] /select_labels/:labelname
 
-	DELETE /digest/终端
+说明
 
-必选参数
+	【管理员】删除精选栏目
+	
+输入参数说明：
+	
+	labelname 精选栏目条目名称
+		
+Example Request：
+	
+	DELETE /select_labels HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
 
-	name（精选项）
-## <span id="jump2">查询符合精选名称的repname/itemname列表</span>
+Example Response：
+	
+	[
+	    {
+	        "msg": ""
+	    }
+	]	
+	
+返回状态码：
+	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
 
- <span id="jump3">查询符合精选名称的repname/itemname列表</span>
+返回数据说明：
+	
+	[
+	    {
+	        "msg": ""
+	    }
+	]	
 
-<span id = "jump33">hehe</span>
+## 指令：[GET] /selects
+
+说明
+	
+	【任意】返回精选内容
+		
+Example Request：
+	
+	GET /selects HTTP/1.1 
+	Accept: application/json
+
+Example Response：
+
+	[
+	    {
+	        "selects": [
+	            {
+	                "repname": "",
+	                "itemname": ""
+	            },
+	            {
+	                "repname": "",
+	                "itemname": ""
+	            },
+	            {
+	                "repname": "",
+	                "itemname": ""
+	            }
+	        ],
+	        "msg": ""
+	    }
+	]
+
+返回状态码：
+	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+	
+	selects： repname和itemname的数组
+
+返回值示例
+	
+	[
+	    {
+	        "selects": [
+	            {	
+	                "repname": "上海",
+	                "itemname": "上海终端"
+	            },
+	            {
+	                "repname": "北京",
+	                "itemname": "北京终端"
+	            },
+	            {
+	                "repname": "深圳",
+	                "itemname": "深圳终端"
+	            }
+	        ],
+	        "msg": ""
+	    }
+	]
+
+## 指令：[POST] /selects
+
+说明
+	
+	【管理员】创建精选内容
+
+输入参数说明：
+	
+	 repname[必选]: 		　
+	 itemname[必选]: 
+	 select_labels[必选]：　精选栏目项
+		
+Example Request：
+	
+	POST /selects HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response：
+
+	[
+	    {
+	        "msg": ""
+	    }
+	]
+
+返回状态码：
+	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回值示例
+	
+	[
+	    {
+	        "msg": ""
+	    }
+	]
+
+## 指令：[PUT] /selects
+
+说明
+
+	【管理员】更新精选内容
+
+输入参数说明：
+	
+	 repname[必选]: 		　
+	 itemname[必选]: 
+	 select_labels[必选]：　精选栏目项
+		
+Example Request：
+	
+	PUT /selects HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response：
+
+	[
+	    {
+	        "msg": ""
+	    }
+	]
+
+返回状态码：
+	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+
+返回值示例
+	
+	[
+	    {
+	        "msg": ""
+	    }
+	]
+	
+## 指令：[DELETE] /selects
+
+说明
+
+	【管理员】删除精选内容
+
+输入参数说明：
+	
+	 repname[必选]: 		　
+	 itemname[必选]: 
+	 select_labels[必选]：　精选栏目项
+		
+Example Request：
+	
+	DELETE /selects HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response：
+
+	[
+	    {
+	        "msg": ""
+	    }
+	]
+
+返回状态码：
+	
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回值示例
+	
+	[
+	    {
+	        "msg": ""
+	    }
+	]
+

@@ -61,13 +61,13 @@
 
 描述文件：selects.md
 
-**编号20 [get /select_lables](/selects.md/)** 【任意】返回精选栏目
+**编号20 [get /select_labels](/selects.md/)** 【任意】返回精选栏目
 
-**编号21 [post /select_lables/:lablename](/selects.md/)** 【管理员】创建精选栏目
+**编号21 [post /select_labels/:labelname](/selects.md/)** 【管理员】创建精选栏目
 
-**编号22 [put /select_lables/:lablename](/selects.md/)** 【管理员】更新精选栏目
+**编号22 [put /select_labels/:labelname](/selects.md/)** 【管理员】更新精选栏目
 
-**编号23 [delete /select_lables/:lablename](/selects.md/)** 【管理员】删除精选栏目
+**编号23 [delete /select_labels/:labelname](/selects.md/)** 【管理员】删除精选栏目
 
 **编号24 [get /selects](/selects.md/)** 【任意】返回精选内容
 

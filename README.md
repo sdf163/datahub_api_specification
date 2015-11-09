@@ -34,25 +34,25 @@
 
 描述文件：repositories.md
 
-**编号10 get /repositories** 【拥有者】 返回所有自己创建或具备写权限的repository，**这是一个特殊需求**
+**编号10 [get /repositories](/repositories.md/)** 【拥有者】 返回所有自己创建或具备写权限的repository，**这是一个特殊需求**
 
-**编号11 get /repositories/:repname** 【任意】返回repository详细信息
+**编号11 [get /repositories/:repname](/repositories.md/)** 【任意】返回repository详细信息
 
-**编号12 post /repositories/:repname** 【任意】创建repository
+**编号12 [post /repositories/:repname](/repositories.md/)** 【任意】创建repository
 
-**编号13 delete /repositories/:repname** 【拥有者】删除repository
+**编号13 [delete /repositories/:repname](/repositories.md/)** 【拥有者】删除repository
 
-**编号14 get /repositories/:repname/:itemname** 【任意】返回此DataItem的详细情况
+**编号14 [get /repositories/:repname/:itemname](/repositories.md/)** 【任意】返回此DataItem的详细情况
 
-**编号15 post /repositories/:repname/:itemname** 【拥有者】发布DataItem
+**编号15 [post /repositories/:repname/:itemname](/repositories.md/)** 【拥有者】发布DataItem
 
-**编号16 delete /repositories/:repname/:itemname** 【拥有者】删除DataItem
+**编号16 [delete /repositories/:repname/:itemname](/repositories.md/)** 【拥有者】删除DataItem
 
-**编号17 get /repositories/:repname/:itemname/:tag** 【任意】查询DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
+**编号17 [get /repositories/:repname/:itemname/:tag](/repositories.md/)** 【任意】查询DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
-**编号18 post /repositories/:repname/:itemname/:tag** 【拥有者】发布DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
+**编号18 [post /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】发布DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
-**编号19 delete /repositories/:repname/:itemname/:tag** 【拥有者】删除DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
+**编号19 [delete /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】删除DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
 ### selects ###
 编号：2
@@ -61,21 +61,21 @@
 
 描述文件：selects.md
 
-**编号20 get /select_lables** 【任意】返回精选栏目
+**编号20 [get /select_lables](/selects.md/)** 【任意】返回精选栏目
 
-**编号21 post /select_lables/:lablename** 【管理员】创建精选栏目
+**编号21 [post /select_lables/:lablename](/selects.md/)** 【管理员】创建精选栏目
 
-**编号22 put /select_lables/:lablename** 【管理员】更新精选栏目
+**编号22 [put /select_lables/:lablename](/selects.md/)** 【管理员】更新精选栏目
 
-**编号23 delete /select_lables/:lablename** 【管理员】删除精选栏目
+**编号23 [delete /select_lables/:lablename](/selects.md/)** 【管理员】删除精选栏目
 
-**编号24 get /selects** 【任意】返回精选内容
+**编号24 [get /selects](/selects.md/)** 【任意】返回精选内容
 
-**编号25 post /selects** 【管理员】创建精选内容
+**编号25 [post /selects](/selects.md/)** 【管理员】创建精选内容
 
-**编号26 put /selects** 【管理员】更新精选内容
+**编号26 [put /selects](/selects.md/)** 【管理员】更新精选内容
 
-**编号27 delete /selects** 【管理员】删除精选内容
+**编号27 [delete /selects](/selects.md/)** 【管理员】删除精选内容
 
 ### search ###
 编号：3

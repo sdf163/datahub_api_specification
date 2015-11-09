@@ -5,9 +5,9 @@
 
 - [GET] [POST] /repositories/:repname
 
-- [GET] [POST] /repositories/:repname/:itemname
+- [GET] [POST] [DELETE] /repositories/:repname/:itemname
 
-- [POST] /repositories/:repname/:itemname/:tag
+- [GET] [POST] [DELETE] /repositories/:repname/:itemname/:tag
 
 	
 ----------
@@ -15,7 +15,7 @@
 ## 指令：GET /Repositories
 
 说明
-
+	【拥有者】 返回所有自己创建或具备写权限的repository，这是一个特殊需求
 	返回具备写权限的Repository的详细情况，因是向DataHub Server查询，故需要认证信息。
 
 输入参数说明：
@@ -107,14 +107,68 @@ Example Response：
  
 ----------
 
+## 指令：POST /Repositories/:repname
+	
+说明：
+	
+	【任意】创建repository
+
+输入参数说明：
+
+	repname[必选]		
+	
+	permit_type[默认：2（public）]    repository对外是public(2)还是private(3)
+	Comment 						 评论
+	
+Example Request：
+
+	GET /repositories/chinamobile HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+	
+	[
+		permit_type=2,
+		comment="北京中国移动终端数据"
+	]
+
+Example Response：
+
+	[
+	    {
+	        "msg": ""
+	    }
+	]	
+
+## 指令：DELETE /Repositories/:repname
+	
+说明：
+	
+	【拥有者】删除repository
+
+输入参数说明：
+
+	repname[必选]		
+	
+Example Request：
+
+	GET /repositories/chinamobile HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response：
+
+	[
+	    {
+	        "msg": ""
+	    }
+	]	
+
 
 ## 指令：GET /Repositories/:repname/:itemname
 	
-	GET /repositories/:repname/:itemname
-
 说明：
 	
-	查询数据项详细信息	
+	【任意】返回repository详细信息
 
 输入参数说明：
 
@@ -124,6 +178,7 @@ Example Response：
 Example Request：
 
 	GET /repositories/chinamobile/beijingphone HTTP/1.1 
+	Accept: application/json
 
 Example Response：
 
@@ -210,7 +265,7 @@ Example Response：
 
 说明
 
-	发布数据项
+	【拥有者】发布DataItem
 
 输入参数说明
 
@@ -233,6 +288,7 @@ Example Response：
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	Authorization: Basic akmklmasadalkm==
 	[
 		{
 			"ico_name":"item1","permit_type":"2"
@@ -254,7 +310,79 @@ Example Response：
 
 ----------
 
+## 指令：DELETE /repositories/:repname/:itemname
+
+说明
+
+	【拥有者】删除DataItem
+
+输入参数说明
+
+	repname：数据仓库名字
+	itemname：数据项名字
+
+
+Example Request：
+
+	DELETE /repositories/chinamobile/beijingphone HTTP/1.1 
+	Authorization: Basic akmklmasadalkm==
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+----------
+
+## GET /repositories/:repname/:itemname/:tag
+
+说明
+
+	【任意】查询DataItem下的Tag详情，注意Tag需要按照UTF8编码后传递
+
+输入参数说明：
+
+	repname：数据仓库名字
+	itemname：数据项名字
+	tag： tag名
+
+Example Request：
+
+	GET /repositories/chinamobile/beijingphone/TAG000 HTTP/1.1
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[	
+		"repname":"",
+		"itemname","",
+		"tag":{},
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
 ## POST /repositories/:repname/:itemname/:tag
+
+说明
+
+	【拥有者】发布DataItem下的Tag详情，注意Tag需要按照UTF8编码后传递
 
 输入参数说明：
 
@@ -269,12 +397,51 @@ Example Response：
 
 Example Request：
 
-	POST /repositories/chinamobile/beijingphone/000 HTTP/1.1 
+	POST /repositories/chinamobile/beijingphone/000 HTTP/1.1
+	Authorization: Basic akmklmasadalkm== 
 	[
 		{
 			filename="xxx.txt"
 		}
 	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## DELETE /repositories/:repname/:itemname/:tag
+
+说明
+
+	【拥有者】删除DataItem下的Tag详情，注意Tag需要按照UTF8编码后传递
+
+输入参数说明：
+
+	repname：数据仓库名字
+	itemname：数据项名字
+	tag： tag名
+
+
+Example Request：
+
+	POST /repositories/chinamobile/beijingphone/TAG000 HTTP/1.1
+	Authorization: Basic akmklmasadalkm== 
 	
 Example Response：
 	

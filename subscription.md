@@ -1,4 +1,4 @@
-## 订阅
+# 订阅
 
 ### 当前用户创建订阅 (41)
 
@@ -11,22 +11,14 @@
 #### 输出样例
 
 ```
+{"error":"","succeeded":true}
+```
+
+```
+{"error":"already subscribed"}
 ```
 
 ### 当前用户取消订阅 (41)
-
-> GET /subscription/:reponame/:itemname
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 查询当前用户是否已经订阅某些dataitems (41)
 
 > DELETE /subscription/:reponame/:itemname
 
@@ -37,6 +29,21 @@
 #### 输出样例
 
 ```
+{"error":"","succeeded":true}
+```
+
+### 查询当前用户是否已经订阅某个dataitem (41)
+
+> GET /subscription/:reponame/:itemname
+
+#### 输入参数
+
+* USER-NAME in header
+
+#### 输出样例
+
+```
+{"error":"","subscribed":true}
 ```
 
 ### 取得当前用户的订阅列表 (42)
@@ -50,6 +57,25 @@
 #### 输出样例
 
 ```
+{
+	"error":"",
+	"subscriptions":[
+		{
+			"subscription_id":1,
+			"username":"John", 
+			"repname":"NBA",
+			"itemname":"bear",
+			"optime":"2015-11-08"
+		}
+		{
+			"subscription_id":2,
+			"username":"Zhang3", 
+			"repname":"CBA",
+			"itemname":"triger",
+			"optime":"2015-11-08"
+		}
+	]
+}
 ```
 
 ### 查询一个dataitem的订阅数 (51)
@@ -79,7 +105,7 @@
 ```
 
 
-## Pull
+# Pull
 
 ### 需求者请求一个pull token (61)
 

@@ -1,22 +1,15 @@
-# 主机地址
-	
-    http://ec2-54-223-244-55.cn-north-1.compute.amazonaws.com.cn
-    http://54.223.244.55:8088
-    
 # API 列表
-	
-- 查询符合精选项的repname/itemname列表
-- 为repname/itemname的Label添加精选属性
-- 为repname/itemname的Label删除精选属性
-- 
-- 为精选列表增加精选项
-- 为精选列表删除精选项
- 
+
+[[get]] /select_lables
+
+[[post]](#jump2) [[put]](#jump) [[delete]](#jump3) /select_lables/:lablename
+
 
 ----------
+定义一个锚(id)： 跳转到的地方
 
 
-## 查询符合精选名称的repname/itemname列表
+## <span id="jump">查询符合精选名称的repname/itemname列表</span>
 	
 	GET /digest
 
@@ -97,3 +90,6 @@
 必选参数
 
 	name（精选项）
+## <span id="jump2">查询符合精选名称的repname/itemname列表</span>
+
+ <span id="jump3">查询符合精选名称的repname/itemname列表</span>

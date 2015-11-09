@@ -1,8 +1,9 @@
 # API 列表
+[你好](#jump33)
 
 [[get]] /select_lables
 
-[[post]](#jump2) [[put]](#jump) [[delete]](#jump3) /select_lables/:lablename
+[post](#jump2) [put](#jump) [delete](#jump3) /select_lables/:lablename
 
 
 ----------
@@ -93,3 +94,5 @@
 ## <span id="jump2">查询符合精选名称的repname/itemname列表</span>
 
  <span id="jump3">查询符合精选名称的repname/itemname列表</span>
+
+<span id = "jump33">hehe</span>

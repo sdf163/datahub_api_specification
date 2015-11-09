@@ -1,92 +1,449 @@
-# 主机地址
-	
-    http://ec2-54-223-244-55.cn-north-1.compute.amazonaws.com.cn
-    http://54.223.244.55:8088
-    
 # API 列表
-	
 
-- 根据Label查询符合条件的repname和itemname
-- 为repname/itemname创建Label
-- 为repname/itemname删除Label某属性
-- 为repname/itemname更新Label某属性
+- [GET] /label/repositories
+
+- [GET] /label/dataitem
+	
+- [GET] [POST] [DELETE] [PUT] /label/:repname/:itemname
+
+- [GET] [POST] [DELETE] [PUT] /label/:repname
 
 
 ----------
 
-## 根据Label查询符合条件的repname和itemname
+## 根据label查询符合条件的repo
 	
-	GET /label
+	[GET]	/label/repositories
 
-
-请求示例
-
-	GET /label?digest=移动终端
-
-返回值 Json Object
-
-	{{repname:，dataitem:}，{repname:，dataitem:}，{repname:，dataitem:}}
-
-返回值示例
-
-	{{repname: NBA，dataitem: bear}，{repname: NBA，dataitem: fox}，{repname: NBA，dataitem: hourse}}
-
-----------
-
-
-## 为repname/itemname创建Label
+说明
 	
-	POST /label/:repname/:itemname
+	根据label查询符合条件的repo
 
-请求示例
+输入参数说明：
 
-	POST /label/NBA/bear
-
-必选参数
-
-	repname
-	itemname
-
-
-可选参数
+	label.sys.supply_style=1
 	
-	digest（数据精选）
+Example Request：
 
-----------
-
-## 为repname/itemname删除Label某属性
+	GET /label/repositories?label.opt.color=#000000 HTTP/1.1 
 	
-	DELETE /label/：repname/：itemname
-
-请求示例
-
-	DELETE /label/NBA/bear
-
-必选参数
-
-	repname
-	itemname
-
-可选参数
+Example Response：
 	
-	digest（数据精选）
-
-----------
-
-## 为repname/itemname更新Label某属性
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
 	
-	PUT /label/：repname/：itemname
+	[
+		{"msg":""}
+	]
 
-请求示例
+Status Codes：
 
-	PUT /label/NBA/bear
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
 
-必选参数
+返回数据说明：
 
-	repname
-	itemname
+	msg：可选，具体出错信息描述
 
-可选参数
+## 根据label条件查询符合条件的dataitem
 	
-	digest（数据精选）
+	[GET]	/label/dataitem
+
+说明
 	
+	根据label查询符合条件的dataitem
+
+输入参数说明：
+
+	label.sys.supply_style=1
+	
+Example Request：
+
+	POST /label/dataitem?label.sys.supply_style=1 HTTP/1.1 
+
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## 为repname下的itemname添加label
+	
+	[POST] 	/label/:repname/:itemname
+
+说明
+	
+	为repname下的itemname添加label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	itemname：数据项名字
+	
+Example Request：
+
+	POST /label/chinamobile/beijingphone HTTP/1.1 
+	[
+		"label": {
+	          "sys": {
+	                   "supply_style": 1
+	                 },
+	          "opt": {},
+	          "owner": {},
+	          "other": {}
+	          }
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+
+## 为repname下的itemname删除label
+	
+	[DELETE]/label/:repname/:itemname
+
+说明
+	
+	为repname下的itemname删除label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	itemname：数据项名字
+
+	"label": {
+          "sys": {
+                   "supply_style": 1
+                 },
+          "opt": {},
+          "owner": {},
+          "other": {}
+    	}
+	
+Example Request：
+
+	[DELETE] /label/chinamobile/beijingphone HTTP/1.1 
+
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## 为repname下的itemname更新label
+	
+	[PUT]	/label/:repname/:itemname
+
+说明
+	
+	为repname下的itemname更新label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	itemname：数据项名字
+	"label": {
+          "sys": {
+                   "supply_style": 1
+                 },
+          "opt": {},
+          "owner": {},
+          "other": {}
+          }
+	
+Example Request：
+
+	[PUT] /label/chinamobile/beijingphone HTTP/1.1 
+	[
+		"label": {
+	          "sys": {
+	                   "supply_style": 1
+	                 },
+	          "opt": {},
+	          "owner": {},
+	          "other": {}
+	          }
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## 查询repname下的itemname的label
+	
+	[GET]	/label/:repname/:itemname
+
+说明
+	
+	查询repname下的itemnamee的label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	itemname：数据项名字
+	
+Example Request：
+
+	[GET] /label/chinamobile/beijingphone HTTP/1.1 
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+
+## 为repname添加label
+	
+	[POST] 	/label/:repname
+
+说明
+	
+	为repname添加label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	
+Example Request：
+
+	POST /label/chinamobile HTTP/1.1 
+	[
+		"label": {
+	          "sys": {
+	                   "supply_style": 1
+	                 },
+	          "opt": {},
+	          "owner": {},
+	          "other": {}
+	          }
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+
+## 为repname删除label
+	
+	[DELETE] /label/:repname
+
+说明
+	
+	为repname删除label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	
+Example Request：
+
+	DELETE /label/repname HTTP/1.1 
+
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## 为repname更新label
+	
+	[PUT]	/label/:repname
+
+说明
+	
+	为repname更新label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	"label": {
+	          "sys": {
+	                   "supply_style": 1
+	                 },
+	          "opt": {},
+	          "owner": {},
+	          "other": {}
+	          }
+	
+Example Request：
+
+	[PUT] /label/rep1 HTTP/1.1 
+	[
+		"label": {
+	          "sys": {
+	                   "supply_style": 1
+	                 },
+	          "opt": {},
+	          "owner": {},
+	          "other": {}
+	          }
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## 查询某repname下label
+	
+	[GET]	/label/:repname
+
+说明
+	
+	查询repname下的label
+
+输入参数说明：
+
+	repname：数据仓库名字
+	
+Example Request：
+
+	[GET] /label/rep1 HTTP/1.1 
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	[
+		{"msg":""}
+	]
+
+Status Codes：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+

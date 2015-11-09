@@ -20,24 +20,6 @@
 
 ### 当前用户取消订阅 (41)
 
-> GET /subscription/:reponame/:itemname
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-{"error":"","succeeded":true}
-```
-
-```
-{"error":"","succeeded":true}
-```
-
-### 查询当前用户是否已经订阅某些dataitems (41)
-
 > DELETE /subscription/:reponame/:itemname
 
 #### 输入参数
@@ -47,6 +29,21 @@
 #### 输出样例
 
 ```
+{"error":"","succeeded":true}
+```
+
+### 查询当前用户是否已经订阅某个dataitem (41)
+
+> GET /subscription/:reponame/:itemname
+
+#### 输入参数
+
+* USER-NAME in header
+
+#### 输出样例
+
+```
+{"error":"","subscribed":true}
 ```
 
 ### 取得当前用户的订阅列表 (42)

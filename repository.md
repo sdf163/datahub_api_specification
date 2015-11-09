@@ -19,9 +19,14 @@
 	
 	GET /repositories
 
+可选参数
+	
+	page(分页页数): 1 - N， 默认=1
+	size（页面大小）:1 - N， 默认=5
+
 请求示例
 
-	GET /repositories
+	GET /repositories?page=1&size=2
 
 返回值 Json Object
 
@@ -47,15 +52,6 @@
                     "meta_filename": "meta_terminal2.txt",
                     "sample_filename": "sample_terminal2.txt",
                     "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-                },
-                "statis": {
-                    "dataitem_id": 1000003,
-                    "dataitem_name": "APP使用情况",
-                    "views": 100,
-                    "follows": 50,
-                    "stars": 1,
-                    "refresh_date": "2015-10-20 10:10:10",
-                    "usability": 1
                 }
             },
             {
@@ -76,15 +72,6 @@
                     "meta_filename": "meta_terminal2.txt",
                     "sample_filename": "sample_terminal2.txt",
                     "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-                },
-                "statis": {
-                    "dataitem_id": 1000002,
-                    "dataitem_name": "全国终端换机分析",
-                    "views": 100,
-                    "follows": 50,
-                    "stars": 1,
-                    "refresh_date": "2015-10-20 10:10:10",
-                    "usability": 1
                 }
             }
  

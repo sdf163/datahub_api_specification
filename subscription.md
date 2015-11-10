@@ -75,7 +75,7 @@
 
 输出样例：
         
-	"succeeded":true
+	null
 
 ### DELETE /subscription/:repname/:itemname (43)
 
@@ -95,7 +95,7 @@
 
 输出样例：
         
-	"succeeded":true
+	null
 
 ### GET /subscription_stat/:repname/:itemname (44)
 

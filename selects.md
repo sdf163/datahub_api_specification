@@ -110,10 +110,16 @@ Example Response：
 说明
 	
 	【任意】返回精选内容，按照order排序
+	
+输入参数说明：
+	
+	select_labels  精选栏目名称
+	若果不传，返回全部精选
+	如果传，返回label类别的精选
 		
 Example Request：
 	
-	GET /selects HTTP/1.1 
+	GET /selects?=chinamobile HTTP/1.1 
 	Accept: application/json
 
 Example Response：

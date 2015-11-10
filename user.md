@@ -50,7 +50,8 @@ Example Request：
 
 	usertype：用户类型
 	nickname：昵称
-	comments：描述信息						
+	comments：描述信息
+	passwd：MD5以后的密码
 	
 Example Request：
 
@@ -61,7 +62,8 @@ Example Request：
 	{
 		usertype=2,
 		nickname="foo",
-        comments="测试用户"
+                comments="测试用户",
+                passwd=“..........”
 	}
 
 返回数据说明：
@@ -83,7 +85,8 @@ Example Request：
 
 	usertype：用户类型
 	nickname：昵称
-	comments：描述信息						
+	comments：描述信息
+	passwd：MD5以后的密码
 	
 Example Request：
 
@@ -94,7 +97,8 @@ Example Request：
 	{
 		usertype=2,
 		nickname="foo",
-        comments="测试用户"
+                comments="测试用户",
+                passwd=“..........”
 	}
 
 返回数据说明：
@@ -149,7 +153,7 @@ Example Request：
 	
 返回数据说明：
 
-	无，根据HTTP状态码判断是否认证成功
+	Token
 
 返回数据示例
         

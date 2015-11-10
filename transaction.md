@@ -241,7 +241,7 @@
 
 说明
 
-	【需求者】返回该用户pull的该DataItem上的tags ???
+	【需求者】返回该用户用有的该DataItem被人家Pull的信息。
 
 输入参数说明：
 	
@@ -250,46 +250,6 @@
 输入样例：
 
 	GET /transactions/push/repo03/item56 HTTP/1.1 
-	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-
-输出样例：
-        
-	[
-		{
-			"buyername": "Li4",
-			"tag": "tag8W",
-			"pulltime": "2015-11-09",
-			"pulltimes": 2
-		},
-		{
-			"buyername": "Zhang3",
-			"tag": "tag09",
-			"pulltime": "2015-11-09",
-			"pulltimes": 0
-		}
-	]
-
-返回数据说明：
-
-	buyername: 需求者用户名
-	tag: tag名
-	pulltime: 最近一次pull时间
-	pulltimes: pull次数
-
-### GET /transactions/dataitem/:repname/:itemname  (59)
-
-说明
-
-	任意】返回该DataItem的所有流动信息包括Pull的信息
-
-输入参数说明：
-	
-	无
-
-输入样例：
-
-	GET /transactions/dataitem/repo03/item56 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 

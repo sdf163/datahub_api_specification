@@ -277,7 +277,7 @@
 	pulltime: 最近一次pull时间
 	pulltimes: pull次数
 
-### GET /transactions/dataitem/:repname/:itemname  (58)
+### GET /transactions/dataitem/:repname/:itemname  (59)
 
 说明
 
@@ -315,35 +315,3 @@
 	tag: tag名
 	pulltime: 最近一次pull时间
 	pulltimes: pull次数
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

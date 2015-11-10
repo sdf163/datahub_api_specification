@@ -22,6 +22,8 @@
 	
 	page (分页页数) : 1 - N，  默认=1
 	size（页面大小）: 1 - N，   默认=5
+	user_name: 	数据提供者user_name
+	（header 中为登录用户的user_name）
 
 Example Request：
 

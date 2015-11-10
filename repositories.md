@@ -115,13 +115,16 @@ Example Request：
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 	
-	[
-   		itemaccesstype      public
-  		deposit      		no
-    	comment 			中国移动北京终端详情
-		label.user.age		22
-	]
-
+	{
+	    "itemaccesstype": "public",
+	    "deposit": "no",
+	    "comment": "中国移动北京终端详情",
+	    "lable": {
+	        "user": {
+	            "age": 22
+	        }
+	    }
+	}
 
 ## 指令：DELETE /Repositories/:repname
 	
@@ -141,12 +144,7 @@ Example Request：
 
 Example Response：
 
-	[
-	    {
-	        "msg": ""
-	    }
-	]	
-
+	无
 
 ## 指令：GET /Repositories/:repname/:itemname
 	

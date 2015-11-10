@@ -28,19 +28,10 @@ Example Request：
 
 	{
 	    "labels": [
-	        {
-	            "labelname": "股市行情",
-	            "order": 1
-	        }{
-	            "labelname": "终端信息",
-	            "order": 1
-	        }{
-	            "labelname": "天气预报",
-	            "order": 1
-	        }{
-	            "labelname": "医疗",
-	            "order": 1
-	        }
+	        "股市行情",
+	        "终端信息",
+	        "天气预报",
+	        "医疗""
 	    ]
 	}
 

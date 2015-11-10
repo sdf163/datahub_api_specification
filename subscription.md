@@ -123,7 +123,7 @@ Example Response 1：
 
 Example Request：
 
-	DELETE /subscriptions HTTP/1.1 
+	GET /subscriptions HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
@@ -166,5 +166,78 @@ Example Response：
 		repname: repository name
 		itemname: data item name
 		optime: 订阅时间
+
+
+### GET /subscription_stat/:repname/:itemname (41)
+
+说明
+
+	查询一个dataitem的订阅数
+
+输入参数说明：
+	
+	无
+
+Example Request：
+
+	POST /subscription_stat/repo1/item123 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response 1：
+        
+	{
+		"error":"",
+		"num_subs":567
+	}
+
+
+返回状态码：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+
+返回数据说明：
+
+	error：出错信息，空表示没出错
+	num_subs：可选，订阅数
+
+
+### GET /subscription_stat/:repname (41)
+
+说明
+
+	询一个respository下的dataitems的总订阅数
+
+输入参数说明：
+	
+	无
+
+Example Request：
+
+	POST /subscription_stat/repo1 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response 1：
+        
+	{
+		"error":"",
+		"num_subs":567
+	}
+
+
+返回状态码：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+
+返回数据说明：
+
+	error：出错信息，空表示没出错
+	num_subs：可选，订阅数
+
+
+
 
 

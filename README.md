@@ -25,6 +25,24 @@
 
 **周期重置时间：X-RateLimit-Reset: 1350085300**
 
+### 返回信息 ###
+HTTP状态码
+
+200 OK
+
+400 Errors (内部错误，具体在数据体中进行说明) 
+
+401 Unauthorized
+
+数据体返回格式：
+
+{
+
+    "msg": "0000 OK",
+    "data": {具体返回信息}
+}
+
+
 ## DataHub API内容 ##
 
 ### repositories ###

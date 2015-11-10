@@ -3,7 +3,84 @@
 ### POST /subscription/:repname/:itemname (41)
 
 说明
+
 	当前用户创建一个订阅
+
+输入参数说明：
+	
+	无
+
+Example Request：
+
+	POST /subscription/repo1/item123 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response 1：
+        
+	{
+		"error":"",
+		"succeeded":true
+	}
+
+Example Response 2：
+        
+	{
+		"error":"already subscribed"
+	}
+
+
+返回状态码：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	error：出错信息，空表示没出错
+	succeeded：可选，成功与否
+
+### DELETE /subscription/:repname/:itemname (41)
+
+说明
+
+	当前用户删除一个订阅
+
+输入参数说明：
+	
+	无
+
+Example Request：
+
+	DELETE /subscription/repo1/item123 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response：
+        
+	{
+		"error":"",
+		"succeeded":true
+	}
+
+
+返回状态码：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	error：出错信息，空表示没出错
+	succeeded：可选，成功与否
+
+### GET /subscription/:repname/:itemname (41)
+
+说明
+
+	查询当前用户是否已经订阅某个dataitem
 
 输入参数说明：
 	
@@ -15,23 +92,12 @@ Example Request：
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response：
-
-	[
-	    {
-	        "repname": "myrep",
-	        "repaccesstype": "private",
-	        "items": []
-	    },
-	    {
-	        "repname": "myrep2",
-	        "repaccesstype": "private",
-	        "items": []
-	    },
-	    {
-	        "msg": ""
-	    }
-	]
+Example Response 1：
+        
+	{
+		"error":"",
+		"subscribed":true
+	}
 
 
 返回状态码：
@@ -42,107 +108,63 @@ Example Response：
 
 返回数据说明：
 
-	repname：数据仓库的名字
-	repaccesstype：数据仓库的访问类型
-	items：数据仓库中包含的数据项
-	msg：可选，具体出错信息描述
+	error：出错信息，空表示没出错
+	succeeded：可选，是否已经订阅
 
-返回值示例1
+### GET /subscriptions (42)
+
+说明
+
+	取得当前用户的订阅列表
+
+输入参数说明：
+	
+	无
+
+Example Request：
+
+	DELETE /subscriptions HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+
+Example Response：
         
 	{
 		"error":"",
-		"succeeded":true
+		"subscriptions":
+		[
+			{
+				"subscription_id":1,
+				"username":"John", 
+				"repname":"NBA",
+				"itemname":"bear",
+				"optime":"2015-11-08"
+			},
+			{
+				"subscription_id":2,
+				"username":"Zhang3", 
+				"repname":"CBA",
+				"itemname":"triger",
+				"optime":"2015-11-08"
+			}
+		]
 	}
 
-返回值示例2
-        
-	{
-		"error":"already subscribed"
-	}
 
-### 当前用户取消订阅 (41)
+返回状态码：
 
-> DELETE /subscription/:repname/:itemname
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
 
-输入参数
+返回数据说明：
 
-* USER-NAME in header
+	error：出错信息，空表示没出错
+	subscriptions：可选， 订阅列表
+		subscription_id: 订阅id
+		username: 订阅者
+		repname: repository name
+		itemname: data item name
+		optime: 订阅时间
 
-输出样例
-
-```
-{"error":"","succeeded":true}
-```
-
-### 查询当前用户是否已经订阅某个dataitem (41)
-
-> GET /subscription/:repname/:itemname
-
-输入参数
-
-* USER-NAME in header
-optime
-输出样例
-
-```
-{"error":"","subscribed":true}
-```
-
-### 取得当前用户的订阅列表 (42)
-
-> GET /subscriptions
-
-输入参数
-
-* USER-NAME in header
-
-输出样例
-
-```
-{
-	"error":"",
-	"subscriptions":[
-		{
-			"subscription_id":1,
-			"username":"John", 
-			"repname":"NBA",
-			"itemname":"bear",
-			"optime":"2015-11-08"
-		}
-		{
-			"subscription_id":2,
-			"username":"Zhang3", 
-			"repname":"CBA",
-			"itemname":"triger",
-			"optime":"2015-11-08"
-		}
-	]
-}
-```
-
-### 查询一个dataitem的订阅数 (51)
-
-> GET /subscription_stat/:repname/:itemname
-
-输入参数
-
-> 无
-
-输出样例
-
-```
-```
-
-### 查询一个respository下的dataitems的总订阅数 (52)
-
-> GET /subscription_stat/:repname
-
-输入参数optime
-
-> 无
-
-输出样例
-
-```
-```
 

@@ -1,32 +1,74 @@
 # 订阅
 
-### 当前用户创建订阅 (41)
+### POST /subscription/:repname/:itemname (41)
 
-> POST /subscription/:reponame/:itemname
+说明
+	当前用户创建一个订阅
 
-#### 输入参数
+输入参数说明：
+	
+	无
 
-* USER-NAME in header
+Example Request：
 
-#### 输出样例
+	GET /subscription/repo1/item123 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
 
-```
-{"error":"","succeeded":true}
-```
+Example Response：
 
-```
-{"error":"already subscribed"}
-```
+	[
+	    {
+	        "repname": "myrep",
+	        "repaccesstype": "private",
+	        "items": []
+	    },
+	    {
+	        "repname": "myrep2",
+	        "repaccesstype": "private",
+	        "items": []
+	    },
+	    {
+	        "msg": ""
+	    }
+	]
+
+
+返回状态码：
+
+	200 OK
+	400 Errors (invalid json, missing or invalid fields, etc) 
+	401 Unauthorized
+
+返回数据说明：
+
+	repname：数据仓库的名字
+	repaccesstype：数据仓库的访问类型
+	items：数据仓库中包含的数据项
+	msg：可选，具体出错信息描述
+
+返回值示例1
+        
+	{
+		"error":"",
+		"succeeded":true
+	}
+
+返回值示例2
+        
+	{
+		"error":"already subscribed"
+	}
 
 ### 当前用户取消订阅 (41)
 
-> DELETE /subscription/:reponame/:itemname
+> DELETE /subscription/:repname/:itemname
 
-#### 输入参数
+输入参数
 
 * USER-NAME in header
 
-#### 输出样例
+输出样例
 
 ```
 {"error":"","succeeded":true}
@@ -34,13 +76,13 @@
 
 ### 查询当前用户是否已经订阅某个dataitem (41)
 
-> GET /subscription/:reponame/:itemname
+> GET /subscription/:repname/:itemname
 
-#### 输入参数
+输入参数
 
 * USER-NAME in header
-
-#### 输出样例
+optime
+输出样例
 
 ```
 {"error":"","subscribed":true}
@@ -50,11 +92,11 @@
 
 > GET /subscriptions
 
-#### 输入参数
+输入参数
 
 * USER-NAME in header
 
-#### 输出样例
+输出样例
 
 ```
 {
@@ -80,133 +122,26 @@
 
 ### 查询一个dataitem的订阅数 (51)
 
-> GET /subscription-stat/:reponame/:itemname
+> GET /subscription_stat/:repname/:itemname
 
-#### 输入参数
+输入参数
 
 > 无
 
-#### 输出样例
+输出样例
 
 ```
 ```
 
 ### 查询一个respository下的dataitems的总订阅数 (52)
 
-> GET /subscription-stat/:reponame
+> GET /subscription_stat/:repname
 
-#### 输入参数
-
-> 无
-
-#### 输出样例
-
-```
-```
-
-
-# Pull
-
-### 需求者请求一个pull token (61)
-
-> POST /transaction/:reponame/:itemname/:tag
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 供应者查询一个pull token的详细信息 (62)
-
-> GET /transaction/:reponame/:itemname/:tag?token=xxxxx
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 查询需求者的流水 (71)
-
-> GET /transactions/buyer
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 查询供应者的流水 (71)
-
-> GET /transactions/seller
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 查询一个dataitem上的流水 (71)
-
-> GET /transactions/dataitem/:reponame/:itemname
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 查询一个dataitem tag上的pull次 (72)
-
-> GET /transaction-stat/:reponame/:itemname/:tag
-
-#### 输入参数
-
-* USER-NAME in header
-
-#### 输出样例
-
-```
-```
-
-### 查询一个dataitem上的tags上的总pull次 (72)
-
-> GET /transaction-stat/:reponame/:itemname
-
-#### 输入参数
+输入参数optime
 
 > 无
 
-#### 输出样例
-
-```
-```
-
-### 查询一个respository上的tags的总pull次 (72)
-
-> GET /transaction-stat/:reponame
-
-#### 输入参数
-
-> 无
-
-#### 输出样例
+输出样例
 
 ```
 ```

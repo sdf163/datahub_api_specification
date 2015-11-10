@@ -6,7 +6,7 @@
 
 	【需求者】返回该请求的access token
 	
-	注意：tag需要UTF8编码，注意后面没有
+	注意：tag需要UTF8编码，注意后面没有s
 
 输入参数说明：
 	
@@ -26,7 +26,7 @@
 
 说明
 
-	拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密
+	【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密
 	
 	注意：tag需要UTF8编码
 

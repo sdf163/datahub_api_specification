@@ -28,10 +28,19 @@ Example Request：
 
 	{
 	    "labels": [
-	        "股市行情",
-	        "终端信息",
-	        "天气预报",
-	        "医疗"
+	        {
+	            "labelname": "股市行情",
+	            "order": 1
+	        }{
+	            "labelname": "终端信息",
+	            "order": 1
+	        }{
+	            "labelname": "天气预报",
+	            "order": 1
+	        }{
+	            "labelname": "医疗",
+	            "order": 1
+	        }
 	    ]
 	}
 
@@ -44,6 +53,7 @@ Example Request：
 输入参数说明：
 	
 	labelname 精选栏目条目名称
+	order	  精选栏目排序（1-100， 排序越大越靠前）
 		
 Example Request：
 	
@@ -61,8 +71,9 @@ Example Response：
 	
 	【管理员】更新现有精选栏目的名称
 	 	
-	 	newlabelname 要改成的名字
-
+	 newlabelname 	要改成的名字
+	 order	  		精选栏目排序（1-100， 排序越大越靠前）
+	
 输入参数说明：
 	
 	newlabelname 新精选栏目条目名称
@@ -76,6 +87,7 @@ Example Request：
 	
 	{
 		newlabelname：2015股市行情
+		order：100
 	}
 
 Example Response：
@@ -166,8 +178,8 @@ Example Response：
 	
 	 repname[必选]: 		　
 	 itemname[必选]: 
-	 select_labels[必选]：　			    				精选栏目项
-	 select_labels_order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
+	 select_labels[必选]：　			    	精选栏目项
+	 order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
 	
@@ -190,7 +202,7 @@ Example Request：
 	 repname[必选]: 		　
 	 itemname[必选]: 
 	 select_labels[必选]：　								精选栏目项
-	 select_labels_order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
+	 order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
 	

@@ -22,7 +22,7 @@
 
 	"accesstoken":"a1a2a3a4a5a6a7a8"
 
-### GET /transaction/:repname/:itemname/:tag?cypt_accesstoken=a1a2a3a4a5a6a7a8&username=Zhang3 (51)
+### GET /transaction/:repname/:itemname/:tag?cypt_accesstoken={cypt_accesstoken}&username={username} (51)
 
 说明
 
@@ -74,7 +74,7 @@
 
 说明
 
-	任意】返回该repositories的pull量
+	【任意】返回该repositories的pull量
 
 输入参数说明：
 	

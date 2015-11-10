@@ -214,7 +214,7 @@ HTTP状态码
 
 **pub :repo/:item/:tag**  18
 
-**pull :repo/:item/:tag **  50或51
+**pull :repo/:item/:tag**  50或51
 
 **login**  7
 

@@ -10,36 +10,15 @@
 	
 	无
 
-Example Request：
+输入样例：
 
 	POST /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
+输出样例：
         
-	{
-		"error":"",
-		"succeeded":true
-	}
-
-Example Response 2：
-        
-	{
-		"error":"already subscribed"
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	succeeded：可选，成功与否
+	"succeeded":true
 
 ### DELETE /subscription/:repname/:itemname (41)
 
@@ -51,30 +30,15 @@ Example Response 2：
 	
 	无
 
-Example Request：
+输入样例：
 
 	DELETE /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response：
+输出样例：
         
-	{
-		"error":"",
-		"succeeded":true
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	succeeded：可选，成功与否
+	"succeeded":true
 
 ### GET /subscription/:repname/:itemname (41)
 
@@ -86,30 +50,15 @@ Example Response：
 	
 	无
 
-Example Request：
+输入样例：
 
 	GET /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
-        
-	{
-		"error":"",
-		"subscribed":true
-	}
+输出样例：
 
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	succeeded：可选，是否已经订阅
+	"subscribed":true
 
 ### GET /subscriptions (42)
 
@@ -121,51 +70,32 @@ Example Response 1：
 	
 	无
 
-Example Request：
+输入样例：
 
 	GET /subscriptions HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response：
+输出样例：
         
-	{
-		"error":"",
-		"subscriptions":
-		[
-			{
-				"subscriptionid":1,
-				"username":"John", 
-				"repname":"NBA",
-				"itemname":"bear",
-				"optime":"2015-11-08"
-			},
-			{
-				"subscriptionid":2,
-				"username":"Zhang3", 
-				"repname":"CBA",
-				"itemname":"triger",
-				"optime":"2015-11-08"
-			}
-		]
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
+	[
+		{
+			"repname":"NBA",
+			"itemname":"bear",
+			"subtime":"2015-11-08"
+		},
+		{
+			"repname":"CBA",
+			"itemname":"triger",
+			"subtime":"2015-11-08"
+		}
+	]
 
 返回数据说明：
 
-	error：出错信息，空表示没出错
-	subscriptions：可选， 订阅列表
-		subscription_id: 订阅id
-		username: 订阅者
-		repname: repository name
-		itemname: data item name
-		optime: 订阅时间
+	repname: repository name
+	itemname: data item name
+	subtime: 订阅时间
 
 
 ### GET /subscription_stat/:repname/:itemname (51)
@@ -178,30 +108,15 @@ Example Response：
 	
 	无
 
-Example Request：
+输入样例：
 
 	POST /subscription_stat/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
-        
-	{
-		"error":"",
-		"num_subs":567
-	}
+输出样例：
 
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	num_subs：可选，订阅数
-
+	"numsubs":567
 
 ### GET /subscription_stat/:repname (5)
 
@@ -213,29 +128,15 @@ Example Response 1：
 	
 	无
 
-Example Request：
+输入样例：
 
 	POST /subscription_stat/repo1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
-        
-	{
-		"error":"",
-		"num_subs":567
-	}
+输出样例：
 
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	num_subs：可选，订阅数
+	"numsubs":567	}
 
 
 

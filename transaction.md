@@ -69,7 +69,7 @@
 
 输出样例：
 
-	567
+	"numpulls":567
 	
 ### GET /transaction_stat/:repname (53)
 
@@ -88,7 +88,7 @@
 
 输入样例：
 
-	567
+	"numpulls":567
 
 ### GET /transaction_stat/:repname/:itemname/:tag (54)
 
@@ -107,7 +107,7 @@
 
 输出样例：
 
-	567
+	"numpulls":567
 
 ### GET /transactions/pull  (55)
 

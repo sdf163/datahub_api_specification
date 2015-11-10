@@ -168,7 +168,7 @@ Example Response：
 		optime: 订阅时间
 
 
-### GET /subscription_stat/:repname/:itemname (41)
+### GET /subscription_stat/:repname/:itemname (51)
 
 说明
 
@@ -203,7 +203,7 @@ Example Response 1：
 	num_subs：可选，订阅数
 
 
-### GET /subscription_stat/:repname (41)
+### GET /subscription_stat/:repname (5)
 
 说明
 

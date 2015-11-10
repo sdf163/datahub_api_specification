@@ -25,6 +25,24 @@
 
 **周期重置时间：X-RateLimit-Reset: 1350085300**
 
+### 返回信息 ###
+HTTP状态码
+
+200 OK
+
+400 Errors (内部错误，具体在数据体中进行说明) 
+
+401 Unauthorized
+
+数据体返回格式：
+
+{
+
+    "msg": "0000 OK",
+    "data": {具体返回信息}
+}
+
+
 ## DataHub API内容 ##
 
 ### repositories ###
@@ -34,7 +52,7 @@
 
 描述文件：repositories.md
 
-**编号10 [get /repositories](/repositories.md/)** 【拥有者】 返回所有自己创建或具备写权限的repository，**这是一个特殊需求**
+**编号10 [get /repositories](/repositories.md/)** 【拥有者|任意】 **这是一个特殊需求**如果后面没有username的参数，则返回本人创建或具备写权限的所有repository，如果带有参数?username=XXX，则表示查询XXX的所有repository，这里只能反馈查询者具备读权限的repositories名字（比如public或者在private白名单中的）
 
 **编号11 [get /repositories/:repname](/repositories.md/)** 【任意】返回repository详细信息
 
@@ -166,7 +184,7 @@
 
 **Repo详情** 11,44,45,52,53
 
-**数据拥有者详情** 尚未实现
+**数据拥有者详情** 9 10
 
 **搜索页面** 30,14,44,52
 

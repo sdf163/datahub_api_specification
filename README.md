@@ -72,6 +72,27 @@ HTTP状态码
 
 **编号19 [delete /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】删除DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
+编号：1a
+
+名称： Lable
+
+**编号1a1 [delete /label/:repname](/label.md/)**删除Repositories label
+
+**编号1a2 [get  /label/:repname](/label.md/)**更新Repositories label
+
+**编号1a3 [post  /label/:repname](/label.md/)**增加Repositories label
+
+**编号1a4 [put  /label/:repname](/label.md/)**更新Repositories label
+
+**编号1a5 [delete /label/:repname/:itemname](/label.md/)**删除Dataitem label
+
+**编号1a6 [get /label/:repname/:itemname](/label.md/)**更新Dataitem label
+
+**编号1a7 [post /label/:repname/:itemname](/label.md/)**增加Dataitem label
+
+**编号1a8 [put /label/:repname/:itemname](/label.md/)**更新Dataitem label
+
+   
 ### selects ###
 编号：2
 
@@ -148,8 +169,6 @@ HTTP状态码
 **编号57 get /transactions/push** 【拥有者】返回该用户所有的被人家Pull的信息
 
 **编号58 get /transactions/push/:repname/:itemname** 【拥有者】返回该用户所有的被人家Pull的该DataItem的tag信息
-
-**编号59 get /transactions/:repname/:itemname** 【任意】返回该DataItem的所有流动信息包括Pull和Push
 
 ### heartbeats ###
 编号：6

@@ -81,12 +81,12 @@ Example Response：
 		
 Example Request：
 	
-	POST /select_labels/股市行情 HTTP/1.1 
+	PUT /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 	
 	{
-		newlabelname：2015股市行情
+		newlabelname：“2015股市行情”
 		order：100
 	}
 
@@ -118,7 +118,7 @@ Example Response：
 
 说明
 	
-	【任意】返回精选内容
+	【任意】返回精选内容，按照order排序
 		
 Example Request：
 	
@@ -178,7 +178,7 @@ Example Response：
 	
 	 repname[必选]: 		　
 	 itemname[必选]: 
-	 select_labels[必选]：　			    	精选栏目项
+	 select_labels[必选]：　	  	        精选栏目项
 	 order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
@@ -201,7 +201,7 @@ Example Request：
 	
 	 repname[必选]: 		　
 	 itemname[必选]: 
-	 select_labels[必选]：　								精选栏目项
+	 select_labels[必选]：　	                精选栏目项
 	 order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：

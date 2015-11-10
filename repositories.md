@@ -3,7 +3,7 @@
 
 - [GET] /repositories
 
-- [GET] [POST] /repositories/:repname
+- [GET] [POST] [DELETE] /repositories/:repname
 
 - [GET] [POST] [DELETE] /repositories/:repname/:itemname
 
@@ -15,15 +15,18 @@
 ## 指令：GET /Repositories
 
 说明
-	【拥有者】 返回所有自己创建或具备写权限的repository，这是一个特殊需求
-	返回具备写权限的Repository的详细情况，因是向DataHub Server查询，故需要认证信息。
+
+	【拥有者】
+	 		如果后面没有username的参数,则返回本人创建或具备写权限的所有repository
+	【任意】 
+			如果带有参数?username=XXX，则表示查询XXX的所有repository，这里只能反馈查询者具备读权限的repositories名字（比如public或者在private白名单中的）
 
 输入参数说明：
 	
 	page (分页页数) : 1 - N，  默认=1
-	size（页面大小）: 1 - N，   默认=5
-	user_name: 	数据提供者user_name
-	（header 中为登录用户的user_name）
+	size（页面大小）: 1 - N，  默认=5,  -1 返回全部
+	username: 	数据提供者username
+	（header 中为登录用户的username）
 
 Example Request：
 
@@ -31,83 +34,66 @@ Example Request：
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response：
-
-	[
-	    {
-	        "repname": "myrep",
-	        "repaccesstype": "private",
-	        "items": []
-	    },
-	    {
-	        "repname": "myrep2",
-	        "repaccesstype": "private",
-	        "items": []
-	    },
-	    {
-	        "msg": ""
-	    }
-	]
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
 
 返回数据说明：
-
+	
 	repname：数据仓库的名字
-	repaccesstype：数据仓库的访问类型
-	items：数据仓库中包含的数据项
-	msg：可选，具体出错信息描述
-
+	
 返回值示例
         
 	[
-	    {
-	        "repname": "myrep",
-	        "repaccesstype": "Public",
-	        "items": [
-	            {
-	                "repname": "NBA",
-	                "login_name": "panxy3",
-	                "dataitem_id": 1000002,
-	                "dataitem_name": "NBA",
-	                "ico_name": "terminal.png",
-	                "repaccesstype": "private",
-	                "label": {
-	                    "sys": {
-	                        "supply_style": 1
-	                    },
-	                    "opt": {},
-	                    "owner": {},
-	                    "other": {}
-	                },
-	                "priceunit_type": 1,
-	                "optime": "2015-08-01 00:00:00",
-	                "data_format": 1,
-	                "refresh_type": "1",
-	                "refresh_num": 1,
-	                "meta_filename": "meta_terminal2.txt",
-	                "sample_filename": "sample_terminal2.txt",
-	                "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-	            }
-	        ]
-	    },
-	    {
-	        "repname": "myrep2",
-	        "repaccesstype": "private",
-	        "items": []
-	    },
-	    {
-	        "msg": ""
-	    }
+	    "repname1",
+	    "repname2",
+	    "repname3"
 	]
 
- 
 ----------
+
+## 指令：GET /Repositories/:repname
+	
+说明：
+	
+	【任意】查询repository详情
+
+输入参数说明：
+
+	无
+	
+Example Request：
+
+	GET /repositories/myrep1 HTTP/1.1 
+	Accept: application/json
+
+返回数据说明：
+	
+	create_user			创建者
+   	itemaccesstype      对外开放类型[public(默认), private]
+  	deposit         	托管类型[no默认)，yes]
+    comment 			详情
+	optime				更新时间
+	stars				关注量
+	views				浏览量
+	items				dataitem数量	
+	label				标签
+	
+	
+返回值示例
+
+	{
+	    "create_user": "panxy3@asiainfo.com",
+	    "itemaccesstype": "public",
+	    "deposit": "no",
+	    "comment": "详情",
+	    "optime": "2015-10.1122: 10: 20",
+	    "star": 500,
+	    "view": 600,
+	    "item_num": 3000,
+	    "tag_num": 900,
+	    "rank": 12,
+	    "status": "up",
+	    "label": {}
+	}
+
 
 ## 指令：POST /Repositories/:repname
 	
@@ -117,29 +103,25 @@ Example Response：
 
 输入参数说明：
 
-	repname[必选]		
-	
-	permit_type[默认：2（public）]    repository对外是public(2)还是private(3)
-	Comment 						 评论
-	
+   	repaccesstype      访问权限[public(默认), private]
+  	deposit         	托管类型[no默认)，yes]
+    comment 			详情
+	label.user.age		label标签下user下的age自定义标签
+   
+   
 Example Request：
 
-	GET /repositories/chinamobile HTTP/1.1 
+	POST /repositories/chinamobile HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 	
 	[
-		permit_type=2,
-		comment="北京中国移动终端数据"
+   		itemaccesstype      public
+  		deposit      		no
+    	comment 			中国移动北京终端详情
+		label.user.age		22
 	]
 
-Example Response：
-
-	[
-	    {
-	        "msg": ""
-	    }
-	]	
 
 ## 指令：DELETE /Repositories/:repname
 	
@@ -170,95 +152,63 @@ Example Response：
 	
 说明：
 	
-	【任意】返回repository详细信息
+	【任意】返回dataitem详细信息
 
 输入参数说明：
 
-	repname		
-	itemname
+	无
 
 Example Request：
 
 	GET /repositories/chinamobile/beijingphone HTTP/1.1 
 	Accept: application/json
 
-Example Response：
-
-	[
-	    {
-	        		"repname": "NBA",
-	                "login_name": "panxy3",
-	                "dataitem_id": 1000002,
-	                "dataitem_name": "NBA",
-	                "ico_name": "terminal.png",
-	                "repaccesstype": "private",
-	                "label": {
-	                    "sys": {
-	                        "supply_style": 1
-	                    },
-	                    "opt": {},
-	                    "owner": {},
-	                    "other": {}
-	                },
-	                "priceunit_type": 1,
-	                "optime": "2015-08-01 00:00:00",
-	                "data_format": 1,
-	                "refresh_type": "1",
-	                "refresh_num": 1,
-	                "meta_filename": "{}",
-	                "sample_filename": "{}",
-	                "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-	        "Tags": [
-	            {
-	                "tag": "20151030",
-	                "sourcename": "mydata "
-	            },
-	            {
-	                "tag": "20151030",
-	                "sourcename": "mydata2"a
-	            }
-	        ]
-	    }
-	]
-
-
+返回数据说明：
+	
+	create_user 			Dataitem创建者
+	itemaccesstype  		访问权限[public(默认), private]
+	price  					定价协议
+	optime   				更新时间
+	meta					元数据
+	sample					样例数据
+	comment					详情
+	label.sys.supply_style	服务形式[single；batch；flow]
+	label.sys.refresh 		更新周期(3天)
+	Tags.tag				tag名称
+	Tags.comment			tag详情
+	Tags.optime				tag上传日期
+	
 返回值示例
         
 	{
-			{
-	                "repname": "NBA",
-	                "login_name": "panxy3",
-	                "dataitem_id": 1000002,
-	                "dataitem_name": "NBA",
-	                "ico_name": "terminal.png",
-	                "repaccesstype": "private",
-	                "label": {
-	                    "sys": {
-	                        "supply_style": 1
-	                    },
-	                    "opt": {},
-	                    "owner": {},
-	                    "other": {}
-	                },
-	                "priceunit_type": 1,
-	                "optime": "2015-08-01 00:00:00",
-	                "data_format": 1,
-	                "refresh_type": "1",
-	                "refresh_num": 1,
-	                "meta_filename": "{}",
-	                "sample_filename": "{}",
-	                "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"
-					"Tags": [
-					            {
-					                "tag": "20151030",
-					                "sourcename": "mydata "
-					            },
-					            {
-					                "tag": "20151030",
-					                "sourcename": "mydata2"a
-					            }
-				        ]
-	          }	  
+	    "create_user": "panxy3",
+	    "itemaccesstype": "private",
+	    "price": {},
+	    "optime": "2015-08-0100: 00: 00",
+	    "meta": {},
+	    "sample": {},
+	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+		"label": {
+	        "sys": {
+	            "supply_style": "api",
+	            "refresh": "3日"
+	        },
+	        "opt": {},
+	        "owner": {},
+	        "other": {}
+	    },
+	    "Tags": [
+	        {
+	            "tag": "20151030",
+	            "comment": "50M",
+	            "optime": "2015-08-0300: 00: 00"
+	        },
+	        {
+	            "tag": "20151010",
+	            "comment": "501M",
+	            "optime": "2015-08-0100: 00: 00"
+	        }
+	    ]
 	}
 
 ----------
@@ -270,45 +220,40 @@ Example Response：
 	【拥有者】发布DataItem
 
 输入参数说明
-
-	repname：数据仓库名字
-	itemname：数据项名字
-
-	login_name    	数据提供者起的名字
-	ico_name      	图标文件名
-	permit_type   	访问权限-public,所有用户可见,但用户黑名单不可见，3-private,所有用户不可见,但白名单用户可见'
-	supply_style  	实时单条；批量； 流
-	priceunit_type 	定价单位
-	price 定价 
-	data_format   	数据格式，1-txt、2-xls、3-ppt、4-doc、...
-	refresh_type  	数据的刷新周期，月、日、时、分、秒
-	refresh_num   	刷新周期refresh_type的个数
-	meta_filename  	新增字段用于数据项描述 存json格式较好，否则显示没有渲染
-	sample_filename 存放样例数据的文件名  文件内容可以是json格式，显示时可以根据特定的关键字在web上进行渲染
-	comment         概要
-
+	
+	itemaccesstype  		访问权限[public(默认), private]
+	price  					定价协议(目前可以不填)
+	meta					元数据
+	sample					样例数据
+	comment					详情
+	label.sys.supply_style	服务形式[single；batch；flow]
+	label.sys.refresh 		更新周期(3天)
+		
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Basic akmklmasadalkm==
 	[
 		{
-			"ico_name":"item1","permit_type":"2"
-			"supply_style":"1","priceunit_type":"1","price":"0",
-			"data_format":"1","refresh_type":"1","refresh_num":"1",
-			"meta_filename":"{}","sample_filename":"{}",comment:"cc"
+		    "itemaccesstype": "private",
+		    "meta": {},
+		    "sample": {},
+		    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"，
+			"label": {
+		        "sys": {
+		            "supply_style": "api",
+		            "refresh": "3日"
+		        },
+		        "opt": {},
+		        "owner": {},
+		        "other": {}
+		    },
 		}
 	]
 	
-Example Response：
-	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
-	
-	[
-		{"msg":""}
-	]
+返回值示例
+
+	无
 
 ----------
 
@@ -320,25 +265,16 @@ Example Response：
 
 输入参数说明
 
-	repname：数据仓库名字
-	itemname：数据项名字
-
+	无
 
 Example Request：
 
 	DELETE /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Basic akmklmasadalkm==
 	
-Example Response：
+返回值示例
 	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
-	
-	[
-		{"msg":""}
-	]
-
+	无
 ----------
 
 ## GET /repositories/:repname/:itemname/:tag
@@ -349,36 +285,23 @@ Example Response：
 
 输入参数说明：
 
-	repname：数据仓库名字
-	itemname：数据项名字
-	tag： tag名
+	无
 
 Example Request：
 
 	GET /repositories/chinamobile/beijingphone/TAG000 HTTP/1.1
+
+返回参数说明：
 	
-Example Response：
+	comment  daemon提交tag相关详情
+	optime	 daemon提交tag时间
 	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
+返回值示例
 	
-	[	
-		"repname":"",
-		"itemname","",
-		"tag":{},
-		{"msg":""}
-	]
-
-Status Codes：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回数据说明：
-
-	msg：可选，具体出错信息描述
+	{
+	    "comment": "50M ",
+	    "optime": "2015-08-03 00:00:00"
+	}
 
 ## POST /repositories/:repname/:itemname/:tag
 
@@ -388,14 +311,7 @@ Status Codes：
 
 输入参数说明：
 
-	repname：数据仓库名字
-	itemname：数据项名字
-	tag： tag名
-
-
-可选参数
-
-	filename 在文件系统上存储时，存tag_filename
+	comment  tag相关详情
 
 Example Request：
 
@@ -403,7 +319,7 @@ Example Request：
 	Authorization: Basic akmklmasadalkm== 
 	[
 		{
-			filename="xxx.txt"
+			comment="2001MB"
 		}
 	]
 	
@@ -413,16 +329,7 @@ Example Response：
 	Vary: Accept 
 	Content-Type: application/json
 	
-	[
-		{"msg":""}
-	]
-
-Status Codes：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
+	
 返回数据说明：
 
 	msg：可选，具体出错信息描述
@@ -435,10 +342,7 @@ Status Codes：
 
 输入参数说明：
 
-	repname：数据仓库名字
-	itemname：数据项名字
-	tag： tag名
-
+	无
 
 Example Request：
 
@@ -450,18 +354,5 @@ Example Response：
 	HTTP/1.1 200 
 	Vary: Accept 
 	Content-Type: application/json
-	
-	[
-		{"msg":""}
-	]
 
-Status Codes：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回数据说明：
-
-	msg：可选，具体出错信息描述
 

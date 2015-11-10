@@ -2,7 +2,7 @@
 
 [GET] /select_labels
 
-[POST] [DELETE] /select_labels/:labelname
+[POST] [PUT] [DELETE] /select_labels/:labelname
 
 [POST] [PUT] [DELETE] [GET] /selects
 
@@ -19,34 +19,22 @@ Example Request：
 	GET /select_labels HTTP/1.1 
 	Accept: application/json
 	
-Example Response：
-	
-	[
-	    {
-	     	"labels":[]
-	        "msg": ""
-	    }
-	]	
-
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
 
 返回数据说明：
 	
 	labels  数据精选栏目名称数组
 
 返回值示例
-	
-	[
-	    {
-	     	"labels":["股市行情","终端信息","天气预报","医疗"]
-	        "msg": ""
-	    }
-	]	
-        
+
+	{
+	    "labels": [
+	        "股市行情",
+	        "终端信息",
+	        "天气预报",
+	        "医疗"
+	    ]
+	}
+
 ## 指令：[POST] /select_labels/:labelname
 
 说明
@@ -59,31 +47,40 @@ Example Response：
 		
 Example Request：
 	
-	POST /select_labels HTTP/1.1 
+	POST /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
 Example Response：
 	
-	[
-    	{
-    	   "msg": ""
-    	}
-    ]	
-    	
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
+	无
 
-返回数据说明：
+## 指令：[PUT] /select_labels/:labelname
+
+说明
 	
-	[
-	    {
-	        "msg": ""
-	    }
-	]	
+	【管理员】更新现有精选栏目的名称
+	 	
+	 	newlabelname 要改成的名字
+
+输入参数说明：
+	
+	newlabelname 新精选栏目条目名称
+	[URL]中labelname 为需要修改的名字
+		
+Example Request：
+	
+	POST /select_labels/股市行情 HTTP/1.1 
+	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
+	
+	{
+		newlabelname：2015股市行情
+	}
+
+Example Response：
+	
+	无
 
 ## 指令：[DELETE] /select_labels/:labelname
 
@@ -93,35 +90,17 @@ Example Response：
 	
 输入参数说明：
 	
-	labelname 精选栏目条目名称
+	无
 		
 Example Request：
 	
-	DELETE /select_labels HTTP/1.1 
+	DELETE /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
 Example Response：
 	
-	[
-	    {
-	        "msg": ""
-	    }
-	]	
-	
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回数据说明：
-	
-	[
-	    {
-	        "msg": ""
-	    }
-	]	
+	无
 
 ## 指令：[GET] /selects
 
@@ -136,31 +115,23 @@ Example Request：
 
 Example Response：
 
-	[
-	    {
-	        "selects": [
-	            {
-	                "repname": "",
-	                "itemname": ""
-	            },
-	            {
-	                "repname": "",
-	                "itemname": ""
-	            },
-	            {
-	                "repname": "",
-	                "itemname": ""
-	            }
-	        ],
-	        "msg": ""
-	    }
-	]
+	{
+	    "selects": [
+	        {
+	            "repname": "",
+	            "itemname": ""
+	        },
+	        {
+	            "repname": "",
+	            "itemname": ""
+	        },
+	        {
+	            "repname": "",
+	            "itemname": ""
+	        }
+	    ]
+	}
 
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
 
 返回数据说明：
 	
@@ -168,7 +139,6 @@ Example Response：
 
 返回值示例
 	
-	[
 	    {
 	        "selects": [
 	            {	
@@ -184,10 +154,8 @@ Example Response：
 	                "itemname": "深圳终端"
 	            }
 	        ],
-	        "msg": ""
 	    }
-	]
-
+	
 ## 指令：[POST] /selects
 
 说明
@@ -198,7 +166,8 @@ Example Response：
 	
 	 repname[必选]: 		　
 	 itemname[必选]: 
-	 select_labels[必选]：　精选栏目项
+	 select_labels[必选]：　			    				精选栏目项
+	 select_labels_order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
 	
@@ -206,27 +175,9 @@ Example Request：
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response：
-
-	[
-	    {
-	        "msg": ""
-	    }
-	]
-
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
 返回值示例
 	
-	[
-	    {
-	        "msg": ""
-	    }
-	]
+	无
 
 ## 指令：[PUT] /selects
 
@@ -238,7 +189,8 @@ Example Response：
 	
 	 repname[必选]: 		　
 	 itemname[必选]: 
-	 select_labels[必选]：　精选栏目项
+	 select_labels[必选]：　								精选栏目项
+	 select_labels_order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
 	
@@ -246,28 +198,9 @@ Example Request：
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response：
-
-	[
-	    {
-	        "msg": ""
-	    }
-	]
-
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-
 返回值示例
-	
-	[
-	    {
-	        "msg": ""
-	    }
-	]
+
+	无
 	
 ## 指令：[DELETE] /selects
 
@@ -289,23 +222,4 @@ Example Request：
 
 Example Response：
 
-	[
-	    {
-	        "msg": ""
-	    }
-	]
-
-返回状态码：
-	
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
-
-返回值示例
-	
-	[
-	    {
-	        "msg": ""
-	    }
-	]
-
+	无

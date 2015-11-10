@@ -83,17 +83,13 @@ HTTP状态码
 
 **编号1a2 [get  /label/:repname](/label.md/)**更新Repositories label
 
-**编号1a3 [post  /label/:repname](/label.md/)**增加Repositories label
+**编号1a3 [put  /label/:repname](/label.md/)**查询Repositories label
 
-**编号1a4 [put  /label/:repname](/label.md/)**查询Repositories label
+**编号1a4 [delete /label/:repname/:itemname](/label.md/)**删除Dataitem label
 
-**编号1a5 [delete /label/:repname/:itemname](/label.md/)**删除Dataitem label
+**编号1a5 [get /label/:repname/:itemname](/label.md/)**更新Dataitem label
 
-**编号1a6 [get /label/:repname/:itemname](/label.md/)**更新Dataitem label
-
-**编号1a7 [post /label/:repname/:itemname](/label.md/)**增加Dataitem label
-
-**编号1a8 [put /label/:repname/:itemname](/label.md/)**查询Dataitem label
+**编号1a6 [put /label/:repname/:itemname](/label.md/)**查询Dataitem label
 
    
 ### selects ###

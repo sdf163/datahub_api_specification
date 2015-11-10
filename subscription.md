@@ -134,14 +134,14 @@ Example Response：
 		"subscriptions":
 		[
 			{
-				"subscription_id":1,
+				"subscriptionid":1,
 				"username":"John", 
 				"repname":"NBA",
 				"itemname":"bear",
 				"optime":"2015-11-08"
 			},
 			{
-				"subscription_id":2,
+				"subscriptionid":2,
 				"username":"Zhang3", 
 				"repname":"CBA",
 				"itemname":"triger",

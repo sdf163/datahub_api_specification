@@ -111,7 +111,6 @@
 
 	POST /subscription_stat/repo1/item123 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
 
 输出样例：
 
@@ -131,7 +130,6 @@
 
 	POST /subscription_stat/repo1 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
 
 输出样例：
 

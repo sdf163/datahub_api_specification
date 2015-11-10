@@ -1,245 +1,158 @@
 # Transactions
 
-### POST /transaction/:repname/:itemname/:tag (61)
+### POST /transaction/:repname/:itemname/:tag (50)
 
 说明
 
-	需求者请求一个pull token
+	【需求者】返回该请求的access token
+	
+	注意：tag需要UTF8编码，注意后面没有
 
 输入参数说明：
 	
 	无
 
-Example Request：
+输入样例：
 
 	POST /transaction/repo1/item123/tag2 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
-        
-	{
-		"error":"",
-		"token":"a1a2a3a4a5a6a7a8"
-	}
+输出样例：
 
+	"accesstoken":"a1a2a3a4a5a6a7a8"
 
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	token：可选，pull token
-
-
-### GET /transaction/:repname/:itemname/:tag?token=a1a2a3a4a5a6a7a8 (62)
+### GET /transaction/:repname/:itemname/:tag?cypt_accesstoken=a1a2a3a4a5a6a7a8&username=Zhang3 (51)
 
 说明
 
-	供应者验证一个pull token
+	拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密
+	
+	注意：tag需要UTF8编码
 
 输入参数说明：
 	
-	token: 需求者发送给数据提供者的access token
+	cypt_accesstoken: 需求者的私有证书加密的access token
+	username: 需求者用户名
 
-Example Request：
+样例输入：
 
 	GET /transaction/repo1/item123/tag2 HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
+样例输出：
         
-	{
-		"error":"",
-		"valid":true
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
+	"valid":true
+	"remainingtime":"72h3m0.5s"
 
 返回数据说明：
 
-	error：出错信息，空表示没出错.
-	valid：可选，输入token的有效性
+	valid: 输入accesstoken的是否有效
+	remainingtime: 剩余有效期。可能的结果："72h3m0.5s", "3m2s", "0"
 
-### GET /transactions/buyer (71)
+### GET /transaction_stat/:repname/:itemname (52)
 
 说明
 
-	查询当前用户作为一个需求者的流水
+	【任意】返回该DataItem的pull量
 
 输入参数说明：
 	
 	无
 
-Example Request：
+输入样例：
+
+	POST /transaction_stat/repo1/item123 HTTP/1.1 
+	Accept: application/json
+
+输出样例：
+
+	"numpulls":567
+	
+### GET /transaction_stat/:repname (53)
+
+说明
+
+	任意】返回该repositories的pull量
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	POST /transaction_stat/repo1 HTTP/1.1 
+	Accept: application/json
+
+输入样例：
+
+	"numpulls":567
+
+### GET /transaction_stat/:repname/:itemname/:tag (53)
+
+说明
+
+	【任意】返回该tag的pull量
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	POST /transaction_stat/repo1/item123/tag3 HTTP/1.1 
+	Accept: application/json
+
+输出样例：
+
+	"numpulls":567
+
+### GET /transactions/pull  ()
+
+说明
+
+	【需求者】返回该用户所有的pull的信息
+
+输入参数说明：
+	
+	无
+
+输入样例：
 
 	GET /transactions/buyer HTTP/1.1 
 	Accept: application/json
 	Authorization: Basic akmklmasadalkm==
 
-Example Response 1：
+输出样例：
         
-	{
-		"error":"",
-		"transactions":
-		[
-			{
-				"transactionid":123,
-				"buyername": "Zhang3",
-				"sellername": "Li4",
-				"repname": "repo1231",
-				"itemname": item9883,
-				"tag": "tag8W",
-				"pulltime": "2015-11-09",
-				"pulltimes": 2,
-				"paymentid": 0,
-			},
-			{
-				"transactionid":111,
-				"buyername": "John",
-				"sellername": "Smith",
-				"repname": "repo121",
-				"itemname": item989,
-				"tag": "tag09",
-				"pulltime": "2015-11-09",
-				"pulltimes": 0,
-				"paymentid": 0,
-			}
-		]
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-	401 Unauthorized
+	[
+		{
+			"sellername": "Li4",
+			"repname": "repo1231",
+			"itemname": item9883,
+			"tag": "tag8W",
+			"pulltime": "2015-11-09",
+			"pulltimes": 2
+		},
+		{
+			"sellername": "Smith",
+			"repname": "repo121",
+			"itemname": item989,
+			"tag": "tag09",
+			"pulltime": "2015-11-09",
+			"pulltimes": 0
+		}
+	]
 
 返回数据说明：
 
-	error：出错信息，空表示没出错.
-	transactions：可选，流水列表
-		transactionid: 流水id
-		buyername: 需求者用户名
-		sellername: 提供者用户名
-		repname: repository name
-		itemname: data item name
-		tag: tag名
-		pulltime: 最近一次pull时间
-		pulltimes: pull次数
-
-### GET /transaction_stat/:repname/:itemname/:tag (41)
-
-说明
-
-	查询一个dataitem tag上的pull次数
-
-输入参数说明：
-	
-	无
-
-Example Request：
-
-	POST /transaction_stat/repo1/item123/tag3 HTTP/1.1 
-	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-
-Example Response 1：
-        
-	{
-		"error":"",
-		"num_pulls":567
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	num_pulls：可选，pull次数
-
-### GET /transaction_stat/:repname/:itemname (41)
-
-说明
-
-	查询一个dataitem下的tags上的总pull次数
-
-输入参数说明：
-	
-	无
-
-Example Request：
-
-	POST /transaction_stat/repo1/item123 HTTP/1.1 
-	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-
-Example Response 1：
-        
-	{
-		"error":"",
-		"num_pulls":567
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	num_pulls：可选，pull次数
-
-### GET /transaction_stat/:repname (41)
-
-说明
-
-	查询一个repository下的tags上的总pull次数
-
-输入参数说明：
-	
-	无
-
-Example Request：
-
-	POST /transaction_stat/repo1 HTTP/1.1 
-	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-
-Example Response 1：
-        
-	{
-		"error":"",
-		"num_pulls":567
-	}
-
-
-返回状态码：
-
-	200 OK
-	400 Errors (invalid json, missing or invalid fields, etc) 
-
-返回数据说明：
-
-	error：出错信息，空表示没出错
-	num_pulls：可选，pull次数
-
-
+	sellername: 提供者用户名
+	repname: repository name
+	itemname: data item name
+	tag: tag名
+	pulltime: 最近一次pull时间
+	pulltimes: pull次数
 
 
 

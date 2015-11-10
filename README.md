@@ -131,9 +131,9 @@ HTTP状态码
 
 描述文件：transactions.md
 
-**编号50 post /transactions/:repname/:itemname/:tag** 【需求者】返回该请求的access_token，**注意tag需要UTF8编码**
+**编号50 post /transaction/:repname/:itemname/:tag** 【需求者】返回该请求的access_token，**注意tag需要UTF8编码，注意后面没有s**
 
-**编号51 get /transactions/:repname/:itemname/:tag?cypt_accesstoken=???&username=???** 【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密
+**编号51 get /transaction/:repname/:itemname/:tag?cypt_accesstoken=???&username=???** 【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密，注意后面没有s
 
 **编号52 get /transactions_stat/:repname/:itemname** 【任意】返回该DataItem的pull量
 

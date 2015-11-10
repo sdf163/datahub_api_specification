@@ -291,6 +291,7 @@
 
 	GET /transactions/dataitem/repo03/item56 HTTP/1.1 
 	Accept: application/json
+	Authorization: Basic akmklmasadalkm==
 
 输出样例：
         

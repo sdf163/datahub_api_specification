@@ -53,25 +53,25 @@ HTTP状态码
 
 描述文件：repositories.md
 
-**编号10 [get /repositories](/repositories.md/)** 【拥有者|任意】 **这是一个特殊需求**如果后面没有username的参数，则返回本人创建或具备写权限的所有repository，如果带有参数?username=XXX，则表示查询XXX的所有repository，这里只能反馈查询者具备读权限的repositories名字（比如public或者在private白名单中的）
+**编号10 [get /repositories](/repositories.md/)** 【拥有者|任意】[auth] **这是一个特殊需求**如果后面没有username的参数，则返回本人创建或具备写权限的所有repository，如果带有参数?username=XXX，则表示查询XXX的所有repository，这里只能反馈查询者具备读权限的repositories名字（比如public或者在private白名单中的）
 
 **编号11 [get /repositories/:repname](/repositories.md/)** 【任意】返回repository详细信息
 
 **编号12 [post /repositories/:repname](/repositories.md/)** 【任意】创建repository
 
-**编号13 [delete /repositories/:repname](/repositories.md/)** 【拥有者】删除repository
+**编号13 [delete /repositories/:repname](/repositories.md/)** 【拥有者】[auth]删除repository
 
 **编号14 [get /repositories/:repname/:itemname](/repositories.md/)** 【任意】返回此DataItem的详细情况
 
-**编号15 [post /repositories/:repname/:itemname](/repositories.md/)** 【拥有者】发布DataItem
+**编号15 [post /repositories/:repname/:itemname](/repositories.md/)** 【拥有者】[auth]发布DataItem
 
-**编号16 [delete /repositories/:repname/:itemname](/repositories.md/)** 【拥有者】删除DataItem
+**编号16 [delete /repositories/:repname/:itemname](/repositories.md/)** 【拥有者】[auth]删除DataItem
 
 **编号17 [get /repositories/:repname/:itemname/:tag](/repositories.md/)** 【任意】查询DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
-**编号18 [post /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】发布DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
+**编号18 [post /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】[auth]发布DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
-**编号19 [delete /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】删除DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
+**编号19 [delete /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】[auth]删除DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
 编号：1a
 
@@ -79,15 +79,15 @@ HTTP状态码
 
 描述文件：label.md
 
-**编号1a1 [delete /label/:repname](/label.md/)**删除Repositories label
+**编号1a1 [delete /label/:repname](/label.md/)**[auth]删除Repositories label
 
-**编号1a2 [get  /label/:repname](/label.md/)**更新Repositories label
+**编号1a2 [get  /label/:repname](/label.md/)**[auth]更新Repositories label
 
 **编号1a3 [put  /label/:repname](/label.md/)**查询Repositories label
 
-**编号1a4 [delete /label/:repname/:itemname](/label.md/)**删除Dataitem label
+**编号1a4 [delete /label/:repname/:itemname](/label.md/)**[auth]删除Dataitem label
 
-**编号1a5 [get /label/:repname/:itemname](/label.md/)**更新Dataitem label
+**编号1a5 [get /label/:repname/:itemname](/label.md/)**[auth]更新Dataitem label
 
 **编号1a6 [put /label/:repname/:itemname](/label.md/)**查询Dataitem label
 
@@ -101,19 +101,19 @@ HTTP状态码
 
 **编号20 [get /select_labels](/selects.md/)** 【任意】返回精选栏目
 
-**编号21 [post /select_labels/:labelname](/selects.md/)** 【管理员】创建精选栏目
+**编号21 [post /select_labels/:labelname](/selects.md/)** 【管理员】[auth]创建精选栏目
 
-**编号22 [put /select_labels/:labelname](/selects.md/)** 【管理员】更新精选栏目
+**编号22 [put /select_labels/:labelname](/selects.md/)** 【管理员】[auth]更新精选栏目
 
-**编号23 [delete /select_labels/:labelname](/selects.md/)** 【管理员】删除精选栏目
+**编号23 [delete /select_labels/:labelname](/selects.md/)** 【管理员】[auth]删除精选栏目
 
 **编号24 [get /selects](/selects.md/)** 【任意】返回精选内容
 
-**编号25 [post /selects](/selects.md/)** 【管理员】创建精选内容
+**编号25 [post /selects](/selects.md/)** 【管理员】[auth]创建精选内容
 
-**编号26 [put /selects](/selects.md/)** 【管理员】更新精选内容
+**编号26 [put /selects](/selects.md/)** 【管理员】[auth]更新精选内容
 
-**编号27 [delete /selects](/selects.md/)** 【管理员】删除精选内容
+**编号27 [delete /selects](/selects.md/)** 【管理员】[auth]删除精选内容
 
 ### search ###
 编号：3

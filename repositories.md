@@ -85,12 +85,10 @@ Example Request：
 	    "deposit": "no",
 	    "comment": "详情",
 	    "optime": "2015-10.1122: 10: 20",
-	    "star": 500,
-	    "view": 600,
-	    "item_num": 3000,
-	    "tag_num": 900,
-	    "rank": 12,
-	    "status": "up",
+	    "stars": 500,
+	    "views": 600,
+	    "items": 3000,
+	    "tags": 900,
 	    "label": {}
 	}
 

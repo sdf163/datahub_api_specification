@@ -27,12 +27,17 @@ Example Request：
 返回值示例
 
 	{
-	    "labels": [
-	        "股市行情",
-	        "终端信息",
-	        "天气预报",
-	        "医疗""
-	    ]
+	    [
+            {
+                "labelname": "CHINA3"
+            },
+            {
+                "labelname": "CHINA2"
+            },
+            {
+                "labelname": "CHINA"
+            }
+        ]
 	}
 
 ## 指令：[POST] /select_labels/:labelname
@@ -43,7 +48,6 @@ Example Request：
 
 输入参数说明：
 	
-	labelname 精选栏目条目名称
 	order	  精选栏目排序（1-100， 排序越大越靠前）
 		
 Example Request：
@@ -119,7 +123,7 @@ Example Response：
 		
 Example Request：
 	
-	GET /selects?=chinamobile HTTP/1.1 
+	GET /selects?select_labels=chinamobile HTTP/1.1 
 	Accept: application/json
 
 Example Response：

@@ -86,7 +86,6 @@ Example Request：
 	    "stars": 500,
 	    "views": 600,
 	    "items": 3000,
-	    "tags": 900,
 	    "label": {}
 	}
 

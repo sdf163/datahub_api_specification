@@ -22,6 +22,7 @@
 
 	"accesstoken":"a1a2a3a4a5a6a7a8"
 	"remainingtime":"72h3m0.5s"
+	"entrypoint":"http://www.exaple.com:5678"
 
 ### GET /transaction/:repname/:itemname/:tag?cypt_accesstoken={cypt_accesstoken}&username={username} (51)
 

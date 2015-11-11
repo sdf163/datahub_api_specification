@@ -57,7 +57,7 @@ HTTP状态码
 
 **编号11 [get /repositories/:repname](/repositories.md/)** 【任意】返回repository详细信息
 
-**编号12 [post /repositories/:repname](/repositories.md/)** 【任意】创建repository
+**编号12 [post /repositories/:repname](/repositories.md/)** 【任意】[auth]创建repository
 
 **编号13 [delete /repositories/:repname](/repositories.md/)** 【拥有者】[auth]删除repository
 

@@ -68,7 +68,6 @@ Example Request：
 	
 	create_user			创建者
    	itemaccesstype      对外开放类型[public(默认), private]
-  	deposit         	托管类型[no默认)，yes]
     comment 			详情
 	optime				更新时间
 	stars				关注量
@@ -82,7 +81,6 @@ Example Request：
 	{
 	    "create_user": "panxy3@asiainfo.com",
 	    "itemaccesstype": "public",
-	    "deposit": "no",
 	    "comment": "详情",
 	    "optime": "2015-10.1122: 10: 20",
 	    "stars": 500,
@@ -102,7 +100,6 @@ Example Request：
 输入参数说明：
 
    	repaccesstype      访问权限[public(默认), private]
-  	deposit         	托管类型[no默认)，yes]
     comment 			详情
 	label.user.age		label标签下user下的age自定义标签
    
@@ -114,8 +111,7 @@ Example Request：
 	Authorization: Basic akmklmasadalkm==
 	
 	{
-	    "itemaccesstype": "public",
-	    "deposit": "no",
+	    "repaccesstype": "public",
 	    "comment": "中国移动北京终端详情",
 	    "lable": {
 	        "user": {

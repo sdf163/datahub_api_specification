@@ -21,6 +21,7 @@
 输出样例：
 
 	"accesstoken":"a1a2a3a4a5a6a7a8"
+	"remainingtime":"72h3m0.5s"
 
 ### GET /transaction/:repname/:itemname/:tag?cypt_accesstoken={cypt_accesstoken}&username={username} (51)
 
@@ -44,12 +45,12 @@
 样例输出：
         
 	"valid":true
-	"remainingtime":"72h3m0.5s"
+	"remainingtime":"33h3m0.5s"
 
 返回数据说明：
 
 	valid: 输入access token是否有效
-	remainingtime: 剩余有效期。可能的结果："72h3m0.5s", "3m2s", "0"
+	remainingtime: 剩余有效期。可能的结果："33h3m0.5s", "3m2s", "0"
 
 ### GET /transaction_stat/:repname/:itemname (52)
 

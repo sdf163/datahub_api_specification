@@ -71,7 +71,6 @@ Example Request：
     comment 			详情
 	optime				更新时间
 	stars				关注量
-	views				浏览量
 	items				dataitem数量	
 	label				标签
 	
@@ -84,7 +83,6 @@ Example Request：
 	    "comment": "详情",
 	    "optime": "2015-10.1122: 10: 20",
 	    "stars": 500,
-	    "views": 600,
 	    "items": 3000,
 	    "label": {}
 	}
@@ -98,9 +96,9 @@ Example Request：
 
 输入参数说明：
 
-   	repaccesstype      访问权限[public(默认), private]
+   	repaccesstype       访问权限[public(默认), private]
     comment 			详情
-	label.user.age		label标签下user下的age自定义标签
+	label				label自定义json标签
    
    
 Example Request：
@@ -110,13 +108,24 @@ Example Request：
 	Authorization: Basic akmklmasadalkm==
 	
 	{
-	    "repaccesstype": "public",
-	    "comment": "中国移动北京终端详情",
-	    "lable": {
-	        "user": {
-	            "age": 22
-	        }
-	    }
+	   {
+           "repaccesstype": "public",
+           "comment": "中国移动北京终端详情",
+           "lable": {
+               "sys": {
+                   "loc": "北京"
+               },
+               "opt": {
+                   "age": 22
+               },
+               "owner": {
+                   "name": "michael"
+               },
+               "other": {
+                   "friend": 22
+               }
+           }
+       }
 	}
 
 ## 指令：DELETE /Repositories/:repname
@@ -158,11 +167,12 @@ Example Request：
 	
 	create_user 			Dataitem创建者
 	itemaccesstype  		访问权限[public(默认), private]
-	price  					定价协议
 	optime   				更新时间
 	meta					元数据
 	sample					样例数据
 	comment					详情
+	stars					关注量
+    tags					tag量
 	label.sys.supply_style	服务形式[single；batch；flow]
 	label.sys.refresh 		更新周期(3天)
 	Tags.tag				tag名称
@@ -174,11 +184,12 @@ Example Request：
 	{
 	    "create_user": "panxy3",
 	    "itemaccesstype": "private",
-	    "price": {},
 	    "optime": "2015-08-0100: 00: 00",
 	    "meta": {},
 	    "sample": {},
 	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+		"stars": 500
+		 tags:10
 		"label": {
 	        "sys": {
 	            "supply_style": "api",
@@ -213,7 +224,6 @@ Example Request：
 输入参数说明
 	
 	itemaccesstype  		访问权限[public(默认), private]
-	price  					定价协议(目前可以不填)
 	meta					元数据
 	sample					样例数据
 	comment					详情

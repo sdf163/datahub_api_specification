@@ -12,33 +12,33 @@
 
 输入参数说明：
 	
-	DaemonInfo：Daemon本身的情况、连接的User情况、系统环境、关键日志
-	HealthInfo：Daemon的健康情况、EntryPoint的健康报告，报告EntryPoint非常重要，入口信息就是通过这种方式发给Server，以便Server挑选发送给消费者的。这些健康历史数据提供者可以通过Server的WEB界面看到 
-	CmdOutput：上次命令执行反馈
+	daemonid: DaemonID，从网页端获取的安装脚本中获取。用于识别用户。
+    entrypoint: Daemon提供的入口信息。
 
 
 Example Request：
 
-	POST /HeartBeats HTTP/1.1 
+	POST /heartbeats HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
 	
-	[
-	{"DaemonInfo":{},"HealthInfo":{},"CmdOutput":{}}
-	]
 
+    {
+        "daemonid":"0aef69daefb06d0afbe6c",
+        "entrypoint":[
+            "http://211.10.23.23:35800"
+        ]
+    }
 
 返回数据说明：
 
-	CMD：要求Daemon执行的指令
-	msg：可选，具体出错信息描述
+    无
 
 返回数据示例
         
-	HTTP/1.1 200 
+	HTTP/1.1 200 OK
 	Accept: application/json 
 	Content-Type: application/json 
 
-	{"CMD":{}}
 
 

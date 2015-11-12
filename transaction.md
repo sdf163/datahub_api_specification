@@ -34,7 +34,7 @@
 
 输入参数说明：
 	
-	cypt_accesstoken: 需求者的私有证书加密的access token
+	accesstoken: 需求者的access token
 	username: 需求者用户名
 
 样例输入：

@@ -32,7 +32,7 @@ Example Request：
 
 	GET /repositories?page=1&size=3 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 
 返回数据说明：
@@ -105,7 +105,7 @@ Example Request：
 
 	POST /repositories/chinamobile HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
 	   {
@@ -142,7 +142,7 @@ Example Request：
 
 	GET /repositories/chinamobile HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：
 
@@ -233,7 +233,7 @@ Example Request：
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
 		{
 		    "itemaccesstype": "private",
@@ -271,7 +271,7 @@ Example Request：
 Example Request：
 
 	DELETE /repositories/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 返回值示例
 	
@@ -317,7 +317,7 @@ Example Request：
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone/000 HTTP/1.1
-	Authorization: Basic akmklmasadalkm== 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	[
 		{
 			comment="2001MB"
@@ -348,7 +348,7 @@ Example Response：
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone/TAG000 HTTP/1.1
-	Authorization: Basic akmklmasadalkm== 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	
 Example Response：
 	

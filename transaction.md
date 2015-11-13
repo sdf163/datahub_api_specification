@@ -16,7 +16,7 @@
 
 	POST /transaction/repo1/item123/tag2 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
 
@@ -41,7 +41,7 @@
 
 	GET /transaction/repo1/item123/tag2 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 样例输出：
         
@@ -124,7 +124,7 @@
 
 	GET /transactions/pull HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
@@ -170,7 +170,7 @@
 
 	GET /transactions/pull/repo03/item56 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
@@ -207,7 +207,7 @@
 
 	GET /transactions/push HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
@@ -253,7 +253,7 @@
 
 	GET /transactions/push/repo03/item56 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         

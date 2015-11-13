@@ -54,7 +54,7 @@ Example Request：
 	
 	POST /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：
 	
@@ -78,7 +78,7 @@ Example Request：
 	
 	PUT /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
 		newlabelname：“2015股市行情”
@@ -103,7 +103,7 @@ Example Request：
 	
 	DELETE /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：
 	
@@ -186,7 +186,7 @@ Example Request：
 	
 	POST /selects HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 返回值示例
 	
@@ -209,7 +209,7 @@ Example Request：
 	
 	PUT /selects HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 返回值示例
 
@@ -231,7 +231,7 @@ Example Request：
 	
 	DELETE /selects HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：
 

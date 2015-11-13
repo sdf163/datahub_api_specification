@@ -22,7 +22,7 @@
 Example Request：
 
 	[DELETE] /label/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
 		"label": {
 	          "sys": {
@@ -57,7 +57,7 @@ Example Response：
 Example Request：
 
 	[PUT] /label/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
 		"label": {
 	          "sys": {
@@ -91,7 +91,7 @@ Example Response：
 Example Request：
 
 	[GET] /label/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 Example Response：
 	
@@ -126,7 +126,7 @@ Example Response：
 Example Request：
 
 	[DELETE] /label/chinamobile HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
 		"label": {
 	          "sys": {
@@ -141,7 +141,7 @@ Example Request：
 Example Request：
 
 	DELETE /label/repname HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 	
 Example Response：
@@ -174,7 +174,7 @@ Example Response：
 Example Request：
 
 	[PUT] /label/rep1 HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
 		"label": {
 	          "sys": {
@@ -208,7 +208,7 @@ Example Response：
 Example Request：
 
 	[GET] /label/rep1 HTTP/1.1 
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 Example Response：
 	

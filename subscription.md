@@ -14,7 +14,7 @@
 
 	GET /subscriptions HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
@@ -51,7 +51,7 @@
 
 	GET /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
 
@@ -71,7 +71,7 @@
 
 	POST /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
@@ -91,7 +91,7 @@
 
 	DELETE /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         

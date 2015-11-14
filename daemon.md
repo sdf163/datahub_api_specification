@@ -6,7 +6,7 @@
 
 ----------
 
-## 指令：GET /daemon/id/:user 获取user的daemonid。
+## 指令：GET /daemon/id/ 获取user的daemonid。
 
 说明
 	给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份。
@@ -20,6 +20,7 @@ Example Request：
 	GET /daemon/id/datahub HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	
 
 返回数据示例
@@ -48,7 +49,7 @@ Example Request：
 	GET /daemon/ep/cmcc HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
-	
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 
 返回数据示例
         

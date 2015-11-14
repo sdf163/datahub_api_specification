@@ -178,8 +178,9 @@ HTTP状态码
 
 **编号61 post /heartbeats** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
 
-**编号62 get /daemon/ep/:user**
-**编号63 get /daemon/id**
+**编号62 get /daemon/ep/:user** 【Server】在需求者pull数据前，向Server获取Access Token，同时Server调用此API查询提供者的Entry Point，并返回给需求者
+
+**编号63 get /daemon/id** 【Server】 返回当前登陆用户的DaemonID
 
 ### users ###
 编号：7

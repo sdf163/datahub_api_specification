@@ -62,7 +62,7 @@ Example Request：
 返回数据示例
 	无，若有出错在msg中说明出错原因
 
-指令：PUT /users/:loginname/pwd 修改密码（注 loginname需要使用base64编码）(74)
+##指令：PUT /users/:loginname/pwd 修改密码（注 loginname需要使用base64编码）(74)
 说明：
 	修改用户密码
 输入参数说明：

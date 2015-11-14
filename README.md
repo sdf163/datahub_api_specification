@@ -184,6 +184,7 @@ HTTP状态码
 名称：daemonAPI
 
 描述文件：daemon.md
+
 **编号71 get /daemon/ep/:user** 【Server】返回作为数据提供方user的入口地址
 
 **编号72 get /daemon/id** 【Server】 给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份

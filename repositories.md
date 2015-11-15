@@ -110,7 +110,7 @@ Example Request：
 	{
         "repaccesstype": "public",
         "comment": "中国移动北京终端详情",
-        "lable": {
+        "label": {
             "sys": {
                 "loc": "北京"
             },
@@ -315,7 +315,7 @@ Example Request：
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	[
 		{
-			comment="2001MB"
+			"comment":"2001MB"
 		}
 	]
 	

@@ -108,25 +108,23 @@ Example Request：
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-	   {
-           "repaccesstype": "public",
-           "comment": "中国移动北京终端详情",
-           "lable": {
-               "sys": {
-                   "loc": "北京"
-               },
-               "opt": {
-                   "age": 22
-               },
-               "owner": {
-                   "name": "michael"
-               },
-               "other": {
-                   "friend": 22
-               }
-           }
-       }
-	}
+        "repaccesstype": "public",
+        "comment": "中国移动北京终端详情",
+        "lable": {
+            "sys": {
+                "loc": "北京"
+            },
+            "opt": {
+                "age": 22
+            },
+            "owner": {
+                "name": "michael"
+            },
+            "other": {
+                "friend": 22
+            }
+        }
+    }
 
 ## 指令：DELETE /Repositories/:repname
 	
@@ -234,23 +232,20 @@ Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	[
-		{
-		    "itemaccesstype": "private",
-		    "meta": {},
-		    "sample": {},
-		    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"，
-			"label": {
-		        "sys": {
-		            "supply_style": "api",
-		            "refresh": "3日"
-		        },
-		        "opt": {},
-		        "owner": {},
-		        "other": {}
-		    },
-		}
-	]
+	{
+        "itemaccesstype": "private",
+        "meta": "{}",
+        "sample": "{}",
+        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+        "label": {
+            "sys": {
+                "supply_style": "batch"
+            },
+            "opt": {},
+            "owner": {},
+            "other": {}
+        }
+    }
 	
 返回值示例
 

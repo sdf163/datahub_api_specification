@@ -57,7 +57,7 @@ Example Request：
 
 输入参数说明：
 
-	无
+	items				查询repname的所有dataitem开关
 	
 Example Request：
 
@@ -73,6 +73,7 @@ Example Request：
 	stars				关注量
 	items				dataitem数量	
 	label				标签
+	dataitems			dataitem的名称集	
 	
 	
 返回值示例
@@ -84,7 +85,11 @@ Example Request：
 	    "optime": "2015-10.1122: 10: 20",
 	    "stars": 500,
 	    "items": 3000,
-	    "label": {}
+	    "label": {},
+	    "dataitems": [
+	        "dataitem1",
+	        "dataitem2"
+	    ]
 	}
 
 

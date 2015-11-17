@@ -68,7 +68,7 @@ Example Request：
 	
 Example Request：
 
-	GET /repositories/myrep1？items=1 HTTP/1.1 
+	GET /repositories/myrep1?items=1 HTTP/1.1 
 	Accept: application/json
 
 返回数据说明：

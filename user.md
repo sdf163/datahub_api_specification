@@ -38,7 +38,6 @@ Example Request：
 说明：
 	创建一个用户
 输入参数说明：
-	loginname：登录名（邮箱）
 	passwd：MD5以后的密码
 Example Request：
 	POST /users/foo HTTP/1.1 

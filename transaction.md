@@ -134,16 +134,14 @@
 			"repname": "repo1231",
 			"itemname": item9883,
 			"tag": "tag8W",
-			"pulltime": "2015-11-09",
-			"pulltimes": 2
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		},
 		{
 			"sellername": "Li4",
 			"repname": "repo121",
 			"itemname": item989,
 			"tag": "tag09",
-			"pulltime": "2015-11-09",
-			"pulltimes": 0
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		}
 	]
 
@@ -153,8 +151,7 @@
 	repname: repository name
 	itemname: data item name
 	tag: tag名
-	pulltime: 最近一次pull时间
-	pulltimes: pull次数
+	pulltime: pull time, RFC3339 format
 
 ### GET /transactions/pull/:repname/:itemname  (56)
 
@@ -177,21 +174,18 @@
 	[
 		{
 			"tag": "tag8W",
-			"pulltime": "2015-11-09",
-			"pulltimes": 2
+			"pulltime": "2015-11-09T15:04:05Z07:00"
 		},
 		{
 			"tag": "tag09",
-			"pulltime": "2015-11-09",
-			"pulltimes": 0
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		}
 	]
 
 返回数据说明：
 
 	tag: tag名
-	pulltime: 最近一次pull时间
-	pulltimes: pull次数
+	pulltime: pull time, RFC3339 format
 
 ### GET /transactions/push  (57)
 
@@ -217,16 +211,14 @@
 			"repname": "repo1231",
 			"itemname": item9883,
 			"tag": "tag8W",
-			"pulltime": "2015-11-09",
-			"pulltimes": 2
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		},
 		{
 			"buyername": "Smith",
 			"repname": "repo121",
 			"itemname": item989,
 			"tag": "tag09",
-			"pulltime": "2015-11-09",
-			"pulltimes": 0
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		}
 	]
 
@@ -236,8 +228,7 @@
 	repname: repository name
 	itemname: data item name
 	tag: tag名
-	pulltime: 最近一次pull时间
-	pulltimes: pull次数
+	pulltime: pull time, RFC3339 format
 
 ### GET /transactions/push/:repname/:itemname  (58)
 
@@ -261,14 +252,12 @@
 		{
 			"buyername": "Li4",
 			"tag": "tag8W",
-			"pulltime": "2015-11-09",
-			"pulltimes": 2
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		},
 		{
 			"buyername": "Zhang3",
 			"tag": "tag09",
-			"pulltime": "2015-11-09",
-			"pulltimes": 0
+			"pulltime": "2015-11-10T15:04:05Z07:00"
 		}
 	]
 
@@ -276,5 +265,5 @@
 
 	buyername: 需求者用户名
 	tag: tag名
-	pulltime: 最近一次pull时间
-	pulltimes: pull次数
+	pulltime: pull time, RFC3339 format
+	

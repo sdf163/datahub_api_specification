@@ -61,7 +61,7 @@ Example Request：
 	
 Example Request：
 
-	GET /repositories/myrep1 HTTP/1.1 
+	GET /repositories/myrep1？items=1 HTTP/1.1 
 	Accept: application/json
 
 返回数据说明：
@@ -181,7 +181,7 @@ Example Request：
 	Tags.tag				tag名称
 	Tags.comment			tag详情
 	Tags.optime				tag上传日期
-	
+	taglist					item下所有tag的详细信息
 返回值示例
         
 	{
@@ -202,18 +202,23 @@ Example Request：
 	        "owner": {},
 	        "other": {}
 	    },
-	    "Tags": [
-	        {
-	            "tag": "20151030",
-	            "comment": "50M",
-	            "optime": "2015-08-0300: 00: 00"
-	        },
-	        {
-	            "tag": "20151010",
-	            "comment": "501M",
-	            "optime": "2015-08-0100: 00: 00"
-	        }
-	    ]
+	   "taglist":[
+			{
+				"tag": "tag001",
+				"comment": "2022201MB",
+				"optime": "2015-11-16 10:50:31.779460404 +0000 UTC"
+			},
+			{
+				"tag": "tag002",
+				"comment": "2001MB",
+				"optime": "2015-11-17 02:14:55.241920929 +0000 UTC"
+			},
+			{
+				"tag": "tag003",
+				"comment": "2001MB",
+				"optime": "2015-11-17 02:14:59.491811069 +0000 UTC"
+			}
+			]
 	}
 
 ----------

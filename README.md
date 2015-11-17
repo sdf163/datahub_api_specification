@@ -132,17 +132,17 @@ HTTP状态码
 
 描述文件：subscriptions.md
 
-**编号40 get /subscriptions** 【需求者】[auth]查询所有订阅的DataItem
+**编号40 [get /subscriptions](/subscription.md/)** 【需求者】[auth]查询所有订阅的DataItem
 
-**编号41 get /subscription/:repname/:itemname** 【需求者】[auth] 查询该DataItem是否订阅过 **注意没有s**
+**编号41 [get /subscription/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 查询该DataItem是否订阅过 **注意没有s**
 
-**编号42 post /subscription/:repname/:itemname** 【需求者】[auth] 订阅该DataItem **注意没有s**
+**编号42 [post /subscription/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 订阅该DataItem **注意没有s**
 
-**编号43 delete /subscription/:repname/:itemname** 【需求者】[auth] 取消订阅该DataItem **注意没有s**
+**编号43 [delete /subscription/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 取消订阅该DataItem **注意没有s**
 
-**编号44 get /subscription_stat/:repname/:itemname** 【任意】返回该DataItem的订阅量
+**编号44 [get /subscription_stat/:repname/:itemname](/subscription.md/)** 【任意】返回该DataItem的订阅量
 
-**编号45 get /subscription_stat/:repname** 【任意】返回该repositories的订阅量
+**编号45 [get /subscription_stat/:repname](/subscription.md/)** 【任意】返回该repositories的订阅量
 
 ### transactions ###
 编号：5
@@ -151,23 +151,23 @@ HTTP状态码
 
 描述文件：transactions.md
 
-**编号50 post /transaction/:repname/:itemname/:tag** 【需求者】[auth] 返回该请求的access_token，**注意tag需要UTF8编码，注意后面没有s**
+**编号50 [post /transaction/:repname/:itemname/:tag](/subscription.md/)** 【需求者】[auth] 返回该请求的access_token，**注意tag需要UTF8编码，注意后面没有s**
 
-**编号51 get /transaction/:repname/:itemname/:tag?cypt_accesstoken=???&username=???** 【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密，注意后面没有s
+**编号51 [get /transaction/:repname/:itemname/:tag?cypt_accesstoken=???&username=???](/subscription.md/)** 【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密，注意后面没有s
 
-**编号52 get /transactions_stat/:repname/:itemname** 【任意】返回该DataItem的pull量
+**编号52 [get /transactions_stat/:repname/:itemname](/subscription.md/)** 【任意】返回该DataItem的pull量
 
-**编号53 get /transactions_stat/:repname** 【任意】返回该repositories的pull量
+**编号53 [get /transactions_stat/:repname](/subscription.md/)** 【任意】返回该repositories的pull量
 
-**编号54 get /transactions_stat/:repname/:itemname/:tag** 【任意】返回该tag的pull量
+**编号54 [get /transactions_stat/:repname/:itemname/:tag](/subscription.md/)** 【任意】返回该tag的pull量
 
-**编号55 get /transactions/pull** 【需求者】[auth] 返回该用户所有的pull的信息
+**编号55 [get /transactions/pull](/subscription.md/)** 【需求者】[auth] 返回该用户所有的pull的信息
 
-**编号56 get /transactions/pull/:repname/:itemname** 【需求者】[auth] 返回该用户pull的该DataItem的tag信息
+**编号56 [get /transactions/pull/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 返回该用户pull的该DataItem的tag信息
 
-**编号57 get /transactions/push** 【拥有者】[auth] 返回该用户所有的被人家Pull的信息
+**编号57 [get /transactions/push](/subscription.md/)** 【拥有者】[auth] 返回该用户所有的被人家Pull的信息
 
-**编号58 get /transactions/push/:repname/:itemname** 【拥有者】[auth] 返回该用户所有的被人家Pull的该DataItem的tag信息
+**编号58 [get /transactions/push/:repname/:itemname](/subscription.md/)** 【拥有者】[auth] 返回该用户所有的被人家Pull的该DataItem的tag信息
 
 ### heartbeats ###
 编号：6

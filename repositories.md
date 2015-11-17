@@ -42,9 +42,16 @@ Example Request：
 返回值示例
         
 	[
-	    "repname1",
-	    "repname2",
-	    "repname3"
+		{
+			"repname": "mobile"
+		}，
+		{
+			"repname": "mobile"
+		},
+		{
+			"repname": "mobile"
+
+		}
 	]
 
 ----------

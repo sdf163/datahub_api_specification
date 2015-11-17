@@ -57,11 +57,11 @@ Example Request：
 
 输入参数说明：
 
-	无
+	items				查询repname的所有dataitem开关
 	
 Example Request：
 
-	GET /repositories/myrep1 HTTP/1.1 
+	GET /repositories/myrep1？items=1 HTTP/1.1 
 	Accept: application/json
 
 返回数据说明：
@@ -73,6 +73,7 @@ Example Request：
 	stars				关注量
 	items				dataitem数量	
 	label				标签
+	dataitems			dataitem的名称集	
 	
 	
 返回值示例
@@ -84,7 +85,11 @@ Example Request：
 	    "optime": "2015-10.1122: 10: 20",
 	    "stars": 500,
 	    "items": 3000,
-	    "label": {}
+	    "label": {},
+	    "dataitems": [
+	        "dataitem1",
+	        "dataitem2"
+	    ]
 	}
 
 
@@ -108,25 +113,23 @@ Example Request：
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-	   {
-           "repaccesstype": "public",
-           "comment": "中国移动北京终端详情",
-           "lable": {
-               "sys": {
-                   "loc": "北京"
-               },
-               "opt": {
-                   "age": 22
-               },
-               "owner": {
-                   "name": "michael"
-               },
-               "other": {
-                   "friend": 22
-               }
-           }
-       }
-	}
+        "repaccesstype": "public",
+        "comment": "中国移动北京终端详情",
+        "label": {
+            "sys": {
+                "loc": "北京"
+            },
+            "opt": {
+                "age": 22
+            },
+            "owner": {
+                "name": "michael"
+            },
+            "other": {
+                "friend": 22
+            }
+        }
+    }
 
 ## 指令：DELETE /Repositories/:repname
 	
@@ -178,7 +181,7 @@ Example Request：
 	Tags.tag				tag名称
 	Tags.comment			tag详情
 	Tags.optime				tag上传日期
-	
+	taglist					item下所有tag的详细信息
 返回值示例
         
 	{
@@ -199,18 +202,23 @@ Example Request：
 	        "owner": {},
 	        "other": {}
 	    },
-	    "Tags": [
-	        {
-	            "tag": "20151030",
-	            "comment": "50M",
-	            "optime": "2015-08-0300: 00: 00"
-	        },
-	        {
-	            "tag": "20151010",
-	            "comment": "501M",
-	            "optime": "2015-08-0100: 00: 00"
-	        }
-	    ]
+	   "taglist":[
+			{
+				"tag": "tag001",
+				"comment": "2022201MB",
+				"optime": "2015-11-16 10:50:31.779460404 +0000 UTC"
+			},
+			{
+				"tag": "tag002",
+				"comment": "2001MB",
+				"optime": "2015-11-17 02:14:55.241920929 +0000 UTC"
+			},
+			{
+				"tag": "tag003",
+				"comment": "2001MB",
+				"optime": "2015-11-17 02:14:59.491811069 +0000 UTC"
+			}
+			]
 	}
 
 ----------
@@ -234,23 +242,20 @@ Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	[
-		{
-		    "itemaccesstype": "private",
-		    "meta": {},
-		    "sample": {},
-		    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"，
-			"label": {
-		        "sys": {
-		            "supply_style": "api",
-		            "refresh": "3日"
-		        },
-		        "opt": {},
-		        "owner": {},
-		        "other": {}
-		    },
-		}
-	]
+	{
+        "itemaccesstype": "private",
+        "meta": "{}",
+        "sample": "{}",
+        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+        "label": {
+            "sys": {
+                "supply_style": "batch"
+            },
+            "opt": {},
+            "owner": {},
+            "other": {}
+        }
+    }
 	
 返回值示例
 
@@ -320,7 +325,7 @@ Example Request：
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	[
 		{
-			comment="2001MB"
+			"comment":"2001MB"
 		}
 	]
 	

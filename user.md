@@ -1,160 +1,134 @@
 # API 列表
 	
 
-- [GET] /users/:username 查询用户
+- [GET] /users/:loginname 查询用户
 
-- [POST] /users/:username 创建用户
+- [POST] /users/:loginname 创建用户
 
-- [PUT] /users/:username 修改用户
+- [PUT] /users/:loginname 修改用户
 
-- [DELETE] /users/:username 删除用户
+- [DELETE] /users/:loginname 删除用户
 
-- [GET] /users/auth 用户验证，目前仅支持basic验证方式
+- PUT /users/:loginname/status 激活用户
+
+- PUT /users/:loginname/pwd 修改密码
 
 	
 ----------
 
-## 指令：GET /users/:username 查询用户
-
+##指令：GET /users/:loginname 查询用户（注 loginname需要使用base64编码）(71)
 说明
 	【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如何是其他人，获得基本情况
-
 输入参数说明：
-	
 	无
-
 Example Request：
-
 	GET /users/foo HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-
+	Authorization: token
 返回数据说明：
-
 	usertype：用户类型
-	nickname：昵称
+	nickname：昵称 
+	username:真实名称
 	comments：描述信息
 	quata:已经使用的量【仅限查询本人】
-
 返回数据示例
-        
-	待补充
+	{"nickname":"liuxy10","username":"真实名称","comments":"描述","userType":1}
 
-## 指令：POST /users/:username 创建用户
-	
+##指令：POST /users/:loginname 创建用户（注 loginname需要使用base64编码）(72)
 说明：
-	
-	【管理员角色】创建一个用户
-
+	创建一个用户
 输入参数说明：
-
-	usertype：用户类型
-	nickname：昵称
-	comments：描述信息
 	passwd：MD5以后的密码
-	
 Example Request：
-
 	POST /users/foo HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-	
+	Authorization: token
+ 
 	{
-		usertype=2,
-		nickname="foo",
-                comments="测试用户",
-                passwd=“..........”
+	  loginname="aa@asiainfo.com",
+	  passwd="aaaaaa",
 	}
-
 返回数据说明：
-
 	无，若有出错在msg中说明出错原因
-
 返回数据示例
-        
 	待补充
 
-
-## 指令：PUT /users/:username 修改用户
-	
+##指令：PUT /users/:loginname/status 激活用户（注 loginname需要使用base64编码）(73)
 说明：
-	
-	【管理员角色】修改一个用户
-
+	激活用户
 输入参数说明：
+	无
+返回数据示例
+	无，若有出错在msg中说明出错原因
 
-	usertype：用户类型
-	nickname：昵称
-	comments：描述信息
-	passwd：MD5以后的密码
-	
+##指令：PUT /users/:loginname/pwd 修改密码（注 loginname需要使用base64编码）(74)
+说明：
+	修改用户密码
+输入参数说明：
+	oldpwd：修改前密码（md5）
+	passwd：修改后密码（md5）
+返回数据示例
+	无，若有出错在msg中说明出错原因
 Example Request：
-
 	PUT /users/foo HTTP/1.1 
 	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-	
+	Authorization: token
+ 
 	{
-		usertype=2,
-		nickname="foo",
-                comments="测试用户",
-                passwd=“..........”
+		oldpwd=“..........”
+		passwd=“..........”
 	}
 
-返回数据说明：
+##指令：PUT /users/:loginname 修改用户（注 loginname需要使用base64编码）(75)
+【管理员角色】 说明 ：
+	修改一个用户
+【管理员角色】输入参数说明：
+	usertype：用户类型(只有管理员有权限修改)
+	userstatus:用户状态（除了激活状态，其他状态需要有管理员权限）
+	nickname：昵称
+	username：真实名称
+	comments：描述信息
+	passwd：密码
 
-	无，若有出错在msg中说明出错原因
+【管理员角色】Example Request：
+	PUT /users/foo HTTP/1.1 
+	Accept: application/json
+	Authorization: token
+ 
+	{
+		usertype=2,
+		userstatus=3，
+		nickname="foo",
+		username="FOO",
+		comments="测试用户",
+		passwd=“..........”
+	}
 
-返回数据示例
-        
-	待补充
+【普通用户】 说明 ：
+	修改一个用户
+【普通用户】输入参数说明：
 
-## 指令：DELETE /users/:username 删除用户
-	
+	nickname：昵称
+	comments：描述信息
+
+【普通用户】Example Request：
+	PUT /users/foo HTTP/1.1 
+	Accept: application/json
+	Authorization: token
+ 
+	{
+		 nickname="foo",
+		comments="测试用户",
+	}
+
+##指令：DELETE /users/:loginname 删除用户（注 loginname需要使用base64编码）(76)
 说明：
-	
 	【管理员角色】删除一个用户
-
 输入参数说明：
-
-	无						
-	
-Example Request：
-
-	DELETE /users/foo HTTP/1.1 
-	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-	
-	
+	无                     
 返回数据说明：
-
 	无，若有出错在msg中说明出错原因
-
 返回数据示例
-        
-	待补充
+待补充
 
-## 指令：GET /users/auth 用户验证，目前仅支持basic验证方式
-	
-说明：
-	
-	【任意】认证一个用户是否有效
 
-输入参数说明：
-
-	无						
-	
-Example Request：
-
-	GET /users/auth HTTP/1.1 
-	Accept: application/json
-	Authorization: Basic akmklmasadalkm==
-	
-	
-返回数据说明：
-
-	Token
-
-返回数据示例
-        
-	待补充

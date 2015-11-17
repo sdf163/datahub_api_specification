@@ -29,13 +29,13 @@ Example Request：
 	{
 	    [
             {
-                "labelname": "CHINA3"
+                "labelname": "CHINA3", "icon":"path1"
             },
             {
-                "labelname": "CHINA2"
+                "labelname": "CHINA2", "icon":"path2"
             },
             {
-                "labelname": "CHINA"
+                "labelname": "CHINA", "icon":"path3"
             }
         ]
 	}
@@ -49,12 +49,19 @@ Example Request：
 输入参数说明：
 	
 	order	  精选栏目排序（1-100， 排序越大越靠前）
+	icon	  精选栏目图片路径
 		
 Example Request：
 	
 	POST /select_labels/股市行情 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	[
+		{
+			"order": 1,
+			"icon":"path1"
+		}
+	]
 
 Example Response：
 	
@@ -68,6 +75,7 @@ Example Response：
 	 	
 	 newlabelname 	要改成的名字
 	 order	  		精选栏目排序（1-100， 排序越大越靠前）
+	 icon			精选栏目图片路径
 	
 输入参数说明：
 	
@@ -81,8 +89,12 @@ Example Request：
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		newlabelname：“2015股市行情”
-		order：100
+		{
+			"order": 1,
+			"icon":"path1"
+			"newlabelname":"2015股市"
+		}
+	
 	}
 
 Example Response：

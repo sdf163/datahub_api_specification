@@ -197,6 +197,12 @@ Example Request：
 	POST /selects/:repname/:itemname HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	[
+		{
+			"select_labels":"广告信息"，
+			"order":123
+		}
+	]
 
 返回值示例
 	
@@ -218,6 +224,12 @@ Example Request：
 	PUT /selects/:repname/:itemname HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	[
+		{
+			"select_labels":"广告信息"，
+			"order":123
+		}
+	]
 
 返回值示例
 

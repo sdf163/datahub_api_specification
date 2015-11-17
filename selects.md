@@ -181,7 +181,7 @@ Example Response：
 	        ],
 	    }
 	
-## 指令：[POST] /selects
+## 指令：[POST] /selects/:repname/:itemname
 
 说明
 	
@@ -189,14 +189,12 @@ Example Response：
 
 输入参数说明：
 	
-	 repname[必选]: 		　
-	 itemname[必选]: 
 	 select_labels[必选]：　	  	        精选栏目项
 	 order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
 	
-	POST /selects HTTP/1.1 
+	POST /selects/:repname/:itemname HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -204,7 +202,7 @@ Example Request：
 	
 	无
 
-## 指令：[PUT] /selects
+## 指令：[PUT] /selects/:repname/:itemname
 
 说明
 
@@ -212,14 +210,12 @@ Example Request：
 
 输入参数说明：
 	
-	 repname[必选]: 		　
-	 itemname[必选]: 
 	 select_labels[必选]：　	                精选栏目项
 	 order[可选，默认为1，值越大排名越靠前]   	精选排序功能 
 		
 Example Request：
 	
-	PUT /selects HTTP/1.1 
+	PUT /selects/:repname/:itemname HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -227,7 +223,7 @@ Example Request：
 
 	无
 	
-## 指令：[DELETE] /selects
+## 指令：[DELETE] /selects/:repname/:itemname
 
 说明
 
@@ -235,13 +231,11 @@ Example Request：
 
 输入参数说明：
 	
-	 repname[必选]: 		　
-	 itemname[必选]: 
-	 select_labels[必选]：　精选栏目项
-		
+	无
+			
 Example Request：
 	
-	DELETE /selects HTTP/1.1 
+	DELETE /selects/:repname/:itemname HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

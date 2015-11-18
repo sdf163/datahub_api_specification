@@ -30,11 +30,7 @@ Example Request：
 	Content-Type: application/json 
 
     {
-        "code":0,
-        "msg":"OK",
-        "data":{
-            "daemonid":"0aef69daefb06d0afbe6c"
-        }
+        "daemonid":"0aef69daefb06d0afbe6c"
     }
 
 
@@ -62,14 +58,10 @@ Example Request：
 	Content-Type: application/json 
 
     {
-        "code":0,
-        "msg":"OK",
-        "data":{
-            "entrypoint":[
-                "http://211.10.23.23:35800",
-                "http://54.223.58.0:35800"
-            ]
-        }
+        "entrypoint":[
+            "http://211.10.23.23:35800",
+            "http://211.10.23.24:35800"
+        ]
     }
 
 

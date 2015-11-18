@@ -1,14 +1,14 @@
 # API 列表
 	
 	
-- [GET] [POST] [DELETE] [PUT] /permit/:repname
+- [GET] [POST] [DELETE] [PUT] /permission/:repname
 
-- [GET] [POST] [DELETE] /permit/:repname/:itemname
+- [GET] [POST] [DELETE] /permission/:repname/:itemname
 
 	
 ----------
 
-## 指令：GET /permit/:repname
+## 指令：GET /permission/:repname
 
 说明
 
@@ -20,7 +20,7 @@
 
 Example Request：
 
-	GET /permit/rep HTTP/1.1 
+	GET /permission/rep HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -34,7 +34,7 @@ Example Request：
 	
 ----------
 
-## 指令：POST PUT /permit/:repname
+## 指令：POST PUT /permission/:repname
 	
 说明：
 	
@@ -47,7 +47,7 @@ Example Request：
 	
 Example Request：
 
-	POST /permit/rep00001 HTTP/1.1 
+	POST /permission/rep00001 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
@@ -59,7 +59,7 @@ Example Request：
 	无
 		
 
-## 指令：DELETE /permit/:repname
+## 指令：DELETE /permission/:repname
 	
 说明：
 	
@@ -71,12 +71,11 @@ Example Request：
    
 Example Request：
 
-	DELETE /permit/rep00001 HTTP/1.1 
+	DELETE /permission/rep00001?username=nike HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
 	
-## 指令：GET /permit/:repname/:itemname
+## 指令：GET /permission/:repname/:itemname
 
 说明
 
@@ -87,10 +86,10 @@ Example Request：
 
 Example Request：
 
-	GET /permit/repname1/itemname1 HTTP/1.1 
+	GET /permission/repname1/itemname1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
+    
 
 返回数据说明：
 	[
@@ -101,7 +100,7 @@ Example Request：
 	
 ----------
 
-## 指令：POST /permit/:repname/:itemname
+## 指令：POST /permission/:repname/:itemname
 	
 说明：
 	
@@ -113,15 +112,18 @@ Example Request：
 	
 Example Request：
 
-	POST /permit/repname1/itemname1 HTTP/1.1 
+	POST /permission/repname1/itemname1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	[
+	    {"username":"user1"}
+	]
 
 返回数据说明：
 	
 	无
 
-## 指令：DELETE /permit/:repname/:itemname
+## 指令：DELETE /permission/:repname/:itemname
 	
 说明：
 	
@@ -133,6 +135,6 @@ Example Request：
    
 Example Request：
 
-	DELETE /permit/repname1/itemname1 HTTP/1.1 
+	DELETE /permission/repname1/itemname1?username=abc HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb

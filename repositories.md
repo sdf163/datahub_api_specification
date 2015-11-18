@@ -23,8 +23,8 @@
 
 输入参数说明：
 	
-	page (分页页数) : 1 - N，  默认=1
-	size（页面大小）: 1 - N，  默认=5,  -1 返回全部
+	page (分页页数) : 			1 - N，  默认=1
+	size（页面大小）: 			1 - N，  默认=3,  -1 返回全部
 	username: 	数据提供者username
 	（header 中为登录用户的username）
 
@@ -64,7 +64,9 @@ Example Request：
 
 输入参数说明：
 
-	items				查询repname的所有dataitem开关
+	items							查询repname的所有dataitem开关
+	page (dataitem返回的分页页数) : 	1 - N，  默认=1
+    size（dataitem返回的页面大小）: 	1 - N，  默认=3,  -1 返回全部
 	
 Example Request：
 

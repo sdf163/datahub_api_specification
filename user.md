@@ -16,7 +16,7 @@
 	
 ----------
 
-##指令：GET /users/:loginname 查询用户（注 loginname需要使用base64编码）(71)
+##指令：GET /users/:loginname 查询用户(71)
 说明
 	【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如何是其他人，获得基本情况
 输入参数说明：
@@ -34,7 +34,7 @@ Example Request：
 返回数据示例
 	{"nickname":"liuxy10","username":"真实名称","comments":"描述","userType":1}
 
-##指令：POST /users/:loginname 创建用户（注 loginname需要使用base64编码）(72)
+##指令：POST /users/:loginname 创建用户(72)
 说明：
 	创建一个用户
 输入参数说明：
@@ -53,7 +53,7 @@ Example Request：
 返回数据示例
 	待补充
 
-##指令：PUT /users/:loginname/status 激活用户（注 loginname需要使用base64编码）(73)
+##指令：PUT /users/:loginname/status 激活用户(73)
 说明：
 	激活用户
 输入参数说明：
@@ -61,7 +61,7 @@ Example Request：
 返回数据示例
 	无，若有出错在msg中说明出错原因
 
-##指令：PUT /users/:loginname/pwd 修改密码（注 loginname需要使用base64编码）(74)
+##指令：PUT /users/:loginname/pwd 修改密码(74)
 说明：
 	修改用户密码
 输入参数说明：
@@ -79,7 +79,7 @@ Example Request：
 		passwd=“..........”
 	}
 
-##指令：PUT /users/:loginname 修改用户（注 loginname需要使用base64编码）(75)
+##指令：PUT /users/:loginname 修改用户(75)
 【管理员角色】 说明 ：
 	修改一个用户
 【管理员角色】输入参数说明：
@@ -121,7 +121,7 @@ Example Request：
 		comments="测试用户",
 	}
 
-##指令：DELETE /users/:loginname 删除用户（注 loginname需要使用base64编码）(76)
+##指令：DELETE /users/:loginname 删除用户(76)
 说明：
 	【管理员角色】删除一个用户
 输入参数说明：

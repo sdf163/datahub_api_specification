@@ -40,14 +40,13 @@ Example Request：
 输入参数说明：
 	passwd：MD5以后的密码
 Example Request：
-	POST /users/foo HTTP/1.1 
-	Accept: application/json
-	Authorization: token
- 
-	{
-	  loginname="aa@asiainfo.com",
-	  passwd="aaaaaa",
-	}
+	POST /users/liuxueying@126.com HTTP/1.1
+	Content-Type: multipart/form-data;boundary=------FormBoundary1511af7b6f7
+	Content-Length: 119
+
+	------FormBoundary1511af7b6f7
+	Content-Disposition: form-data; name="passwd"
+	1234
 返回数据说明：
 	无，若有出错在msg中说明出错原因
 返回数据示例
@@ -70,14 +69,11 @@ Example Request：
 返回数据示例
 	无，若有出错在msg中说明出错原因
 Example Request：
-	PUT /users/foo HTTP/1.1 
-	Accept: application/json
+	PUT /users/aaa@126.com/pwd HTTP/1.1 
+	Content-Type: multipart/form-data
 	Authorization: token
  
-	{
-		oldpwd=“..........”
-		passwd=“..........”
-	}
+	{"passwd":"aaaaaa","oldpwd":"1234"}
 
 ##指令：PUT /users/:loginname 修改用户(75)
 【管理员角色】 说明 ：
@@ -92,33 +88,35 @@ Example Request：
 
 【管理员角色】Example Request：
 	PUT /users/foo HTTP/1.1 
-	Accept: application/json
+	Content-Type: multipart/form-data
 	Authorization: token
  
 	{
-		usertype=2,
-		userstatus=3，
-		nickname="foo",
-		username="FOO",
-		comments="测试用户",
-		passwd=“..........”
+		"usertype"="2",
+		"userstatus"="3"，
+		"nickname"="foo",
+		"username"="FOO",
+		"comments"="测试用户",
+		"passwd"=“..........”
 	}
 
 【普通用户】 说明 ：
 	修改一个用户
 【普通用户】输入参数说明：
 
-	nickname：昵称
-	comments：描述信息
+	{
+		nickname：昵称
+		comments：描述信息
+	}
 
 【普通用户】Example Request：
 	PUT /users/foo HTTP/1.1 
-	Accept: application/json
+	Content-Type: multipart/form-data
 	Authorization: token
  
 	{
-		 nickname="foo",
-		comments="测试用户",
+		"nickname"="foo",
+		"comments"="测试用户",
 	}
 
 ##指令：DELETE /users/:loginname 删除用户(76)

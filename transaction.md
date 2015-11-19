@@ -250,7 +250,46 @@
 
 输出样例(groupbydate=1)：
 
-
+[
+		{
+			"date":"2015-11-18",
+			"pulls":[
+				{
+					"buyername":"zhang3",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:48:07Z"
+				},
+				{
+					"buyername":"John",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:29:38Z"
+				}
+			]
+		},
+		{
+			"date":"2015-11-10",
+			"pulls":[
+				{
+					"buyername":"zhang3",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-10T10:10:10Z"
+				},
+				{
+					"buyername":"zhang3",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-10T10:10:10Z"
+				},
+			]
+		}
+	]
 
 输出样例(groupbydate=0)：
         

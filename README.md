@@ -249,6 +249,23 @@ code 及 msg
 
 **编号A2 [get /star_stat/:repname/:itemname](/star.md/)** 【任意】查询某个DataItem的点赞量 
 
+### comment ###
+编号：B
+
+名称：评论留言API
+
+描述文件：comment.md
+
+**编号B0 [post /comment/:repname/:itemname](/comment.md/)** 【用户】对一个dataitem发表一个评论 (欲评论，先订阅)
+
+**编号B1 [put /comment/:repname/:itemname](/comment.md/)** 【用户】修改自己对一个dataitem的评论
+
+**编号B2 [delete /comment/:repname/:itemname?commentid={commentid}](/comment.md/)** 【用户】删除自己对一个dataitem的评论 
+
+**编号B3 [get /comments/:repname/:itemname?beforetime={beforetime}](/comment.md/)** 【任何】返回一个dataitem上的评论列表
+
+**编号B4 [get /comment_stat/:repname/:itemname](/comment.md/)** 用户】【任何】返回一个dataitem上的评论数 
+
 
 ## DataHub API应用 ##
 

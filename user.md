@@ -26,13 +26,16 @@ Example Request：
 	Accept: application/json
 	Authorization: token
 返回数据说明：
+	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+	msg:操作信息，用来记录失败信息
 	usertype：用户类型
 	nickname：昵称 
 	username:真实名称
 	comments：描述信息
-	quata:已经使用的量【仅限查询本人】
+	quata:已经使用的量【仅限查询本人】(暂时不提供)
 返回数据示例
-	{"nickname":"liuxy10","username":"真实名称","comments":"描述","userType":1}
+	{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1},"code":0,"msg":"ok"}
+	
 
 ##指令：POST /users/:loginname 创建用户(72)
 说明：
@@ -40,17 +43,12 @@ Example Request：
 输入参数说明：
 	passwd：MD5以后的密码
 Example Request：
-	POST /users/liuxueying@126.com HTTP/1.1
-	Content-Type: multipart/form-data;boundary=------FormBoundary1511af7b6f7
-	Content-Length: 119
-
-	------FormBoundary1511af7b6f7
-	Content-Disposition: form-data; name="passwd"
-	1234
+	curl -d "passwd=abcdf" localhost:8080/users/foo
 返回数据说明：
-	无，若有出错在msg中说明出错原因
+	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+	msg:操作信息，用来记录失败信息
 返回数据示例
-	待补充
+	{"code":0,"msg":"ok"}
 
 ##指令：PUT /users/:loginname/status 激活用户(73)
 说明：
@@ -58,7 +56,10 @@ Example Request：
 输入参数说明：
 	无
 返回数据示例
-	无，若有出错在msg中说明出错原因
+	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+	msg:操作信息，用来记录失败信息
+返回数据示例
+	{"code":0,"msg":"ok"}
 
 ##指令：PUT /users/:loginname/pwd 修改密码(74)
 说明：
@@ -66,14 +67,19 @@ Example Request：
 输入参数说明：
 	oldpwd：修改前密码（md5）
 	passwd：修改后密码（md5）
-返回数据示例
-	无，若有出错在msg中说明出错原因
 Example Request：
 	PUT /users/aaa@126.com/pwd HTTP/1.1 
 	Content-Type: multipart/form-data
 	Authorization: token
  
 	{"passwd":"aaaaaa","oldpwd":"1234"}
+返回数据示例
+	返回数据示例
+	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+	msg:操作信息，用来记录失败信息
+返回数据示例
+	{"code":0,"msg":"ok"}
+
 
 ##指令：PUT /users/:loginname 修改用户(75)
 【管理员角色】 说明 ：
@@ -92,12 +98,12 @@ Example Request：
 	Authorization: token
  
 	{
-		"usertype"="2",
-		"userstatus"="3"，
-		"nickname"="foo",
-		"username"="FOO",
-		"comments"="测试用户",
-		"passwd"=“..........”
+		"usertype":"2",
+		"userstatus":"3"，
+		"nickname":"foo",
+		"username":"FOO",
+		"comments":"测试用户",
+		"passwd":“..........”
 	}
 
 【普通用户】 说明 ：
@@ -115,18 +121,26 @@ Example Request：
 	Authorization: token
  
 	{
-		"nickname"="foo",
-		"comments"="测试用户",
+		"nickname":"foo",
+		"comments":"测试用户"
 	}
+返回数据示例
+	返回数据示例
+	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+	msg:操作信息，用来记录失败信息
+返回数据示例
+	{"code":0,"msg":"ok"}
 
 ##指令：DELETE /users/:loginname 删除用户(76)
 说明：
 	【管理员角色】删除一个用户
 输入参数说明：
 	无                     
-返回数据说明：
-	无，若有出错在msg中说明出错原因
 返回数据示例
-待补充
+	返回数据示例
+	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+	msg:操作信息，用来记录失败信息
+返回数据示例
+	{"code":0,"msg":"ok"}
 
 

@@ -12,7 +12,7 @@
 	
 ----------
 
-## 指令：GET /Repositories
+## 1 指令：GET /Repositories
 
 说明
 
@@ -56,7 +56,7 @@ Example Request：
 
 ----------
 
-## 指令：GET /Repositories/:repname
+## 2 指令：GET /Repositories/:repname
 	
 说明：
 	
@@ -102,7 +102,7 @@ Example Request：
 	}
 
 
-## 指令：POST /Repositories/:repname
+## 3 指令：POST /Repositories/:repname
 	
 说明：
 	
@@ -140,7 +140,7 @@ Example Request：
         }
     }
 
-## 指令：DELETE /Repositories/:repname
+## 4 指令：DELETE /Repositories/:repname
 	
 说明：
 	
@@ -160,7 +160,7 @@ Example Response：
 
 	无
 
-## 指令：GET /Repositories/:repname/:itemname
+## 5 指令：GET /Repositories/:repname/:itemname
 	
 说明：
 	
@@ -232,7 +232,7 @@ Example Request：
 
 ----------
 
-## 指令：POST /repositories/:repname/:itemname
+## 6 指令：POST /repositories/:repname/:itemname
 
 说明
 
@@ -272,7 +272,7 @@ Example Request：
 
 ----------
 
-## 指令：DELETE /repositories/:repname/:itemname
+## 7 指令：DELETE /repositories/:repname/:itemname
 
 说明
 
@@ -292,7 +292,7 @@ Example Request：
 	无
 ----------
 
-## GET /repositories/:repname/:itemname/:tag
+## 8 GET /repositories/:repname/:itemname/:tag
 
 说明
 
@@ -318,7 +318,7 @@ Example Request：
 	    "optime": "2015-08-03 00:00:00"
 	}
 
-## POST /repositories/:repname/:itemname/:tag
+## 9 POST /repositories/:repname/:itemname/:tag
 
 说明
 
@@ -349,7 +349,7 @@ Example Response：
 
 	msg：可选，具体出错信息描述
 
-## DELETE /repositories/:repname/:itemname/:tag
+## 10 DELETE /repositories/:repname/:itemname/:tag
 
 说明
 

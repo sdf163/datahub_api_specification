@@ -8,7 +8,7 @@
 
 ----------
 
-## 指令：[GET] /select_labels
+## 1 指令：[GET] /select_labels
 
 说明
 	
@@ -40,7 +40,7 @@ Example Request：
         ]
 	}
 
-## 指令：[POST] /select_labels/:labelname
+## 2 指令：[POST] /select_labels/:labelname
 
 说明
 	
@@ -67,7 +67,7 @@ Example Response：
 	
 	无
 
-## 指令：[PUT] /select_labels/:labelname
+## 3 指令：[PUT] /select_labels/:labelname
 
 说明
 	
@@ -101,7 +101,7 @@ Example Response：
 	
 	无
 
-## 指令：[DELETE] /select_labels/:labelname
+## 4 指令：[DELETE] /select_labels/:labelname
 
 说明
 
@@ -121,7 +121,7 @@ Example Response：
 	
 	无
 
-## 指令：[GET] /selects
+## 5 指令：[GET] /selects
 
 说明
 	
@@ -181,7 +181,7 @@ Example Response：
 	        ],
 	    }
 	
-## 指令：[POST] /selects/:repname/:itemname
+## 6 指令：[POST] /selects/:repname/:itemname
 
 说明
 	
@@ -208,7 +208,7 @@ Example Request：
 	
 	无
 
-## 指令：[PUT] /selects/:repname/:itemname
+## 7 指令：[PUT] /selects/:repname/:itemname
 
 说明
 
@@ -235,7 +235,7 @@ Example Request：
 
 	无
 	
-## 指令：[DELETE] /selects/:repname/:itemname
+## 8 指令：[DELETE] /selects/:repname/:itemname
 
 说明
 

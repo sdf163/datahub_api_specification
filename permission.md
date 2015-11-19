@@ -8,7 +8,7 @@
 	
 ----------
 
-##  指令：GET /permission/:repname
+##  1 指令：GET /permission/:repname
 
 说明
 
@@ -33,7 +33,7 @@ Example Request：
 	
 ----------
 
-## 指令：PUT /permission/:repname
+## 2 指令：PUT /permission/:repname
 	
 说明：
 	
@@ -57,7 +57,7 @@ Example Request：
 	
 	无
 		
-## 指令：DELETE /permission/:repname
+## 3 指令：DELETE /permission/:repname
 	
 说明：
 	
@@ -73,7 +73,7 @@ Example Request：
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
-## 指令：GET /permission/:repname/:itemname
+## 4 指令：GET /permission/:repname/:itemname
 
 说明
 
@@ -98,7 +98,7 @@ Example Request：
 	
 ----------
 
-## 指令：PUT /permission/:repname/:itemname
+## 5 指令：PUT /permission/:repname/:itemname
 	
 说明：
 	
@@ -121,7 +121,7 @@ Example Request：
 	
 	无
 
-## 指令：DELETE /permission/:repname/:itemname
+## 6 指令：DELETE /permission/:repname/:itemname
 	
 说明：
 	
@@ -136,3 +136,4 @@ Example Request：
 	DELETE /permission/repname1/itemname1?username=abc HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+1. 

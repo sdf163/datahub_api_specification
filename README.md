@@ -236,6 +236,19 @@ code 及 msg
 
 描述文件：msg.md
 
+### star ###
+编号：A
+
+名称：点赞API
+
+描述文件：star.md
+
+**编号A0 [get /star/:repname/:itemname](/star.md/)** 【用户】[auth]查询是否star了某个DataItem
+
+**编号A1 [put /star/:repname/:itemname](/star.md/)** 【用户】[auth] 更改对一个DataItem的star状态
+
+**编号A2 [get /star_stat/:repname/:itemname](/star.md/)** 【任意】查询某个DataItem的点赞量 
+
 
 ## DataHub API应用 ##
 

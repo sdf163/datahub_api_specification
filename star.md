@@ -52,7 +52,7 @@
 
 输入样例：
 
-	POST /star_stat/repo1/item123 HTTP/1.1 
+	GET /star_stat/repo1/item123 HTTP/1.1 
 	Accept: application/json
 
 输出样例：

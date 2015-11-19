@@ -1,5 +1,34 @@
 # Transactions
 
+## Errors
+
+	ErrorCodeUnkown                = 5000
+	ErrorCodeJsonBuilding          = 5001
+	ErrorCodeUrlNotSupported       = 5002
+	ErrorCodeDbNotInitlized        = 5003
+	ErrorCodeAuthFailed            = 5004
+	ErrorCodePermissionDenied      = 5005
+	ErrorCodeInvalidParameters     = 5006
+	ErrorCodeGetDataItem           = 5007
+	ErrorCodeCreateSubscription    = 5008
+	ErrorCodeGetSubscription       = 5009
+	ErrorCodeCancelSubscription    = 5010
+	ErrorCodeQuerySubscription     = 5011
+	ErrorCodeSubscriptionNotFound  = 5012
+	ErrorCodeCreateTransaction     = 5013
+	ErrorCodeGetTransaction        = 5014
+	ErrorCodeQueryTransaction      = 5015
+	ErrorCodeGetStatistics         = 5016
+	ErrorCodeParseJsonFailed       = 5017
+	ErrorCodeFailedToConnectRemote = 5018
+	ErrorCodeNotOkRemoteResponse   = 5019
+	ErrorCodeInvalidRemoteResponse = 5020
+	ErrorCodeTokenNotFound         = 5021
+	ErrorCodeTokenExpird           = 5022
+	ErrorCodeInvalidEntryPoints    = 5023
+
+## APIs
+
 ### POST /transaction/:repname/:itemname/:tag (50)
 
 说明
@@ -110,7 +139,7 @@
 
 	"numpulls":567
 
-### GET /transactions/pull  (55)
+### GET /transactions/pull?groupbydate=[0|1]  (55)
 
 说明
 
@@ -122,28 +151,73 @@
 
 输入样例：
 
-	GET /transactions/pull HTTP/1.1 
+	GET /transactions/pull?groupbydate=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例(groupbydate=1)：
+
+	[
+		{
+			"date":"2015-11-18",
+			"pulls":[
+				{
+					"sellername":"li4",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:48:07Z"
+				},
+				{
+					"sellername":"li4",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:29:38Z"
+				},
+				{
+					"sellername":"li4",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:29:31Z"
+				}
+			]
+		},
+		{
+			"date":"2015-11-10",
+			"pulls":[
+				{
+					"sellername":"li4",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-10T10:10:10Z"
+				}
+			]
+		}
+	]
+
+输出样例(groupbydate=0)：
         
 	[
 		{
 			"sellername": "Li4",
 			"repname": "repo1231",
-			"itemname": item9883,
+			"itemname": "item9883",
 			"tag": "tag8W",
 			"pulltime": "2015-11-10T15:04:05Z07:00"
 		},
 		{
 			"sellername": "Li4",
 			"repname": "repo121",
-			"itemname": item989,
+			"itemname": "item989",
 			"tag": "tag09",
 			"pulltime": "2015-11-10T15:04:05Z07:00"
 		}
 	]
+	
+	
 
 返回数据说明：
 
@@ -153,7 +227,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/pull/:repname/:itemname  (56)
+### GET /transactions/pull/:repname/:itemname?groupbydate=[0|1]  (56)
 
 说明
 
@@ -187,7 +261,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/push  (57)
+### GET /transactions/push?groupbydate=[0|1]  (57)
 
 说明
 
@@ -199,24 +273,67 @@
 
 输入样例：
 
-	GET /transactions/push HTTP/1.1 
+	GET /transactions/push?groupbydate=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例(groupbydate=1)：
+
+	[
+		{
+			"date":"2015-11-18",
+			"pulls":[
+				{
+					"buyername":"zhang3",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:48:07Z"
+				},
+				{
+					"buyername":"John",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-18T11:29:38Z"
+				}
+			]
+		},
+		{
+			"date":"2015-11-10",
+			"pulls":[
+				{
+					"buyername":"zhang3",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-10T10:10:10Z"
+				},
+				{
+					"buyername":"zhang3",
+					"repname":"repo001",
+					"itemname":"item002",
+					"tag":"tag008",
+					"pulltime":"2015-11-10T10:10:10Z"
+				},
+			]
+		}
+	]
+
+输出样例(groupbydate=0)：
         
 	[
 		{
 			"buyername": "Li4",
 			"repname": "repo1231",
-			"itemname": item9883,
+			"itemname": "item9883",
 			"tag": "tag8W",
 			"pulltime": "2015-11-10T15:04:05Z07:00"
 		},
 		{
 			"buyername": "Smith",
 			"repname": "repo121",
-			"itemname": item989,
+			"itemname": "item989",
 			"tag": "tag09",
 			"pulltime": "2015-11-10T15:04:05Z07:00"
 		}
@@ -230,7 +347,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/push/:repname/:itemname  (58)
+### GET /transactions/push/:repname/:itemname?groupbydate=[0|1]  (58)
 
 说明
 
@@ -242,11 +359,41 @@
 
 输入样例：
 
-	GET /transactions/push/repo03/item56 HTTP/1.1 
+	GET /transactions/push/repo03/item56?groupbydate=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例(groupbydate=1)：
+
+	[
+		{
+			"date":"2015-11-10",
+			"pulls"[
+				{
+					"buyername": "Li4",
+					"tag": "tag8W",
+					"pulltime": "2015-11-10T15:04:05Z07:00"
+				},
+				{
+					"buyername": "Zhang3",
+					"tag": "tag09",
+					"pulltime": "2015-11-10T10:09:05Z07:00"
+				}
+			]
+		},
+		{
+			"date":"2015-11-03",
+			"pulls"[
+				{
+					"buyername": "Zhang3",
+					"tag": "tag09",
+					"pulltime": "2015-11-03T15:06:05Z07:00"
+				}
+			]
+		}
+	]
+
+输出样例(groupbydate=0)：
         
 	[
 		{
@@ -257,9 +404,16 @@
 		{
 			"buyername": "Zhang3",
 			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:09:05Z07:00"
+		},
+		{
+			"buyername": "Zhang3",
+			"tag": "tag09",
+			"pulltime": "2015-11-03T15:06:05Z07:00"
 		}
 	]
+	
+	
 
 返回数据说明：
 

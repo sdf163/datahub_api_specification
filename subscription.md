@@ -1,5 +1,34 @@
 # 订阅
 
+## Errors
+
+	ErrorCodeUnkown                = 5000
+	ErrorCodeJsonBuilding          = 5001
+	ErrorCodeUrlNotSupported       = 5002
+	ErrorCodeDbNotInitlized        = 5003
+	ErrorCodeAuthFailed            = 5004
+	ErrorCodePermissionDenied      = 5005
+	ErrorCodeInvalidParameters     = 5006
+	ErrorCodeGetDataItem           = 5007
+	ErrorCodeCreateSubscription    = 5008
+	ErrorCodeGetSubscription       = 5009
+	ErrorCodeCancelSubscription    = 5010
+	ErrorCodeQuerySubscription     = 5011
+	ErrorCodeSubscriptionNotFound  = 5012
+	ErrorCodeCreateTransaction     = 5013
+	ErrorCodeGetTransaction        = 5014
+	ErrorCodeQueryTransaction      = 5015
+	ErrorCodeGetStatistics         = 5016
+	ErrorCodeParseJsonFailed       = 5017
+	ErrorCodeFailedToConnectRemote = 5018
+	ErrorCodeNotOkRemoteResponse   = 5019
+	ErrorCodeInvalidRemoteResponse = 5020
+	ErrorCodeTokenNotFound         = 5021
+	ErrorCodeTokenExpird           = 5022
+	ErrorCodeInvalidEntryPoints    = 5023
+
+## APIs
+
 ### GET /subscriptions (40)
 
 说明

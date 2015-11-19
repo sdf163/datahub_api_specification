@@ -1,6 +1,6 @@
 # Comments
 
-### POST /comment/:repname/:itemname
+### (B0) POST /comment/:repname/:itemname
 
 说明
 
@@ -30,7 +30,7 @@
 		"commnetid" : "1234567"
 	}
 
-### PUT /comment/:repname/:itemname
+### (B1) PUT /comment/:repname/:itemname
 
 说明
 
@@ -56,7 +56,7 @@
 
 	(空)
 
-### DELETE /comment/:repname/:itemname?commentid={commentid}
+### (B2) DELETE /comment/:repname/:itemname?commentid={commentid}
 
 说明
 
@@ -76,7 +76,7 @@
 
 	(空)
 
-### GET /comments/:repname/:itemname?beforetime={beforetime}
+### (B3) GET /comments/:repname/:itemname?beforetime={beforetime}
 
 说明
 
@@ -120,4 +120,23 @@
 			"replyto": null
 		}
 	]
+
+### (B4) GET /comment_stat/:repname/:itemname
+
+说明
+
+	【任何】返回一个dataitem上的评论数
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	GET /comment_stat/repo1/item123 HTTP/1.1 
+	Accept: application/json
+
+输出样例：
+
+	numcomments: 33
 

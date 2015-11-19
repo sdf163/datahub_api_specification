@@ -46,8 +46,10 @@
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
-	"commnetid": "123456",
-	"content": "bla bla ..."
+	{
+		"commnetid": "123456",
+		"content": "bla bla ..."
+	}
 
 输出样例：
 

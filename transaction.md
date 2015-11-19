@@ -101,6 +101,11 @@
 
 	"numpulls":567，
 	“nummypulls”:12
+
+返回数据说明：
+
+	numpulls: 所有人总共产的pull量
+	nummypulls: 当前用户产生的pull量 (匿名请求无此项)
 	
 ### GET /transaction_stat/:repname (53)
 
@@ -122,6 +127,11 @@
 	"numpulls":567，
 	“nummypulls”:12
 
+返回数据说明：
+
+	numpulls: 所有人总共产的pull量
+	nummypulls: 当前用户产生的pull量 (匿名请求无此项)
+
 ### GET /transaction_stat/:repname/:itemname/:tag (54)
 
 说明
@@ -130,7 +140,7 @@
 
 输入参数说明：
 	
-	scope: (可选，默认为all) 
+	无 
 
 输入样例：
 
@@ -145,7 +155,7 @@
 返回数据说明：
 
 	numpulls: 所有人总共产的pull量
-	nummypulls: 当前用户产生的pull量
+	nummypulls: 当前用户产生的pull量 (匿名请求无此项)
 
 ### GET /transactions/pull?groupbydate=[0|1]  (55)
 

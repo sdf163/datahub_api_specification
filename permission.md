@@ -1,14 +1,14 @@
 # API 列表
 	
 	
-- [GET] [POST] [DELETE] [PUT] /permission/:repname
+- [GET] [DELETE] [PUT] /permission/:repname
 
-- [GET] [POST] [DELETE] /permission/:repname/:itemname
+- [GET] [DELETE] [PUT] /permission/:repname/:itemname
 
 	
 ----------
 
-## 指令：GET /permission/:repname
+##  指令：GET /permission/:repname
 
 说明
 
@@ -24,7 +24,6 @@ Example Request：
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-
 返回数据说明：
 	[
 		{"username":"user1", "write": 1},
@@ -34,7 +33,7 @@ Example Request：
 	
 ----------
 
-## 指令：POST PUT /permission/:repname
+## 指令：PUT /permission/:repname
 	
 说明：
 	
@@ -43,7 +42,7 @@ Example Request：
 输入参数说明：
 
 	username 		被加入白名单的用户名
-	write			默认不传只有读权限，传1具有写
+	write			默认不传（只有读权限），传1具有写
 	
 Example Request：
 
@@ -58,7 +57,6 @@ Example Request：
 	
 	无
 		
-
 ## 指令：DELETE /permission/:repname
 	
 说明：
@@ -100,7 +98,7 @@ Example Request：
 	
 ----------
 
-## 指令：POST /permission/:repname/:itemname
+## 指令：PUT /permission/:repname/:itemname
 	
 说明：
 	

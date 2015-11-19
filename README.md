@@ -43,6 +43,22 @@ HTTP状态码
     "data": {具体返回信息}
 }
 
+code 及 msg 	
+
+	0				OK								成功
+	1001			unknown error					未知错误
+	1002			json building error				json解释失败
+	1003			unsupported url					不支持的URL
+	1004			db is not inited				DB没有初始化
+	1005			auth failed						认证失败
+	1006			permission denied				没有权限
+	1007			invalid parameters				参数违法
+	1008			no parameter					参数确实
+	1009			database operate				数据库操作
+	1010			query %s no found				数据库查询xxx没有找到
+	1011			file operation					文件操作失败
+
+}
 
 ## DataHub API内容 ##
 
@@ -91,6 +107,23 @@ HTTP状态码
 
 **编号1a6 [put /label/:repname/:itemname](/label.md/)**查询Dataitem label
 
+编号：1b
+
+名称： permission
+
+描述文件：permission.md
+	
+**编号1b1 [get 	/permission/:repname](/permission.md/)**[auth]repository相关权限查询
+
+**编号1b2 [put 	/permission/:repname](/permission.md/)**[auth]repository相关权限增加
+
+**编号1b3 [delete	/permission/:repname](/permission.md/)**[auth]repository相关权限删除
+
+**编号1b4 [get  /permission/:repname/:itemname](/permission.md/)**[auth]dataitem相关权限查询    
+
+**编号1b5 [put  /permission/:repname/:itemname](/permission.md/)**[auth]dataitem相关权限增加  
+
+**编号1b6 [delete  /permission/:repname/:itemname](/permission.md/)**[auth]	dataitem相关权限删除  
    
 ### selects ###
 编号：2
@@ -246,7 +279,6 @@ HTTP状态码
 **pull :repo/:item/:tag**  50或51
 
 **login**  7
-
 
 
 

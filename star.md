@@ -1,10 +1,10 @@
 # Star APIs
 
-### GET /star/:repname/:itemname
+### (A0) GET /star/:repname/:itemname
 
 说明
 
-	【需求者】查询该DataItem是否star过
+	【用户】查询是否star某个DataItem
 
 输入参数说明：
 	
@@ -18,49 +18,29 @@
 
 输出样例：
 
-	"subscribed":true
+	"starred":true
 
-### POST /star/:repname/:itemname
+### (A1) PUT /star/:repname/:itemname?star=[0|1]
 
 说明
 
-	【需求者】star该DataItem 
+	【用户】更改对一个DataItem的star状态 
 
 输入参数说明：
 	
-	无
+	star: 0表示unstar, 1表示star
 
 输入样例：
 
-	POST /star/repo1/item123 HTTP/1.1 
+	POST /star/repo1/item123?star=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
-	null
+	"starred":true
 
-### DELETE /star/:repname/:itemname
-
-说明
-
-	【需求者】取消star该DataItem
-
-输入参数说明：
-	
-	无
-
-输入样例：
-
-	DELETE /star/repo1/item123 HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
-输出样例：
-        
-	null
-
-### GET /star_stat/:repname/:itemname (44)
+### (A2) GET /star_stat/:repname/:itemname
 
 说明
 

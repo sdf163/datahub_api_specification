@@ -99,7 +99,8 @@
 
 输出样例：
 
-	"numpulls":567
+	"numpulls":567，
+	“nummypulls”:12
 	
 ### GET /transaction_stat/:repname (53)
 
@@ -118,7 +119,8 @@
 
 输入样例：
 
-	"numpulls":567
+	"numpulls":567，
+	“nummypulls”:12
 
 ### GET /transaction_stat/:repname/:itemname/:tag (54)
 
@@ -128,7 +130,7 @@
 
 输入参数说明：
 	
-	无
+	scope: (可选，默认为all) 
 
 输入样例：
 
@@ -137,7 +139,13 @@
 
 输出样例：
 
-	"numpulls":567
+	"numpulls":567，
+	“nummypulls”:12
+
+返回数据说明：
+
+	numpulls: 所有人总共产的pull量
+	nummypulls: 当前用户产生的pull量
 
 ### GET /transactions/pull?groupbydate=[0|1]  (55)
 
@@ -147,7 +155,7 @@
 
 输入参数说明：
 	
-	无
+	groupbydate: (可选，默认为0) 是否按日期分组
 
 输入样例：
 
@@ -227,7 +235,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/pull/:repname/:itemname?groupbydate=[0|1]  (56)
+### GET /transactions/pull/:repname/:itemname  (56)
 
 说明
 
@@ -269,7 +277,7 @@
 
 输入参数说明：
 	
-	无
+	groupbydate: (可选，默认为0) 是否按日期分组
 
 输入样例：
 
@@ -355,7 +363,7 @@
 
 输入参数说明：
 	
-	无
+	groupbydate: (可选，默认为0) 是否按日期分组
 
 输入样例：
 

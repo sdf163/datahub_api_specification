@@ -9,9 +9,31 @@
 
 - [DELETE] /users/:loginname 删除用户
 
-- PUT /users/:loginname/status 激活用户
+- [PUT] /users/:loginname/status 激活用户
 
-- PUT /users/:loginname/pwd 修改密码
+- [PUT] /users/:loginname/pwd 修改密码
+
+- [GET] /users/:loginname/repository 获取repo配额信息
+
+- [POST] /users/:loginname/repository 创建repo配额信息
+
+- [PUT] /users/:loginname/repository/quota 修改repo配额
+
+- [POST] /users/:loginname/repository/use 修改repo的使用量
+
+- [GET] /users/:loginname/deposit 获取托管配额信息
+
+- [POST] /users/:loginname/deposit 新建托管配额
+
+- [PUT] /users/:loginname/deposit/quota 修改用户的托管配额
+
+- [GET] /users/:loginname/pullnum 获取用户下载量配额信息
+
+- [POST] /users/:loginname/pullnum/ 创建用户下载量配额
+
+- [PUT] /users/:loginname/pullnum/quota 修改用户下载量配额
+
+- [PUT] /users/:loginname/pullnum/use 修改用户的已下载量
 
 	
 ----------
@@ -217,14 +239,14 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/repository/use 修改用户的repo使用量（80）
+##指令：POST /users/:loginname/repository/use 修改用户的repo使用量（7a）
 	说明：
 		修改用户的repo的使用量
 	输入参数说明：
 		private:私有repo配额数量 增量（如果增加1个为1，如果减少1个为-1）
 		public:共有repo配额数量 增量（同上）
 	Example Request：
-		PUT /users/foo/repository/use HTTP/1.1 
+		POST /users/foo/repository/use HTTP/1.1 
 		Content-Type: multipart/form-data
 		{
 			"private":"1",
@@ -235,22 +257,9 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：DELETE /users/:loginname/repository 删除用户的repo使用量（81）	
-	说明：
-		【管理员角色】将用户的repo配额 清零
-	输入参数说明：
-		无
-	Example Request：
-		DELETE /users/foo/repository HTTP/1.1 
-		Content-Type: multipart/form-data
-		User:admin
-	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
 
-##指令：GET /users/:loginname/deposit 获取用户的托管信息（82）
+
+##指令：GET /users/:loginname/deposit 获取用户的托管信息（7b）
 	说明：
 		获取用户的托管的配额信息
 	输入参数说明：
@@ -270,7 +279,7 @@
 				"quota":"10M","use":"5M"
 				}
 		}
-##指令：POST /users/:loginname/deposit/ 增加用户的托管配额（83）
+##指令：POST /users/:loginname/deposit/ 增加用户的托管配额（7c）
 	说明：
 		【管理员角色】添加用户的托管配额信息 
 	输入参数说明：
@@ -289,7 +298,7 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/deposit/quota 修改用户的托管配额（84）
+##指令：PUT /users/:loginname/deposit/quota 修改用户的托管配额（7d）
 	说明：
 		【管理员角色】修改用户的托管的配额 
 	输入参数说明：
@@ -306,38 +315,9 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/deposit/use 修改用户的托管使用量（85）
-	说明：
-		修改用户的托管的使用量
-	输入参数说明：
-		use:已使用数量
-	Example Request：
-		PUT /users/foo/deposit/use HTTP/1.1 
-		Content-Type: multipart/form-data
-		{
-			"use":"10M"
-		}
-	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-##指令：DELETE /users/:loginname/deposit 删除用户的托管使用量（86）	
-	说明：
-		【管理员角色】将用户的托管配额 清零
-	输入参数说明：
-		无
-	Example Request：
-		DELETE /users/foo/deposit HTTP/1.1 
-		Content-Type: multipart/form-data
-		User:admin
-	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
 
-##指令：GET /users/:loginname/pullnum 获取用户的下载量信息（87）
+
+##指令：GET /users/:loginname/pullnum 获取用户的下载量信息（7f）
 	说明：
 		获取用户的下载量信息
 	输入参数说明：
@@ -357,7 +337,7 @@
 				"quota":"10000","use":"100"
 				}
 		}
-##指令：POST /users/:loginname/pullnum/ 增加用户的下载量配额信息（88）
+##指令：POST /users/:loginname/pullnum/ 增加用户的下载量配额信息（7g）
 	说明：
 		【管理员角色】添加用户的托管配额信息 
 	输入参数说明：
@@ -376,7 +356,25 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/pullnum/quota 修改用户的下载量配额（89）
+##指令：PUT /users/:loginname/pullnum/use 修改用户的已下载量（7h）
+
+	说明：
+ 	   修改用户的已下载量
+	输入参数说明：
+   	 use:已使用数量
+	Example Request：
+    	PUT /users/foo/pullnum/use HTTP/1.1 
+   		Content-Type: multipart/form-data
+  	  	{
+       	 "use":"100"
+   		 }
+	返回数据说明
+ 	   code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+ 	   msg:操作信息，用来记录失败信息
+	返回数据示例
+   		{"code":0,"msg":"ok"}
+
+##指令：PUT /users/:loginname/pullnum/quota 修改用户的下载量配额（7i）
 	说明：
 		【管理员角色】修改用户的下载量的配额 
 	输入参数说明：
@@ -393,33 +391,4 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/pullnum/use 修改用户的已下载量（90）
-	说明：
-		修改用户的已下载量
-	输入参数说明：
-		use:已使用数量
-	Example Request：
-		PUT /users/foo/pullnum/use HTTP/1.1 
-		Content-Type: multipart/form-data
-		{
-			"use":"100"
-		}
-	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-##指令：DELETE /users/:loginname/pullnum 删除用户的下载量配额信息（91）	
-	说明：
-		【管理员角色】将用户的下载量信息 清零
-	输入参数说明：
-		无
-	Example Request：
-		DELETE /users/foo/pullnum HTTP/1.1 
-		Content-Type: multipart/form-data
-		User:admin
-	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
+

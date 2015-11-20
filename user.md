@@ -25,10 +25,14 @@ Example Request：
 	GET /users/foo HTTP/1.1 
 	Accept: application/json
 	Authorization: token
+	USER:admin
+	
+
+
 返回数据说明：
 	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
 	msg:操作信息，用来记录失败信息
-	usertype：用户类型
+	usertype：用户类型(1：普通用户，2：管理员用户)
 	nickname：昵称 
 	username:真实名称
 	comments：描述信息
@@ -96,6 +100,7 @@ Example Request：
 	PUT /users/foo HTTP/1.1 
 	Content-Type: multipart/form-data
 	Authorization: token
+	USER:admin
  
 	{
 		"usertype":"2",
@@ -135,7 +140,14 @@ Example Request：
 说明：
 	【管理员角色】删除一个用户
 输入参数说明：
-	无                     
+	
+	无 
+Example Request：
+	DELETE /users/foo HTTP/1.1 
+	Content-Type: multipart/form-data
+	Authorization: token
+	USER:admin
+                  
 返回数据示例
 	返回数据示例
 	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息

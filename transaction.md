@@ -92,7 +92,7 @@
 	
 	无
 
-输入样例：
+输入样例（非匿名用户需加Auth header）：
 
 	POST /transaction_stat/repo1/item123 HTTP/1.1 
 	Accept: application/json
@@ -117,7 +117,7 @@
 	
 	无
 
-输入样例：
+输入样例（非匿名用户需加Auth header）：
 
 	POST /transaction_stat/repo1 HTTP/1.1 
 	Accept: application/json
@@ -142,7 +142,7 @@
 	
 	无 
 
-输入样例：
+输入样例（非匿名用户需加Auth header）：
 
 	POST /transaction_stat/repo1/item123/tag3 HTTP/1.1 
 	Accept: application/json

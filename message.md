@@ -84,7 +84,7 @@
 
 输入样例：
 
-	GET /messages?type=subs_message& HTTP/1.1 
+	GET /notifications?type=admin_broadcast&status=0 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

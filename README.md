@@ -188,11 +188,11 @@ code 及 msg
 
 **编号51 [get /transaction/:repname/:itemname/:tag?cypt_accesstoken=???&username=???](/subscription.md/)** 【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密，注意后面没有s
 
-**编号52 [get /transactions_stat/:repname/:itemname](/subscription.md/)** 【任意】返回该DataItem的pull量
+**编号52 [get /transactions_stat/:repname/:itemname](/subscription.md/)** 【任意 | auth】返回该DataItem的pull量
 
-**编号53 [get /transactions_stat/:repname](/subscription.md/)** 【任意】返回该repositories的pull量
+**编号53 [get /transactions_stat/:repname](/subscription.md/)** 【任意 | auth】返回该repositories的pull量
 
-**编号54 [get /transactions_stat/:repname/:itemname/:tag](/subscription.md/)** 【任意】返回该tag的pull量
+**编号54 [get /transactions_stat/:repname/:itemname/:tag](/subscription.md/)** 【任意 | auth】返回该tag的pull量
 
 **编号55 [get /transactions/pull](/subscription.md/)** 【需求者】[auth] 返回该用户所有的pull的信息
 

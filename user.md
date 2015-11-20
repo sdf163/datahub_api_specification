@@ -140,6 +140,7 @@ Example Request：
 ##指令：DELETE /users/:loginname 删除用户(76)
 说明：
 	【管理员角色】删除一个用户
+	注：本操作不是真的删除一条数据，是将用户状态改成 注销状态（user_status:7）
 输入参数说明：
 	
 	无 
@@ -150,7 +151,6 @@ Example Request：
 	USER:admin
                   
 返回数据示例
-	返回数据示例
 	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
 	msg:操作信息，用来记录失败信息
 返回数据示例

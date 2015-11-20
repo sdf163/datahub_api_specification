@@ -104,7 +104,7 @@ Example Request：
  
 	{
 		"usertype":"2",
-		"userstatus":"3"，
+		"userstatus":"3",
 		"nickname":"foo",
 		"username":"FOO",
 		"comments":"测试用户",

@@ -1,6 +1,6 @@
 # Messages
 
-### GET /notifications
+### GET /notification_stat
 
 说明
 
@@ -12,7 +12,7 @@
 
 输入样例：
 
-	GET /notifications HTTP/1.1 
+	GET /notification_stat HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -25,7 +25,7 @@
 		},
 		{
 			"type": "dataitem_comment",
-			"num": 20+
+			"num": 20
 		},
 		{
 			"type": "comment_reply",
@@ -41,7 +41,7 @@
 		}
 	]
 
-### POST /notification
+### POST /notifications
 
 说明
 
@@ -50,20 +50,26 @@
 输入参数说明：	
 	
 	type: 消息类型
-	receiver: 消息接收者
+	receiver: 消息接收者 (可选，如未提供，表示全部符合type的接受用户)
 	data: 消息内容
+	extra: 额外信息，具体取决于type (比如subs_message需要reponame和itemname信息)
 
 输入样例：
 
-	POST /notification HTTP/1.1 
+	POST /notifications HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"type": "admin_broadcast",
+		"data": "bla bla ..."
+	}
 
 输出样例：
 
 	空
 
-### GET /messages?type={type}&sender={sender}&status={status}&beforetime={beforetime}
+### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
 
 说明
 
@@ -72,9 +78,9 @@
 输入参数说明：
 	
 	type: （不可选）消息类型
-	sender: （有些types可选）消息发送者
-	status: （可选）消息状态
-	beforetime: （不可选）最晚时间, 毫秒数
+	sender: 消息发送者
+	status: (可选，默认为未读) 已读未读
+	beforetime: （可选，默认为now）最晚时间, 毫秒数
 
 输入样例：
 

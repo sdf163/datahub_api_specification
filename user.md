@@ -47,7 +47,8 @@ Example Request：
 输入参数说明：
 	passwd：MD5以后的密码
 Example Request：
-	curl -d "passwd=abcdf" localhost:8080/users/foo
+	POST /users/foo?passwd=abc
+	
 返回数据说明：
 	code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
 	msg:操作信息，用来记录失败信息

@@ -45,7 +45,7 @@
 		无
 	Example Request：
 		GET /users/foo HTTP/1.1 
-		Accept: application/json
+		Accept: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin
 
@@ -94,7 +94,7 @@
 		passwd：修改后密码（md5）
 	Example Request：
 		PUT /users/aaa@126.com/pwd HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		Authorization: token
  
 		{"passwd":"aaaaaa","oldpwd":"1234"}
@@ -110,7 +110,7 @@
 		修改一个用户
 	【管理员角色】输入参数说明：
 		PUT /users/aaa@126.com HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		Authorization: token
 
 		usertype：用户类型(只有管理员有权限修改)
@@ -122,7 +122,7 @@
 
 	【管理员角色】Example Request：
 		PUT /users/foo HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin
  
@@ -132,7 +132,7 @@
 			"nickname":"foo",
 			"username":"FOO",
 			"comments":"测试用户",
-			"passwd":“..........”
+			"passwd":".........."
 		}
 
 	【普通用户】 说明 ：
@@ -146,7 +146,7 @@
 
 	【普通用户】Example Request：
 		PUT /users/foo HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		Authorization: token
  	
 		{
@@ -168,7 +168,7 @@
 		无 
 	Example Request：
 		DELETE /users/foo HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin
                   
@@ -209,7 +209,7 @@
 
 	Example Request：
 		POST /users/foo/repository HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
 			"private":"20",
@@ -228,7 +228,7 @@
 		public:共有repo配额数量
 	Example Request：
 		PUT /users/foo/repository/quota HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
 			"private":"30",
@@ -247,7 +247,7 @@
 		public:共有repo配额数量 增量（同上）
 	Example Request：
 		POST /users/foo/repository/use HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		{
 			"private":"1",
 			"public":"1"
@@ -266,7 +266,7 @@
 		无
 	Example Request：
 		GET /users/foo/deposit HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 
 	返回数据说明
 		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
@@ -287,7 +287,7 @@
 
 	Example Request：
 		POST /users/foo/deposit HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		User:admin
 
 		{
@@ -305,7 +305,7 @@
 		quota:托管配额空间大小
 	Example Request：
 		PUT /users/foo/deposit/quota HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
 			"quta":"300M",
@@ -324,7 +324,7 @@
 		无
 	Example Request：
 		GET /users/foo/pullnum HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 
 	返回数据说明
 		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
@@ -345,7 +345,7 @@
 
 	Example Request：
 		POST /users/foo/pullnum HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type:text/json;charset=UTF-8
 		User:admin
 
 		{
@@ -364,7 +364,7 @@
    	 use:已使用数量
 	Example Request：
     	PUT /users/foo/pullnum/use HTTP/1.1 
-   		Content-Type: multipart/form-data
+   		Content-Type:text/json;charset=UTF-8
   	  	{
        	 "use":"100"
    		 }
@@ -381,7 +381,7 @@
 		quota:下载量配额
 	Example Request：
 		PUT /users/foo/pullnum/quota HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
 			"quta":"300000",

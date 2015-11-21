@@ -255,6 +255,8 @@ code 及 msg
 
 **编号A2 [get /star_stat/:repname/:itemname](/star.md/)** 【任意】查询某个DataItem的点赞量 
 
+**编号A3 [get //star_stat/:repname](/star.md/)** 【任意】查询某个Repository的点赞量 
+
 ### comment ###
 编号：B
 

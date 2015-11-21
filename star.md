@@ -58,3 +58,23 @@
 输出样例：
 
 	"numstars":567
+
+### (A3) GET /star_stat/:repname
+
+说明
+
+	【任意】返回该Drepository的star量
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	GET /star_stat/repo1 HTTP/1.1 
+	Accept: application/json
+
+输出样例：
+
+	"numstars":567
+

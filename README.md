@@ -45,20 +45,24 @@ HTTP状态码
 
 code 及 msg 	
 
-	0				OK								成功
-	1001			unknown error					未知错误
-	1002			json building error				json解释失败
-	1003			unsupported url					不支持的URL
-	1004			db is not inited				DB没有初始化
-	1005			auth failed						认证失败
-	1006			permission denied				没有权限
-	1007			invalid parameters				参数违法
-	1008			no parameter					参数确实
-	1009			database operate				数据库操作
-	1010			query %s no found				数据库查询xxx没有找到
-	1011			file operation					文件操作失败
-
-}
+	0				OK								    成功
+	1001			unknown error					    未知错误
+	1002			json building error				    json解释失败
+	1003			unsupported url				    	不支持的URL
+	1004			db is not inited    				DB没有初始化
+	1005			auth failed			    			认证失败
+	1006			permission denied		    		没有权限
+	1007			invalid parameters			    	参数违法
+	1008			no parameter		    			参数确实
+	1009			database operate		    		数据库操作
+	1010			query %s no found			    	数据库查询xxx没有找到
+	1011			file operation				    	文件操作失败
+    6001            empty user is not allowed           用户名不能为空
+    6002            user not registered yet             用户未注册
+    6003            user doesn't have any entrypoint    用户没有Entrypoint
+    6101            missing authorization info          缺少验证信息
+    6201            daemonid is empty                   缺少Daemonid
+    6202            entrypoint not available            EntryPoint不可达
 
 ## DataHub API内容 ##
 
@@ -207,9 +211,9 @@ code 及 msg
 
 名称：心跳API
 
-描述文件：heartbeats.md
+描述文件：heartbeat.md
 
-**编号61 post /heartbeats** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
+**编号61 post /heartbeat** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
 
 ### daemon ###
 编号：7
@@ -315,9 +319,4 @@ code 及 msg
 **pull :repo/:item/:tag**  50或51
 
 **login**  7
-
-
-
-
-
 

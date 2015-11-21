@@ -1,11 +1,11 @@
 # API 列表
 	
 
-- [POST] /heartbeats 发送心跳信息
+- [POST] /heartbeat 发送心跳信息
 
 ----------
 
-## 指令：POST /heartbeats 发送心跳信息
+## 指令：POST /heartbeat 发送心跳信息
 
 说明
 	心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
@@ -18,7 +18,7 @@
 
 Example Request：
 
-	POST /heartbeats HTTP/1.1 
+	POST /heartbeat HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
 	

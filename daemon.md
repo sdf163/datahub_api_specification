@@ -1,7 +1,7 @@
 # API 列表
 	
 
-- [GET] /daemon/id/:user 获取user的daemonid。
+- [GET] /daemon/id 获取user的daemonid。
 - [GET] /daemon/ep/:user 获取user的entrypoint。
 
 ----------
@@ -17,7 +17,7 @@
 
 Example Request：
 
-	GET /daemon/id/datahub HTTP/1.1 
+	GET /daemon/id HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 

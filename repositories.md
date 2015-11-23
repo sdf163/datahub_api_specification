@@ -23,14 +23,13 @@
 
 输入参数说明：
 	
-	page (分页页数) : 			1 - N，  默认=1
-	size（页面大小）: 			1 - N，  默认=3,  -1 返回全部
-	username: 	数据提供者username
-	（header 中为登录用户的username）
+	page (分页页数) : 			1 - N，  默认=1（page=1可以不传）
+	size（页面大小）: 			1 - N，  默认=6 (-1 返回全部)
+	username: 					数据提供者username（header 中为登录用户的username）
 
 Example Request：
 
-	GET /repositories?page=1&size=3 HTTP/1.1 
+	GET /repositories?page=5&size=8 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -50,7 +49,6 @@ Example Request：
 		},
 		{
 			"repname": "mobile"
-
 		}
 	]
 
@@ -65,8 +63,8 @@ Example Request：
 输入参数说明：
 
 	items							查询repname的所有dataitem开关
-	page (dataitem返回的分页页数) : 	1 - N，  默认=1
-    size（dataitem返回的页面大小）: 	1 - N，  默认=3,  -1 返回全部
+	page (分页页数) : 			1 - N，  默认=1（page=1可以不传）
+	size（页面大小）: 			1 - N，  默认=6 (-1 返回全部)
 	
 Example Request：
 
@@ -79,11 +77,9 @@ Example Request：
    	itemaccesstype      对外开放类型[public(默认), private]
     comment 			详情
 	optime				更新时间
-	stars				关注量
 	items				dataitem数量	
 	label				标签
 	dataitems			dataitem的名称集	
-	
 	
 返回值示例
 
@@ -92,7 +88,6 @@ Example Request：
 	    "itemaccesstype": "public",
 	    "comment": "详情",
 	    "optime": "2015-10.1122: 10: 20",
-	    "stars": 500,
 	    "items": 3000,
 	    "label": {},
 	    "dataitems": [
@@ -113,8 +108,7 @@ Example Request：
    	repaccesstype       访问权限[public(默认), private]
     comment 			详情
 	label				label自定义json标签
-   
-   
+    
 Example Request：
 
 	POST /repositories/chinamobile HTTP/1.1 
@@ -168,7 +162,8 @@ Example Response：
 
 输入参数说明：
 
-	无
+	page (taglist分页页数) : 			1 - N，  默认=1（page=1可以不传）
+	size（taglist页面大小）: 				1 - N，  默认=6
 
 Example Request：
 
@@ -183,14 +178,13 @@ Example Request：
 	meta					元数据
 	sample					样例数据
 	comment					详情
-	stars					关注量
     tags					tag量
-	label.sys.supply_style	服务形式[single；batch；flow]
-	label.sys.refresh 		更新周期(3天)
+	label.sys.supply_style	服务形式[api；batch；flow]
 	Tags.tag				tag名称
 	Tags.comment			tag详情
 	Tags.optime				tag上传日期
 	taglist					item下所有tag的详细信息
+
 返回值示例
         
 	{
@@ -200,12 +194,10 @@ Example Request：
 	    "meta": {},
 	    "sample": {},
 	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
-		"stars": 500
-		 tags:10
+		"tags":10
 		"label": {
 	        "sys": {
-	            "supply_style": "api",
-	            "refresh": "3日"
+	            "supply_style": "api"
 	        },
 	        "opt": {},
 	        "owner": {},
@@ -215,17 +207,17 @@ Example Request：
 			{
 				"tag": "tag001",
 				"comment": "2022201MB",
-				"optime": "2015-11-16 10:50:31.779460404 +0000 UTC"
+				"optime": "2015-11-16 10:50:31.779460404 +0000 UTC|3小时以前"
 			},
 			{
 				"tag": "tag002",
 				"comment": "2001MB",
-				"optime": "2015-11-17 02:14:55.241920929 +0000 UTC"
+				"optime": "2015-11-17 02:14:55.241920929 +0000 UTC|10分钟以前"
 			},
 			{
 				"tag": "tag003",
 				"comment": "2001MB",
-				"optime": "2015-11-17 02:14:59.491811069 +0000 UTC"
+				"optime": "2015-11-17 02:14:59.491811069 +0000 UTC|6天以前"
 			}
 			]
 	}
@@ -240,12 +232,15 @@ Example Request：
 
 输入参数说明
 	
-	itemaccesstype  		访问权限[public(默认), private]
-	meta					元数据
-	sample					样例数据
-	comment					详情
-	label.sys.supply_style	服务形式[single；batch；flow]
-	label.sys.refresh 		更新周期(3天)
+	itemaccesstype  				访问权限[public(默认), private]
+	meta							元数据
+	sample							样例数据
+	comment							详情
+	label.sys.supply_style			服务形式[api；batch；flow]【必选】
+	label.sys.supply_style.api		实时单条
+	label.sys.supply_style.batch	批量
+	label.sys.supply_style.flow		流式
+	
 		
 Example Request：
 
@@ -314,8 +309,8 @@ Example Request：
 返回值示例
 	
 	{
-	    "comment": "50M ",
-	    "optime": "2015-08-03 00:00:00"
+	    "comment": "50M",
+	    "optime": "2015-08-03 00:00:00|6天以前"
 	}
 
 ## 9 POST /repositories/:repname/:itemname/:tag

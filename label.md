@@ -1,37 +1,31 @@
 # API 列表
 	
-- [GET] [DELETE] [PUT] /label/:repname/:itemname
+- [DELETE] [PUT] /repositories/:repname/:itemname/label
 
-- [GET] [DELETE] [PUT] /label/:repname
-
+- [DELETE] [PUT] /repositories/:repname
 
 ----------
 
-## 为repname下的itemname删除label
+## [PUT] /repositories/:repname/:itemname/label
 	
-	[DELETE]/label/:repname/:itemname
-
 说明
 	
-	为repname下的itemname删除label
+	新增/更新dataitem的label的某条属性
 
 输入参数说明：
 
-	label 为json Object
+	owner.xxx			xxx用户自定义属性。item的拥有者具有owner的操作权限
+	other.yyy			yyy管理员自定义属性。管理员具有other的操作权限
 	
 Example Request：
 
-	[DELETE] /label/chinamobile/beijingphone HTTP/1.1 
+	[PUT] /repositories/chinamobile/beijingphone/label HTTP/1.1 
+	Content-Type：application/x-www-form-urlencoded
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
-		"label": {
-	          "sys": {
-	                   "supply_style": 1
-	                 },
-	          "opt": {},
-	          "owner": {},
-	          "other": {}
-	    	}
+		owner.age=15
+		owner.company="baidu.com"
+		other.member="good"
 	]
 
 Example Response：
@@ -40,166 +34,11 @@ Example Response：
 	Vary: Accept 
 	Content-Type: application/json
 	
-
-## 为repname下的itemnamed创建或更新label
+## [DELETE] /repositories/:repname/:itemname/label
 	
-	[PUT]	/label/:repname/:itemname
-
 说明
 	
-	为repname下的itemname创建或更新label
-	如果不存在则创建，已存在则更新
-
-输入参数说明：
-
-	label 为json Object
-	
-Example Request：
-
-	[PUT] /label/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	[
-		"label": {
-	          "sys": {
-	                   "supply_style": 1
-	                 },
-	          "opt": {},
-	          "owner": {},
-	          "other": {}
-	          }
-	]
-	
-Example Response：
-	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
-	
-
-## 查询repname下的itemname的label
-	
-	[GET]	/label/:repname/:itemname
-
-说明
-	
-	查询repname下的itemnamee的label信息
-
-输入参数说明：
-	
-	无
-	
-Example Request：
-
-	[GET] /label/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-Example Response：
-	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
-	[
-		"label": {
-		          "sys": {
-		                   "supply_style": 1
-		                 },
-		          "opt": {},
-		          "owner": {},
-		          "other": {}
-		          }
-	]
-
-
-## 为repname删除label
-	
-	[DELETE] /label/:repname
-
-说明
-	
-	为repname删除label
-
-
-输入参数说明：
-
-	label 为json Object
-	
-Example Request：
-
-	[DELETE] /label/chinamobile HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	[
-		"label": {
-	          "sys": {
-	                   "supply_style": 1
-	                 },
-	          "opt": {},
-	          "owner": {},
-	          "other": {}
-	    	}
-	]
-
-Example Request：
-
-	DELETE /label/repname HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
-	
-Example Response：
-	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
-	
-
-## 为repname创建或更新label
-	
-	[PUT]	/label/:repname
-
-说明
-	
-	如果label不存在，则创建label
-	如果label已存在，则更新label
-
-输入参数说明：
-
-	"label": {
-	          "sys": {
-	                   "supply_style": 1
-	                 },
-	          "opt": {},
-	          "owner": {},
-	          "other": {}
-	          }
-	
-Example Request：
-
-	[PUT] /label/rep1 HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	[
-		"label": {
-	          "sys": {
-	                   "supply_style": 1
-	                 },
-	          "opt": {},
-	          "owner": {},
-	          "other": {}
-	          }
-	]
-	
-Example Response：
-	
-	HTTP/1.1 200 
-	Vary: Accept 
-	Content-Type: application/json
-	
-
-## 查询某repname下label
-	
-	[GET]	/label/:repname
-
-说明
-	
-	查询repname下的label
+	删除dataitem的label的某条属性
 
 输入参数说明：
 
@@ -207,7 +46,7 @@ Example Response：
 	
 Example Request：
 
-	[GET] /label/rep1 HTTP/1.1 
+	[DELETE] /repositories/chinamobile/beijingphone/label HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 Example Response：
@@ -216,13 +55,53 @@ Example Response：
 	Vary: Accept 
 	Content-Type: application/json
 	
+## [PUT] /repositories/:repname/label
+	
+说明
+	
+	新增/更新repository的label的某条属性
+
+输入参数说明：
+
+	owner.xxx			xxx用户自定义属性。item的拥有者具有owner的操作权限
+	other.yyy			yyy管理员自定义属性。管理员具有other的操作权限
+	
+Example Request：
+
+	[PUT] /repositories/repname1/label HTTP/1.1 
+	Content-Type：application/x-www-form-urlencoded
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	[
-		"label": {
-	          "sys": {
-	                   "supply_style": 1
-	                 },
-	          "opt": {},
-	          "owner": {},
-	          "other": {}
-	        }
+		owner.age=15
+		owner.company="baidu.com"
+		other.member="good"
 	]
+
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+
+## [DELETE] /repositories/:repname/:itemname/label
+	
+说明
+	
+	删除dataitem的label的某条属性
+
+输入参数说明：
+
+	无
+	
+Example Request：
+
+	[DELETE] /repositories/repname1/label HTTP/1.1 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	

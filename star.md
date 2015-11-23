@@ -32,7 +32,7 @@
 
 输入样例：
 
-	POST /star/repo1/item123?star=1 HTTP/1.1 
+	PUT /star/repo1/item123?star=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

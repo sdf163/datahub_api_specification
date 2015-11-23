@@ -83,11 +83,11 @@
 
 输入参数说明：
 	
-	beforetime: 最晚时间, 毫秒数
+	beforetime: （可选，默认为当前时间）最晚时间, 格式：2015-11-23T09:02:52Z（可以使用上次返回的评论列表中的最后一个评论的createtime）
 
 输入样例：
 
-	GET /comments/repo1/item123?beforetime=78191821212 HTTP/1.1 
+	GET /comments/repo1/item123?beforetime=2015-11-23T09:02:52Z HTTP/1.1 
 	Accept: application/json
 
 输出样例：

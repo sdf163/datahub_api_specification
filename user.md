@@ -118,7 +118,7 @@
 		nickname：昵称
 		username：真实名称
 		comments：描述信息
-		passwd：密码
+		passwd：密码(MD5)
 
 	【管理员角色】Example Request：
 		PUT /users/foo HTTP/1.1 

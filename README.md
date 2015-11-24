@@ -93,6 +93,7 @@ code 及 msg
 
 **编号19 [delete /repositories/:repname/:itemname/:tag](/repositories.md/)** 【拥有者】[auth]删除DataItem下的Tag详情，**注意Tag需要按照UTF8编码后传递**
 
+
 编号：1a
 
 名称： Label

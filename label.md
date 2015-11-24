@@ -46,7 +46,7 @@ Example Response：
 	
 Example Request：
 
-	[DELETE] /repositories/chinamobile/beijingphone/label HTTP/1.1 
+	[DELETE] /repositories/chinamobile/beijingphone/label? HTTP/1.1
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 Example Response：

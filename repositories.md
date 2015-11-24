@@ -9,6 +9,8 @@
 
 - [GET] [POST] [DELETE] /repositories/:repname/:itemname/:tag
 
+- [GET] /repositories/:repname/:itemname/subpermission
+
 	
 ----------
 
@@ -110,12 +112,7 @@ Example Request：
 	label				label自定义json标签
     
 Example Request：
-
-	POST /repositories/chinamobile HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-	{
+{
         "repaccesstype": "public",
         "comment": "中国移动北京终端详情",
         "label": {
@@ -133,6 +130,11 @@ Example Request：
             }
         }
     }
+	POST /repositories/chinamobile HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+
 
 ## 4 指令：DELETE /Repositories/:repname
 	
@@ -364,5 +366,52 @@ Example Response：
 	HTTP/1.1 200 
 	Vary: Accept 
 	Content-Type: application/json
+
+## 11 [GET] /repositories/:repname/:itemname/subpermission
+
+说明
+
+	[Subscription] 查询某用户是否具有订阅权限
+
+输入参数说明：
+
+	无
+
+Example Request：
+
+	GET /repositories/chinamobile/beijingphone/subpermission HTTP/1.1
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	[
+		{
+		    "create_user": "panxy3",
+		    "itemaccesstype": "private",
+		    "optime": "2015-08-0100: 00: 00",
+		    "meta": {},
+		    "sample": {},
+		    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+			"tags":10
+			"label": {
+		        "sys": {
+		            "supply_style": "api"
+		        },
+		        "opt": {},
+		        "owner": {},
+		        "other": {}
+		    }	
+		}
+	]
+
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	[
+		
+	]
 
 

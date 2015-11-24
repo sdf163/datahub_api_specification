@@ -50,7 +50,7 @@
 		USER:admin
 
 	返回数据说明：
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码(0：成功；7000:未知错误；7001：用户不存在)
 		msg:操作信息，用来记录失败信息
 		usertype：用户类型(1：普通用户，2：管理员用户)
 		nickname：昵称 
@@ -70,7 +70,7 @@
 		POST /users/foo?passwd=abc
 	
 	返回数据说明：
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码(0：成功；7000:未知错误；7002：用户已存在；7003：密码错误)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -81,7 +81,7 @@
 	输入参数说明：
 		无
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码；(0：成功；7000:未知错误)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -99,7 +99,7 @@
  
 		{"passwd":"aaaaaa","oldpwd":"1234"}
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7004：原始密码错误)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -154,7 +154,7 @@
 			"comments":"测试用户"
 		}
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码(0：成功；7000:未知错误；7005：未登录；7002：重新被激活的用户账号已被占用，7006：权限不够)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -175,7 +175,7 @@
 		{"status":"1"}
                   
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -187,9 +187,9 @@
 	Example Request：
 		GET /users/foo/repository HTTP/1.1 
 		Content-Type: multipart/form-data
-
+		
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7007：不存在该用户配额信息)
 		msg:操作信息，用来记录失败信息
 		quotaPublic:public的repo的配额
 		usePublic：Public的repo的使用量
@@ -198,8 +198,8 @@
 	返回数据示例
 		{"code":0,"msg":"ok",
 			data:{
-				"quotaPublic":10,"usePublic":5,
-				"quotaPrivate":15,"usePrivate":10
+				"quotaPublic":"10","usePublic":"5",
+				"quotaPrivate":"15","usePrivate":"10"
 				}
 		}
 ##指令：POST /users/:loginname/repository/ 增加用户的repo配额（78）
@@ -218,7 +218,7 @@
 			"public":"50"
 		}	
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够；7008：配额信息已存在)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -228,6 +228,7 @@
 	输入参数说明：
 		private:私有repo配额数量
 		public:共有repo配额数量
+		注：输入参数可单独使用
 	Example Request：
 		PUT /users/foo/repository/quota HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
@@ -237,25 +238,28 @@
 			"public":"60"
 		}
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：POST /users/:loginname/repository/use 修改用户的repo使用量（7a）
 	说明：
 		修改用户的repo的使用量
+		注：只允许本人或者管理员修改
 	输入参数说明：
 		private:私有repo配额数量 增量（如果增加1个为1，如果减少1个为-1）
 		public:共有repo配额数量 增量（同上）
+		注：输入参数可单独使用
 	Example Request：
 		POST /users/foo/repository/use HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
+		USER:foo
 		{
 			"private":"1",
 			"public":"1"
 		}
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -271,7 +275,7 @@
 		Content-Type: text/json;charset=UTF-8
 
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7007：不存在该用户配额信息)
 		msg:操作信息，用来记录失败信息
 		quota:托管的配额
 		use：托管使用量
@@ -286,6 +290,7 @@
 		【管理员角色】添加用户的托管配额信息 
 	输入参数说明：
 		quota:配额空间
+		unit:单位
 
 	Example Request：
 		POST /users/foo/deposit HTTP/1.1 
@@ -293,10 +298,11 @@
 		User:admin
 
 		{
-			"quota":"200M",
+			"quota":"200",
+			"unit":"M"
 		}	
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够；7008：配额信息已存在)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -310,10 +316,10 @@
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
-			"quta":"300M",
+			"quota":"300",
 		}
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -329,7 +335,7 @@
 		Content-Type: text/json;charset=UTF-8
 
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7007：不存在该用户配额信息)
 		msg:操作信息，用来记录失败信息
 		quota:pull量的配额
 		use：实际pull量
@@ -354,24 +360,24 @@
 			"quota":"20000",
 		}	
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够；7008：配额信息已存在)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/pullnum/use 修改用户的已下载量（7h）
+##指令：POST /users/:loginname/pullnum/use 修改用户的已下载量（7h）
 
 	说明：
  	   修改用户的已下载量
 	输入参数说明：
-   	 use:已使用数量
+   	 	use:下载数增量
 	Example Request：
     	PUT /users/foo/pullnum/use HTTP/1.1 
    		Content-Type:text/json;charset=UTF-8
   	  	{
-       	 "use":"100"
+       	 "use":"10"
    		 }
 	返回数据说明
- 	   code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+ 	   code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
  	   msg:操作信息，用来记录失败信息
 	返回数据示例
    		{"code":0,"msg":"ok"}
@@ -389,7 +395,7 @@
 			"quta":"300000",
 		}
 	返回数据说明
-		code:状态码，如果成功返回0，如果失败返回-1，对应msg记录出错信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}

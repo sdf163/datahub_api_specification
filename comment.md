@@ -8,7 +8,7 @@
 
 输入参数说明：
 	
-	token: 一个隐藏的防止重复发表的token
+	token: 一个隐藏的防止重复发表的token。此token由前端生成，最好是一个uuid，可用这个库: https://github.com/broofa/node-uuid
 	replyto: 被回复的评论id (0表示未回复任何评论, 只有dataitem creator可以回复)
 	content: 评论内容（最多200字）
 
@@ -83,11 +83,11 @@
 
 输入参数说明：
 	
-	beforetime: 最晚时间, 毫秒数
+	beforetime: （可选，默认为当前时间）最晚时间, 格式：2015-11-23T09:02:52Z（可以使用上次返回的评论列表中的最后一个评论的createtime）
 
 输入样例：
 
-	GET /comments/repo1/item123?beforetime=78191821212 HTTP/1.1 
+	GET /comments/repo1/item123?beforetime=2015-11-23T09:02:52Z HTTP/1.1 
 	Accept: application/json
 
 输出样例：

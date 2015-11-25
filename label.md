@@ -84,7 +84,7 @@ Example Response：
 	Content-Type: application/json
 	
 
-## [DELETE] /repositories/:repname/:itemname/label
+## [DELETE] /repositories/:repname/label
 	
 说明
 	
@@ -96,7 +96,7 @@ Example Response：
 	
 Example Request：
 
-	[DELETE] /repositories/repname1/label HTTP/1.1 
+	[DELETE] /repositories/repnam1e/label?owner.name=123 HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 Example Response：

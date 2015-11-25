@@ -107,12 +107,13 @@ Example Request：
 
 输入参数说明：
 
-   	repaccesstype       访问权限[public(默认), private]
-    comment 			详情
-	label				label自定义json标签
-    
+   	repaccesstype       		访问权限[public(默认), private]
+    comment 					详情
+	label						label自定义json标签。
+	label[sys,opt,owner,other]	如果为空可以不传
+    			
 Example Request：
-{
+	{
         "repaccesstype": "public",
         "comment": "中国移动北京终端详情",
         "label": {

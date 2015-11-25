@@ -53,10 +53,10 @@ code 及 msg
 	1005			auth failed			    			认证失败
 	1006			permission denied		    		没有权限
 	1007			invalid parameters			    	参数违法
-	1008			no parameter		    			参数确实
-	1009			database operate		    		数据库操作
-	1010			query %s no found			    	数据库查询xxx没有找到
-	1011			file operation				    	文件操作失败
+	1008			database operate		    		数据库操作
+	1009			query %s no found			    	数据库查询xxx没有找到
+	1010			file operation				    	文件操作失败
+	1400			no parameter		    			参数缺失
     6001            empty user is not allowed           用户名不能为空
     6002            user not registered yet             用户未注册
     6003            user doesn't have any entrypoint    用户没有Entrypoint

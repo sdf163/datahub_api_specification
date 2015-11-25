@@ -27,7 +27,7 @@
 输出样例：
 
 
-	"commnetid" : "1234567"
+	"commnetid" : 1234567
 
 ### (B1) PUT /comment/:repname/:itemname
 
@@ -47,7 +47,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"commnetid": "123456",
+		"commnetid": 123456,
 		"content": "bla bla ..."
 	}
 

@@ -65,7 +65,6 @@ code 及 msg
     6202            entrypoint not available            EntryPoint不可达
     8001		no quota info			没有该用户配额信息
     8002		user exist			注册用户已存在
-    8003		pwd is null			密码不能为空
     8004		pwd wrong			原始密码错误
     8005		no login			未登录
     8006		quota exist			用户配额信息已存在

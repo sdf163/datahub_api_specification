@@ -178,13 +178,13 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：GET /users/:loginname/repository 获取用户的repo配额（87）
+##指令：GET /quota/:loginname/repository 获取用户的repo配额（87）
 	说明：
 		获取用户的配额信息
 	输入参数说明：
 		无
 	Example Request：
-		GET /users/foo/repository HTTP/1.1 
+		GET /quota/foo/repository HTTP/1.1 
 		Content-Type: multipart/form-data
 		
 	返回数据说明
@@ -201,7 +201,7 @@
 				"quotaPrivate":"15","usePrivate":"10"
 				}
 		}
-##指令：POST /users/:loginname/repository/ 增加用户的repo配额（88）
+##指令：POST /quota/:loginname/repository 增加用户的repo配额（88）
 	说明：
 		【管理员角色】添加用户的repo配额信息
 	输入参数说明：
@@ -209,7 +209,7 @@
 		public:共有repo配额数量
 
 	Example Request：
-		POST /users/foo/repository HTTP/1.1 
+		POST /quota/foo/repository HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
@@ -221,7 +221,7 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/repository/quota 修改用户的repo配额（89）
+##指令：PUT /quota/:loginname/repository 修改用户的repo配额（89）
 	说明：
 		【管理员角色】修改用户的repo的配额
 	输入参数说明：
@@ -229,7 +229,7 @@
 		public:共有repo配额数量
 		注：输入参数可单独使用
 	Example Request：
-		PUT /users/foo/repository/quota HTTP/1.1 
+		PUT /quota/foo/repository HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
@@ -241,7 +241,7 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：POST /users/:loginname/repository/use 修改用户的repo使用量（8a）
+##指令：POST /quota/:loginname/repository/use 修改用户的repo使用量（8a）
 	说明：
 		修改用户的repo的使用量
 		注：只允许本人或者管理员修改
@@ -250,7 +250,7 @@
 		public:共有repo配额数量 增量（同上）
 		注：输入参数可单独使用
 	Example Request：
-		POST /users/foo/repository/use HTTP/1.1 
+		POST /quota/foo/repository/use HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		USER:foo
 		{
@@ -264,13 +264,13 @@
 		{"code":0,"msg":"ok"}
 
 
-##指令：GET /users/:loginname/deposit 获取用户的托管信息（8b）
+##指令：GET /quota/:loginname/deposit 获取用户的托管信息（8b）
 	说明：
 		获取用户的托管的配额信息
 	输入参数说明：
 		无
 	Example Request：
-		GET /users/foo/deposit HTTP/1.1 
+		GET /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 
 	返回数据说明
@@ -284,7 +284,7 @@
 				"quota":"10M","use":"5M"
 				}
 		}
-##指令：POST /users/:loginname/deposit/ 增加用户的托管配额（8c）
+##指令：POST /quota/:loginname/deposit 增加用户的托管配额（8c）
 	说明：
 		【管理员角色】添加用户的托管配额信息 
 	输入参数说明：
@@ -292,7 +292,7 @@
 		unit:单位
 
 	Example Request：
-		POST /users/foo/deposit HTTP/1.1 
+		POST /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 
@@ -305,13 +305,13 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：PUT /users/:loginname/deposit/quota 修改用户的托管配额（8d）
+##指令：PUT /quota/:loginname/deposit 修改用户的托管配额（8d）
 	说明：
 		【管理员角色】修改用户的托管的配额 
 	输入参数说明：
 		quota:托管配额空间大小
 	Example Request：
-		PUT /users/foo/deposit/quota HTTP/1.1 
+		PUT /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
@@ -324,13 +324,13 @@
 		{"code":0,"msg":"ok"}
 
 
-##指令：GET /users/:loginname/pullnum 获取用户的下载量信息（8f）
+##指令：GET /quota/:loginname/pullnum 获取用户的下载量信息（8f）
 	说明：
 		获取用户的下载量信息
 	输入参数说明：
 		无
 	Example Request：
-		GET /users/foo/pullnum HTTP/1.1 
+		GET /quota/foo/pullnum HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 
 	返回数据说明
@@ -344,14 +344,14 @@
 				"quota":"10000","use":"100"
 				}
 		}
-##指令：POST /users/:loginname/pullnum/ 增加用户的下载量配额信息（8g）
+##指令：POST /quota/:loginname/pullnum 增加用户的下载量配额信息（8g）
 	说明：
 		【管理员角色】添加用户的托管配额信息 
 	输入参数说明：
 		quota:配额空间
 
 	Example Request：
-		POST /users/foo/pullnum HTTP/1.1 
+		POST /quota/foo/pullnum HTTP/1.1 
 		Content-Type:text/json;charset=UTF-8
 		User:admin
 
@@ -363,14 +363,14 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：POST /users/:loginname/pullnum/use 修改用户的已下载量（8h）
+##指令：POST /quota/:loginname/pullnum/use 修改用户的已下载量（8h）
 
 	说明：
  	   修改用户的已下载量
 	输入参数说明：
    	 	use:下载数增量
 	Example Request：
-    	PUT /users/foo/pullnum/use HTTP/1.1 
+    	PUT /quota/foo/pullnum/use HTTP/1.1 
    		Content-Type:text/json;charset=UTF-8
   	  	{
        	 "use":"10"
@@ -381,30 +381,30 @@
 	返回数据示例
    		{"code":0,"msg":"ok"}
 
-##指令：PUT /users/:loginname/pullnum/quota 修改用户的下载量配额（8i）
+##指令：PUT /quota/:loginname/pullnum 修改用户的下载量配额（8i）
 	说明：
 		【管理员角色】修改用户的下载量的配额 
 	输入参数说明：
 		quota:下载量配额
 	Example Request：
-		PUT /users/foo/pullnum/quota HTTP/1.1 
+		PUT /quota/foo/pullnum HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
-			"quta":"300000",
+			"quota":"300000",
 		}
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
-##指令：GET /users/:loginname/vip 查询用户会员信息（8j）
+##指令：GET /vip/:loginname 查询用户会员信息（8j）
 	说明：
 		【任意】查看用户会员的相关信息
 	输入参数说明：
 		无
 	Example Request：
-		GET /users/foo/vip HTTP/1.1 
+		GET /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
 		USER:foo
@@ -431,13 +431,13 @@
 		}
 
 
-#指令：PUT /users/:loginname/vip 修改会员信息(8k)
+#指令：PUT /vip/:loginname 修改会员信息(8k)
 	说明：
 		【管理员】修改用户的会员信息
 	输入参数说明：
 		userType：会员级别
 	Example Request：
-		PUT /users/foo/vip HTTP/1.1 
+		PUT /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin

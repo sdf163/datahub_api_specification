@@ -13,31 +13,31 @@
 
 - [PUT] /users/:loginname/pwd 修改密码
 
-- [GET] /users/:loginname/repository 获取repo配额信息
+- [GET] /quota/:loginname/repository 获取repo配额信息
 
-- [POST] /users/:loginname/repository 创建repo配额信息
+- [POST] /quota/:loginname/repository 创建repo配额信息
 
-- [PUT] /users/:loginname/repository/quota 修改repo配额
+- [PUT] /quota/:loginname/repository 修改repo配额
 
-- [POST] /users/:loginname/repository/use 修改repo的使用量
+- [POST] /quota/:loginname/repository/use 修改repo的使用量
 
-- [GET] /users/:loginname/deposit 获取托管配额信息
+- [GET] /quota/:loginname/deposit 获取托管配额信息
 
-- [POST] /users/:loginname/deposit 新建托管配额
+- [POST] /quota/:loginname/deposit 新建托管配额
 
-- [PUT] /users/:loginname/deposit/quota 修改用户的托管配额
+- [PUT] /quota/:loginname/deposit 修改用户的托管配额
 
-- [GET] /users/:loginname/pullnum 获取用户下载量配额信息
+- [GET] /quota/:loginname/pullnum 获取用户下载量配额信息
 
-- [POST] /users/:loginname/pullnum/ 创建用户下载量配额
+- [POST] /quota/:loginname/pullnum/ 创建用户下载量配额
 
-- [PUT] /users/:loginname/pullnum/quota 修改用户下载量配额
+- [PUT] /quota/:loginname/pullnum 修改用户下载量配额
 
-- [PUT] /users/:loginname/pullnum/use 修改用户的已下载量
+- [PUT] /quota/:loginname/pullnum/use 修改用户的已下载量
 
-- [GET] /users/:loginname/vip 查询会员信息
+- [GET] /vip/:loginname 查询会员信息
 
-- [PUT] /users/:loginname/vip 修改会员信息
+- [PUT] /vip/:loginname 修改会员信息
 
 	
 ----------

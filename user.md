@@ -81,7 +81,7 @@
 
 ##指令：PUT /users/:loginname/active 激活用户(83)
 	说明：
-		激活用户
+		【管理员】激活用户
 	输入参数说明：
 		无
 	返回数据说明
@@ -166,15 +166,12 @@
 		【管理员角色】删除一个用户
 		注：本操作不是真的删除一条数据，是将用户状态改成 注销状态（user_status:7）
 	输入参数说明：
-		status:用户状态
 		无 
 	Example Request：
 		DELETE /users/foo HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin
-		
-		{"status":"1"}
                   
 	返回数据说明
 		code:状态码

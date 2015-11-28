@@ -65,8 +65,8 @@ Example Request：
 输入参数说明：
 
 	items							查询repname的所有dataitem开关
-	page (分页页数) : 			1 - N，  默认=1（page=1可以不传）
-	size（页面大小）: 			1 - N，  默认=6 (-1 返回全部)
+	page (分页页数) : 				1 - N，  默认=1（page=1可以不传）
+	size（页面大小）: 				1 - N，  默认=6 (-1 返回全部)
 	
 Example Request：
 
@@ -111,8 +111,16 @@ Example Request：
     comment 					详情
 	label						label自定义json标签。
 	label[sys,opt,owner,other]	如果为空可以不传
+	label.sys					系统自定义label参数
+	label.opt					运营人员定义label参数
+	label.owner					拥有者自定义label参数
+	label.other					管理员自定义label参数
     			
 Example Request：
+
+	POST /repositories/chinamobile HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	{
         "repaccesstype": "public",
         "comment": "中国移动北京终端详情",
@@ -131,13 +139,30 @@ Example Request：
             }
         }
     }
-	POST /repositories/chinamobile HTTP/1.1 
+
+## 4 指令：PUT /Repositories/:repname
+	
+说明：
+	
+	【拥有者】更新repository
+
+输入参数说明：
+
+   	repaccesstype       		访问权限[public(默认), private]
+    comment 					详情
+    			
+Example Request：
+
+	PUT /repositories/chinamobile HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
+	{
+        "repaccesstype": "public",
+        "comment": "中国移动北京终端详情",      
+    }
 
 
-## 4 指令：DELETE /Repositories/:repname
+## 5 指令：DELETE /Repositories/:repname
 	
 说明：
 	
@@ -157,7 +182,7 @@ Example Response：
 
 	无
 
-## 5 指令：GET /Repositories/:repname/:itemname
+## 6 指令：GET /Repositories/:repname/:itemname
 	
 说明：
 	
@@ -207,27 +232,27 @@ Example Request：
 	        "other": {}
 	    },
 	   "taglist":[
-			{
-				"tag": "tag001",
-				"comment": "2022201MB",
-				"optime": "2015-11-16 10:50:31.779460404 +0000 UTC|3小时以前"
-			},
-			{
-				"tag": "tag002",
-				"comment": "2001MB",
-				"optime": "2015-11-17 02:14:55.241920929 +0000 UTC|10分钟以前"
-			},
-			{
-				"tag": "tag003",
-				"comment": "2001MB",
-				"optime": "2015-11-17 02:14:59.491811069 +0000 UTC|6天以前"
-			}
+				{
+					"tag": "tag001",
+					"comment": "2022201MB",
+					"optime": "2015-11-16 10:50:31.779460404 +0000 UTC|3小时以前"
+				},
+				{
+					"tag": "tag002",
+					"comment": "2001MB",
+					"optime": "2015-11-17 02:14:55.241920929 +0000 UTC|10分钟以前"
+				},
+				{
+					"tag": "tag003",
+					"comment": "2001MB",
+					"optime": "2015-11-17 02:14:59.491811069 +0000 UTC|6天以前"
+				}
 			]
 	}
 
 ----------
 
-## 6 指令：POST /repositories/:repname/:itemname
+## 7 指令：POST /repositories/:repname/:itemname
 
 说明
 
@@ -270,7 +295,37 @@ Example Request：
 
 ----------
 
-## 7 指令：DELETE /repositories/:repname/:itemname
+## 8 指令：PUT /repositories/:repname/:itemname
+
+说明
+
+	【拥有者】更新DataItem
+
+输入参数说明
+	
+	itemaccesstype  				访问权限[public(默认), private]
+	meta							元数据
+	sample							样例数据
+	comment							详情
+			
+Example Request：
+
+	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	{
+        "itemaccesstype": "private",
+        "meta": "{}",
+        "sample": "{}",
+        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"      
+    }
+	
+返回值示例
+
+	无
+
+----------
+
+## 9 指令：DELETE /repositories/:repname/:itemname
 
 说明
 
@@ -290,7 +345,7 @@ Example Request：
 	无
 ----------
 
-## 8 GET /repositories/:repname/:itemname/:tag
+## 10 GET /repositories/:repname/:itemname/:tag
 
 说明
 
@@ -316,7 +371,7 @@ Example Request：
 	    "optime": "2015-08-03 00:00:00|6天以前"
 	}
 
-## 9 POST /repositories/:repname/:itemname/:tag
+## 11 POST /repositories/:repname/:itemname/:tag
 
 说明
 
@@ -347,7 +402,38 @@ Example Response：
 
 	msg：可选，具体出错信息描述
 
-## 10 DELETE /repositories/:repname/:itemname/:tag
+## 12 PUT /repositories/:repname/:itemname/:tag
+
+说明
+
+	【拥有者】更新tag
+
+输入参数说明：
+
+	comment  tag相关详情
+
+Example Request：
+
+	PUT /repositories/chinamobile/beijingphone/000 HTTP/1.1
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
+	[
+		{
+			"comment":"2001MB"
+		}
+	]
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	
+	
+返回数据说明：
+
+	msg：可选，具体出错信息描述
+
+## 13 DELETE /repositories/:repname/:itemname/:tag
 
 说明
 
@@ -368,7 +454,7 @@ Example Response：
 	Vary: Accept 
 	Content-Type: application/json
 
-## 11 [GET] /repositories/:repname/:itemname/subpermission
+## 14 [GET] /repositories/:repname/:itemname/subpermission
 
 说明
 

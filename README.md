@@ -63,6 +63,11 @@ code 及 msg
     6101            missing authorization info          缺少验证信息
     6201            daemonid is empty                   缺少Daemonid
     6202            entrypoint not available            EntryPoint不可达
+    8001		no quota info			没有该用户配额信息
+    8002		user exist			注册用户已存在
+    8004		pwd wrong			原始密码错误
+    8005		no login			未登录
+    8006		quota exist			用户配额信息已存在
 
 ## DataHub API内容 ##
 
@@ -234,6 +239,40 @@ code 及 msg
 
 描述文件：users.md
 
+**编号81 [GET /users/:loginname](/user.md/) **查询用户
+
+**编号82 [POST /users/:loginname](/user.md/) ** 创建用户
+
+**编号83 [PUT /users/:loginname](/user.md/) ** 修改用户
+
+**编号84 [DELETE /users/:loginname](/user.md/) ** 删除用户
+
+**编号85 [PUT /users/:loginname/status](/user.md/) ** 激活用户
+
+**编号86 [PUT /users/:loginname/pwd](/user.md/) ** 修改密码
+
+**编号87 [GET /users/:loginname/repository](/user.md/) ** 获取repo配额信息
+
+**编号88 [POST /users/:loginname/repository](/user.md/) ** 创建repo配额信息
+
+**编号89 [PUT /users/:loginname/repository/quota](/user.md/) ** 修改repo配额
+
+**编号8a [POST /users/:loginname/repository/use](/user.md/) ** 修改repo的使用量
+
+**编号8b [GET /users/:loginname/deposit](/user.md/) ** 获取托管配额信息
+
+**编号8c [POST /users/:loginname/deposit](/user.md/) ** 新建托管配额
+
+**编号8d [PUT /users/:loginname/deposit/quota](/user.md/) ** 修改用户的托管配额
+
+**编号8e [GET /users/:loginname/pullnum](/user.md/) ** 获取用户下载量配额信息
+
+**编号8f [POST /users/:loginname/pullnum/](/user.md/) ** 创建用户下载量配额
+
+**编号8g [PUT /users/:loginname/pullnum/quota](/user.md/) ** 修改用户下载量配额
+
+**编号8h [PUT /users/:loginname/pullnum/use](/user.md/) ** 修改用户的已下载量
+
 ### messages (notifications) ###
 编号：9
 
@@ -278,6 +317,19 @@ code 及 msg
 **编号B3 [get /comments/:repname/:itemname?beforetime={beforetime}](/comment.md/)** 【任何】返回一个dataitem上的评论列表
 
 **编号B4 [get /comment_stat/:repname/:itemname](/comment.md/)** 用户】【任何】返回一个dataitem上的评论数 
+
+### vip ###
+编号：C
+
+名称：会员管理
+
+描述文件：vip.md
+
+**编号C1 [GET /vip/:loginname](/vip.md/)** 查看用户会员相关信息
+
+**编号C1 [POST /vip/:loginname](/vip.md/)** 添加用户会员相关信息
+
+**编号C1 [PUT /vip/:loginname](/vip.md/)** 修改用户会员相关信息
 
 
 ## DataHub API应用 ##

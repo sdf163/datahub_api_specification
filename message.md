@@ -1,5 +1,35 @@
 # Messages
 
+### POST /messages
+
+说明
+
+	【微服务模块】 创建一条用户提醒
+
+输入参数说明：	
+	
+	type: 消息类型
+	receiver: 消息接收者 (可选，如未提供，表示全部符合type的接受用户)
+	data: 消息内容
+	extra: 额外信息，具体取决于type (比如subs_message需要reponame和itemname信息)
+	
+	注意：此API是一个内部API，不通过网关暴露给外部。它接收的auth是username而不是加密后的token。
+
+输入样例：
+
+	POST /messages HTTP/1.1 
+	Accept: application/json
+	User: zhang3@example.com
+	
+	{
+		"type": "admin_broadcast",
+		"data": "bla bla ..."
+	}
+
+输出样例：
+
+	空
+
 ### GET /notification_stat
 
 说明
@@ -41,34 +71,6 @@
 		}
 	]
 
-### POST /notifications
-
-说明
-
-	【微服务模块】 创建一条用户提醒
-
-输入参数说明：	
-	
-	type: 消息类型
-	receiver: 消息接收者 (可选，如未提供，表示全部符合type的接受用户)
-	data: 消息内容
-	extra: 额外信息，具体取决于type (比如subs_message需要reponame和itemname信息)
-
-输入样例：
-
-	POST /notifications HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-	{
-		"type": "admin_broadcast",
-		"data": "bla bla ..."
-	}
-
-输出样例：
-
-	空
-
 ### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
 
 说明
@@ -107,4 +109,3 @@
 			"content": "bla bla ..."
 		}
 	]
-

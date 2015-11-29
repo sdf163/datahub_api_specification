@@ -280,9 +280,9 @@ code 及 msg
 
 描述文件：messages.md
 
-**编号90 [get /notification_stat](/messages.md/)** 【用户】[auth] 取得自己的提醒汇总统计
+**编号90 [post /notifications](/messages.md/)** 【用户】[auth] 创建一条用户提醒
 
-**编号91 [post /notifications](/messages.md/)** 【用户】[auth] 创建一条用户提醒
+**编号91 [get /notification_stat](/messages.md/)** 【用户】[auth] 取得自己的提醒汇总统计
 
 **编号92 [get /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}](/messages.md/)** 【用户】[auth] 返回当前用户接受到的消息列表 
 

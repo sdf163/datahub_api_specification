@@ -55,7 +55,7 @@
 		"admin_broadcast": 1
 	}
 
-### PUT /notification_stat/clear
+### DELETE /notification_stat
 
 说明
 
@@ -67,7 +67,7 @@
 
 输入样例：
 
-	GET /notification_stat/clear HTTP/1.1 
+	DELETE /notification_stat HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -129,7 +129,7 @@
 
 输入样例：
 
-	GET /notification/123456/read HTTP/1.1 
+	PUT /notification/123456/read HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

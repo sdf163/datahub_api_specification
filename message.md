@@ -4,14 +4,13 @@
 
 说明
 
-	【微服务模块】 创建一条用户提醒
+	【内部API】 创建一条用户提醒
 
 输入参数说明：	
 	
 	type: 消息类型
 	receiver: 消息接收者 (可选，如未提供，表示全部符合type的接受用户)
-	data: 消息内容
-	extra: 额外信息，具体取决于type (比如subs_message需要reponame和itemname信息)
+	data: 消息内容, json格式，不同消息类型元素不同。此service不关心其元素。
 	
 	注意：此API是一个内部API，不通过网关暴露给外部。它接收的auth是username而不是加密后的token。
 
@@ -48,28 +47,13 @@
 
 输出样例：
 
-	[
-		{
-			"type": "subs_message",
-			"num": 6
-		},
-		{
-			"type": "dataitem_comment",
-			"num": 20
-		},
-		{
-			"type": "comment_reply",
-			"num": 2
-		},
-		{
-			"type": "private_message",
-			"num": 6
-		},
-		{
-			"type": "admin_broadcast",
-			"num": 1
-		}
-	]
+	{
+		"subs_message": 6,
+		"dataitem_comment": 20,
+		"comment_reply": 2,
+		"private_message": 6,
+		"admin_broadcast": 1
+	}
 
 ### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
 
@@ -79,14 +63,13 @@
 
 输入参数说明：
 	
-	type: （不可选）消息类型
-	sender: 消息发送者
-	status: (可选，默认为未读) 已读未读
+	type: （可选）消息类型
+	sender: (可选) 消息发送者
 	beforetime: （可选，默认为now）最晚时间, 毫秒数
 
 输入样例：
 
-	GET /notifications?type=admin_broadcast&status=0 HTTP/1.1 
+	GET /notifications?type=private_message HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -95,16 +78,19 @@
 	[
 		{
 			"sender": "zhang3@aaa.com",
+			"status": 0,
 			"createtime": "2015-11-10T15:04:05Z08:00",
 			"content": "bla bla ..."
 		},
 		{
 			"sender": "li4@aaa.com",
+			"status": 1,
 			"createtime": "2015-11-10T15:04:09Z08:00",
 			"content": "bla bla ..."
 		},
 		{
 			"sender": "li4@bbb.com",
+			"status": 0,
 			"createtime": "2015-11-10T15:06:09Z08:00",
 			"content": "bla bla ..."
 		}

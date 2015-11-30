@@ -53,7 +53,7 @@
 		Authorization: token
 		USER:admin
 		{
-			"userType":"3"
+			"type":"1","op_time":"2015-09-02 10:20:10","consumption_item":"","trade_amount":"10"
 		}
 	返回数据说明：
 		code:状态码

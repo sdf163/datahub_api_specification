@@ -280,7 +280,7 @@ code 及 msg
 
 描述文件：messages.md
 
-**编号90 [post /notifications](/messages.md/)** 【用户】[auth] 创建一条用户提醒
+**编号90 [post /notifications](/messages.md/)** 【内部API】[auth] 创建一条用户提醒
 
 **编号91 [get /notification_stat](/messages.md/)** 【用户】[auth] 取得自己的提醒汇总统计
 

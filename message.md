@@ -22,12 +22,13 @@
 	
 	{
 		"type": "admin_broadcast",
+		"receiver": "li4@example.com",
 		"data": "bla bla ..."
 	}
 
 输出样例：
 
-	空
+	messageid: 1234567
 
 ### GET /notification_stat
 

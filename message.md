@@ -55,7 +55,7 @@
 		"admin_broadcast": 1
 	}
 
-### GET /notification_stat/clear
+### PUT /notification_stat/clear
 
 说明
 
@@ -73,7 +73,7 @@
 
 输出样例：
 
-	null
+	空
 
 ### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
 
@@ -135,4 +135,4 @@
 
 输出样例：
 
-	null
+	空

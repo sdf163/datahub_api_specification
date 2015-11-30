@@ -55,6 +55,26 @@
 		"admin_broadcast": 1
 	}
 
+### GET /notification_stat/clear
+
+说明
+
+	【用户】清除自己的提醒汇总统计
+
+输入参数说明：	
+	
+	无
+
+输入样例：
+
+	GET /notification_stat/clear HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+
+	null
+
 ### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
 
 说明
@@ -95,3 +115,24 @@
 			"content": "bla bla ..."
 		}
 	]
+
+### PUT /notification/:messageid/:action
+
+说明
+
+	【用户】修改消息状态
+
+输入参数说明：
+	
+	messageid: 消息id
+	action: 目前只支持read和unread
+
+输入样例：
+
+	GET /notification/123456/read HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+
+	null

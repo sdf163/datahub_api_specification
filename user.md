@@ -33,7 +33,7 @@
 
 - [PUT] /quota/:loginname/pullnum 修改用户下载量配额
 
-- [PUT] /quota/:loginname/pullnum/use 修改用户的已下载量
+- [POST] /quota/:loginname/pullnum/use 修改用户的已下载量
 
 - [GET] /vip/:loginname 查询会员信息
 
@@ -370,7 +370,7 @@
 	输入参数说明：
    	 	use:下载数增量
 	Example Request：
-    	PUT /quota/foo/pullnum/use HTTP/1.1 
+    	POST /quota/foo/pullnum/use HTTP/1.1 
    		Content-Type:text/json;charset=UTF-8
   	  	{
        	 "use":"10"
@@ -415,7 +415,7 @@
 		pullNum:免费数据Pull量
 		payWay:pull付费方式 (1:预付费，2后付费)
 		deposit：托管配额
-		annualFee:年费
+		fee:年费
 	返回数据示例：
 
 		{"data":	{

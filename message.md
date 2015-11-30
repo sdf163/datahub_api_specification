@@ -141,6 +141,7 @@
 
 ## 初始化(golang)
 
+```go
 	import (
 		"github.com/asiainfoLDP/datahub_messages/mq"
 	)
@@ -168,6 +169,7 @@
 		// You should use a unique topic your service module.
 		theMQ.EnableApiHandling(Port, "datahub_messages_handler", mq.Offset_Marked)
 	}
+```
 
 ## 消息发送
 
@@ -177,14 +179,19 @@
 	
 ### 自定义格式同步发送
 	
+```go
 	partition, offset, err := theMQ.SendSyncMessage("a_topic_for_others_to_read", []byte(""), []byte("hello world")
-	
+```
+
 ### 自定义格式异步发送
 	
+```go
 	err := theMQ.SendAsyncMessage("a_topic_for_others_to_read", []byte(""), []byte("hello world")
+'''
 
 ### http同步发送
 
+```go
 	// here localhost is just a placeholder, whatever it is.
 	request, err := http.NewRequest("GET", "http://localhost/subscription_stat/a/b", nil)
 	if err != nil {
@@ -201,9 +208,11 @@
 	log.Debugf("response.Status = %s", response.Status)
 	
 	// ...
+```
 
 ### http异步发送
 
+```go
 	// here localhost is just a placeholder, whatever it is.
 	request, err := http.NewRequest("GET", "http://localhost/subscription_stat/a/b", nil)
 	if err != nil {
@@ -216,6 +225,47 @@
 		log.Debugf("AsyncApiRequest: %s", err.Error())
 		return
 	}
+```
 
-## 消息接受
+## 消息接收
+
+欲接收消息，需实现如下mq.MassageListener接口
+
+```go
+	type MassageListener interface {
+		OnMessage(key, value []byte, topic string, partition int32, offset int64)
+		OnError(error) bool
+	}
+```
+
+Example:
+	
+```go
+	type MyMesssageListener struct {
+		name string
+	}
+	
+	func newMyMesssageListener(name string) *MyMesssageListener {
+		return &MyMesssageListener{name: name}
+	}
+	
+	func (listener *MyMesssageListener) OnMessage(key, value []byte, topic string, partition int32, offset int64) {
+		log.Debugf("%s received: (%d) message: %s", listener.name, offset, string(value))
+	}
+	
+	func (listener *MyMesssageListener) OnError(err error) bool {
+		log.Debugf("api response listener error: %s", err.Error())
+		return false
+	}
+```
+	
+然后
+
+```go
+	myListener := newMyMesssageListener("test")
+	err := theMQ.SetMessageListener("the_topic_i_will_read", 1, mq.Offset_Marked, myListener)
+	if err != nil {
+		// ...
+	}
+```
 

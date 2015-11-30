@@ -187,7 +187,7 @@
 	
 ```go
 	err := theMQ.SendAsyncMessage("a_topic_for_others_to_read", []byte(""), []byte("hello world")
-'''
+```
 
 ### http同步发送
 

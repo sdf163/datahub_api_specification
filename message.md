@@ -159,15 +159,15 @@
 			return
 		}
 		
-		// if this service will call other service with http format
+		// if this service will call other service with http format, call this line.
 		// "datahub_messages_caller" is just an example topic. 
 		// You should use a unique topic your service module.
 		theMQ.EnableApiCalling("datahub_messages_caller")
 		
-		// if this service will be called by other services with http format
+		// if this service will be called by other services with http format, call this line.
 		// "datahub_messages_handler" is just an example topic. 
 		// You should use a unique topic your service module.
-		theMQ.EnableApiHandling(Port, "datahub_messages_handler", mq.Offset_Marked)
+		theMQ.EnableApiHandling(Port, "datahub_messages_handler", mq.Offset_Marked) // or Offset_Newest, Offset_Oldest
 	}
 ```
 
@@ -259,10 +259,12 @@ Example:
 	}
 ```
 	
-然后
+然后注册此MassageListener
 
 ```go
 	myListener := newMyMesssageListener("test")
+	
+	// 1 is the partition id
 	err := theMQ.SetMessageListener("the_topic_i_will_read", 1, mq.Offset_Marked, myListener)
 	if err != nil {
 		// ...

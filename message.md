@@ -136,3 +136,86 @@
 输出样例：
 
 	空
+
+# Messages
+
+## 初始化(golang)
+
+	import (
+		"github.com/asiainfoLDP/datahub_messages/mq"
+	)
+
+	var (
+		theMQ mq.MessageQueue
+	)
+	
+	func initMQ() {
+		kafkas := fmt.Sprintf("%s:%s", os.Getenv("KAFKA_HOST"), os.Getenv("KAFKA_PORT"))
+		log.Infof("kafkas = %s", kafkas)
+		theMQ, err := mq.NewMQ([]string{kafkas}) // ex. {"192.168.1.1:9092", "192.168.1.2:9092"}
+		if err != nil {
+			log.Infof("initMQ error: %s", err.Error())
+			return
+		}
+		
+		// if this service will call other service with http format
+		// "datahub_messages_caller" is just an example topic. 
+		// You should use a unique topic your service module.
+		theMQ.EnableApiCalling("datahub_messages_caller")
+		
+		// if this service will be called by other services with http format
+		// "datahub_messages_handler" is just an example topic. 
+		// You should use a unique topic your service module.
+		theMQ.EnableApiHandling(Port, "datahub_messages_handler", mq.Offset_Marked)
+	}
+
+## 消息发送
+
+目前消息支持http和自定义格式。每种格式都支持同步和异步发送。
+
+在以下示例中，[]byte("")表示messsage key，在多数情况下，它可以被忽略。
+	
+### 自定义格式同步发送
+	
+	partition, offset, err := theMQ.SendSyncMessage("a_topic_for_others_to_read", []byte(""), []byte("hello world")
+	
+### 自定义格式异步发送
+	
+	err := theMQ.SendAsyncMessage("a_topic_for_others_to_read", []byte(""), []byte("hello world")
+
+### http同步发送
+
+	// here localhost is just a placeholder, whatever it is.
+	request, err := http.NewRequest("GET", "http://localhost/subscription_stat/a/b", nil)
+	if err != nil {
+		log.Debugf("create request error: %s", err.Error())
+		return
+	}
+	
+	response, err := theMQ.SyncApiRequest("datahub_subscription_handler", []byte(""), request)
+	if err != nil {
+		log.Debugf("response error: %s", err.Error())
+		return
+	}
+	
+	log.Debugf("response.Status = %s", response.Status)
+	
+	// ...
+
+### http异步发送
+
+	// here localhost is just a placeholder, whatever it is.
+	request, err := http.NewRequest("GET", "http://localhost/subscription_stat/a/b", nil)
+	if err != nil {
+		log.Debugf("create request error: %s", err.Error())
+		return
+	}
+
+	err = theMQ.AsyncApiRequest("datahub_subscription_handler", []byte(""), request)
+	if err != nil {
+		log.Debugf("AsyncApiRequest: %s", err.Error())
+		return
+	}
+
+## 消息接受
+

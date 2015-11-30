@@ -315,7 +315,7 @@
 		Content-Type: text/json;charset=UTF-8
 		User:admin
 		{
-			"quota":"300",
+			"quota":"300"
 		}
 	返回数据说明
 		code:状态码

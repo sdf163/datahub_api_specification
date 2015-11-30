@@ -76,7 +76,7 @@ Example Request：
 返回数据说明：
 	
 	create_user			创建者
-   	itemaccesstype      对外开放类型[public(默认), private]
+   	repaccesstype      对外开放类型[public(默认), private]
     comment 			详情
 	optime				更新时间
 	items				dataitem数量	
@@ -87,7 +87,7 @@ Example Request：
 
 	{
 	    "create_user": "panxy3@asiainfo.com",
-	    "itemaccesstype": "public",
+	    "repaccesstype": "public",
 	    "comment": "详情",
 	    "optime": "2015-10.1122: 10: 20",
 	    "items": 3000,
@@ -264,6 +264,7 @@ Example Request：
 	meta							元数据
 	sample							样例数据
 	comment							详情
+	price				 			价格计划
 	label.sys.supply_style			服务形式[api；batch；flow]【必选】
 	label.sys.supply_style.api		实时单条
 	label.sys.supply_style.batch	批量
@@ -279,6 +280,85 @@ Example Request：
         "meta": "{}",
         "sample": "{}",
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+		"price":[
+					{
+						"time"： 1,
+						"unit": "h",
+						"money": 5
+					},
+					{
+						"time"： 10,
+						"unit": "h",
+						"money": 50
+					},
+					{
+						"time"： 100,
+						"unit": "h",
+						"money": 400
+					}
+				],
+        "label": {
+            "sys": {
+                "supply_style": "flow"
+            },
+            "opt": {},
+            "owner": {},
+            "other": {}
+        }
+    }
+	
+	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	{
+        "itemaccesstype": "private",
+        "meta": "{}",
+        "sample": "{}",
+        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+		"price":[
+					{
+						"times"： 1000,
+						"money": 5
+					},
+					{
+						"times"： 10000,
+						"money": 45
+					},
+					{
+						"times"： 100000,
+						"money": 400
+					}
+				],
+        "label": {
+            "sys": {
+                "supply_style": "api"
+            },
+            "opt": {},
+            "owner": {},
+            "other": {}
+        }
+    }
+
+	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	{
+        "itemaccesstype": "private",
+        "meta": "{}",
+        "sample": "{}",
+        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+		"price":[
+					{
+						"times"： 1000,
+						"money": 5
+					},
+					{
+						"times"： 10000,
+						"money": 45
+					},
+					{
+						"times"： 100000,
+						"money": 400
+					}
+				],
         "label": {
             "sys": {
                 "supply_style": "batch"
@@ -288,7 +368,7 @@ Example Request：
             "other": {}
         }
     }
-	
+
 返回值示例
 
 	无
@@ -316,6 +396,34 @@ Example Request：
         "itemaccesstype": "private",
         "meta": "{}",
         "sample": "{}",
+		"price":[
+					{
+						"times"： 1000,
+						"money": 5
+					},
+					{
+						"times"： 10000,
+						"money": 45
+					},
+					{
+						"times"： 100000,
+						"money": 400
+					}
+				],
+		"newprice":[
+					{
+						"times"： 1000,
+						"money": 4
+					},
+					{
+						"times"： 10000,
+						"money": 35
+					},
+					{
+						"times"： 100000,
+						"money": 300
+					}
+				],
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"      
     }
 	
@@ -337,7 +445,7 @@ Example Request：
 
 Example Request：
 
-	DELETE /repositories/chinamobile/beijingphone HTTP/1.1 
+	DELETE /repositories/chinamobile/beijingphone?price='{"times"：100000,"money":300}' HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 返回值示例

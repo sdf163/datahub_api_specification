@@ -90,7 +90,7 @@ Example Request：
 	Content-Type: application/json 
 
     {
-        "logs":[
+        "log":[
         "2015/12/01 14:58:29 testlog3",
         "2015/12/01 14:56:21 testlog2",
         "2015/12/01 14:52:54 testlog1"

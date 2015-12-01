@@ -206,6 +206,7 @@ Example Request：
 	meta					元数据
 	sample					样例数据
 	comment					详情
+	price					计费计划
     tags					tag量
 	label.sys.supply_style	服务形式[api；batch；flow]
 	Tags.tag				tag名称
@@ -221,6 +222,23 @@ Example Request：
 	    "optime": "2015-08-0100: 00: 00",
 	    "meta": {},
 	    "sample": {},
+		"price":[
+					{
+						"time"： 1,
+						"unit": "h",
+						"money": 5
+					},
+					{
+						"time"： 10,
+						"unit": "h",
+						"money": 50
+					},
+					{
+						"time"： 100,
+						"unit": "h",
+						"money": 400
+					}
+				],		
 	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
 		"tags":10
 		"label": {
@@ -408,20 +426,6 @@ Example Request：
 					{
 						"times"： 100000,
 						"money": 400
-					}
-				],
-		"newprice":[
-					{
-						"times"： 1000,
-						"money": 4
-					},
-					{
-						"times"： 10000,
-						"money": 35
-					},
-					{
-						"times"： 100000,
-						"money": 300
 					}
 				],
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"      

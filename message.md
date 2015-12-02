@@ -4,31 +4,29 @@
 
 说明
 
-	【内部API】 创建一条用户提醒
+	【用户】 创建一条用户提醒。
+	目前此接口只有一个用处：用户从客户端申请某个dataitem的白名单。
 
 输入参数说明：	
 	
-	type: 消息类型
-	receiver: 消息接收者 (可选，如未提供，表示全部符合type的接受用户)
-	data: 消息内容, json格式，不同消息类型元素不同。此service不关心其元素。
-	
-	注意：此API是一个内部API，不通过网关暴露给外部。它接收的auth是username而不是加密后的token。
+	type: 消息类型，必选
+	（不同type有各自其它字段的的字段）
 
 输入样例：
 
 	POST /messages HTTP/1.1 
 	Accept: application/json
-	User: zhang3@example.com
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"type": "admin_broadcast",
-		"receiver": "li4@example.com",
-		"data": "bla bla ..."
+		"type": "apply_whitelist",
+		"repname": "repo001",
+		"itemname": "item123"
 	}
 
 输出样例：
 
-	messageid: 1234567
+	空
 
 ### GET /notification_stat
 
@@ -117,28 +115,43 @@
 		}
 	]
 
-### PUT /notification/:messageid/:action
+# Messages (kafka) producing and consuming
 
-说明
-
-	【用户】修改消息状态
-
-输入参数说明：
+	所有消息格式头：
+		version(int32): 4字节
+		type(int32): 4字节
 	
-	messageid: 消息id
-	action: 目前只支持read和unread
+	当前version必须为0
+	
+	在消息内容中字符串和byte数组的格式：
+		length(int32): 4字节
+		[字符串和byte数组内容]
 
-输入样例：
+## topic: repositories-events
 
-	PUT /notification/123456/read HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+### 新建一条用户提醒消息
 
-输出样例：
+	type: 0x00010000
 
-	空
+## topic: repositories-events
 
-# Messages
+### 增加tag
+
+	type: 0x00020000
+
+### 删除tag
+
+	type: 0x00020001
+
+### 删除dataitem
+
+	type: 0x00020002
+
+### 删除repository
+
+	type: 0x00020003
+
+# Messages Lib
 
 ## 初始化(golang)
 

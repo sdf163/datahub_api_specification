@@ -243,7 +243,7 @@ Example Request：
 		"tags":10
 		"label": {
 	        "sys": {
-	            "supply_style": "api"
+	            "supply_style": "flow"
 	        },
 	        "opt": {},
 	        "owner": {},

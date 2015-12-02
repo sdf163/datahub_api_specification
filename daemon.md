@@ -3,7 +3,7 @@
 
 - [GET] /daemon/id 获取user的daemonid。
 - [GET] /daemon/ep/:user 获取user的entrypoint。
-- [GET] /daemon/logs/:index 获取user的log。
+- [GET] /daemon/log/:index 获取user的log。
 
 ----------
 
@@ -78,7 +78,7 @@ Example Request：
 
 Example Request：
 
-	GET /daemon/logs/0?range=2 HTTP/1.1 
+	GET /daemon/log/0?range=2 HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 

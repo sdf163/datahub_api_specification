@@ -5,7 +5,8 @@
 说明
 
 	【用户】 创建一条用户提醒。
-	目前此接口只有一个用处：用户从客户端申请某个dataitem的白名单。
+	此接口主要作为一个public API给客户端使用，目前只有一个用处：用户从客户端申请某个dataitem的白名单。
+	内部接口需使用下面的kafka API通信。
 
 输入参数说明：	
 	
@@ -117,39 +118,60 @@
 
 # Messages (kafka) producing and consuming
 
-	所有消息格式头：
+	所有消息格式：
 		version(int32): 4字节
 		type(int32): 4字节
+		[具体消息内容]
 	
 	当前version必须为0
 	
-	在消息内容中字符串和byte数组的格式：
+	在消息内容中string的格式：
+		length(int16): 2字节
+		[string内容]
+	
+	在消息内容中bytes的格式：
 		length(int32): 4字节
-		[字符串和byte数组内容]
+		[bytes内容]
 
-## topic: repositories-events
+## topic: user-notification
 
 ### 新建一条用户提醒消息
 
 	type: 0x00010000
+	receiver(string): 接收者
+	data(bytes): json格式的具体notification内容
 
 ## topic: repositories-events
 
 ### 增加tag
 
 	type: 0x00020000
+	repname(string): 
+	itemname(string): 
+	tag(string): tag
+	time(string): 增加时间
 
 ### 删除tag
 
 	type: 0x00020001
+	repname(string): 
+	itemname(string): 
+	tag(string): 
+	time(string): 删除时间
 
 ### 删除dataitem
 
 	type: 0x00020002
+	repname(string): 
+	itemname(string): 者
+	time(string): 删除时间
 
 ### 删除repository
 
 	type: 0x00020003
+	repname(string): 
+	itemname(string): 
+	time(string): 删除时间
 
 # Messages Lib
 

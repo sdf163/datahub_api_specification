@@ -1,15 +1,23 @@
 # API 列表
 - GET /bill/:loginname/info 查看用户账户信息
 
-- GET /bill/:loginname/detail 查看用户账单明细
+- GET /bill/:loginname/recharge/detail 查看用户账单明细
 
-- PUT /bill/:loginname/recharge 充值
+- GET /bill/:loginname/trade/detail 查看用户交易明细
 
-- PUT /bill/:loginname/trade 购买交易
+- PUT /bill/:loginname/recharge 充值，提现
 
 - PUT /bill/:loginname/cancel 取消交易
 
 - PUT /bill/:loginname/status 退款审核
+
+- PUT /bill/:loginname/trade/init 发起购买交易
+
+- PUT /bill/:loginname/trade/commit 提交交易（交易结束）
+
+- PUT /bill/:loginname/trade/cancel 取消交易
+
+- PUT /bill/:loginname/trade/cancel/audit 取消交易审核
 
 ##指令：GET /bill/:loginname/info 查看用户账单信息
 	说明：
@@ -68,7 +76,7 @@
 		"code":0,"msg":"ok"
 		}
 
-##指令：GET /bill/:loginname/trade/detail 查看用户账单明细
+##指令：GET /bill/:loginname/trade/detail 查看用户交易明细
 	说明：
 		【自己，管理员】查看用户会员的相关信息
 	输入参数说明：

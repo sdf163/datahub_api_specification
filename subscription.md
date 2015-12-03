@@ -66,7 +66,7 @@
 	itemname: data item name
 	subtime: 订阅时间
 
-### GET /subscriptions/:repname (40)
+### GET /subscriptions/:repname (46)
 
 说明
 

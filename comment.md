@@ -27,7 +27,7 @@
 输出样例：
 
 
-	"commnetid" : 1234567
+	"commentid" : 1234567
 
 ### (B1) PUT /comment/:repname/:itemname
 
@@ -37,7 +37,7 @@
 
 输入参数说明：
 	
-	commnetid: 将被修改的评论id
+	commentid: 将被修改的评论id
 	content: 更新后的内容
 
 输入样例：
@@ -47,7 +47,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"commnetid": 123456,
+		"commentid": 123456,
 		"content": "bla bla ..."
 	}
 

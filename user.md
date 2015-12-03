@@ -246,8 +246,8 @@
 		修改用户的repo的使用量
 		注：只允许本人或者管理员修改
 	输入参数说明：
-		private:私有repo配额数量 增量（如果增加1个为1，如果减少1个为-1）
-		public:共有repo配额数量 增量（同上）
+		private:私有repo使用数量
+		public:共有repo使用数量）
 		注：输入参数可单独使用
 	Example Request：
 		POST /quota/foo/repository/use HTTP/1.1 
@@ -368,7 +368,7 @@
 	说明：
  	   修改用户的已下载量
 	输入参数说明：
-   	 	use:下载数增量
+   	 	use:下载数量
 	Example Request：
     	POST /quota/foo/pullnum/use HTTP/1.1 
    		Content-Type:text/json;charset=UTF-8

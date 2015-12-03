@@ -57,6 +57,7 @@ code 及 msg
 	1009			query %s no found			    	数据库查询xxx没有找到
 	1010			file operation				    	文件操作失败
 	1400			no parameter		    			参数缺失
+	1011			server link error				连接其他服务错误
     6001            empty user is not allowed           用户名不能为空
     6002            user not registered yet             用户未注册
     6003            user doesn't have any entrypoint    用户没有Entrypoint

@@ -30,16 +30,16 @@
 		Authorization: token
 		USER:foo
 	返回数据说明：
-		actual_balance:余额
-		available_balance:可用余额
-		credit_limit:信用额度
+		actualBalance:余额
+		availableBalance:可用余额
+		creditLimit:信用额度
 
 	返回数据示例：
 
 		{"data":{
-			"actual_balance":1000,
-			"available_balance":800,
-			"credit_limit":500
+			"actualBalance":1000,
+			"availableBalance":800,
+			"creditLimit":500
 			},
 		"code":0,"msg":"ok"
 		}
@@ -62,16 +62,16 @@
 			"type":1
 		}
 	返回数据说明：
-		order_id:订单号
-		recharge_time:时间
-		recharge_type:类型，1：充值；2：提现
-		recharge_amount:金额
+		orderId:订单号
+		rechargeTime:时间
+		rechargeType:类型，1：充值；2：提现
+		rechargeAmount:金额
 		channel:渠道
 		
 	返回数据示例：
 
-		{"data":[{"order_id":"111","recharge_time":"2015-09-02","recharge_type":1,"recharge_amount":100,"channel":"网银"},
-				 {"order_id":"112","recharge_time":"2015-09-03","recharge_type":1,"recharge_amount":200,"channel":"网银"},
+		{"data":[{"orderId":"111","rechargeTime":"2015-09-02","rechargeType":1,"rechargeAmount":100,"channel":"网银"},
+				 {"orderId":"112","rechargeTime":"2015-09-03","rechargeType":1,"rechargeAmount":200,"channel":"网银"},
 			    ]
 		"code":0,"msg":"ok"
 		}
@@ -97,21 +97,21 @@
 			"status":"2"
 		}
 	返回数据说明：
-		order_id:订单号
-		plan_id:套餐计划ID
-		trade_item:交易的item
-		trade_time:交易时间
-		effect_time:生效时间
-		trade_type:交易类型，1：消费；2：收入
+		orderId:订单号
+		planId:套餐计划ID
+		tradeItem:交易的item
+		tradeTime:交易时间
+		effectTime:生效时间
+		tradeType:交易类型，1：消费；2：收入
 		status:账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
-		trade_user:与当前用户交易的用户
-		trade_amount:交易金额
+		tradeUserName:与当前用户交易的用户
+		tradeAmount:交易金额
 		
 
 	返回数据示例：
 
-		{"data":[{"order_id":111,"plan_id":"11","trade_item":"repo1_item","trade_time":"2015-09-02","effect_time":"2015-09-10""trade_type":2,"status":2,"trade_user":"user1","trade_amount":100},
-				 {"order_id":112,"plan_id":"21","trade_item":"repo2_item","trade_time":"2015-09-02","effect_time":"",trade_type":1,"status":1,"trade_user":"me","trade_amount":100},
+		{"data":[{"orderId":111,"planId":"11","tradeItem":"repo1_item","tradeTime":"2015-09-02","effectTime":"2015-09-10""tradeType":2,"status":2,"tradeUserName":"user1","tradeAmount":100},
+				 {"orderId":112,"planId":"21","tradeItem":"repo2_item","tradeTime":"2015-09-02","effectTime":"",tradeType":1,"status":1,"tradeUserName":"me","tradeAmount":100},
 			    ]
 		"code":0,"msg":"ok"
 		}

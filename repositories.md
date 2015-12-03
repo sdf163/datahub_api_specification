@@ -226,17 +226,20 @@ Example Request：
 					{
 						"time"： 1,
 						"unit": "h",
-						"money": 5
+						"money": 5,
+						"expire":30
 					},
 					{
 						"time"： 10,
 						"unit": "h",
-						"money": 50
+						"money": 50,
+						"expire":30
 					},
 					{
 						"time"： 100,
 						"unit": "h",
-						"money": 400
+						"money": 400,
+						"expire":30
 					}
 				],		
 	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
@@ -302,17 +305,20 @@ Example Request：
 					{
 						"time"： 1,
 						"unit": "h",
-						"money": 5
+						"money": 5,
+						"expire":30
 					},
 					{
 						"time"： 10,
 						"unit": "h",
-						"money": 50
+						"money": 50,
+						"expire":30
 					},
 					{
 						"time"： 100,
 						"unit": "h",
-						"money": 400
+						"money": 400,
+						"expire":30
 					}
 				],
         "label": {
@@ -335,15 +341,18 @@ Example Request：
 		"price":[
 					{
 						"times"： 1000,
-						"money": 5
+						"money": 5,
+						"expire":30
 					},
 					{
 						"times"： 10000,
-						"money": 45
+						"money": 45,
+						"expire":30
 					},
 					{
 						"times"： 100000,
-						"money": 400
+						"money": 400,
+						"expire":30
 					}
 				],
         "label": {
@@ -366,15 +375,18 @@ Example Request：
 		"price":[
 					{
 						"times"： 1000,
-						"money": 5
+						"money": 5,
+						"expire":30
 					},
 					{
 						"times"： 10000,
-						"money": 45
+						"money": 45,
+						"expire":30
 					},
 					{
 						"times"： 100000,
-						"money": 400
+						"money": 400,
+						"expire":30
 					}
 				],
         "label": {
@@ -417,15 +429,18 @@ Example Request：
 		"price":[
 					{
 						"times"： 1000,
-						"money": 5
+						"money": 5,
+						"expire":30
 					},
 					{
 						"times"： 10000,
-						"money": 45
+						"money": 45,
+						"expire":30
 					},
 					{
 						"times"： 100000,
-						"money": 400
+						"money": 400,
+						"expire":30
 					}
 				],
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"      

@@ -187,6 +187,8 @@ code 及 msg
 
 **编号45 [get /subscription_stat/:repname](/subscription.md/)** 【任意】返回该repositories的订阅量
 
+**编号40 [get /subscriptions/:repname](/subscription.md/)** 【需求者】[auth]查询在某个repository中所有订阅的DataItem
+
 ### transactions ###
 编号：5
 

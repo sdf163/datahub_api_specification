@@ -123,7 +123,7 @@
 	输入参数说明：
 		order_id:订单
 		amount:金额
-		type:类型，1：充值；2：提现;
+		type:类型，1：充值；2：提现; 3：扣年费
 		channel:渠道
 	Example Request：
 		PUT /bill/foo/recharge HTTP/1.1 

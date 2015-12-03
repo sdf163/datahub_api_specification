@@ -66,6 +66,35 @@
 	itemname: data item name
 	subtime: 订阅时间
 
+### GET /subscriptions/:repname (40)
+
+说明
+
+	【需求者】查询在指定repository中所有订阅的DataItem
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	GET /subscriptions/repo001 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	[
+		{
+			"itemname":"bear",
+			"subtime":"2015-11-08"
+		},
+		{
+			"itemname":"triger",
+			"subtime":"2015-11-08"
+		}
+	]
+
 ### GET /subscription/:repname/:itemname (41)
 
 说明

@@ -82,7 +82,7 @@
 	输入参数说明：
 		start_time:账单开始时间
 		end_time:账单结束时间
-		trade_type:交易类型，1：充值；2：消费；3：收入
+		trade_type:交易类型，1：消费；2：收入
 		status：账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
 		
 	Example Request：
@@ -123,7 +123,7 @@
 	输入参数说明：
 		order_id:订单
 		amount:金额
-		type:类型，1：充值；2：提现
+		type:类型，1：充值；2：提现;
 		channel:渠道
 	Example Request：
 		PUT /bill/foo/recharge HTTP/1.1 
@@ -141,7 +141,24 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
-		
+#指令：PUT /bill/:loginname/creditLimit
+	说明：
+		【管理员】修改用户信用额度
+	输入参数说明：
+		creditLimit:信用额度（可透支金额）
+	Example Request：
+		PUT /bill/foo/creditLimit HTTP/1.1 
+		Accept: text/json;charset=UTF-8
+		Authorization: token
+		USER:admin
+		{
+			"creditLimit":"1000"
+		}
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例：
+		{"code":0,"msg":"ok"}
 #指令：PUT /bill/:loginname/trade/init 发起购买交易
 	说明：
 		【管理员,自己】购买交易，执行操作成功后，会生成两条记录，一个是消费用户的消费记录，一个是商家的收费记录
@@ -225,5 +242,4 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-	返回数据示例：
-		{"code":0,"msg":"ok"}
+

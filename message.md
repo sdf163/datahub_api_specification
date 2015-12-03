@@ -1,6 +1,6 @@
 # Messages
 
-### POST /messages
+### POST /notifications
 
 说明
 
@@ -15,7 +15,7 @@
 
 输入样例：
 
-	POST /messages HTTP/1.1 
+	POST /notifications HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	

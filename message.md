@@ -260,7 +260,7 @@ Example:
 
 json消息格式被视为自定义格式。json将被转化为bytes进行传输。
 
-## topic: user_notifications_json
+## topic: to_notifications.json
 
 ### 新建一条用户提醒消息
 
@@ -273,7 +273,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 
-## topic: repositories_events_json
+## topic: to_subscriptions.json
 
 ### 增加tag
 
@@ -329,7 +329,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		length(int32): 4字节
 		[bytes内容]
 
-## topic: user_notifications
+## topic: to_notifications
 
 ### 新建一条用户提醒消息
 
@@ -337,7 +337,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	receiver(string): 接收者
 	data(bytes): json格式的具体notification内容
 
-## topic: repositories_events
+## topic: to_subscriptions
 
 ### 增加tag
 

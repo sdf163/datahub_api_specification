@@ -11,7 +11,7 @@
 输入参数说明：	
 	
 	type: 消息类型，必选
-	（不同type有各自其它字段的的字段）
+	data: （不同type有各自不同的data）
 
 输入样例：
 
@@ -21,8 +21,10 @@
 	
 	{
 		"type": "apply_whitelist",
-		"repname": "repo001",
-		"itemname": "item123"
+		"data": {
+			"repname": "repo001",
+			"itemname": "item123"
+		}
 	}
 
 输出样例：

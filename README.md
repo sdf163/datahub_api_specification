@@ -69,6 +69,7 @@ code 及 msg
     8004		pwd wrong			原始密码错误
     8005		no login			未登录
     8006		quota exist			用户配额信息已存在
+    8007		Sorry, your credit is running low 余额不足
 
 ## DataHub API内容 ##
 

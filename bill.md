@@ -5,6 +5,8 @@
 
 - GET /bill/:loginname/trade/detail 查看用户交易明细
 
+- PUT /bill/:loginname/creditLimit 修改信用额度
+
 - PUT /bill/:loginname/recharge 充值，提现
 
 - PUT /bill/:loginname/cancel 取消交易

@@ -84,7 +84,7 @@
 	输入参数说明：
 		start_time:账单开始时间
 		end_time:账单结束时间
-		trade_type:交易类型，1：消费；2：收入
+		trade_type:交易类型，1：收入；2：消费
 		status：账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
 		
 	Example Request：
@@ -104,7 +104,7 @@
 		tradeItem:交易的item
 		tradeTime:交易时间
 		effectTime:生效时间
-		tradeType:交易类型，1：消费；2：收入
+		tradeType:交易类型，1：收入；2：消费
 		status:账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
 		tradeUserName:与当前用户交易的用户
 		tradeAmount:交易金额
@@ -134,10 +134,11 @@
 		USER:admin
 		{
 			"order_id":"recharge_11",
-			"trade_amount":"100",
+			"amount":"100",
 			"type":1,
 			"channel":"支付宝"
 		}
+
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息

@@ -29,15 +29,20 @@
 
 ## APIs
 
-### GET /subscriptions (40)
+### GET /subscriptions?repname={repname}&itemname={itemname} (40)
 
 说明
 
 	【需求者】查询所有订阅的DataItem
+	
+	如果repname和itemname都没有被指定，返回当前用户的所有订阅
+	如果repname被指定但itemname没有被指定，返回当前用户在repname中的订阅
+	如果repname和itemname都被指定，返回当前用户在repname/itemname上的订阅
 
 输入参数说明：
 	
-	无
+	repname: 可选，但如果itemname参数存在，则repname也必须存在
+	itemname: 可选
 
 输入样例：
 
@@ -66,7 +71,7 @@
 	itemname: data item name
 	subtime: 订阅时间
 
-### GET /subscriptions/:repname (46)
+### GET /subscriptions/:repname (46)(将废除，合并到40中)
 
 说明
 
@@ -95,7 +100,7 @@
 		}
 	]
 
-### GET /subscription/:repname/:itemname (41)
+### GET /subscription/:repname/:itemname (41) (将废除)
 
 说明
 
@@ -138,7 +143,7 @@
         
 	null
 
-### DELETE /subscription/:repname/:itemname (43)
+### DELETE /subscription/:repname/:itemname (43) (将废除)
 
 说明
 

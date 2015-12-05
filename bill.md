@@ -29,7 +29,6 @@
 	Example Request：
 		GET /bill/foo/info HTTP/1.1 
 		Accept: text/json;charset=UTF-8
-		Authorization: token
 		USER:foo
 	返回数据说明：
 		actualBalance:余额
@@ -51,18 +50,12 @@
 	输入参数说明：
 		start_time:账单开始时间
 		end_time:账单结束时间
-		type:类型，1：充值；2：提现
+		type:类型，1：充值；2：提现；3：扣年费
 		
 	Example Request：
-		GET /bill/foo/recharge/detail HTTP/1.1 
-		Accept: text/json;charset=UTF-8
-		Authorization: token
+		GET /bill/foo/recharge/detail?start_time=2015-09-02&end_time=2015-10-01&type=1 HTTP/1.1 
 		USER:foo
-		{
-			"start_time":"2015-09-02",
-			"end_time":"2015-10-01",
-			"type":1
-		}
+		
 	返回数据说明：
 		orderId:订单号
 		rechargeTime:时间
@@ -86,18 +79,11 @@
 		end_time:账单结束时间
 		trade_type:交易类型，1：收入；2：消费
 		status：账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
-		
+		注：参数可单独使用
 	Example Request：
-		GET /bill/foo/trade/detail HTTP/1.1 
-		Accept: text/json;charset=UTF-8
-		Authorization: token
+		GET /bill/foo/trade/detail?start_time=2015-09-02&end_time=2015-10-01 &trade_type=1&status=2 HTTP/1.1 
 		USER:foo
-		{
-			"start_time":"2015-09-02",
-			"end_time":"2015-10-01",
-			"trade_type":"1",
-			"status":"2"
-		}
+		
 	返回数据说明：
 		orderId:订单号
 		planId:套餐计划ID
@@ -179,7 +165,11 @@
 		Authorization: token
 		USER:admin
 		{
-			"order_id":"trade_11","plan_id":""111","trade_item":"repo1_item1","trade_amount":"100","trade_user":"user1"
+			"order_id":"trade_11",
+			"plan_id":"111",
+			"trade_item":"repo1_item1",
+			"trade_amount":"100",
+			"trade_user":"liuxy10@asiainfo.com"
 		}
 	返回数据说明：
 		code:状态码
@@ -233,14 +223,14 @@
 		【管理员,自己】审核退款交易：退款审核通过后会将钱退换给消费者账户
 	输入参数说明：
 		order_id:取消交易的订单ID
-		status：账单状态，4取消成功;5：取消失败
+		status：账单状态，5取消成功;6：取消失败
 	Example Request：
 		PUT /bill/foo/trade/cancel/audit HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin
 		{
-			"order_id":"110","status":"4"
+			"order_id":"110","status":"5"
 		}
 	返回数据说明：
 		code:状态码

@@ -51,15 +51,14 @@
 		USER:foo
 		
 	返回数据说明：
+		Id:流水号
 		orderId:订单号
 		planId:套餐计划ID
 		tradeTime:时间
 		tradeItem:交易的item
-		effectTime:生效时间
-		opType:类型，1：充值；2：提现；3：扣年费；4：收入；5：支出
+		opType:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出生效；9：售出失效；10：售出退款
 		tradeAmount:金额
 		channel:渠道
-		status:状态 1:待生效;2：生效；3:失效；4：退款
 		tradeUser:交易用户
 		actualAmount:实际金额
 		availableAmount：可用金额
@@ -67,8 +66,8 @@
 	
 	返回数据示例：
 
-		{"data":[{"orderId":"111","planId":"11","tradeTime":"2015-09-02","tradeItem":"repo1_item","effectTime":"2015-09-02","opType":1,"tradeAmount":100,"channel":"网银","status":"1","tradeUser":"foo","actualAmount":1000,"availableAmount":800},
-				 {"orderId":"112","planId":"11","tradeTime":"2015-09-03","tradeItem":"repo1_item","effectTime":"2015-09-02","opType":1,"tradeAmount":200,"channel":"网银","status":"1","tradeUser":"foo","actualAmount":1000,"availableAmount":600},
+		{"data":[{"Id":"123","orderId":"111","planId":"11","tradeTime":"2015-09-02","tradeItem":"repo1_item","opType":1,"tradeAmount":100,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":800},
+				 {"Id":"124","orderId":"112","planId":"11","tradeTime":"2015-09-03","tradeItem":"repo1_item","opType":1,"tradeAmount":200,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":600},
 			    ]
 		"code":0,"msg":"ok"
 		}
@@ -119,7 +118,7 @@
 		{"code":0,"msg":"ok"}
 #指令：PUT /bill/:loginname/trade/init 发起购买交易
 	说明：
-		【管理员】购买交易，执行操作成功后，会生成两条记录，一个是消费用户的消费记录，一个是商家的收费记录
+		【管理员】购买交易，执行操作成功后，会生成一条记录，消费用户的消费记录，会扣取消费用户的可用余额
 					   如果购买金额不足，会提示余额不足，交易失败
 					   loginname：购买方
 	输入参数说明：
@@ -141,19 +140,20 @@
 			"trade_user":"liuxy10@asiainfo.com"
 		}
 	返回数据说明：
-		code:状态码
+		code:状态码（0：成功；8007：余额不足）
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 
 #指令：PUT /bill/:loginname/trade/commit 提交交易（交易结束）
 	说明：
-		【管理员】购买交易，执行操作成功后，会生成两条记录，一个是消费用户的消费记录，一个是商家的收费记录
-					   如果购买金额不足，会提示余额不足，交易失败
-					   loginname：购买方
+		【管理员】购买交易
+			   如果交易成功（status=1），会扣取消费用户的实际余额，并增加销售用户的实际余额，等30天后自动将销售用户的可用余额增加
+			   如果交易失败（status=2）（交易成功30天内），会将消费用户的可用余额退还，扣减销售用户的实际余额
+			   loginname：购买方
 	输入参数说明：
 		order_id:订单ID
-		status：账单状态，2：生效；3:失效
+		status：账单状态，1：生效；2:失效
 	Example Request：
 		PUT /bill/foo/trade/commit HTTP/1.1 
 		Accept: text/json;charset=UTF-8
@@ -170,7 +170,7 @@
 		
 #指令：PUT /bill/:loginname/trade/cancel 取消交易
 	说明：
-		【管理员】取消交易，会产生退款记录，会将钱退换给消费者账户
+		【管理员】取消交易，会产生退款记录，将消费用户的可用余额和实际余额退还，销售用户的实际余额与可用余额扣减
 	输入参数说明：
 		order_id:取消交易的订单ID
 	Example Request：

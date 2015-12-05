@@ -1,6 +1,6 @@
 # Messages
 
-### POST /messages
+### POST /notifications
 
 说明
 
@@ -11,18 +11,20 @@
 输入参数说明：	
 	
 	type: 消息类型，必选
-	（不同type有各自其它字段的的字段）
+	data: （不同type有各自不同的data）
 
 输入样例：
 
-	POST /messages HTTP/1.1 
+	POST /notifications HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
 		"type": "apply_whitelist",
-		"repname": "repo001",
-		"itemname": "item123"
+		"data": {
+			"repname": "repo001",
+			"itemname": "item123"
+		}
 	}
 
 输出样例：
@@ -116,63 +118,6 @@
 		}
 	]
 
-# Messages (kafka) producing and consuming
-
-	所有消息格式：
-		version(int32): 4字节
-		type(int32): 4字节
-		[具体消息内容]
-	
-	当前version必须为0
-	
-	在消息内容中string的格式：
-		length(int16): 2字节
-		[string内容]
-	
-	在消息内容中bytes的格式：
-		length(int32): 4字节
-		[bytes内容]
-
-## topic: user-notification
-
-### 新建一条用户提醒消息
-
-	type: 0x00010000
-	receiver(string): 接收者
-	data(bytes): json格式的具体notification内容
-
-## topic: repositories-events
-
-### 增加tag
-
-	type: 0x00020000
-	repname(string): 
-	itemname(string): 
-	tag(string): tag
-	time(string): 增加时间
-
-### 删除tag
-
-	type: 0x00020001
-	repname(string): 
-	itemname(string): 
-	tag(string): 
-	time(string): 删除时间
-
-### 删除dataitem
-
-	type: 0x00020002
-	repname(string): 
-	itemname(string): 者
-	time(string): 删除时间
-
-### 删除repository
-
-	type: 0x00020003
-	repname(string): 
-	itemname(string): 
-	time(string): 删除时间
-
 # Messages Lib
 
 ## 初始化(golang)
@@ -209,7 +154,7 @@
 
 ## 消息发送
 
-目前消息支持http和自定义格式。每种格式都支持同步和异步发送。
+目前消息支持http和自定义格式。每种格式都支持同步和异步发送。但是同步的意义对于http和自定义格式有所不同。对于http发送，同步意味着发送者将得到一个消息接受者的回应。对于自定义格式，同步仅仅意味着发送者得到了消息队列服务器的回应(成功或不成功)。
 
 在以下示例中，[]byte("")表示messsage key，在多数情况下，它可以被忽略。
 	
@@ -269,7 +214,10 @@
 
 ```go
 	type MassageListener interface {
-		OnMessage(key, value []byte, topic string, partition int32, offset int64)
+		// return whether or not the offset will be marked in server
+		OnMessage(key, value []byte, topic string, partition int32, offset int64) bool
+		
+		// return whether or not to stop listenning 
 		OnError(error) bool
 	}
 ```
@@ -285,13 +233,14 @@ Example:
 		return &MyMesssageListener{name: name}
 	}
 	
-	func (listener *MyMesssageListener) OnMessage(key, value []byte, topic string, partition int32, offset int64) {
+	func (listener *MyMesssageListener) OnMessage(key, value []byte, topic string, partition int32, offset int64) bool {
 		log.Debugf("%s received: (%d) message: %s", listener.name, offset, string(value))
+		return true // to save offset on server
 	}
 	
 	func (listener *MyMesssageListener) OnError(err error) bool {
 		log.Debugf("api response listener error: %s", err.Error())
-		return false
+		return false // will not stop listenning
 	}
 ```
 	
@@ -307,3 +256,115 @@ Example:
 	}
 ```
 
+# json消息格式 (目前在使用)
+
+json消息格式被视为自定义格式。json将被转化为bytes进行传输。
+
+## topic: to_notifications.json
+
+### 新建一条用户提醒消息
+
+	{
+		"type": "0x00010000",
+		"receiver": "zhang3@example.com",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			...
+		}
+	}
+
+## topic: to_subscriptions.json
+
+### 增加tag
+
+	{
+		"type": "0x00020000",
+		"repname": "repo001",
+		"itemname": "item002",
+		"tag": "tag003",
+		"time": "2015-11-10T15:06:09Z08:00"
+	}
+
+### 删除tag
+
+	{
+		"type": "0x00020001",
+		"repname": "repo001",
+		"itemname": "item002",
+		"tag": "tag003",
+		"time": "2015-11-10T15:06:09Z08:00"
+	}
+
+### 删除dataitem
+
+	{
+		"type": "0x00020002",
+		"repname": "repo001",
+		"itemname": "item002",
+		"time": "2015-11-10T15:06:09Z08:00"
+	}
+
+### 删除repository
+
+	{
+		"type": "0x00020003",
+		"repname": "repo001",
+		"time": "2015-11-10T15:06:09Z08:00"
+	}
+
+# 纯自定义消息格式（草稿，未应用）
+
+	所有消息格式：
+		version(int32): 4字节
+		type(int32): 4字节
+		[具体消息内容]
+	
+	当前version必须为0
+	
+	在消息内容中string的格式：
+		length(int16): 2字节
+		[string内容]
+	
+	在消息内容中bytes的格式：
+		length(int32): 4字节
+		[bytes内容]
+
+## topic: to_notifications
+
+### 新建一条用户提醒消息
+
+	type: 0x00010000
+	receiver(string): 接收者
+	data(bytes): json格式的具体notification内容
+
+## topic: to_subscriptions
+
+### 增加tag
+
+	type: 0x00020000
+	repname(string): 
+	itemname(string): 
+	tag(string): tag
+	time(string): 增加时间
+
+### 删除tag
+
+	type: 0x00020001
+	repname(string): 
+	itemname(string): 
+	tag(string): 
+	time(string): 删除时间
+
+### 删除dataitem
+
+	type: 0x00020002
+	repname(string): 
+	itemname(string): 者
+	time(string): 删除时间
+
+### 删除repository
+
+	type: 0x00020003
+	repname(string): 
+	itemname(string): 
+	time(string): 删除时间

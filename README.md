@@ -57,6 +57,7 @@ code 及 msg
 	1009			query %s no found			    	数据库查询xxx没有找到
 	1010			file operation				    	文件操作失败
 	1400			no parameter		    			参数缺失
+	1011			server link error				连接其他服务错误
     6001            empty user is not allowed           用户名不能为空
     6002            user not registered yet             用户未注册
     6003            user doesn't have any entrypoint    用户没有Entrypoint
@@ -68,6 +69,7 @@ code 及 msg
     8004		pwd wrong			原始密码错误
     8005		no login			未登录
     8006		quota exist			用户配额信息已存在
+    8007		Sorry, your credit is running low 余额不足
 
 ## DataHub API内容 ##
 
@@ -187,6 +189,8 @@ code 及 msg
 
 **编号45 [get /subscription_stat/:repname](/subscription.md/)** 【任意】返回该repositories的订阅量
 
+**编号40 [get /subscriptions/:repname](/subscription.md/)** 【需求者】[auth]查询在某个repository中所有订阅的DataItem
+
 ### transactions ###
 编号：5
 
@@ -280,15 +284,13 @@ code 及 msg
 
 描述文件：messages.md
 
-**编号90 [post /notifications](/messages.md/)** 【内部API】[auth] 创建一条用户提醒
+**编号90 [post /notifications](/messages.md/)** 【用户】[auth] 创建一条用户提醒
 
-**编号91 [get /notification_stat](/messages.md/)** 【用户】[auth] 取得自己的提醒汇总统计
+**编号91 [get /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}](/messages.md/)** 【用户】[auth] 返回当前用户接受到的消息列表 
 
-**编号92 [delete /notification_stat](/messages.md/)** 【用户】[auth] 清除自己的提醒汇总统计
+**编号92 [get /notification_stat](/messages.md/)** 【用户】[auth] 取得自己的提醒汇总统计
 
-**编号93 [get /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}](/messages.md/)** 【用户】[auth] 返回当前用户接受到的消息列表 
-
-**编号94 [put /notification/:messageid/:action](/messages.md/)** 【用户】[auth] 修改消息状态
+**编号93 [delete /notification_stat](/messages.md/)** 【用户】[auth] 清除自己的提醒汇总统计
 
 ### star ###
 编号：A

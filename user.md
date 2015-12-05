@@ -9,7 +9,7 @@
 
 - [DELETE] /users/:loginname 删除用户
 
-- [PUT] /users/:loginname/status 激活用户
+- [PUT] /users/:loginname/status 修改用户状态
 
 - [PUT] /users/:loginname/pwd 修改密码
 

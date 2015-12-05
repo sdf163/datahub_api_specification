@@ -236,6 +236,8 @@ code 及 msg
 
 **编号72 [get /daemon/id](/daemon.md#指令get-daemonid-获取user的daemonid)** 【Server】 给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份
 
+**编号73 [get /daemon/log/:index](/daemon.md#指令get-daemonlogindex-获取用户的daemon日志)** 【Server】 返回以index为起始索引的用户daemon日志，索引范围为[index, index+9]。
+
 ### users ###
 编号：8
 

@@ -67,7 +67,7 @@ Example Request：
 
 
 
-## 指令：GET /daemon/logs/:index 获取用户的daemon日志。
+## 指令：GET /daemon/log/:index 获取用户的daemon日志。
 
 说明
 	返回用户的日志，索引范围为[index, index+9]。

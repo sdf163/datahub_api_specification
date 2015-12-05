@@ -70,15 +70,15 @@ Example Request：
 ## 指令：GET /daemon/log/:index 获取用户的daemon日志。
 
 说明
-	返回用户的日志，索引范围为[index, index+9]。
+	返回以index为起始索引的用户daemon日志，索引范围为[index, index+9]。
 
 输入参数说明：
 	
-    range： 可选参数，指定索引范围，不指定则以index开始索引，返回10条。
+    range： 可选参数，指定索引范围，若不指定则以index开始索引，返回10条。
 
 Example Request：
 
-	GET /daemon/log/0?range=2 HTTP/1.1 
+	GET /daemon/log/5?range=2 HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 

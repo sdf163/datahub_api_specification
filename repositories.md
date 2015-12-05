@@ -225,19 +225,19 @@ Example Request：
 		"price":[
 					{
 						"time"： 1,
-						"unit": "h",
+						"unit": "day",
 						"money": 5,
 						"expire":30
 					},
 					{
 						"time"： 10,
-						"unit": "h",
+						"unit": "day",
 						"money": 50,
 						"expire":30
 					},
 					{
 						"time"： 100,
-						"unit": "h",
+						"unit": "day",
 						"money": 400,
 						"expire":30
 					}
@@ -304,19 +304,19 @@ Example Request：
 		"price":[
 					{
 						"time"： 1,
-						"unit": "h",
+						"unit": "day",
 						"money": 5,
 						"expire":30
 					},
 					{
 						"time"： 10,
-						"unit": "h",
+						"unit": "day",
 						"money": 50,
 						"expire":30
 					},
 					{
 						"time"： 100,
-						"unit": "h",
+						"unit": "day",
 						"money": 400,
 						"expire":30
 					}

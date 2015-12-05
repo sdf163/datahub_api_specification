@@ -223,7 +223,7 @@ code 及 msg
 
 描述文件：heartbeat.md
 
-**编号61 post /heartbeat** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
+**编号61 [post /heartbeat](/heartbeat.md#指令post-heartbeat-发送心跳信息)** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
 
 ### daemon ###
 编号：7
@@ -232,9 +232,9 @@ code 及 msg
 
 描述文件：daemon.md
 
-**编号71 get /daemon/ep/:user** 【Server】返回作为数据提供方user的入口地址
+**编号71 [get /daemon/ep/:user](/daemon.md#指令get-daemonepuser-获取user的入口地址)** 【Server】返回作为数据提供方user的入口地址
 
-**编号72 get /daemon/id** 【Server】 给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份
+**编号72 [get /daemon/id](/daemon.md#指令get-daemonid-获取user的daemonid)** 【Server】 给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份
 
 ### users ###
 编号：8

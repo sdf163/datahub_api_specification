@@ -93,7 +93,7 @@
 	itemname: data item name
 	subtime: 订阅时间
 
-### GET /subscriptions/:repname (46)(将废除，合并到40中)
+### ~~~GET /subscriptions/:repname~~~ (46)(将废除，合并到40中)
 
 说明
 
@@ -122,7 +122,7 @@
 		}
 	]
 
-### GET /subscription/:repname/:itemname (41) (将废除，将并入40)
+### ~~~GET /subscription/:repname/:itemname~~~ (41) (将废除，将并入40)
 
 说明
 
@@ -165,7 +165,7 @@
         
 	null
 
-### DELETE /subscription/:repname/:itemname (43) (将废除，将被46取代)
+### ~~~DELETE /subscription/:repname/:itemname~~~ (43) (将废除，将被46取代)
 
 说明
 

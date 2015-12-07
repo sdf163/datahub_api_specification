@@ -177,19 +177,15 @@ code 及 msg
 
 描述文件：subscriptions.md
 
-**编号40 [get /subscriptions](/subscription.md/)** 【需求者】[auth]查询所有订阅的DataItem
-
-**编号41 [get /subscription/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 查询该DataItem是否订阅过 **注意没有s**
+**编号40 [get /subscriptions?asconsumer=[0|1]&repname={repname}&itemname={itemname}](/subscription.md/)** 【需求者】[auth]查询所有订阅的DataItem 【提供者】查询所有被被人订阅的DataItem
 
 **编号42 [post /subscription/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 订阅该DataItem **注意没有s**
-
-**编号43 [delete /subscription/:repname/:itemname](/subscription.md/)** 【需求者】[auth] 取消订阅该DataItem **注意没有s**
 
 **编号44 [get /subscription_stat/:repname/:itemname](/subscription.md/)** 【任意】返回该DataItem的订阅量
 
 **编号45 [get /subscription_stat/:repname](/subscription.md/)** 【任意】返回该repositories的订阅量
 
-**编号40 [get /subscriptions/:repname](/subscription.md/)** 【需求者】[auth]查询在某个repository中所有订阅的DataItem
+**编号47 [put /subscription/:subid](/subscription.md/)** 【需求者】取消订阅cancel 【提供者】投诉订阅flag 【管理员】取消订阅remove
 
 ### transactions ###
 编号：5

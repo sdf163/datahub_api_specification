@@ -161,9 +161,12 @@
 	{
 		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
 	}
+	
 输出样例：
         
-	null
+	{
+		"subscriptionid": 1234567890
+	}
 
 ### (43) ~~~DELETE /subscription/:repname/:itemname~~~  (将废除，将被47取代)
 

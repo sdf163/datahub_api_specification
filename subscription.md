@@ -29,7 +29,7 @@
 
 ## APIs
 
-### GET /subscriptions?asconsumer=[0|1]&repname={repname}&itemname={itemname} (40)
+### (40) GET /subscriptions?asconsumer=[0|1]&repname={repname}&itemname={itemname} 
 
 说明
 
@@ -93,7 +93,7 @@
 	itemname: data item name
 	subtime: 订阅时间
 
-### ~~~GET /subscriptions/:repname~~~ (46)(将废除，合并到40中)
+### (46) ~~~GET /subscriptions/:repname~~~ (将废除，合并到40中)
 
 说明
 
@@ -122,7 +122,7 @@
 		}
 	]
 
-### ~~~GET /subscription/:repname/:itemname~~~ (41) (将废除，将并入40)
+### (41) ~~~GET /subscription/:repname/:itemname~~~  (将废除，将并入40)
 
 说明
 
@@ -142,7 +142,7 @@
 
 	"subscribed":true
 
-### POST /subscription/:repname/:itemname (42)
+### (42) POST /subscription/:repname/:itemname 
 
 说明
 
@@ -165,7 +165,7 @@
         
 	null
 
-### ~~~DELETE /subscription/:repname/:itemname~~~ (43) (将废除，将被46取代)
+### (43) ~~~DELETE /subscription/:repname/:itemname~~~  (将废除，将被47取代)
 
 说明
 
@@ -185,7 +185,7 @@
         
 	null
 
-### GET /subscription_stat/:repname/:itemname (44)
+### (44) GET /subscription_stat/:repname/:itemname 
 
 说明
 
@@ -204,7 +204,7 @@
 
 	"numsubs":567
 
-### GET /subscription_stat/:repname (45)
+### (45) GET /subscription_stat/:repname 
 
 说明
 
@@ -223,13 +223,13 @@
 
 	"numsubs":567
 
-### PUT /subscription/:subid?action=[cancel|remove|flag] (46)
+### (47) PUT /subscription/:subid 
 
 说明
 
-	【需求者】取消订阅cancel
-	【提供者】投诉订阅flag
-	【管理员】取消订阅remove
+	【需求者】取消订阅action=cancel
+	【提供者】投诉订阅action=flag
+	【管理员】取消订阅action=remove
 
 输入参数说明：
 	
@@ -240,6 +240,11 @@
 	PUT /subscription/1234567 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"action": "cancel",
+		"reason": "bla bla ..."
+	}
 
 输出样例：
         

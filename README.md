@@ -223,7 +223,7 @@ code 及 msg
 
 描述文件：heartbeat.md
 
-**编号61 [post /heartbeat](/heartbeat.md#指令post-heartbeat-发送心跳信息)** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
+**编号61 [post /heartbeat](/heartbeat.md#指令post-heartbeat-发送心跳信息)** 【Daemon】心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况，上报自己的entrypoint；三为上传daemon的日志。
 
 ### daemon ###
 编号：7

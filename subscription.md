@@ -233,7 +233,8 @@
 
 输入参数说明：
 	
-	无
+	action: cancel | flag | remove
+	reason: 一段文本描述原因
 
 输入样例：
 

@@ -29,11 +29,13 @@
 
 ## APIs
 
-### GET /subscriptions?repname={repname}&itemname={itemname} (40)
+### GET /subscriptions?asconsumer=[0|1]&repname={repname}&itemname={itemname} (40)
 
 说明
 
-	【需求者】查询所有订阅的DataItem
+	【需求者】查询所有订阅的别人的DataItem
+	【提供者】查询所有被被人订阅的DataItem
+	
 	
 	如果repname和itemname都没有被指定，返回当前用户的所有订阅
 	如果repname被指定但itemname没有被指定，返回当前用户在repname中的订阅
@@ -41,6 +43,7 @@
 
 输入参数说明：
 	
+	asconsumer: 必选，0或者1
 	repname: 可选，但如果itemname参数存在，则repname也必须存在
 	itemname: 可选
 
@@ -50,23 +53,42 @@
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例(asconsumer=1)：
         
 	[
 		{
 			"repname":"NBA",
 			"itemname":"bear",
-			"subtime":"2015-11-08"
+			"subtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"repname":"CBA",
 			"itemname":"triger",
-			"subtime":"2015-11-08"
+			"subtime":"2015-11-01T15:04:05Z08:00"
+		}
+	]
+
+输出样例(asconsumer=1)：
+        
+	[
+		{
+			"buyer":"zhang3@example.com",
+			"repname":"NBA",
+			"itemname":"bear",
+			"subtime":"2015-11-10T15:04:05Z08:00"
+		},
+		{
+			"buyer":"li4@example.com",
+			"repname":"CBA",
+			"itemname":"triger",
+			"subtime":"2015-09-10T15:04:05Z08:00"
 		}
 	]
 
 返回数据说明：
 
+	buyer: 数据消费者
+	seller: 数据提供者
 	repname: repository name
 	itemname: data item name
 	subtime: 订阅时间
@@ -100,7 +122,7 @@
 		}
 	]
 
-### GET /subscription/:repname/:itemname (41) (将废除)
+### GET /subscription/:repname/:itemname (41) (将废除，将并入40)
 
 说明
 
@@ -143,7 +165,7 @@
         
 	null
 
-### DELETE /subscription/:repname/:itemname (43) (将废除)
+### DELETE /subscription/:repname/:itemname (43) (将废除，将被46取代)
 
 说明
 
@@ -200,4 +222,27 @@
 输出样例：
 
 	"numsubs":567
+
+### PUT /subscription/:subid?action=[cancel|remove|flag] (46)
+
+说明
+
+	【需求者】取消订阅cancel
+	【提供者】投诉订阅flag
+	【管理员】取消订阅remove
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	PUT /subscription/1234567 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	null
+
 

@@ -49,7 +49,7 @@
 
 输入样例：
 
-	GET /subscriptions HTTP/1.1 
+	GET /subscriptions?asconsumer=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

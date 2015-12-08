@@ -149,10 +149,11 @@
 		【管理员】购买交易
 			   如果交易成功（status=1），会扣取消费用户的实际余额，并增加销售用户的实际余额，等30天后自动将销售用户的可用余额增加
 			   如果交易失败（status=2），会将消费用户的可用余额退还
+			   若果交易生效（status=3），交易结束30天后执行的命令；将销售用户的可用余额增加
 			   loginname：购买方
 	输入参数说明：
 		order_id:订单ID
-		status：账单状态，1：生效；2:失效
+		status：账单状态，1：生效；2:失效；3：交易生效
 	Example Request：
 		PUT /bill/foo/trade/commit HTTP/1.1 
 		Accept: text/json;charset=UTF-8

@@ -52,13 +52,13 @@
 			"seller": "li4@example.com"
 			"repname":"NBA",
 			"itemname":"bear",
-			"subtime":"2015-11-10T15:04:05Z08:00"
+			"signingtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"seller": "zhang3@example.com"
 			"repname":"CBA",
 			"itemname":"triger",
-			"subtime":"2015-11-01T15:04:05Z08:00"
+			"signingtime":"2015-11-01T15:04:05Z08:00"
 		}
 	]
 
@@ -67,7 +67,7 @@
 	seller: 数据提供者
 	repname: repository name
 	itemname: data item name
-	subtime: 订阅时间
+	signingtime: 订阅时间
 
 ### (41) GET /subscriptions/pull/:repname 
 
@@ -91,12 +91,12 @@
 		{
 			"seller": "li4@example.com"
 			"itemname":"bear",
-			"subtime":"2015-11-10T15:04:05Z08:00"
+			"signingtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"seller": "zhang3@example.com"
 			"itemname":"triger",
-			"subtime":"2015-11-01T15:04:05Z08:00"
+			"signingtime":"2015-11-01T15:04:05Z08:00"
 		}
 	]
 
@@ -121,11 +121,11 @@
 	[
 		{
 			"seller": "li4@example.com"
-			"subtime":"2015-11-10T15:04:05Z08:00"
+			"signingtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"seller": "zhang3@example.com"
-			"subtime":"2015-11-01T15:04:05Z08:00"
+			"signingtime":"2015-11-01T15:04:05Z08:00"
 		}
 	]
 
@@ -152,13 +152,13 @@
 			"buyer":"zhang3@example.com",
 			"repname":"NBA",
 			"itemname":"bear",
-			"subtime":"2015-11-10T15:04:05Z08:00"
+			"signingtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"buyer":"li4@example.com",
 			"repname":"CBA",
 			"itemname":"triger",
-			"subtime":"2015-09-10T15:04:05Z08:00"
+			"signingtime":"2015-09-10T15:04:05Z08:00"
 		}
 	]
 
@@ -167,7 +167,7 @@
 	buyer: 数据消费者
 	repname: repository name
 	itemname: data item name
-	subtime: 订阅时间
+	signingtime: 订阅时间
 
 ### (44) GET /subscriptions/push/:repname 
 
@@ -191,12 +191,12 @@
 		{
 			"buyer":"zhang3@example.com",
 			"itemname":"bear",
-			"subtime":"2015-11-10T15:04:05Z08:00"
+			"signingtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"buyer":"li4@example.com",
 			"itemname":"triger",
-			"subtime":"2015-09-10T15:04:05Z08:00"
+			"signingtime":"2015-09-10T15:04:05Z08:00"
 		}
 	]
 
@@ -221,11 +221,11 @@
 	[
 		{
 			"buyer":"zhang3@example.com",
-			"subtime":"2015-11-10T15:04:05Z08:00"
+			"signingtime":"2015-11-10T15:04:05Z08:00"
 		},
 		{
 			"buyer":"li4@example.com",
-			"subtime":"2015-09-10T15:04:05Z08:00"
+			"signingtime":"2015-09-10T15:04:05Z08:00"
 		}
 	]
 
@@ -269,7 +269,7 @@
         
 	{
 		"subscriptionid": 1234567890,
-		“issumetime": "2015-09-10T15:04:05Z08:00"
+		“signingtime": "2015-09-10T15:04:05Z08:00"
 	}
 
 返回数据说明：
@@ -432,10 +432,10 @@
 	[
 		{
 			"itemname":"bear",
-			"subtime":"2015-11-08"
+			"signingtime":"2015-11-08"
 		},
 		{
 			"itemname":"triger",
-			"subtime":"2015-11-08"
+			"signingtime":"2015-11-08"
 		}
 	]

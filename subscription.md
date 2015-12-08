@@ -229,14 +229,63 @@
 		}
 	]
 
-### (46) POST /subscription/:repname/:itemname 
+### (46) PUT /subscriptions/clean
 
 说明
 
-	【需求者】订阅该DataItem 
+	【管理员】清除无效订阅
 
 输入参数说明：
 	
+	无
+
+输入样例：
+
+	GET /subscriptions/clean HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	无
+
+### (47) POST /subscription/:repname/:itemname 
+
+说明
+
+	【需求者】取得预订阅信息 
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	GET /subscription/repo1/item123 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+输出样例：
+        
+	{
+		"subscriptionid": 1234567890,
+		“issumetime": "2015-09-10T15:04:05Z08:00"
+	}
+
+返回数据说明：
+
+	subscriptionid: 预订阅id
+	issumetime: 预订阅时间
+
+### (48) PUT /subscription/:repname/:itemname 
+
+说明
+
+	【需求者】 确定签署一个订阅
+
+输入参数说明：
+	
+	subscriptionid: 预订阅id
 	planid: DataItem上的某个收费计划
 
 输入样例：
@@ -246,59 +295,18 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
+		"subscriptionid": 1234567890,
 		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
 	}
 	
 输出样例：
         
-	{
-		"subscriptionid": 1234567890
-	}
-
-### (47) GET /subscription_stat/:repname/:itemname 
-
-说明
-
-	【任意】返回该DataItem的订阅量
-
-输入参数说明：
-	
 	无
 
-输入样例：
-
-	POST /subscription_stat/repo1/item123 HTTP/1.1 
-	Accept: application/json
-
-输出样例：
-
-	"numsubs":567
-
-### (48) GET /subscription_stat/:repname 
+### (49) PUT /subscription/:subscriptionid 
 
 说明
 
-	【任意】返回该repositories的订阅量
-
-输入参数说明：
-	
-	无
-
-输入样例：
-
-	POST /subscription_stat/repo1 HTTP/1.1 
-	Accept: application/json
-
-输出样例：
-
-	"numsubs":567
-
-### (49) PUT /subscription/:subid 
-
-说明
-
-	【需求者】取消订阅action=cancel
-	【提供者】投诉订阅action=flag
 	【管理员】取消订阅action=remove
 
 输入参数说明：
@@ -320,6 +328,44 @@
 输出样例：
         
 	null
+
+### (4a) GET /subscription_stat/:repname/:itemname 
+
+说明
+
+	【任意】返回该DataItem的订阅量
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	POST /subscription_stat/repo1/item123 HTTP/1.1 
+	Accept: application/json
+
+输出样例：
+
+	"numsubs":567
+
+### (4b) GET /subscription_stat/:repname 
+
+说明
+
+	【任意】返回该repositories的订阅量
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	POST /subscription_stat/repo1 HTTP/1.1 
+	Accept: application/json
+
+输出样例：
+
+	"numsubs":567
 
 
 	

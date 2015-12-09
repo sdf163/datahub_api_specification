@@ -311,7 +311,7 @@
 
 输入参数说明：
 	
-	action: cancel | flag | remove
+	action: remove
 	reason: 一段文本描述原因
 
 输入样例：
@@ -321,7 +321,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"action": "cancel",
+		"action": "remove",
 		"reason": "bla bla ..."
 	}
 

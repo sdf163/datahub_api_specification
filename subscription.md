@@ -241,7 +241,7 @@
 
 输入样例：
 
-	GET /subscriptions/clean HTTP/1.1 
+	PUT /subscriptions/clean HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -261,7 +261,7 @@
 
 输入样例：
 
-	GET /subscription/repo1/item123 HTTP/1.1 
+	POST /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
@@ -290,7 +290,7 @@
 
 输入样例：
 
-	POST /subscription/repo1/item123 HTTP/1.1 
+	PUT /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
@@ -341,7 +341,7 @@
 
 输入样例：
 
-	POST /subscription_stat/repo1/item123 HTTP/1.1 
+	GET /subscription_stat/repo1/item123 HTTP/1.1 
 	Accept: application/json
 
 输出样例：
@@ -360,7 +360,7 @@
 
 输入样例：
 
-	POST /subscription_stat/repo1 HTTP/1.1 
+	GET /subscription_stat/repo1 HTTP/1.1 
 	Accept: application/json
 
 输出样例：

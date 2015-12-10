@@ -10,7 +10,7 @@
 	
 	token: 一个隐藏的防止重复发表的token。此token由前端生成，最好是一个uuid，可用这个库: https://github.com/broofa/node-uuid
 	replyto: 被回复的评论id (0表示未回复任何评论, 只有dataitem creator可以回复)
-	content: 评论内容（最多200字）
+	content: 评论内容（最多2000字节，或1000汉字）
 
 输入样例：
 

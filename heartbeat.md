@@ -8,12 +8,13 @@
 ## 指令：POST /heartbeat 发送心跳信息
 
 说明
-	心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况；三为从Server取回需要Daemon执行的指令，比如自动配置、自动升级、告警信息展示等
+	心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况，上报自己的entrypoint；三为上传daemon的日志。
 
 输入参数说明：
 	
 	daemonid: DaemonID，从网页端获取的安装脚本中获取。用于识别用户。
     entrypoint: Daemon提供的入口信息。
+    log: daemon要上传的日志。
 
 
 Example Request：
@@ -27,6 +28,14 @@ Example Request：
         "daemonid":"0aef69daefb06d0afbe6c",
         "entrypoint":[
             "http://211.10.23.23:35800"
+        ]
+        "log":[
+        "2015/12/07 09:45:12 testlog11",
+        "2015/12/07 09:45:12 testlog12",
+        "2015/12/07 09:45:12 testlog13",
+        "2015/12/07 09:45:12 testlog14",
+        "2015/12/07 09:45:12 testlog15",
+        "2015/12/07 09:45:12 testlog16"
         ]
     }
 

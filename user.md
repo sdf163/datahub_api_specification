@@ -9,7 +9,7 @@
 
 - [DELETE] /users/:loginname 删除用户
 
-- [PUT] /users/:loginname/status 激活用户
+- [PUT] /users/:loginname/active 激活用户
 
 - [PUT] /users/:loginname/pwd 修改密码
 
@@ -56,7 +56,7 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-		usertype：用户类型(1：普通用户，2：管理员用户)
+		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 		nickname：昵称 
 		username:真实名称
 		comments：描述信息
@@ -435,7 +435,7 @@
 	说明：
 		【管理员】修改用户的会员信息
 	输入参数说明：
-		userType：会员级别
+		userType：会员级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 	Example Request：
 		PUT /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8

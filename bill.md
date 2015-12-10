@@ -1,17 +1,11 @@
 # API 列表
 - GET /bill/:loginname/info 查看用户账户信息
 
-- GET /bill/:loginname/recharge/detail 查看用户账单明细
-
-- GET /bill/:loginname/trade/detail 查看用户交易明细
+- GET /bill/:loginname/detail 查看用户账单流水
 
 - PUT /bill/:loginname/creditLimit 修改信用额度
 
 - PUT /bill/:loginname/recharge 充值，提现
-
-- PUT /bill/:loginname/cancel 取消交易
-
-- PUT /bill/:loginname/status 退款审核
 
 - PUT /bill/:loginname/trade/init 发起购买交易
 
@@ -19,7 +13,6 @@
 
 - PUT /bill/:loginname/trade/cancel 取消交易
 
-- PUT /bill/:loginname/trade/cancel/audit 取消交易审核
 
 ##指令：GET /bill/:loginname/info 查看用户账单信息
 	说明：
@@ -44,62 +37,36 @@
 			},
 		"code":0,"msg":"ok"
 		}
-##指令：GET /bill/:loginname/recharge/detail 查看用户账单明细
+##指令：GET /bill/:loginname/detail 查看用户账单流水
 	说明：
 		【自己，管理员】查看用户会员的相关信息
 	输入参数说明：
 		start_time:账单开始时间
 		end_time:账单结束时间
-		type:类型，1：充值；2：提现；3：扣年费
+		op_type:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
 		
 	Example Request：
-		GET /bill/foo/recharge/detail?start_time=2015-09-02&end_time=2015-10-01&type=1 HTTP/1.1 
+		GET /bill/foo/detail?start_time=2015-09-02&end_time=2015-10-01&op_type=1 HTTP/1.1 
 		USER:foo
 		
 	返回数据说明：
-		orderId:订单号
-		rechargeTime:时间
-		rechargeType:类型，1：充值；2：提现
-		rechargeAmount:金额
-		channel:渠道
-		
-	返回数据示例：
-
-		{"data":[{"orderId":"111","rechargeTime":"2015-09-02","rechargeType":1,"rechargeAmount":100,"channel":"网银"},
-				 {"orderId":"112","rechargeTime":"2015-09-03","rechargeType":1,"rechargeAmount":200,"channel":"网银"},
-			    ]
-		"code":0,"msg":"ok"
-		}
-
-##指令：GET /bill/:loginname/trade/detail 查看用户交易明细
-	说明：
-		【自己，管理员】查看用户会员的相关信息
-	输入参数说明：
-		start_time:账单开始时间
-		end_time:账单结束时间
-		trade_type:交易类型，1：收入；2：消费
-		status：账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
-		注：参数可单独使用
-	Example Request：
-		GET /bill/foo/trade/detail?start_time=2015-09-02&end_time=2015-10-01 &trade_type=1&status=2 HTTP/1.1 
-		USER:foo
-		
-	返回数据说明：
+		Id:流水号
 		orderId:订单号
 		planId:套餐计划ID
+		tradeTime:时间
 		tradeItem:交易的item
-		tradeTime:交易时间
-		effectTime:生效时间
-		tradeType:交易类型，1：收入；2：消费
-		status:账单状态，1:待生效;2：生效；3:失效；4：退款待审核；5退款成功；6：退款审核失败
-		tradeUserName:与当前用户交易的用户
-		tradeAmount:交易金额
+		opType:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
+		tradeAmount:金额
+		channel:渠道
+		tradeUser:交易用户
+		actualAmount:实际金额
+		availableAmount：可用金额
 		
-
+	
 	返回数据示例：
 
-		{"data":[{"orderId":111,"planId":"11","tradeItem":"repo1_item","tradeTime":"2015-09-02","effectTime":"2015-09-10""tradeType":2,"status":2,"tradeUserName":"user1","tradeAmount":100},
-				 {"orderId":112,"planId":"21","tradeItem":"repo2_item","tradeTime":"2015-09-02","effectTime":"",tradeType":1,"status":1,"tradeUserName":"me","tradeAmount":100},
+		{"data":[{"Id":"123","orderId":"111","planId":"11","tradeTime":"2015-09-02","tradeItem":"repo1_item","opType":1,"tradeAmount":100,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":800},
+				 {"Id":"124","orderId":"112","planId":"11","tradeTime":"2015-09-03","tradeItem":"repo1_item","opType":1,"tradeAmount":200,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":600},
 			    ]
 		"code":0,"msg":"ok"
 		}
@@ -107,7 +74,7 @@
 
 #指令：PUT /bill/:loginname/recharge 充值，提现
 	说明：
-		【管理员,自己】充值
+		【管理员】充值
 	输入参数说明：
 		order_id:订单
 		amount:金额
@@ -150,9 +117,9 @@
 		{"code":0,"msg":"ok"}
 #指令：PUT /bill/:loginname/trade/init 发起购买交易
 	说明：
-		【管理员,自己】购买交易，执行操作成功后，会生成两条记录，一个是消费用户的消费记录，一个是商家的收费记录
-					   如果购买金额不足，会提示余额不足，交易失败
-					   loginname：购买方
+		【管理员】购买交易，执行操作成功后，会生成一条记录，消费用户的消费记录，会扣取消费用户的可用余额
+				如果购买金额不足，会提示余额不足，交易失败
+				loginname：购买方
 	输入参数说明：
 		order_id:订单ID
 		plan_id:套餐计划Id
@@ -172,19 +139,21 @@
 			"trade_user":"liuxy10@asiainfo.com"
 		}
 	返回数据说明：
-		code:状态码
+		code:状态码（0：成功；8007：余额不足）
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 
 #指令：PUT /bill/:loginname/trade/commit 提交交易（交易结束）
 	说明：
-		【管理员,自己】购买交易，执行操作成功后，会生成两条记录，一个是消费用户的消费记录，一个是商家的收费记录
-					   如果购买金额不足，会提示余额不足，交易失败
-					   loginname：购买方
+		【管理员】购买交易
+			   如果交易成功（status=1），会扣取消费用户的实际余额，并增加销售用户的实际余额，等30天后自动将销售用户的可用余额增加
+			   如果交易失败（status=2），会将消费用户的可用余额退还
+			   若果交易生效（status=3），交易结束30天后执行的命令；将销售用户的可用余额增加
+			   loginname：购买方
 	输入参数说明：
 		order_id:订单ID
-		status：账单状态，2：生效；3:失效
+		status：账单状态，1：交易成功；2:交易失败；3：交易生效
 	Example Request：
 		PUT /bill/foo/trade/commit HTTP/1.1 
 		Accept: text/json;charset=UTF-8
@@ -201,7 +170,8 @@
 		
 #指令：PUT /bill/:loginname/trade/cancel 取消交易
 	说明：
-		【管理员,自己】取消交易，会产生退款记录，退款审核通过后会将钱退换给消费者账户
+		【管理员】取消交易，（交易成功30天内）会产生退款记录，将消费用户的可用余额和实际余额退还，销售用户的实际余额扣减
+			     loginname：购买方
 	输入参数说明：
 		order_id:取消交易的订单ID
 	Example Request：
@@ -218,21 +188,3 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 		
-#指令：PUT /bill/:loginname/trade/cancel/audit 取消交易审核
-	说明：
-		【管理员,自己】审核退款交易：退款审核通过后会将钱退换给消费者账户
-	输入参数说明：
-		order_id:取消交易的订单ID
-		status：账单状态，5取消成功;6：取消失败
-	Example Request：
-		PUT /bill/foo/trade/cancel/audit HTTP/1.1 
-		Accept: text/json;charset=UTF-8
-		Authorization: token
-		USER:admin
-		{
-			"order_id":"110","status":"5"
-		}
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-

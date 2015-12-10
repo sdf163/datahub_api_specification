@@ -192,6 +192,7 @@ Example Response：
 
 	page (taglist分页页数) : 			1 - N，  默认=1（page=1可以不传）
 	size（taglist页面大小）: 				1 - N，  默认=6
+	abstract（是否只显示摘要信息）：		1  只显示Item（optime，comment，label, tags）4个属性				
 
 Example Request：
 

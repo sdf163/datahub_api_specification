@@ -60,9 +60,10 @@
 		nickname：昵称 
 		username:真实名称
 		comments：描述信息
-		quata:已经使用的量【仅限查询本人】(暂时不提供)
+		registTime:注册时间
+		invalidTime:失效时间
 	返回数据示例
-		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1},"code":0,"msg":"ok"}
+		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
 	
 
 ##指令：POST /users/:loginname 创建用户(82)
@@ -286,7 +287,7 @@
 		}
 ##指令：POST /quota/:loginname/deposit 增加用户的托管配额（8c）
 	说明：
-		【管理员角色】添加用户的托管配额信息 
+		【管理员】添加用户的托管配额信息 
 	输入参数说明：
 		quota:配额空间
 		unit:单位
@@ -307,7 +308,7 @@
 		{"code":0,"msg":"ok"}
 ##指令：PUT /quota/:loginname/deposit 修改用户的托管配额（8d）
 	说明：
-		【管理员角色】修改用户的托管的配额 
+		【管理员】修改用户的托管的配额 
 	输入参数说明：
 		quota:托管配额空间大小
 	Example Request：
@@ -346,7 +347,7 @@
 		}
 ##指令：POST /quota/:loginname/pullnum 增加用户的下载量配额信息（8g）
 	说明：
-		【管理员角色】添加用户的托管配额信息 
+		【管理员】添加用户的托管配额信息 
 	输入参数说明：
 		quota:配额空间
 
@@ -366,7 +367,7 @@
 ##指令：POST /quota/:loginname/pullnum/use 修改用户的已下载量（8h）
 
 	说明：
- 	   修改用户的已下载量
+ 	   【管理员】修改用户的已下载量
 	输入参数说明：
    	 	use:下载数量
 	Example Request：
@@ -383,7 +384,7 @@
 
 ##指令：PUT /quota/:loginname/pullnum 修改用户的下载量配额（8i）
 	说明：
-		【管理员角色】修改用户的下载量的配额 
+		【管理员】修改用户的下载量的配额 
 	输入参数说明：
 		quota:下载量配额
 	Example Request：
@@ -433,16 +434,19 @@
 
 #指令：PUT /vip/:loginname 修改会员信息(8k)
 	说明：
-		【管理员】修改用户的会员信息
+		【管理员】修改用户的会员信息,同时修改用户配额、以及扣取年费（管理员除外）
+               升级会员
 	输入参数说明：
 		userType：会员级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+		validity:有效期（单位：年）
 	Example Request：
 		PUT /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
 		USER:admin
 		{
-			"userType":"3"
+			"userType":"3",
+			"validity":"2"
 		}
 	返回数据说明：
 		code:状态码

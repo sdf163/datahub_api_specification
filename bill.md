@@ -22,7 +22,7 @@
 	Example Request：
 		GET /bill/foo/info HTTP/1.1 
 		Accept: text/json;charset=UTF-8
-		USER:foo
+		Authorization: token
 	返回数据说明：
 		actualBalance:余额
 		availableBalance:可用余额
@@ -43,17 +43,17 @@
 	输入参数说明：
 		start_time:账单开始时间
 		end_time:账单结束时间
-		op_type:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
+		op_type:类型，-1:所有；1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
 		
 	Example Request：
 		GET /bill/foo/detail?start_time=2015-09-02&end_time=2015-10-01&op_type=1 HTTP/1.1 
-		USER:foo
+		Authorization: token
 		
 	返回数据说明：
 		Id:流水号
 		orderId:订单号
 		planId:套餐计划ID
-		tradeTime:时间
+		opTime:时间
 		tradeItem:交易的item
 		opType:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
 		tradeAmount:金额
@@ -65,8 +65,8 @@
 	
 	返回数据示例：
 
-		{"data":[{"Id":"123","orderId":"111","planId":"11","tradeTime":"2015-09-02","tradeItem":"repo1_item","opType":1,"tradeAmount":100,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":800},
-				 {"Id":"124","orderId":"112","planId":"11","tradeTime":"2015-09-03","tradeItem":"repo1_item","opType":1,"tradeAmount":200,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":600},
+		{"data":[{"Id":"123","orderId":"111","planId":"11","opTime":"2015-09-02","tradeItem":"repo1_item","opType":1,"tradeAmount":100,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":800},
+				 {"Id":"124","orderId":"112","planId":"11","opTime":"2015-09-03","tradeItem":"repo1_item","opType":1,"tradeAmount":200,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":600},
 			    ]
 		"code":0,"msg":"ok"
 		}
@@ -84,7 +84,6 @@
 		PUT /bill/foo/recharge HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
 		{
 			"order_id":"recharge_11",
 			"amount":"100",
@@ -93,7 +92,7 @@
 		}
 
 	返回数据说明：
-		code:状态码
+		code:状态码（8007：余额不足）
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
@@ -106,7 +105,6 @@
 		PUT /bill/foo/creditLimit HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
 		{
 			"creditLimit":"1000"
 		}
@@ -124,13 +122,12 @@
 		order_id:订单ID
 		plan_id:套餐计划Id
 		trade_item:交易item
-		trade_amount:充值金额
+		trade_amount:交易金额
 		trade_user:卖方
 	Example Request：
 		PUT /bill/foo/trade/init HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
 		{
 			"order_id":"trade_11",
 			"plan_id":"111",
@@ -178,7 +175,6 @@
 		PUT /bill/foo/trade/cancel HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
 		{
 			"order_id":"110"
 		}

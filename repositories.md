@@ -14,7 +14,7 @@
 	
 ----------
 
-## 1 指令：GET /Repositories
+## 1 指令：GET /repositories
 
 说明
 
@@ -34,7 +34,6 @@ Example Request：
 	GET /repositories?page=5&size=8 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
 
 返回数据说明：
 	
@@ -56,7 +55,7 @@ Example Request：
 
 ----------
 
-## 2 指令：GET /Repositories/:repname
+## 2 指令：GET /repositories/:repname
 	
 说明：
 	
@@ -76,7 +75,7 @@ Example Request：
 返回数据说明：
 	
 	create_user			创建者
-   	repaccesstype      对外开放类型[public(默认), private]
+   	repaccesstype       对外开放类型[public(默认), private]
     comment 			详情
 	optime				更新时间
 	items				dataitem数量	
@@ -99,7 +98,7 @@ Example Request：
 	}
 
 
-## 3 指令：POST /Repositories/:repname
+## 3 指令：POST /repositories/:repname
 	
 说明：
 	
@@ -140,7 +139,7 @@ Example Request：
         }
     }
 
-## 4 指令：PUT /Repositories/:repname
+## 4 指令：PUT /repositories/:repname
 	
 说明：
 	
@@ -162,7 +161,7 @@ Example Request：
     }
 
 
-## 5 指令：DELETE /Repositories/:repname
+## 5 指令：DELETE /repositories/:repname
 	
 说明：
 	
@@ -174,7 +173,7 @@ Example Request：
 	
 Example Request：
 
-	GET /repositories/chinamobile HTTP/1.1 
+	DELETE /repositories/chinamobile HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -182,7 +181,7 @@ Example Response：
 
 	无
 
-## 6 指令：GET /Repositories/:repname/:itemname
+## 6 指令：GET /repositories/:repname/:itemname
 	
 说明：
 	
@@ -291,8 +290,7 @@ Example Request：
 	label.sys.supply_style.api		实时单条
 	label.sys.supply_style.batch	批量
 	label.sys.supply_style.flow		流式
-	
-		
+			
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
@@ -513,11 +511,9 @@ Example Request：
 
 	POST /repositories/chinamobile/beijingphone/000 HTTP/1.1
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
-	[
-		{
-			"comment":"2001MB"
-		}
-	]
+	{
+		"comment":"2001MB"
+	}
 	
 Example Response：
 	
@@ -544,11 +540,9 @@ Example Request：
 
 	PUT /repositories/chinamobile/beijingphone/000 HTTP/1.1
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
-	[
-		{
-			"comment":"2001MB"
-		}
-	]
+	{
+		"comment":"2001MB"
+	}
 	
 Example Response：
 	
@@ -573,7 +567,7 @@ Example Response：
 
 Example Request：
 
-	POST /repositories/chinamobile/beijingphone/TAG000 HTTP/1.1
+	DELETE /repositories/chinamobile/beijingphone/TAG000 HTTP/1.1
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	
 Example Response：
@@ -602,31 +596,24 @@ Example Response：
 	HTTP/1.1 200 
 	Vary: Accept 
 	Content-Type: application/json
-	[
-		{
-		    "create_user": "panxy3",
-		    "itemaccesstype": "private",
-		    "optime": "2015-08-0100: 00: 00",
-		    "meta": {},
-		    "sample": {},
-		    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
-			"tags":10
-			"label": {
-		        "sys": {
-		            "supply_style": "api"
-		        },
-		        "opt": {},
-		        "owner": {},
-		        "other": {}
-		    }	
-		}
-	]
+	{
+		"create_user": "panxy3",
+		"itemaccesstype": "private",
+		"optime": "2015-08-0100: 00: 00",
+		"meta": {},
+		"sample": {},
+		"comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+		"tags":10
+		"label": {
+		    "sys": {
+		        "supply_style": "api"
+		     },
+		     "opt": {},
+		     "owner": {},
+		     "other": {}
+		}	
+	}
 
 	HTTP/1.1 200 
 	Vary: Accept 
 	Content-Type: application/json
-	[
-		
-	]
-
-

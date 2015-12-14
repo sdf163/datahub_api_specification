@@ -262,14 +262,63 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 
 ## topic: to_notifications.json
 
-### 新建一条用户提醒消息
+### 发送一条网站广播
 
 	{
-		"type": "0x00010000",
+		"type": "site_broadcast",
 		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": "bla bla ..."
+	}
+
+### 发送一条私信
+
+	{
+		"type": "private_message",
+		"receiver": "zhang3@example.com",
+		"sender": "li4@example.com",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": "bla bla ..."
+	}
+
+### dataitem events
+
+	{
+		"type": "item_events",
+		"receiver": "zhang3@example.com",
+		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
-			...
+			"event": "tag_deleted",
+			"repname": "repo1",
+			"itemname": "item2",
+			"tag": "tag3"
+		}
+	}
+
+	{
+		"type": "item_news",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"event": "item_deleted",
+			"repname": "repo1",
+			"itemname": "item2"
+		}
+	}
+
+### 订购事件
+
+	{
+		"type": "sub_event",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"subscriptionid": 1234567,
+			"phase": "freezed"
 		}
 	}
 

@@ -70,7 +70,8 @@ code 及 msg
     8005		no login			未登录
     8006		quota exist			用户配额信息已存在
     8007		Sorry, your credit is running low 余额不足
-
+    8008		duplicate order requset		订单请求重复提交
+    8009		order is not exist		订单不存在
 ## DataHub API内容 ##
 
 ### repositories ###

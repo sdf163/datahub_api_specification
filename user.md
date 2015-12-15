@@ -50,7 +50,6 @@
 	Example Request：
 		GET /users/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
-		Authorization: token
 		USER:admin
 
 	返回数据说明：
@@ -65,6 +64,23 @@
 	返回数据示例
 		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
 	
+##指令：GET /users/load/vip 查询用户(81.5)
+	说明
+		【任意】 返回所有用户按照用户级别分类
+	输入参数说明：
+		无
+	Example Request：
+		GET /users/load/vip HTTP/1.1 
+		Accept: text/json;charset=UTF-8
+		USER:admin
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		level：用户级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+		member：这个级别下的所有用户 登录名称
+	返回数据示例
+		{"data":[{"level":2,"member":["datahub@asiainfo.com"]}],"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：

@@ -3,6 +3,8 @@
 
 - [GET] /users/:loginname 查询用户
 
+- [GET] /users/load/vip 查询每个级别下的用户
+
 - [POST] /users/:loginname 创建用户
 
 - [PUT] /users/:loginname 修改用户
@@ -64,7 +66,7 @@
 	返回数据示例
 		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
 	
-##指令：GET /users/load/vip 查询用户(81.5)
+##指令：GET /users/load/vip 查询每个级别下的用户(81.5)
 	说明
 		【任意】 返回所有用户按照用户级别分类
 	输入参数说明：

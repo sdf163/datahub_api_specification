@@ -72,6 +72,7 @@ code 及 msg
     8007		Sorry, your credit is running low 余额不足
     8008		duplicate order requset		订单请求重复提交
     8009		order is not exist		订单不存在
+    8010		Illegal request			非法请求
 ## DataHub API内容 ##
 
 ### repositories ###

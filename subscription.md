@@ -64,7 +64,6 @@
 			"freezetime":"2015-12-11T10:51:11Z",
 			"finishtime":"2016-01-10T10:51:11Z",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -84,7 +83,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -101,7 +99,12 @@
 	sellername: 数据提供者
 	repname: repository name
 	itemname: data item name
+	supply_style: flow | batch | api
 	signtime: 订阅时间
+	expiretime: 自动过期时间
+	freezetime: 交易成功时间
+	finishtime: 交易完成时间
+	phase: pending | consuming | freezed | finished | cancelled | removed
 
 ### (41) GET /subscriptions/pull/:repname 
 
@@ -131,7 +134,6 @@
 			"freezetime":"2015-12-11T10:51:11Z",
 			"finishtime":"2016-01-10T10:51:11Z",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -150,7 +152,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -189,7 +190,6 @@
 			"freezetime":"2015-12-11T10:51:11Z",
 			"finishtime":"2016-01-10T10:51:11Z",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -207,7 +207,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -248,7 +247,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -268,7 +266,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -315,7 +312,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -334,7 +330,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -373,7 +368,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,
@@ -391,7 +385,6 @@
 			"freezetime":"2015-12-104T15:04:05Z08:00",
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
-			"status":"valid",
 			"plan":{
 				"uuid":"abcd",
 				"money":5,

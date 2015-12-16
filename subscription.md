@@ -65,7 +65,6 @@
 			"finishtime":"2016-01-10T10:51:11Z",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":3,
 				"time":0,
@@ -84,7 +83,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -99,12 +97,17 @@
 	sellername: 数据提供者
 	repname: repository name
 	itemname: data item name
-	supply_style: flow | batch | api
+	supply_style: flow | batch 
 	signtime: 订阅时间
 	expiretime: 自动过期时间
 	freezetime: 交易成功时间
 	finishtime: 交易完成时间
 	phase: pending | consuming | freezed | finished | cancelled | removed
+	plan.money: 交易金额
+	plan.times: 最大下载次数（只对supply_style=batch有效）
+	plan.time: 最大下载天数（只对supply_style=flow有效)
+	plan.used: 已经使用量　
+	plan.expire: 交易有效期（天数）
 
 ### (41) GET /subscriptions/pull/:repname 
 
@@ -135,7 +138,6 @@
 			"finishtime":"2016-01-10T10:51:11Z",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":3,
 				"time":0,
@@ -153,7 +155,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -191,7 +192,6 @@
 			"finishtime":"2016-01-10T10:51:11Z",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":3,
 				"time":0,
@@ -208,7 +208,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -248,7 +247,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -267,7 +265,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -313,7 +310,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -331,7 +327,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -369,7 +364,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,
@@ -386,7 +380,6 @@
 			"finishtime":"2016-01-104T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
-				"uuid":"abcd",
 				"money":5,
 				"times":0,
 				"time":3,

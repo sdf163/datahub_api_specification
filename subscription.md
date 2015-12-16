@@ -12,7 +12,7 @@
 	ErrorCodeGetDataItem           = 5007
 	ErrorCodeCreateSubscription    = 5008
 	ErrorCodeGetSubscription       = 5009
-	ErrorCodeCancelSubscription    = 5010
+	ErrorCodeRemoveSubscription    = 5010
 	ErrorCodeQuerySubscription     = 5011
 	ErrorCodeSubscriptionNotFound  = 5012
 	ErrorCodeCreateTransaction     = 5013
@@ -24,8 +24,14 @@
 	ErrorCodeNotOkRemoteResponse   = 5019
 	ErrorCodeInvalidRemoteResponse = 5020
 	ErrorCodeTokenNotFound         = 5021
-	ErrorCodeTokenExpird           = 5022
+	ErrorCodeTokenExpired          = 5022
 	ErrorCodeInvalidEntryPoints    = 5023
+	ErrorCodeInsufficientBalance   = 5024
+	ErrorCodeFailedToInitUserTrade = 5025
+	ErrorCodeGetUserBillInfo       = 5026
+	ErrorCodeModifyUserUsedPullNum = 5027
+	ErrorCodeSignSubscription      = 5028
+	ErrorCodeComsumeSubscription   = 5029
 
 ## APIs
 
@@ -194,9 +200,8 @@
 			}
 		},
 		{
-			"sellername": "zhang3@example.com",,
-			"itemname":"triger",
-			"supply_style":"batch",
+			"sellername": li4@example.com",
+			"supply_style":"flow",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
 			"freezetime":"2015-12-104T15:04:05Z08:00",

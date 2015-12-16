@@ -100,8 +100,8 @@
 	supply_style: flow | batch 
 	signtime: 订阅时间
 	expiretime: 自动过期时间
-	freezetime: 交易成功时间
-	finishtime: 交易完成时间
+	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）
+	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）
 	phase: pending | consuming | freezed | finished | cancelled | removed
 	plan.money: 交易金额
 	plan.times: 最大下载次数（只对supply_style=batch有效）

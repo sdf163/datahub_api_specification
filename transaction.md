@@ -184,21 +184,27 @@
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-18T11:48:07Z"
+					"pulltime":"2015-11-18T11:48:07Z",
+					"subscriptionid": 12345,
+					"supply_style": "batch"
 				},
 				{
 					"sellername":"li4",
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-18T11:29:38Z"
+					"pulltime":"2015-11-18T11:29:38Z",
+					"subscriptionid": 567567,
+					"supply_style": "flow"
 				},
 				{
 					"sellername":"li4",
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-18T11:29:31Z"
+					"pulltime":"2015-11-18T11:29:31Z",
+					"subscriptionid": 99999,
+					"supply_style": "batch"
 				}
 			]
 		},
@@ -210,7 +216,9 @@
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-10T10:10:10Z"
+					"pulltime":"2015-11-10T10:10:10Z",
+					"subscriptionid": 98765,
+					"supply_style": "flow"
 				}
 			]
 		}
@@ -224,14 +232,18 @@
 			"repname": "repo1231",
 			"itemname": "item9883",
 			"tag": "tag8W",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:04:05Z07:00",
+			"subscriptionid": 12345,
+			"supply_style": "batch"
 		},
 		{
 			"sellername": "Li4",
 			"repname": "repo121",
 			"itemname": "item989",
 			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:04:05Z07:00",
+			"subscriptionid": 98765,
+			"supply_style": "flow"
 		}
 	]
 	
@@ -266,11 +278,15 @@
 	[
 		{
 			"tag": "tag8W",
-			"pulltime": "2015-11-09T15:04:05Z07:00"
+			"pulltime": "2015-11-09T15:04:05Z07:00",
+			"subscriptionid": 12345,
+			"supply_style": "batch"
 		},
 		{
 			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:04:05Z07:00",
+			"subscriptionid": 98765,
+			"supply_style": "flow"
 		}
 	]
 
@@ -306,14 +322,18 @@
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-18T11:48:07Z"
+					"pulltime":"2015-11-18T11:48:07Z",
+					"subscriptionid": 678,
+					"supply_style": "flow"
 				},
 				{
 					"buyername":"John",
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-18T11:29:38Z"
+					"pulltime":"2015-11-18T11:29:38Z",
+					"subscriptionid": 32323,
+					"supply_style": "batch"
 				}
 			]
 		},
@@ -325,14 +345,18 @@
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-10T10:10:10Z"
+					"pulltime":"2015-11-10T10:10:10Z",
+					"subscriptionid": 98765,
+					"supply_style": "flow"
 				},
 				{
 					"buyername":"zhang3",
 					"repname":"repo001",
 					"itemname":"item002",
 					"tag":"tag008",
-					"pulltime":"2015-11-10T10:10:10Z"
+					"pulltime":"2015-11-10T10:10:10Z",
+					"subscriptionid": 123456,
+					"supply_style": "batch"
 				},
 			]
 		}
@@ -346,14 +370,18 @@
 			"repname": "repo1231",
 			"itemname": "item9883",
 			"tag": "tag8W",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:04:05Z07:00",
+			"subscriptionid": 98765,
+			"supply_style": "flow"
 		},
 		{
 			"buyername": "Smith",
 			"repname": "repo121",
 			"itemname": "item989",
 			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:04:05Z07:00",
+			"subscriptionid": 123456,
+			"supply_style": "batch"
 		}
 	]
 
@@ -390,12 +418,16 @@
 				{
 					"buyername": "Li4",
 					"tag": "tag8W",
-					"pulltime": "2015-11-10T15:04:05Z07:00"
+					"pulltime": "2015-11-10T15:04:05Z07:00",
+					"subscriptionid": 123456,
+					"supply_style": "batch"
 				},
 				{
 					"buyername": "Zhang3",
 					"tag": "tag09",
-					"pulltime": "2015-11-10T10:09:05Z07:00"
+					"pulltime": "2015-11-10T10:09:05Z07:00",
+					"subscriptionid": 789,
+					"supply_style": "flow"
 				}
 			]
 		},
@@ -405,7 +437,9 @@
 				{
 					"buyername": "Zhang3",
 					"tag": "tag09",
-					"pulltime": "2015-11-03T15:06:05Z07:00"
+					"pulltime": "2015-11-03T15:06:05Z07:00",
+					"subscriptionid": 789,
+					"supply_style": "flow"
 				}
 			]
 		}
@@ -417,17 +451,23 @@
 		{
 			"buyername": "Li4",
 			"tag": "tag8W",
-			"pulltime": "2015-11-10T15:04:05Z07:00"
+			"pulltime": "2015-11-10T15:04:05Z07:00",
+			"subscriptionid": 123456,
+			"supply_style": "batch"
 		},
 		{
 			"buyername": "Zhang3",
 			"tag": "tag09",
-			"pulltime": "2015-11-10T15:09:05Z07:00"
+			"pulltime": "2015-11-10T15:09:05Z07:00",
+			"subscriptionid": 789,
+			"supply_style": "flow"
 		},
 		{
 			"buyername": "Zhang3",
 			"tag": "tag09",
-			"pulltime": "2015-11-03T15:06:05Z07:00"
+			"pulltime": "2015-11-03T15:06:05Z07:00",
+			"subscriptionid": 789,
+			"supply_style": "flow"
 		}
 	]
 	

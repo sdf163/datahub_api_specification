@@ -49,25 +49,53 @@
         
 	[
 		{
-			"seller": "li4@example.com"
+			"sellername": "li4@example.com"
 			"repname":"NBA",
 			"itemname":"bear",
-			"signingtime":"2015-11-10T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-10T15:04:05Z08:00",
+			"expiretime":"2016-01-15T11:28:21Z",
+			"freezetime":"2015-12-11T10:51:11Z",
+			"finishtime":"2016-01-10T10:51:11Z",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":3,
+				"time":0,
+				"used":0,
+				"expire":30
+			}
 		},
 		{
-			"seller": "zhang3@example.com"
+			"sellername": "zhang3@example.com"
 			"repname":"CBA",
 			"itemname":"triger",
-			"signingtime":"2015-11-01T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		}
 	]
 
 返回数据说明：
 
-	seller: 数据提供者
+	sellername: 数据提供者
 	repname: repository name
 	itemname: data item name
-	signingtime: 订阅时间
+	signtime: 订阅时间
 
 ### (41) GET /subscriptions/pull/:repname 
 
@@ -89,14 +117,42 @@
         
 	[
 		{
-			"seller": "li4@example.com"
+			"sellername": "zhang3@example.com",
 			"itemname":"bear",
-			"signingtime":"2015-11-10T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-10T15:04:05Z08:00",
+			"expiretime":"2016-01-15T11:28:21Z",
+			"freezetime":"2015-12-11T10:51:11Z",
+			"finishtime":"2016-01-10T10:51:11Z",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":3,
+				"time":0,
+				"used":0,
+				"expire":30
+			}
 		},
 		{
-			"seller": "zhang3@example.com"
+			"sellername": "zhang3@example.com",
 			"itemname":"triger",
-			"signingtime":"2015-11-01T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		}
 	]
 
@@ -120,12 +176,41 @@
         
 	[
 		{
-			"seller": "li4@example.com"
-			"signingtime":"2015-11-10T15:04:05Z08:00"
+			"sellername": "li4@example.com",
+			"supply_style":"batch",
+			"signtime":"2015-11-10T15:04:05Z08:00",
+			"expiretime":"2016-01-15T11:28:21Z",
+			"freezetime":"2015-12-11T10:51:11Z",
+			"finishtime":"2016-01-10T10:51:11Z",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":3,
+				"time":0,
+				"used":0,
+				"expire":30
+			}
 		},
 		{
-			"seller": "zhang3@example.com"
-			"signingtime":"2015-11-01T15:04:05Z08:00"
+			"sellername": "zhang3@example.com",,
+			"itemname":"triger",
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		}
 	]
 
@@ -149,25 +234,53 @@
         
 	[
 		{
-			"buyer":"zhang3@example.com",
+			"buyername":"zhang3@example.com",
 			"repname":"NBA",
 			"itemname":"bear",
-			"signingtime":"2015-11-10T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		},
 		{
-			"buyer":"li4@example.com",
+			"buyername":"li4@example.com",
 			"repname":"CBA",
 			"itemname":"triger",
-			"signingtime":"2015-09-10T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		}
 	]
 
 返回数据说明：
 
-	buyer: 数据消费者
+	buyername: 数据消费者
 	repname: repository name
 	itemname: data item name
-	signingtime: 订阅时间
+	signtime: 订阅时间
 
 ### (44) GET /subscriptions/push/:repname 
 
@@ -189,14 +302,42 @@
         
 	[
 		{
-			"buyer":"zhang3@example.com",
+			"buyername":"zhang3@example.com",
 			"itemname":"bear",
-			"signingtime":"2015-11-10T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		},
 		{
-			"buyer":"li4@example.com",
+			"buyername":"li4@example.com",
 			"itemname":"triger",
-			"signingtime":"2015-09-10T15:04:05Z08:00"
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		}
 	]
 
@@ -220,12 +361,40 @@
         
 	[
 		{
-			"buyer":"zhang3@example.com",
-			"signingtime":"2015-11-10T15:04:05Z08:00"
+			"buyername":"zhang3@example.com",
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		},
 		{
-			"buyer":"li4@example.com",
-			"signingtime":"2015-09-10T15:04:05Z08:00"
+			"buyername":"li4@example.com",
+			"supply_style":"batch",
+			"signtime":"2015-11-01T15:04:05Z08:00",
+			"expiretime":"2015-11-04T15:04:05Z08:00"
+			"freezetime":"2015-12-104T15:04:05Z08:00",
+			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"phase":"consuming",
+			"status":"valid",
+			"plan":{
+				"uuid":"abcd",
+				"money":5,
+				"times":0,
+				"time":3,
+				"used":0,
+				"expire":30
+			}
 		}
 	]
 
@@ -432,10 +601,10 @@
 	[
 		{
 			"itemname":"bear",
-			"signingtime":"2015-11-08"
+			"signtime":"2015-11-08"
 		},
 		{
 			"itemname":"triger",
-			"signingtime":"2015-11-08"
+			"signtime":"2015-11-08"
 		}
 	]

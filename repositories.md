@@ -227,19 +227,22 @@ Example Request：
 						"time"： 1,
 						"unit": "day",
 						"money": 5,
-						"expire":30
+						"expire":30,
+						"uuid":100000000000000000000000
 					},
 					{
 						"time"： 10,
 						"unit": "day",
 						"money": 50,
-						"expire":30
+						"expire":30,
+						"uuid":100000000000000000000000
 					},
 					{
 						"time"： 100,
 						"unit": "day",
 						"money": 400,
-						"expire":30
+						"expire":30,
+						"uuid":100000000000000000000000
 					}
 				],		
 	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",

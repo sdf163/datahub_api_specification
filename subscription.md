@@ -56,6 +56,7 @@
         
 	[
 		{
+			"subscriptionid": 1234567,
 			"sellername": "li4@example.com"
 			"repname":"NBA",
 			"itemname":"bear",
@@ -74,6 +75,7 @@
 			}
 		},
 		{
+			"subscriptionid": 1234568,
 			"sellername": "zhang3@example.com"
 			"repname":"CBA",
 			"itemname":"triger",
@@ -131,6 +133,7 @@
         
 	[
 		{
+			"subscriptionid": 1234567,
 			"sellername": "zhang3@example.com",
 			"itemname":"bear",
 			"supply_style":"batch",
@@ -148,6 +151,7 @@
 			}
 		},
 		{
+			"subscriptionid": 1234568,
 			"sellername": "zhang3@example.com",
 			"itemname":"triger",
 			"supply_style":"batch",
@@ -187,6 +191,7 @@
         
 	[
 		{
+			"subscriptionid": 1234567,
 			"sellername": "li4@example.com",
 			"supply_style":"batch",
 			"signtime":"2015-11-10T15:04:05Z08:00",
@@ -203,6 +208,7 @@
 			}
 		},
 		{
+			"subscriptionid": 1234568,
 			"sellername": li4@example.com",
 			"supply_style":"flow",
 			"signtime":"2015-11-01T15:04:05Z08:00",
@@ -241,6 +247,7 @@
         
 	[
 		{
+			"subscriptionid": 1234567,
 			"buyername":"zhang3@example.com",
 			"repname":"NBA",
 			"itemname":"bear",
@@ -259,6 +266,7 @@
 			}
 		},
 		{
+			"subscriptionid": 1234568,
 			"buyername":"li4@example.com",
 			"repname":"CBA",
 			"itemname":"triger",
@@ -306,6 +314,7 @@
         
 	[
 		{
+			"subscriptionid": 1234567,
 			"buyername":"zhang3@example.com",
 			"itemname":"bear",
 			"supply_style":"batch",
@@ -323,6 +332,7 @@
 			}
 		},
 		{
+			"subscriptionid": 1234568,
 			"buyername":"li4@example.com",
 			"itemname":"triger",
 			"supply_style":"batch",
@@ -362,6 +372,7 @@
         
 	[
 		{
+			"subscriptionid": 1234567,
 			"buyername":"zhang3@example.com",
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
@@ -378,6 +389,7 @@
 			}
 		},
 		{
+			"subscriptionid": 1234568,
 			"buyername":"li4@example.com",
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",

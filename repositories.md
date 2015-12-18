@@ -191,7 +191,7 @@ Example Response：
 
 	page (taglist分页页数) : 			1 - N，  默认=1（page=1可以不传）
 	size（taglist页面大小）: 				1 - N，  默认=6
-	abstract（是否只显示摘要信息）：		1  只显示Item（optime，comment，label, tags）4个属性				
+	abstract（是否只显示摘要信息）:		1  只显示Item（optime，comment，label, tags）4个属性				
 
 Example Request：
 
@@ -224,21 +224,21 @@ Example Request：
 	    "sample": {},
 		"price":[
 					{
-						"time"： 1,
+						"time": 1,
 						"unit": "day",
 						"money": 5,
 						"expire":30,
 						"uuid":100000000000000000000000
 					},
 					{
-						"time"： 10,
+						"time": 10,
 						"unit": "day",
 						"money": 50,
 						"expire":30,
 						"uuid":100000000000000000000000
 					},
 					{
-						"time"： 100,
+						"time": 100,
 						"unit": "day",
 						"money": 400,
 						"expire":30,
@@ -339,17 +339,17 @@ Example Request：
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
 		"price":[
 					{
-						"times"： 1000,
+						"times": 1000,
 						"money": 5,
 						"expire":30
 					},
 					{
-						"times"： 10000,
+						"times": 10000,
 						"money": 45,
 						"expire":30
 					},
 					{
-						"times"： 100000,
+						"times": 100000,
 						"money": 400,
 						"expire":30
 					}
@@ -373,17 +373,17 @@ Example Request：
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
 		"price":[
 					{
-						"times"： 1000,
+						"times": 1000,
 						"money": 5,
 						"expire":30
 					},
 					{
-						"times"： 10000,
+						"times": 10000,
 						"money": 45,
 						"expire":30
 					},
 					{
-						"times"： 100000,
+						"times": 100000,
 						"money": 400,
 						"expire":30
 					}
@@ -427,17 +427,17 @@ Example Request：
         "sample": "{}",
 		"price":[
 					{
-						"times"： 1000,
+						"times": 1000,
 						"money": 5,
 						"expire":30
 					},
 					{
-						"times"： 10000,
+						"times": 10000,
 						"money": 45,
 						"expire":30
 					},
 					{
-						"times"： 100000,
+						"times": 100000,
 						"money": 400,
 						"expire":30
 					}

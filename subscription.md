@@ -35,7 +35,7 @@
 
 ## APIs
 
-### (40) GET /subscriptions/pull
+### (40) GET /subscriptions/pull?phase={phase}&beforetime={beforetime}
 
 说明
 
@@ -110,7 +110,7 @@
 	plan.used: 已经使用量　
 	plan.expire: 交易有效期（天数）
 
-### (41) GET /subscriptions/pull/:repname 
+### (41) GET /subscriptions/pull/:repname?phase={phase}&beforetime={beforetime}
 
 说明
 
@@ -166,7 +166,7 @@
 		}
 	]
 
-### (42) GET /subscriptions/pull/:repname/:itemname 
+### (42) GET /subscriptions/pull/:repname/:itemname?phase={phase}&beforetime={beforetime}
 
 说明
 
@@ -220,7 +220,7 @@
 		}
 	]
 
-### (43) GET /subscriptions/push 
+### (43) GET /subscriptions/push?phase={phase}&beforetime={beforetime}
 
 说明
 
@@ -285,7 +285,7 @@
 	itemname: data item name
 	signtime: 订阅时间
 
-### (44) GET /subscriptions/push/:repname 
+### (44) GET /subscriptions/push/:repname?phase={phase}&beforetime={beforetime}
 
 说明
 

@@ -66,17 +66,22 @@ Example Request：
 	
 说明：
 	
-	【rep拥有者】将某用户（非自己）从rep白名单中删除
+	【rep拥有者】将某些用户（非自己）从rep白名单中删除
 
 输入参数说明：
 
-	username 		被从白名单删除的用户名
+	username 		被从白名单删除的用户名,可以传多个username
+	delall          是否删除所有白名单用户[delall=1 删除所有]
    
 Example Request：
 
-	DELETE /permission/rep00001?username=nike HTTP/1.1 
+	DELETE /permission/rep00001?username=nike&username=peter HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	DELETE /permission/rep00001?delall=1 HTTP/1.1 
+    Accept: application/json
+    Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 ## 4 指令：GET /permission/:repname/:itemname
 
@@ -130,14 +135,19 @@ Example Request：
 	
 说明：
 	
-	【item拥有者】将某用户（非自己）从item白名单中移除
+	【item拥有者】将某些用户（非自己）从item白名单中移除
 
 输入参数说明：
 
 	username 		被从白名单删除的用户名
+	delall          是否删除所有白名单用户[delall=1 删除所有]
    
 Example Request：
 
 	DELETE /permission/repname1/itemname1?username=abc HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+    
+    DELETE /permission/repname1/itemname1?delall=1 HTTP/1.1 
+    Accept: application/json
+    Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb

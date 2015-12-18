@@ -38,15 +38,17 @@ Example Response：
 	
 说明
 	
-	删除dataitem的label的某条属性
+	[拥有者]删除dataitem的label.owner的某条属性
+	[管理员]删除dataitem的label.other的某条属性
 
 输入参数说明：
 
-	无
+	owner.xxx           owner.xxx xxx指被删除的属性
+	other.yyy           other.yyy yyy指被删除的属性
 	
 Example Request：
 
-	[DELETE] /repositories/chinamobile/beijingphone/label? HTTP/1.1
+	[DELETE] /repositories/chinamobile/beijingphone/label?s HTTP/1.1
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 Example Response：
@@ -88,11 +90,13 @@ Example Response：
 	
 说明
 	
-	删除dataitem的label的某条属性
+	[拥有者]删除dataitem的label.owner的某条属性
+	[管理员]删除dataitem的label.other的某条属性
 
 输入参数说明：
 
-	无
+	owner.xxx           owner.xxx xxx指被删除的属性
+	other.yyy           other.yyy yyy指被删除的属性
 	
 Example Request：
 

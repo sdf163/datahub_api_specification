@@ -3,8 +3,6 @@
 
 - [GET] /users/:loginname 查询用户
 
-- [GET] /users/load/vip 查询每个级别下的用户
-
 - [POST] /users/:loginname 创建用户
 
 - [PUT] /users/:loginname 修改用户
@@ -65,28 +63,10 @@
 		invalidTime:失效时间
 	返回数据示例
 		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
-	
-##指令：GET /users/load/vip 查询每个级别下的用户(81.5)
-	说明
-		【任意】 返回所有用户按照用户级别分类
-	输入参数说明：
-		无
-	Example Request：
-		GET /users/load/vip HTTP/1.1 
-		Accept: text/json;charset=UTF-8
-		USER:admin
-
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-		level：用户级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
-		member：这个级别下的所有用户 登录名称
-	返回数据示例
-		{"data":[{"level":2,"member":["datahub@asiainfo.com"]}],"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
-		创建一个用户
+		【任意】创建一个用户
 	输入参数说明：
 		passwd：MD5以后的密码
 	Example Request：
@@ -111,7 +91,7 @@
 
 ##指令：PUT /users/:loginname/pwd 修改密码(84)
 	说明：
-		修改用户密码
+		【自己或者管理员】修改用户密码
 	输入参数说明：
 		oldpwd：修改前密码（md5）
 		passwd：修改后密码（md5）
@@ -199,7 +179,7 @@
 		{"code":0,"msg":"ok"}
 ##指令：GET /quota/:loginname/repository 获取用户的repo配额（87）
 	说明：
-		获取用户的配额信息
+		【自己或者管理员】获取用户的配额信息
 	输入参数说明：
 		无
 	Example Request：
@@ -262,7 +242,7 @@
 		{"code":0,"msg":"ok"}
 ##指令：POST /quota/:loginname/repository/use 修改用户的repo使用量（8a）
 	说明：
-		修改用户的repo的使用量
+		【管理员】修改用户的repo的使用量
 		注：只允许本人或者管理员修改
 	输入参数说明：
 		private:私有repo使用数量
@@ -285,7 +265,7 @@
 
 ##指令：GET /quota/:loginname/deposit 获取用户的托管信息（8b）
 	说明：
-		获取用户的托管的配额信息
+		【自己或者管理员】获取用户的托管的配额信息
 	输入参数说明：
 		无
 	Example Request：
@@ -345,7 +325,7 @@
 
 ##指令：GET /quota/:loginname/pullnum 获取用户的下载量信息（8f）
 	说明：
-		获取用户的下载量信息
+		【自己或者管理员】获取用户的下载量信息
 	输入参数说明：
 		无
 	Example Request：
@@ -453,10 +433,16 @@
 #指令：PUT /vip/:loginname 修改会员信息(8k)
 	说明：
 		【管理员】修改用户的会员信息,同时修改用户配额、以及扣取年费（管理员除外）
-               升级会员
+               1 会员续费 userType与以前不变，扣取对应的年费（整年）
+				 1）以前存在有效期，并且没有到期，就按照有效期时间+会员有效时间 生成新的失效时间；
+				 2）以前不存在有效期或者已到期，按照当前申请时间+会员有效时间 生成新的失效时间；
+			   2 升级会员 userType与以前变化，修改配额；会员到期时间，从当前开始到下一年
+				 1）年费扣取时，如果原会员未到期，算一下剩余的年费，收取升级的年费时，扣除前一次的剩余年费，会员到期时间，从当前开始到下一年
+	           3 降级会员：未到期时不能降级，到期后可降级，修改配额，扣取年费，修改失效时间
+
 	输入参数说明：
 		userType：会员级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
-		validity:有效期（单位：年）
+		validity:有效期（单位：年）,如果不传此参数，默认为1
 	Example Request：
 		PUT /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8

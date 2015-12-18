@@ -157,7 +157,7 @@
 	numpulls: 所有人总共产的pull量
 	nummypulls: 当前用户产生的pull量 (匿名请求无此项)
 
-### GET /transactions/pull?groupbydate=[0|1]  (55)
+### GET /transactions/pull?groupbydate=[0|1]&beforetime={beforetime}  (55)
 
 说明
 
@@ -166,6 +166,7 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
+	beforetime: (可选) 最晚时间
 
 输入样例：
 
@@ -257,7 +258,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/pull/:repname/:itemname  (56)
+### GET /transactions/pull/:repname/:itemname?beforetime={beforetime}  (56)
 
 说明
 
@@ -265,7 +266,7 @@
 
 输入参数说明：
 	
-	无
+	beforetime: (可选) 最晚时间
 
 输入样例：
 
@@ -295,7 +296,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/push?groupbydate=[0|1]  (57)
+### GET /transactions/push?groupbydate=[0|1]&beforetime={beforetime}  (57)
 
 说明
 
@@ -304,6 +305,7 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
+	beforetime: (可选) 最晚时间
 
 输入样例：
 
@@ -393,7 +395,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/push/:repname/:itemname?groupbydate=[0|1]  (58)
+### GET /transactions/push/:repname/:itemname?groupbydate=[0|1]&beforetime={beforetime}  (58)
 
 说明
 
@@ -402,6 +404,7 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
+	beforetime: (可选) 最晚时间
 
 输入样例：
 

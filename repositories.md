@@ -422,7 +422,7 @@ Example Request：
 			
 Example Request：
 
-	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	PUT /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	{
         "itemaccesstype": "private",

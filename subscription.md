@@ -43,7 +43,8 @@
 
 输入参数说明：
 	
-	无
+	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	beforetime: [可选] 最晚时间
 
 输入样例：
 
@@ -79,8 +80,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -117,7 +118,8 @@
 
 输入参数说明：
 	
-	无
+	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	beforetime: [可选] 最晚时间
 
 输入样例：
 
@@ -151,8 +153,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -172,7 +174,8 @@
 
 输入参数说明：
 	
-	无
+	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	beforetime: [可选] 最晚时间
 
 输入样例：
 
@@ -204,8 +207,8 @@
 			"supply_style":"flow",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -225,7 +228,8 @@
 
 输入参数说明：
 	
-	无
+	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	beforetime: [可选] 最晚时间
 
 输入样例：
 
@@ -243,8 +247,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -261,8 +265,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -289,7 +293,8 @@
 
 输入参数说明：
 	
-	无
+	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	beforetime: [可选] 最晚时间
 
 输入样例：
 
@@ -306,8 +311,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -323,8 +328,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -336,7 +341,7 @@
 		}
 	]
 
-### (45) GET /subscriptions/push/:repname/:itemname
+### (45) GET /subscriptions/push/:repname/:itemname?phase={phase}&beforetime={beforetime}
 
 说明
 
@@ -344,7 +349,8 @@
 
 输入参数说明：
 	
-	无
+	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	beforetime: [可选] 最晚时间
 
 输入样例：
 
@@ -360,8 +366,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -376,8 +382,8 @@
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
 			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-104T15:04:05Z08:00",
-			"finishtime":"2016-01-104T15:04:05Z08:00",
+			"freezetime":"2015-12-04T15:04:05Z08:00",
+			"finishtime":"2016-01-04T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -435,7 +441,7 @@
 返回数据说明：
 
 	subscriptionid: 预订阅id
-	issumetime: 预订阅时间
+	signtime: 预订阅时间
 
 ### (48) PUT /subscription/:repname/:itemname 
 
@@ -446,7 +452,7 @@
 输入参数说明：
 	
 	subscriptionid: 预订阅id
-	planid: DataItem上的某个收费计划
+	planid: DataItem上的某个收费计划的uuid
 
 输入样例：
 
@@ -472,7 +478,7 @@
 输入参数说明：
 	
 	action: remove
-	reason: 一段文本描述原因
+	reason: 一段文本描述原因(<256个字符)
 
 输入样例：
 

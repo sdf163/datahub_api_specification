@@ -126,17 +126,19 @@ Example Response：
 说明
 	
 	【任意】返回精选内容，按照order排序
+	【已登陆用户】返回该用户具有查询权限的private及public的Item
 	
 输入参数说明：
 	
 	select_labels  精选栏目名称
 	若果不传，返回全部精选
 	如果传，返回label类别的精选
-		
+			
 Example Request：
 	
 	GET /selects?select_labels=chinamobile HTTP/1.1 
 	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：
 

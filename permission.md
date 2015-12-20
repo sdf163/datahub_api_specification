@@ -16,11 +16,11 @@
 
 输入参数说明：
 	
-	无
+	username 查询某个用户是否在白名[如果是,返回用户名.如果否,返回空]
 
 Example Request：
 
-	GET /permission/rep HTTP/1.1 
+	GET /permission/rep?username= HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：

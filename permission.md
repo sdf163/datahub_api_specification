@@ -27,16 +27,17 @@ Example Request：
 
 Example Response：
 	
-	[
-		{"username":"user1", "opt_permission": 1},
-		{"username":"user2", "opt_permission": 1},
-		{"username":"user3", "opt_permission": 0}
-	]
+	    permissions:[
+		                {"username":"user1", "opt_permission": 1},	
+		                {"username":"user2", "opt_permission": 1}
+	               ],
+	    total:50             
 
 返回数据说明：
 
-	username					rep白名单用户名
-	opt_permission				rep白名单用户所具有的权限[0:读,1:写]
+	permissions.username					rep白名单用户名
+	permissions.opt_permission				rep白名单用户所具有的权限[0:读,1:写]
+	total                                   total总数
 
 ----------
 
@@ -101,14 +102,16 @@ Example Request：
 	GET /permission/repname1/itemname1?page=4 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-    
 
 返回数据说明：
-	[
-		{"username":"user1"},
-		{"username":"user2"},
-		{"username":"user3"}
-	]
+    
+	permissions:[
+    		        {"username":"user1"},	
+    		        {"username":"user2"},
+    		        {"username":"user3"},	
+                    {"username":"user4"}
+    	        ],
+    total:50             
 	
 ----------
 

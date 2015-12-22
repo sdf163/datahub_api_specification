@@ -17,10 +17,12 @@
 输入参数说明：
 	
 	username 查询某个用户是否在白名[如果是,返回用户名.如果否,返回空]
-
+    page (分页页数) : 				1 - N，  默认=1（page=1可以不传）
+    size（页面大小）: 				1 - N，  默认=6 (-1 返回全部)
+    
 Example Request：
 
-	GET /permission/rep?username= HTTP/1.1 
+	GET /permission/rep?username=user1&page=2 HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 Example Response：
@@ -88,13 +90,15 @@ Example Request：
 说明
 
 	【item拥有者】查询自己item白名单中username列表
+	 page (分页页数) : 				1 - N，  默认=1（page=1可以不传）
+     size（页面大小）: 				1 - N，  默认=6 (-1 返回全部)
 
 输入参数说明：
 	
 
 Example Request：
 
-	GET /permission/repname1/itemname1 HTTP/1.1 
+	GET /permission/repname1/itemname1?page=4 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
     

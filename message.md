@@ -322,6 +322,16 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 
+## topic: to_emails.json
+
+### 发送一条email
+
+	{
+		"to": "zhang3@example.com",
+		"subject": "你的订购申请通过了",
+		"message": "你的订购申请通过了，你可以下载数据了。http://hub.dataos.io/itemDetails.html?repname=Internet_stats&itemname=Ecommerce_goods"
+	}
+
 ## topic: to_subscriptions.json
 
 ### 增加tag

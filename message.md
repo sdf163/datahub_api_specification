@@ -329,7 +329,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	{
 		"to": "zhang3@example.com",
 		"subject": "你的订购申请通过了",
-		"message": "你的订购申请通过了，请可以下载数据了。http://hub.dataos.io/mySubscribe.html 。此邮件是系统自动转发，请不要回复。"
+		"message": "你的订购申请通过了，请可以下载数据了。http://hub.dataos.io/mySubscribe.html 。此邮件是系统自动转发，请不要回复。",
+		"ishtml": false
 	}
 
 ## topic: to_subscriptions.json

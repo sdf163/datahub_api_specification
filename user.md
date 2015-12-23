@@ -39,6 +39,8 @@
 
 - [GET] /vip/:loginname 查询会员信息
 
+- [GET] /vip/:loginname/cost 查看用户要升级的会员所需金额
+
 - [PUT] /vip/:loginname 修改会员信息
 
 	
@@ -440,7 +442,7 @@
 			},
 		"code":0,"msg":"ok"
 		}
-#指令：GET /vip/:loginname/cost 修改会员信息(8k)
+#指令：GET /vip/:loginname/cost 查看用户要升级的会员所需金额(8k)
 	说明：
 		【任意】查看用户要升级的会员所需金额
 	输入参数说明：

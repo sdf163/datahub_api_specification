@@ -463,16 +463,16 @@
 
 说明
 
-	【需求者】申请一个订购
-	【需求者】取消申请一个订购
-	【需求者】确定签署一个订购
-	【提供者】同意一个订购申请
-	【提供者】否决一个订购申请
+	【需求者】申请一个订购 (apply)
+	【需求者】取消申请一个订购 (withdraw)
+	【需求者】确定签署一个订购 (subscribe)
+	【提供者】同意一个订购申请 (agree)
+	【提供者】否决一个订购申请 (deny)
 
 输入参数说明：
 	
-	purpose: subscribe | apply | cancelapply | agree | deny  (可为空，表示默认subscribe)
-	subscriptionid: 预订购id
+	purpose: subscribe | apply | withdraw | agree | deny | remove  (可为空，表示默认subscribe)
+	subscriptionid: 预订购id (purpose=withdraw时不需要)
 	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
 
 输入样例：

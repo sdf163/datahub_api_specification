@@ -13,6 +13,8 @@
 
 - [PUT] /users/:loginname/pwd 修改密码
 
+- [GET] /users/:loginname/pwd/validate 验证密码是否正确
+
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
 - [POST] /quota/:loginname/repository 创建repo配额信息
@@ -36,6 +38,8 @@
 - [POST] /quota/:loginname/pullnum/use 修改用户的已下载量
 
 - [GET] /vip/:loginname 查询会员信息
+
+- [GET] /vip/:loginname/cost 查看用户要升级的会员所需金额
 
 - [PUT] /vip/:loginname 修改会员信息
 
@@ -112,10 +116,6 @@
 	【管理员角色】 说明 ：
 		修改一个用户
 	【管理员角色】输入参数说明：
-		PUT /users/aaa@126.com HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
-		Authorization: token
-
 		userstatus:用户状态（除了激活状态，其他状态需要有管理员权限）
 		nickname：昵称
 		username：真实名称
@@ -174,6 +174,20 @@
                   
 	返回数据说明
 		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+##指令：GET /users/:loginname/pwd/validate 验证密码是否正确(86.5)
+	说明：
+		【任意】验证密码是否正确
+	输入参数说明：
+		pwd:用户密码(md5加密过的)
+	Example Request：
+		GET /users/foo@asiainfo.com/pwd/validate?pwd=abc HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+                  
+	返回数据说明
+		code:状态码 0：密码正确，8004：密码错误，1007：参数错误，1001：其他系统异常
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -428,9 +442,27 @@
 			},
 		"code":0,"msg":"ok"
 		}
+#指令：GET /vip/:loginname/cost 查看用户要升级的会员所需金额(8k)
+	说明：
+		【任意】查看用户要升级的会员所需金额
+	输入参数说明：
+		userType：会员级别
+	Example Request：
+		GET /vip/foo/cost?userType=4 HTTP/1.1 
+		Accept: text/json;charset=UTF-8
+		Authorization: token
+		USER:foo
+	返回数据说明：
+		cost:金额
+	返回数据示例：
 
+		{"data":	{
+			"cost":"1400"
+			},
+		"code":0,"msg":"ok"
+		}
 
-#指令：PUT /vip/:loginname 修改会员信息(8k)
+#指令：PUT /vip/:loginname 修改会员信息(8l)
 	说明：
 		【管理员】修改用户的会员信息,同时修改用户配额、以及扣取年费（管理员除外）
                1 会员续费 userType与以前不变，扣取对应的年费（整年）
@@ -442,6 +474,7 @@
 
 	输入参数说明：
 		userType：会员级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+		cost:费用
 		validity:有效期（单位：年）,如果不传此参数，默认为1
 	Example Request：
 		PUT /vip/foo HTTP/1.1 
@@ -450,6 +483,7 @@
 		USER:admin
 		{
 			"userType":"3",
+			"cost":"1400",
 			"validity":"2"
 		}
 	返回数据说明：

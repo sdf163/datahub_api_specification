@@ -1,4 +1,4 @@
-# 订阅
+# 订购
 
 ## Errors
 
@@ -39,7 +39,7 @@
 
 说明
 
-	【需求者】查询所有订阅
+	【需求者】查询所有订购
 
 输入参数说明：
 	
@@ -101,7 +101,7 @@
 	repname: repository name
 	itemname: data item name
 	supply_style: flow | batch 
-	signtime: 订阅时间
+	signtime: 订购时间
 	expiretime: 自动过期时间
 	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）
 	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）
@@ -116,7 +116,7 @@
 
 说明
 
-	【需求者】查询在某个respository中的所有订阅
+	【需求者】查询在某个respository中的所有订购
 
 输入参数说明：
 	
@@ -174,7 +174,7 @@
 
 说明
 
-	【需求者】查询在某个dataitem上的所有订阅
+	【需求者】查询在某个dataitem上的所有订购
 
 输入参数说明：
 	
@@ -230,7 +230,7 @@
 
 说明
 
-	【提供者】查询所有在自己的dataitem上的订阅
+	【提供者】查询所有在自己的dataitem上的订购
 
 输入参数说明：
 	
@@ -291,13 +291,13 @@
 	buyername: 数据消费者
 	repname: repository name
 	itemname: data item name
-	signtime: 订阅时间
+	signtime: 订购时间
 
 ### (44) GET /subscriptions/push/:repname?phase={phase}&beforetime={beforetime}
 
 说明
 
-	【提供者】查询在自己的某个respository中的所有订阅
+	【提供者】查询在自己的某个respository中的所有订购
 
 输入参数说明：
 	
@@ -355,7 +355,7 @@
 
 说明
 
-	【提供者】查询自己的某个dataitem上的所有订阅
+	【提供者】查询自己的某个dataitem上的所有订购
 
 输入参数说明：
 	
@@ -411,7 +411,7 @@
 
 说明
 
-	【管理员】清除无效订阅
+	【管理员】清除无效订购
 
 输入参数说明：
 	
@@ -427,21 +427,25 @@
         
 	无
 
-### (47) POST /subscription/:repname/:itemname 
+### (47) POST /subscription/:repname/:itemname
 
 说明
 
-	【需求者】取得预订阅信息
+	【需求者】取得预订购信息
 
 输入参数说明：
 	
-	无
+	purpose: subscribe | apply
 
 输入样例：
 
 	POST /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"purpose": "subscribe"
+	}
 	
 输出样例：
         
@@ -452,19 +456,24 @@
 
 返回数据说明：
 
-	subscriptionid: 预订阅id
-	signtime: 预订阅时间
+	subscriptionid: 预订购id
+	signtime: 预订购时间
 
-### (48) PUT /subscription/:repname/:itemname 
+### (48) PUT /subscription/:repname/:itemname (to remove)
 
 说明
 
-	【需求者】 确定签署一个订阅
+	【需求者】申请一个订购 (apply)
+	【需求者】取消申请一个订购 (withdraw)
+	【需求者】确定签署一个订购 (subscribe)
+	【提供者】同意一个订购申请 (agree)
+	【提供者】否决一个订购申请 (deny)
 
 输入参数说明：
 	
-	subscriptionid: 预订阅id
-	planid: DataItem上的某个收费计划的uuid
+	purpose: subscribe | apply | withdraw | agree | deny | remove  (可为空，表示默认subscribe)
+	subscriptionid: 预订购id (purpose=withdraw时不需要)
+	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
 
 输入样例：
 
@@ -473,6 +482,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
+		“purpose": "subscribe",
 		"subscriptionid": 1234567890,
 		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
 	}
@@ -485,7 +495,7 @@
 
 说明
 
-	【管理员】取消订阅action=remove
+	【管理员】取消订购action=remove
 
 输入参数说明：
 	
@@ -511,7 +521,7 @@
 
 说明
 
-	【任意】返回该DataItem的订阅量
+	【任意】返回该DataItem的订购量
 
 输入参数说明：
 	
@@ -530,7 +540,7 @@
 
 说明
 
-	【任意】返回该repositories的订阅量
+	【任意】返回该repositories的订购量
 
 输入参数说明：
 	
@@ -553,7 +563,7 @@
 
 说明
 
-	【需求者】查询该DataItem是否订阅过
+	【需求者】查询该DataItem是否订购过
 
 输入参数说明：
 	
@@ -573,7 +583,7 @@
 
 说明
 
-	【需求者】取消订阅该DataItem
+	【需求者】取消订购该DataItem
 
 输入参数说明：
 	
@@ -593,7 +603,7 @@
 
 说明
 
-	【需求者】查询在指定repository中所有订阅的DataItem
+	【需求者】查询在指定repository中所有订购的DataItem
 
 输入参数说明：
 	

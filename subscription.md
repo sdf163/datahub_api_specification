@@ -463,13 +463,17 @@
 
 说明
 
+	【需求者】申请一个订阅
+	【需求者】取消申请一个订阅
 	【需求者】确定签署一个订阅
+	【提供者】同意一个订阅申请
+	【提供者】否决一个订阅申请
 
 输入参数说明：
 	
-	purpose: subscribe | apply | cancelapply (可为空，表示默认subscribe)
+	purpose: subscribe | apply | cancelapply | agree | deny  (可为空，表示默认subscribe)
 	subscriptionid: 预订阅id
-	planid: DataItem上的某个收费计划的uuid
+	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
 
 输入样例：
 

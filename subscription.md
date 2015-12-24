@@ -427,7 +427,7 @@
         
 	无
 
-### (47) POST /subscription/:repname/:itemname 
+### (47) POST /subscription/:repname/:itemname
 
 说明
 
@@ -435,13 +435,17 @@
 
 输入参数说明：
 	
-	无
+	purpose: subscribe | apply
 
 输入样例：
 
 	POST /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"purpose": "subscribe"
+	}
 	
 输出样例：
         
@@ -455,14 +459,15 @@
 	subscriptionid: 预订阅id
 	signtime: 预订阅时间
 
-### (48) PUT /subscription/:repname/:itemname 
+### (48) PUT /subscription/:repname/:itemname (to remove)
 
 说明
 
-	【需求者】 确定签署一个订阅
+	【需求者】确定签署一个订阅
 
 输入参数说明：
 	
+	purpose: subscribe | apply | cancelapply (可为空，表示默认subscribe)
 	subscriptionid: 预订阅id
 	planid: DataItem上的某个收费计划的uuid
 
@@ -473,6 +478,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
+		“purpose": "subscribe",
 		"subscriptionid": 1234567890,
 		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
 	}

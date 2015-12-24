@@ -189,9 +189,10 @@ Example Response：
 
 输入参数说明：
 
-	page (taglist分页页数) : 			1 - N，  默认=1（page=1可以不传）
-	size（taglist页面大小）: 				1 - N，  默认=6
-	abstract（是否只显示摘要信息）:		1  只显示Item（optime，comment，label, tags）4个属性				
+	page (taglist分页页数) : 			              1 - N，  默认=1（page=1可以不传）
+	size（taglist页面大小）: 				          1 - N，  默认=6
+	abstract（是否只显示摘要信息）:		              1 只显示Item（optime，comment，label, tags）4个属性
+	haspermission(返回是否具有订阅权限)			  1 显示是否具有订阅权限,不传则不显示订阅权限
 
 Example Request：
 
@@ -213,6 +214,7 @@ Example Request：
 	Tags.comment			tag详情
 	Tags.optime				tag上传日期
 	taglist					item下所有tag的详细信息
+	permission              订阅权限[true, false]
 
 返回值示例
         
@@ -272,6 +274,7 @@ Example Request：
 					"optime": "2015-11-17 02:14:59.491811069 +0000 UTC|6天以前"
 				}
 			]
+	   "permission": true	
 	}
 
 ----------

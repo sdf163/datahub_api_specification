@@ -208,11 +208,16 @@ Example Request：
 	sample					样例数据
 	comment					详情
 	price					计费计划
+	price.units             购买数量
+	price.money             价格
+	price.expire            有效期(天)
+	price.limit             限购次数
+	price.plan_id           价格计划id
     tags					tag量
 	label.sys.supply_style	服务形式[api；batch；flow]
-	Tags.tag				tag名称
-	Tags.comment			tag详情
-	Tags.optime				tag上传日期
+	tags.tag				tag名称
+	tags.comment			tag详情
+	tags.optime				tag上传日期
 	taglist					item下所有tag的详细信息
 	permission              订阅权限[true, false]
 
@@ -226,25 +231,23 @@ Example Request：
 	    "sample": {},
 		"price":[
 					{
-						"time": 1,
-						"unit": "day",
+						"units": "30",
 						"money": 5,
 						"expire":30,
-						"uuid":100000000000000000000000
+						"limit":1,
+						"plan_id":"100000000000000000000000"
 					},
 					{
-						"time": 10,
-						"unit": "day",
+						"units": "300",
 						"money": 50,
 						"expire":30,
-						"uuid":100000000000000000000000
+						"plan_id":"100000000000000000000000"
 					},
 					{
-						"time": 100,
-						"unit": "day",
+						"units: "3000",
 						"money": 400,
 						"expire":30,
-						"uuid":100000000000000000000000
+						"plan_id":"100000000000000000000000"
 					}
 				],		
 	    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
@@ -291,7 +294,11 @@ Example Request：
 	meta							元数据
 	sample							样例数据
 	comment							详情
-	price				 			价格计划
+	price					        计费计划
+    price.units                     购买数量
+    price.money                     价格
+    price.expire                    有效期(天)
+    price.limit                     限购次数
 	label.sys.supply_style			服务形式[api；batch；flow]【必选】
 	label.sys.supply_style.api		实时单条
 	label.sys.supply_style.batch	批量
@@ -308,19 +315,16 @@ Example Request：
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
 		"price":[
 					{
-						"time"： 1,
-						"money": 5,
-						"expire":30
+						"units": "30",
+                        "money": 5,
+                        "expire":30,
+                        "limit":1,
 					},
 					{
-						"time"： 10,
-						"money": 50,
-						"expire":30
-					},
-					{
-						"time"： 100,
-						"money": 400,
-						"expire":30
+						"units": "30",
+                        "money": 5,
+                        "expire":30,
+                        "limit":1,
 					}
 				],
         "label": {
@@ -333,73 +337,6 @@ Example Request：
         }
     }
 	
-	POST /repositories/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	{
-        "itemaccesstype": "private",
-        "meta": "{}",
-        "sample": "{}",
-        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
-		"price":[
-					{
-						"times": 1000,
-						"money": 5,
-						"expire":30
-					},
-					{
-						"times": 10000,
-						"money": 45,
-						"expire":30
-					},
-					{
-						"times": 100000,
-						"money": 400,
-						"expire":30
-					}
-				],
-        "label": {
-            "sys": {
-                "supply_style": "api"
-            },
-            "opt": {},
-            "owner": {},
-            "other": {}
-        }
-    }
-
-	POST /repositories/chinamobile/beijingphone HTTP/1.1 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	{
-        "itemaccesstype": "private",
-        "meta": "{}",
-        "sample": "{}",
-        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
-		"price":[
-					{
-						"times": 1000,
-						"money": 5,
-						"expire":30
-					},
-					{
-						"times": 10000,
-						"money": 45,
-						"expire":30
-					},
-					{
-						"times": 100000,
-						"money": 400,
-						"expire":30
-					}
-				],
-        "label": {
-            "sys": {
-                "supply_style": "batch"
-            },
-            "opt": {},
-            "owner": {},
-            "other": {}
-        }
-    }
 
 返回值示例
 
@@ -430,20 +367,25 @@ Example Request：
         "sample": "{}",
 		"price":[
 					{
-						"times": 1000,
-						"money": 5,
-						"expire":30
-					},
-					{
-						"times": 10000,
-						"money": 45,
-						"expire":30
-					},
-					{
-						"times": 100000,
-						"money": 400,
-						"expire":30
-					}
+                    	"units": "30",
+                        "money": 5,
+                        "expire":30,
+                        "limit":1,
+                        "plan_id":"100000000000000000000001"
+                    },
+                    {
+                    	"units": "30",
+                        "money": 5,
+                        "expire":30,
+                        "limit":1,
+                        "plan_id":"100000000000000000000002"
+                    },
+                    {
+                        "units": "30",
+                        "money": 5,
+                        "expire":30,
+                        "limit":1,
+                    }
 				],
         "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。"      
     }

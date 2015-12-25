@@ -49,7 +49,6 @@
 			"itemname": "item123",
 			"tag": "tag567"
 		}
-	}	}
 	}
 	
 输入样例(订单变动通知。data.newphase可以为freezed|finished|cancelled|removed|flagged|applying|denied。进入consuming phase不会发消息)：
@@ -99,7 +98,7 @@
 			// 参见上一个API的输入样例
 		},
 		{
-			// 参见上一个API的输入样例"
+			// 参见上一个API的输入样例
 		}
 	]
 

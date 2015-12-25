@@ -43,8 +43,8 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
-	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, denied: 8, flagged: 9)。
+	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：
 
@@ -68,8 +68,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":3,
-				"time":0,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -87,8 +87,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -107,7 +107,7 @@
 	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）
 	phase: pending | consuming | freezed | finished | cancelled | removed
 	plan.money: 交易金额
-	plan.times: 最大下载次数（只对supply_style=batch有效）
+	plan.units: 最大下载次数（只对supply_style=batch有效）
 	plan.time: 最大下载天数（只对supply_style=flow有效)
 	plan.used: 已经使用量　
 	plan.expire: 交易有效期（天数）
@@ -144,8 +144,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":3,
-				"time":0,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -162,8 +162,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -201,8 +201,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":3,
-				"time":0,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -218,8 +218,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -259,8 +259,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -278,8 +278,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -325,8 +325,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -343,8 +343,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -382,8 +382,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -399,8 +399,8 @@
 			"phase":"consuming",
 			"plan":{
 				"money":5,
-				"times":0,
-				"time":3,
+				"units":3,
+				"limit":0,
 				"used":0,
 				"expire":30
 			}
@@ -435,7 +435,7 @@
 
 输入参数说明：
 	
-	purpose: subscribe | apply
+	action: subscribe | apply
 
 输入样例：
 
@@ -471,7 +471,7 @@
 
 输入参数说明：
 	
-	purpose: subscribe | apply | withdraw | agree | deny | remove  (可为空，表示默认subscribe)
+	action: subscribe | apply | withdraw | agree | deny | remove  (可为空，表示默认subscribe)
 	subscriptionid: 预订购id (purpose=withdraw时不需要)
 	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
 

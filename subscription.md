@@ -69,8 +69,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		},
@@ -88,8 +89,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		}
@@ -105,11 +107,12 @@
 	expiretime: 自动过期时间
 	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）
 	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）
-	phase: pending | consuming | freezed | finished | cancelled | removed
+	phase: 1-3, 5-10 (意义：consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, flagged: 10)
 	plan.money: 交易金额
-	plan.units: 最大下载次数（只对supply_style=batch有效）
-	plan.time: 最大下载天数（只对supply_style=flow有效)
+	plan.units: 最大下载次数（supply_style=batch）,最大下载天数（supply_style=flow)
 	plan.used: 已经使用量　
+	plan.limit: 最多可以订购次数
+	plan.subs: 当前订购次数
 	plan.expire: 交易有效期（天数）
 
 ### (41) GET /subscriptions/pull/:repname?phase={phase}&beforetime={beforetime}
@@ -145,8 +148,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		},
@@ -163,8 +167,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		}
@@ -202,8 +207,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		},
@@ -219,8 +225,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		}
@@ -260,8 +267,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		},
@@ -279,8 +287,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		}
@@ -326,8 +335,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		},
@@ -344,8 +354,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		}
@@ -383,8 +394,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		},
@@ -400,8 +412,9 @@
 			"plan":{
 				"money":5,
 				"units":3,
-				"limit":0,
 				"used":0,
+				"limit":0,
+				"subs":1,
 				"expire":30
 			}
 		}

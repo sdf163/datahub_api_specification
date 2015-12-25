@@ -320,6 +320,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 			"itemname": "item2"
 		}
 	}
+	
+	event可能为tag_added, tag_deleted, item_deleted, repo_deleted
 
 ### 订购事件
 
@@ -334,7 +336,15 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为freezed, finished, cancelled, removed, applying, wthdrawn, denied, flagged
+	newphase可能为2,3,5-10，意义：
+		freezed: 2, 
+		finished: 3, 
+		cancelled: 5, 
+		removed: 6, 
+		applying: 7, 
+		wthdrawn: 8, 
+		denied: 9, 
+		flagged: 10
 
 ## topic: to_emails.json
 

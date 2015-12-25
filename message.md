@@ -330,9 +330,11 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"subscriptionid": 1234567,
-			"phase": "freezed"
+			"newphase": "freezed"
 		}
 	}
+	
+	newphase可能为freezed, finished, cancelled, removed, applying, wthdrawn, denied, flagged
 
 ## topic: to_emails.json
 

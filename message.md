@@ -80,6 +80,7 @@
 	
 	type: （可选）消息类型
 	sender: (可选) 消息发送者
+	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
 	beforetime: （可选，默认为now）最晚时间, 毫秒数
 
 输入样例：

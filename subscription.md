@@ -420,11 +420,11 @@
 		}
 	]
 
-### (46) PUT /subscriptions/clean
+### (46) GET /subscription/:repname/:itemname
 
 说明
 
-	【管理员】清除无效订购
+	【需求者】查询是否已经有订购申请存在
 
 输入参数说明：
 	
@@ -432,13 +432,13 @@
 
 输入样例：
 
-	PUT /subscriptions/clean HTTP/1.1 
+	GET /subscriptions/repo01/item02 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
-	无
+	true
 
 ### (47) POST /subscription/:repname/:itemname
 
@@ -457,7 +457,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"purpose": "subscribe"
+		"action": "subscribe"
 	}
 	
 输出样例：
@@ -495,7 +495,7 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		“purpose": "subscribe",
+		“action": "subscribe",
 		"subscriptionid": 1234567890,
 		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
 	}

@@ -11,58 +11,19 @@
 输入参数说明：	
 	
 	type: 消息类型，必选
-	sender: 发送者（只对某些同样types有意义）
 	data: （不同type有各自不同的data）
-
+	
 输入样例(申请订购通知)：
 
-	POST /notifications HTTP/1.1 
+	POST /notifications HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"type": "apply_subs",
-		"sender": "zhang3@example.com",
+		"type": "apply_whitelist",
 		"data": {
 			"repname": "repo001",
 			"itemname": "item123"
-			"plan": {
-				"money": 7.99,
-				"units": 3,
-				"expire": 7,
-			}
-		}
-	}
-	
-输入样例(dataitem变动通知。data.event可以为tag_added|tag_deleted|item_deleted|repo_deleted)：
-
-	POST /notifications HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-	{
-		"type": "item_event",
-		"data": {
-			"event": "tag_added",
-			"eventtime": "2015-11-10T15:04:09Z08:00",
-			"repname": "repo001",
-			"itemname": "item123",
-			"tag": "tag567"
-		}
-	}
-	
-输入样例(订单变动通知。data.newphase可以为freezed|finished|cancelled|removed|applying|Withdrawn|denied|flagged。进入consuming phase不会发消息)：
-
-	POST /notifications HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-	{
-		"type": "subs_event",
-		"data": {
-			"subscriptionid": 1234567,
-			"eventtime": "2015-11-10T15:04:09Z08:00",
-			"newphase": "freezed"
 		}
 	}
 
@@ -85,7 +46,7 @@
 
 输入样例：
 
-	GET /notifications?type=private_message HTTP/1.1 
+	GET /notifications?type=private_message HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -93,13 +54,35 @@
 
 	[
 		{
-			// 参见上一个API的输入样例
+			"type": "apply_subs",
+			"sender": "zhang3@example.com",
+			"data": {
+				"repname": "repo001",
+				"itemname": "item123",
+				"plan": {
+					"money": 7.99,
+					"units": 3,
+					"expire": 7,
+				}
+			}
 		},
 		{
-			// 参见上一个API的输入样例
+			"type": "item_event",
+			"data": {
+				"event": "tag_added",
+				"eventtime": "2015-11-10T15:04:09Z08:00",
+				"repname": "repo001",
+				"itemname": "item123",
+				"tag": "tag567"
+			}
 		},
 		{
-			// 参见上一个API的输入样例
+			"type": "subs_event",
+			"data": {
+				"subscriptionid": 1234567,
+				"eventtime": "2015-11-10T15:04:09Z08:00",
+				"newphase": "freezed"
+			}
 		}
 	]
 
@@ -115,18 +98,16 @@
 
 输入样例：
 
-	GET /notification_stat HTTP/1.1 
+	GET /notification_stat HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
 
 	{
-		"subs_message": 6,
-		"dataitem_comment": 20,
-		"comment_reply": 2,
-		"private_message": 6,
-		"admin_broadcast": 1
+		"apply_subs": 6,
+		"item_event": 20,
+		"subs_event": 2
 	}
 
 ### DELETE /notification_stat
@@ -141,7 +122,7 @@
 
 输入样例：
 
-	DELETE /notification_stat HTTP/1.1 
+	DELETE /notification_stat HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

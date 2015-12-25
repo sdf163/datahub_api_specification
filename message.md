@@ -51,7 +51,7 @@
 		}
 	}
 	
-输入样例(订单变动通知。data.newphase可以为freezed|finished|cancelled|removed|flagged|applying|denied。进入consuming phase不会发消息)：
+输入样例(订单变动通知。data.newphase可以为freezed|finished|cancelled|removed|applying|Withdrawn|denied|flagged。进入consuming phase不会发消息)：
 
 	POST /notifications HTTP/1.1 
 	Accept: application/json

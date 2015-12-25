@@ -454,6 +454,7 @@ Example Request：
 说明
 
 	【拥有者】发布DataItem下的Tag详情，注意Tag需要按照UTF8编码后传递
+	 tag字符串最长为20个字符
 
 输入参数说明：
 

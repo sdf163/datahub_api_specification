@@ -424,6 +424,26 @@
 
 说明
 
+	【需求者】查询是否已经有有效订购存在
+
+输入参数说明：
+	
+	无
+
+输入样例：
+
+	GET /subscription/repo01/item02 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	true
+
+### (46b) GET /subscription/:repname/:itemname/apply
+
+说明
+
 	【需求者】查询是否已经有订购申请存在
 
 输入参数说明：
@@ -432,13 +452,13 @@
 
 输入样例：
 
-	GET /subscriptions/repo01/item02 HTTP/1.1 
+	GET /subscription/repo01/item02/apply HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
-	true
+	false
 
 ### (47) POST /subscription/:repname/:itemname
 
@@ -448,17 +468,13 @@
 
 输入参数说明：
 	
-	action: subscribe | apply
+	无
 
 输入样例：
 
 	POST /subscription/repo1/item123 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-	{
-		"action": "subscribe"
-	}
 	
 输出样例：
         
@@ -472,19 +488,42 @@
 	subscriptionid: 预订购id
 	signtime: 预订购时间
 
-### (48) PUT /subscription/:repname/:itemname (to remove)
+### (47b) POST /subscription/:repname/:itemname/apply
 
 说明
 
-	【需求者】申请一个订购 (apply)
-	【需求者】取消申请一个订购 (withdraw)
-	【需求者】确定签署一个订购 (subscribe)
-	【提供者】同意一个订购申请 (agree)
-	【提供者】否决一个订购申请 (deny)
+	【需求者】为申请订购取得预订购信息
 
 输入参数说明：
 	
-	action: subscribe | apply | withdraw | agree | deny | remove  (可为空，表示默认subscribe)
+	无
+
+输入样例：
+
+	POST /subscription/repo1/item123/apply HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+输出样例：
+        
+	{
+		"subscriptionid": 1234567890,
+		“signtime": "2015-09-10T15:04:05Z08:00"
+	}
+
+返回数据说明：
+
+	subscriptionid: 预订购id
+	signtime: 预订购时间
+
+### (48) PUT /subscription/:repname/:itemname
+
+说明
+
+	【需求者】确定签署一个订购 (subscribe)
+
+输入参数说明：
+	
 	subscriptionid: 预订购id (purpose=withdraw时不需要)
 	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
 
@@ -495,7 +534,37 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		“action": "subscribe",
+		"subscriptionid": 1234567890,
+		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
+	}
+	
+输出样例：
+        
+	无
+
+### (48b) PUT /subscription/:repname/:itemname/apply
+
+说明
+
+	【需求者】申请一个订购 (apply)
+	【需求者】取消申请一个订购 (withdraw)
+	【提供者】同意一个订购申请 (agree)
+	【提供者】否决一个订购申请 (deny)
+
+输入参数说明：
+	
+	action: apply | withdraw | agree | deny
+	subscriptionid: 预订购id (purpose=withdraw时不需要)
+	planid: DataItem上的某个收费计划的uuid (只对purpose=apply有效)
+
+输入样例：
+
+	PUT /subscription/repo1/item123/apply HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		“action": "apply",
 		"subscriptionid": 1234567890,
 		"planid": "a0a1a2a3a4a5a6a7a8a9aaabacad"
 	}

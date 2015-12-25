@@ -11,19 +11,59 @@
 输入参数说明：	
 	
 	type: 消息类型，必选
+	sender: 发送者（只对某些同样types有意义）
 	data: （不同type有各自不同的data）
 
-输入样例：
+输入样例(申请订购通知)：
 
 	POST /notifications HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"type": "apply_whitelist",
+		"type": "apply_subs",
+		"sender": "zhang3@example.com",
 		"data": {
 			"repname": "repo001",
 			"itemname": "item123"
+			"plan": {
+				"money": 7.99,
+				"units": 3,
+				"expire": 7,
+			}
+		}
+	}
+	
+输入样例(dataitem变动通知。data.event可以为tag_added|tag_deleted|item_deleted|repo_deleted)：
+
+	POST /notifications HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"type": "item_event",
+		"data": {
+			"event": "tag_added",
+			"eventtime": "2015-11-10T15:04:09Z08:00",
+			"repname": "repo001",
+			"itemname": "item123",
+			"tag": "tag567"
+		}
+	}	}
+	}
+	
+输入样例(订单变动通知。data.newphase可以为freezed|finished|cancelled|removed|flagged|applying|denied。进入consuming phase不会发消息)：
+
+	POST /notifications HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"type": "subs_event",
+		"data": {
+			"subscriptionid": 1234567,
+			"eventtime": "2015-11-10T15:04:09Z08:00",
+			"newphase": "freezed"
 		}
 	}
 

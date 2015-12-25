@@ -71,6 +71,38 @@
 
 	空
 
+### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
+
+说明
+
+	【用户】返回当前用户接受到的消息列表
+
+输入参数说明：
+	
+	type: （可选）消息类型
+	sender: (可选) 消息发送者
+	beforetime: （可选，默认为now）最晚时间, 毫秒数
+
+输入样例：
+
+	GET /notifications?type=private_message HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+
+	[
+		{
+			// 参见上一个API的输入样例
+		},
+		{
+			// 参见上一个API的输入样例
+		},
+		{
+			// 参见上一个API的输入样例"
+		}
+	]
+
 ### GET /notification_stat
 
 说明
@@ -116,47 +148,6 @@
 输出样例：
 
 	空
-
-### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
-
-说明
-
-	【用户】返回当前用户接受到的消息列表
-
-输入参数说明：
-	
-	type: （可选）消息类型
-	sender: (可选) 消息发送者
-	beforetime: （可选，默认为now）最晚时间, 毫秒数
-
-输入样例：
-
-	GET /notifications?type=private_message HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
-输出样例：
-
-	[
-		{
-			"sender": "zhang3@aaa.com",
-			"status": 0,
-			"createtime": "2015-11-10T15:04:05Z08:00",
-			"content": "bla bla ..."
-		},
-		{
-			"sender": "li4@aaa.com",
-			"status": 1,
-			"createtime": "2015-11-10T15:04:09Z08:00",
-			"content": "bla bla ..."
-		},
-		{
-			"sender": "li4@bbb.com",
-			"status": 0,
-			"createtime": "2015-11-10T15:06:09Z08:00",
-			"content": "bla bla ..."
-		}
-	]
 
 # Messages Lib
 

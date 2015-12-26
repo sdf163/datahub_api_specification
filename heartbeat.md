@@ -2,6 +2,7 @@
 	
 
 - [POST] /heartbeat 发送心跳信息
+- [GET] /heartbeat/status/:user 获取user的daemon status。
 
 ----------
 
@@ -50,4 +51,33 @@ Example Request：
 	Content-Type: application/json 
 
 
+## 指令：GET /heartbeat/status/:user 获取user的daemon status。
 
+说明
+	返回登陆用户的datahub daemon在线状态：online，offline， 以及entrypoint。
+
+输入参数说明：
+	
+    无
+
+Example Request：
+
+	GET /daemon/status HTTP/1.1 
+	Accept: application/json 
+	Content-Type: application/json 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
+	
+
+返回数据示例
+        
+	HTTP/1.1 200 OK
+	Accept: application/json 
+	Content-Type: application/json 
+
+    {
+        "status":"online",
+        "entrypoint":[
+            "http://211.10.23.23:35800",
+            "http://211.10.23.24:35800"
+        ]
+    }

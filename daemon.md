@@ -4,6 +4,7 @@
 - [GET] /daemon/id 获取user的daemonid。
 - [GET] /daemon/ep/:user 获取user的entrypoint。
 - [GET] /daemon/log/:index 获取user的log。
+- [GET] /daemon/status 获取user的daemon status以及entrypoint。
 
 ----------
 
@@ -94,6 +95,39 @@ Example Request：
         "2015/12/01 14:58:29 testlog7",
         "2015/12/01 14:56:21 testlog6",
         "2015/12/01 14:52:54 testlog5"
+        ]
+    }
+
+----------
+
+## 指令：GET /daemon/status/ 获取user的daemon status。
+
+说明
+	返回登陆用户的datahub daemon在线状态：online，offline 以及entrypoints。
+
+输入参数说明：
+	
+    无
+
+Example Request：
+
+	GET /daemon/status HTTP/1.1 
+	Accept: application/json 
+	Content-Type: application/json 
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
+	
+
+返回数据示例
+        
+	HTTP/1.1 200 OK
+	Accept: application/json 
+	Content-Type: application/json 
+
+    {
+        "status":"online",
+        "entrypoint":[
+            "http://211.10.23.23:35800",
+            "http://211.10.23.24:35800"
         ]
     }
 

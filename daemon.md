@@ -1,14 +1,14 @@
 # API 列表
 	
 
-- [GET] /daemon/id 获取user的daemonid。
-- [GET] /daemon/ep/:user 获取user的entrypoint。
-- [GET] /daemon/log/:index 获取user的log。
-- [GET] /daemon/status 获取user的daemon status以及entrypoint。
+- [GET] /daemon/id 获取登陆用户的daemonid。
+- [GET] /daemon/ep/:user 获取user的entrypoint，普通用户只能获取自己的entrypoint。
+- [GET] /daemon/log/:index 获取登陆用户的log。
+- [GET] /daemon/status 获取登陆用户的daemon status以及entrypoint。
 
 ----------
 
-## 指令：GET /daemon/id/ 获取user的daemonid。
+## 指令：GET /daemon/id/ 获取登陆用户的daemonid。
 
 说明
 	给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份。
@@ -37,7 +37,7 @@ Example Request：
 
 
 
-## 指令：GET /daemon/ep/:user 获取user的入口地址。
+## 指令：GET /daemon/ep/:user 获取user的入口地址，普通用户只能获取自己的entrypoint。
 
 说明
 	返回作为数据提供方user的入口地址。
@@ -68,7 +68,7 @@ Example Request：
 
 
 
-## 指令：GET /daemon/log/:index 获取用户的daemon日志。
+## 指令：GET /daemon/log/:index 获取登陆用户的daemon日志。
 
 说明
 	返回以index为起始索引的用户daemon日志，索引范围为[index, index+9]。
@@ -98,12 +98,11 @@ Example Request：
         ]
     }
 
-----------
 
-## 指令：GET /daemon/status/ 获取user的daemon status。
+## 指令：GET /daemon/status/ 获取登陆user的daemon status。
 
 说明
-	返回登陆用户的datahub daemon在线状态：online，offline 以及entrypoints。
+	返回登陆用户的datahub daemon在线状态：online，offline， 以及entrypoint。
 
 输入参数说明：
 	

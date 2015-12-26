@@ -458,7 +458,10 @@
 
 输出样例：
         
-	false
+	{
+		"subscriptionid": 1234568,
+		"applytime":"2015-11-01T15:04:05Z08:00",
+	}
 
 ### (47) POST /subscription/:repname/:itemname
 
@@ -508,13 +511,13 @@
         
 	{
 		"subscriptionid": 1234567890,
-		“signtime": "2015-09-10T15:04:05Z08:00"
+		“applytime": "2015-09-10T15:04:05Z08:00"
 	}
 
 返回数据说明：
 
 	subscriptionid: 预订购id
-	signtime: 预订购时间
+	applytime: 预订购时间
 
 ### (48) PUT /subscription/:repname/:itemname
 

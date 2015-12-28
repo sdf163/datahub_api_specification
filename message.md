@@ -31,7 +31,7 @@
 
 	空
 
-### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}
+### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}&aftertime={aftertime}
 
 说明
 
@@ -42,11 +42,14 @@
 	type: （可选）消息类型
 	sender: (可选) 消息发送者
 	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
-	beforetime: （可选，默认为now）最晚时间, 毫秒数
+	beforetime: （可选，默认为now）最晚时间, 例子：2015-12-25T16:04:07.017232946+08:00
+	aftertime: （可选，默认为2000-01-01）最早时间, 例子：2015-12-25T16:04:07.017232946+08:00
+	
+	注意：beforetime和aftertime不能同时指定
 
 输入样例：
 
-	GET /notifications?type=private_message HTTP/1.1
+	GET /notifications HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -54,6 +57,7 @@
 
 	[
 		{
+			"messageid": 11,
 			"type": "apply_subs",
 			"sender": "zhang3@example.com",
 			"data": {
@@ -67,6 +71,7 @@
 			}
 		},
 		{
+			"messageid": 12,
 			"type": "item_event",
 			"data": {
 				"event": "tag_added",
@@ -77,6 +82,7 @@
 			}
 		},
 		{
+			"messageid": 19,
 			"type": "subs_event",
 			"data": {
 				"subscriptionid": 1234567,

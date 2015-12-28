@@ -564,8 +564,8 @@
 输入参数说明：
 	
 	action: apply | withdraw | agree | deny
-	subscriptionid: 预订购id (purpose=withdraw时不需要)
-	planid: DataItem上的某个收费计划的uuid (只对purpose=apply有效)
+	subscriptionid: 预订购id 
+	planid: DataItem上的某个收费计划的uuid (只对action=apply有效)
 
 输入样例：
 

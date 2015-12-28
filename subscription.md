@@ -640,15 +640,11 @@
 
 	"numsubs":567
 
-
-	
-## 已经废除的
-
-### (41) ~~~GET /subscription/:repname/:itemname~~~  (将废除，将并入40)
+### (4c) GET /subscription_stat/:repname/:itemname/:planid
 
 说明
 
-	【需求者】查询该DataItem是否订购过
+	【需求者】返回对该DataItem上的某个价格计划的订购次数
 
 输入参数说明：
 	
@@ -656,59 +652,11 @@
 
 输入样例：
 
-	GET /subscription/repo1/item123 HTTP/1.1 
+	GET /subscription_stat/repo1/item123/1000000001000 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
 
-	"subscribed":true
+	"numsubs":1
 
-### (43) ~~~DELETE /subscription/:repname/:itemname~~~  (将废除，将被47取代)
-
-说明
-
-	【需求者】取消订购该DataItem
-
-输入参数说明：
-	
-	无
-
-输入样例：
-
-	DELETE /subscription/repo1/item123 HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
-输出样例：
-        
-	null
-
-### (46) ~~~GET /subscriptions/:repname~~~ (将废除，合并到40中)
-
-说明
-
-	【需求者】查询在指定repository中所有订购的DataItem
-
-输入参数说明：
-	
-	无
-
-输入样例：
-
-	GET /subscriptions/repo001 HTTP/1.1 
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-
-输出样例：
-        
-	[
-		{
-			"itemname":"bear",
-			"signtime":"2015-11-08"
-		},
-		{
-			"itemname":"triger",
-			"signtime":"2015-11-08"
-		}
-	]

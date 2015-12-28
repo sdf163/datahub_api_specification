@@ -658,5 +658,5 @@
 
 输出样例：
 
-	"numsubs":1
+	"numsigns":1
 

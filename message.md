@@ -280,6 +280,9 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 
 ## topic: to_notifications.json
 
+当发送消息至to_notifications.json topic时，可以在key中加入特定字符串暗示此消息是否是一个前端消息或者是一个客户端消息。
+当key中包含forclient字段时，此消息将被存入MessageTabel_ForClient。当key中不包含notforbrowser字段时，此消息将被存入MessageTable_ForBorser。
+
 ### 发送一条网站广播
 
 	{

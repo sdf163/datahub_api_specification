@@ -54,7 +54,7 @@ Example Request：
 ## 指令：GET /heartbeat/status/:user 获取user的daemon status。
 
 说明
-	返回登陆用户的datahub daemon在线状态：online，offline， 以及entrypoint。
+	返回user的datahub daemon在线状态：online，offline。
 
 输入参数说明：
 	
@@ -76,8 +76,4 @@ Example Request：
 
     {
         "status":"online",
-        "entrypoint":[
-            "http://211.10.23.23:35800",
-            "http://211.10.23.24:35800"
-        ]
     }

@@ -31,7 +31,7 @@
 
 	空
 
-### GET /notifications?type={type}&sender={sender}&status={status}&beforetime={beforetime}&aftertime={aftertime}
+### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&beforetime={beforetime}&aftertime={aftertime}
 
 说明
 
@@ -44,6 +44,7 @@
 	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
 	beforetime: （可选，默认为now）最晚时间, 例子：2015-12-25T16:04:07.017232946+08:00
 	aftertime: （可选，默认为2000-01-01）最早时间, 例子：2015-12-25T16:04:07.017232946+08:00
+	forclient: （可选，默认为0），是否返回浏览器或者客户端感兴趣的消息。(0: 浏览器感兴趣的消息；1: 客户端感兴趣的消息)
 	
 	注意：beforetime和aftertime不能同时指定
 

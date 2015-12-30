@@ -444,11 +444,11 @@
 		}
 #指令：GET /vip/:loginname/cost 查看用户要升级的会员所需金额(8k)
 	说明：
-		【任意】查看用户要升级的会员所需金额
+		【自己活管理员】查看用户要升级的会员所需金额
 	输入参数说明：
-		userType：会员级别
+		type：会员级别
 	Example Request：
-		GET /vip/foo/cost?userType=4 HTTP/1.1 
+		GET /vip/foo/cost?type=4 HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
 		USER:foo

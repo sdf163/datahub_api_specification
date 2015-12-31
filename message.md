@@ -61,6 +61,7 @@
 			"messageid": 11,
 			"type": "apply_subs",
 			"sender": "zhang3@example.com",
+			"time": "2015-11-10T15:05:09Z08:00",
 			"data": {
 				"repname": "repo001",
 				"itemname": "item123",
@@ -74,6 +75,7 @@
 		{
 			"messageid": 12,
 			"type": "item_event",
+			"time": "2015-11-10T15:04:09Z08:00",
 			"data": {
 				"event": "tag_added",
 				"eventtime": "2015-11-10T15:04:09Z08:00",
@@ -85,6 +87,7 @@
 		{
 			"messageid": 19,
 			"type": "subs_event",
+			"time": "2015-11-10T15:03:09Z08:00",
 			"data": {
 				"subscriptionid": 1234567,
 				"eventtime": "2015-11-10T15:04:09Z08:00",

@@ -538,8 +538,10 @@
 
 输入参数说明：
 	
-	subscriptionid: 预订购id (purpose=withdraw时不需要)
-	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
+	action: (可选，默认为sign) sign | complain | deny_complain | accept_complain
+	subscriptionid: 订购id (对于action=sign, 为预订购id)
+	planid: DataItem上的某个收费计划的uuid (只对action=sign有效)
+	reason: 对action的简短解释（小于255个字符，只对complain | deny_complain | accept_complain有意义）。
 
 输入样例：
 
@@ -568,7 +570,7 @@
 输入参数说明：
 	
 	action: apply | withdraw | agree | deny
-	subscriptionid: 预订购id 
+	subscriptionid: 订购id (对于action=apply, 为预订购id)
 	planid: DataItem上的某个收费计划的uuid (只对action=apply有效)
 
 输入样例：

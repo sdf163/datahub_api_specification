@@ -589,7 +589,7 @@
         
 	无
 
-### (49) PUT /subscription/:subscriptionid 
+### (49) PUT /subscription/:subscriptionid (已废弃，请用api#48 with action=accept_complain instead)
 
 说明
 

@@ -50,7 +50,7 @@
 
 输入参数说明：
 	
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, flagged: 10)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：
@@ -130,7 +130,7 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：
@@ -190,7 +190,7 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：
@@ -248,7 +248,7 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：
@@ -317,7 +317,7 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：
@@ -377,7 +377,7 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
 
 输入样例：

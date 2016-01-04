@@ -115,10 +115,16 @@
 输出样例：
 
 	{
-		"apply_subs": 6,
+		"subsapply_event": 6,
 		"item_event": 20,
 		"subs_event": 2
 	}
+	
+输出样例说明：
+
+	subsapply_event: 订购申请事件
+	item_event: data item事件
+	subs_event: 订购事件
 
 ### DELETE /notification_stat
 
@@ -310,7 +316,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 ### dataitem events
 
 	{
-		"type": "item_events",
+		"type": "item_event",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",

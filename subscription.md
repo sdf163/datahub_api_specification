@@ -463,12 +463,16 @@
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例1：
         
 	{
 		"subscriptionid": 1234568,
 		"applytime":"2015-11-01T15:04:05Z08:00",
 	}
+
+输出样例2：
+        
+	null
 
 ### (47) POST /subscription/:repname/:itemname
 

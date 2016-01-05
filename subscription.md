@@ -89,9 +89,9 @@
 			"itemname":"triger",
 			"supply_style":"batch",
 			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
+			"expiretime":"2015-12-01T15:04:05Z08:00"
+			"freezetime":"2015-11-22T15:04:05Z08:00",
+			"finishtime":"2016-01-22T15:04:05Z08:00",
 			"phase":"consuming",
 			"plan":{
 				"money":5,
@@ -112,15 +112,23 @@
 	supply_style: flow | batch 
 	signtime: 订购时间
 	expiretime: 自动过期时间
-	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）
-	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）
-	phase: 1-3, 5-10 (意义：consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, flagged: 10)
+	phase: 1-3, 5-10 (意义：consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)
 	plan.money: 交易金额
 	plan.units: 最大下载次数（supply_style=batch）,最大下载天数（supply_style=flow)
 	plan.used: 已经使用量　
 	plan.limit: 最多可以订购次数
 	plan.subs: 当前订购次数
 	plan.expire: 交易有效期（天数）
+	
+	以下时间只在特定phase有效
+
+	canceltime：订单（因为data item被删除)取消时间, 只对phase=5有效。
+	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）, 只对phase=1有效。
+	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）, 只对phase=2,3有效。
+	removetime: 订单被（管理员）删除时间, 只对phase=6有效。
+	applytime: 交易申请时间, 只对phase=7有效。
+	withdrawtime: 交易申请撤回时间, 只对phase=8有效。
+	denytime: 交易申请被拒绝时间, 只对phase=9有效。
 
 ### (41) GET /subscriptions/pull/:repname?phase={phase}&beforetime={beforetime}
 
@@ -305,9 +313,6 @@
 返回数据说明：
 
 	buyername: 数据消费者
-	repname: repository name
-	itemname: data item name
-	signtime: 订购时间
 
 ### (44) GET /subscriptions/push/:repname?phase={phase}&beforetime={beforetime}
 

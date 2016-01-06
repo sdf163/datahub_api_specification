@@ -92,7 +92,7 @@
 		registTime:注册时间
 		invalidTime:失效时间
 	返回数据示例
-		{"data":[{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"}],"totalSize":86,"code":0,"msg":"ok"}
+		{"data":{"totalSize":86,"results":[{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"}]},"code":0,"msg":"ok"}
 
 
 ##指令：POST /users/:loginname 创建用户(82)

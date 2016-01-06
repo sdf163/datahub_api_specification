@@ -3,6 +3,8 @@
 
 - [GET] /users/:loginname 查询用户
 
+- [GET] /users/search/user 查询用户列表
+
 - [POST] /users/:loginname 创建用户
 
 - [PUT] /users/:loginname 修改用户
@@ -67,6 +69,31 @@
 		invalidTime:失效时间
 	返回数据示例
 		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
+##指令：GET /users/search/user 查询用户列表
+	说明
+		【管理员】 分页查询用户列表（查询条件可选）
+	输入参数说明：
+		page:当前页数
+		size:每页数据量
+		loginName:登录名，（模糊匹配）
+		userName:真实名称，（模糊匹配）
+	Example Request：
+		GET /users/search/user?page=1&size=20&loginName=a&userName=b HTTP/1.1 
+		Accept: text/json;charset=UTF-8
+		USER:admin
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		totalSize：总记录数
+		data：数据集合 
+		username:真实名称
+		comments：描述信息
+		registTime:注册时间
+		invalidTime:失效时间
+	返回数据示例
+		{"data":[{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"}],"totalSize":86,"code":0,"msg":"ok"}
+
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：

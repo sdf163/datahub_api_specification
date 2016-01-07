@@ -85,14 +85,14 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-		totalSize：总记录数
+		total：总记录数
 		data：数据集合 
 		username:真实名称
 		comments：描述信息
 		registTime:注册时间
 		invalidTime:失效时间
 	返回数据示例
-		{"data":{"totalSize":86,"results":[{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"}]},"code":0,"msg":"ok"}
 
 
 ##指令：POST /users/:loginname 创建用户(82)

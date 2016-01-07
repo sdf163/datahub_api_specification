@@ -364,6 +364,21 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		wthdrawn: 8, 
 		denied: 9, 
 		complained: 10
+### 会员续费提醒
+
+	{
+		"type": "vip_remind",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"level": 4,
+			"invalide": "2015-01-02"
+		}
+	}
+	
+	level：用户会员级别
+	invalide：会员到期时间
 
 ## topic: to_emails.json
 

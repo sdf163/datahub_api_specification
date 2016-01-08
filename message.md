@@ -31,7 +31,7 @@
 
 	空
 
-### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&beforetime={beforetime}&aftertime={aftertime}
+### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&page={page}&size={size}
 
 说明
 
@@ -42,11 +42,9 @@
 	type: （可选）消息类型
 	sender: (可选) 消息发送者
 	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
-	beforetime: （可选，默认为now）最晚时间, 例子：2015-12-25T16:04:07.017232946+08:00
-	aftertime: （可选，默认为2000-01-01）最早时间, 例子：2015-12-25T16:04:07.017232946+08:00
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 	forclient: （可选，默认为0），是否返回浏览器或者客户端感兴趣的消息。(0: 浏览器感兴趣的消息；1: 客户端感兴趣的消息)
-	
-	注意：beforetime和aftertime不能同时指定
 
 输入样例：
 
@@ -56,45 +54,48 @@
 
 输出样例：
 
-	[
-		{
-			"messageid": 11,
-			"type": "apply_subs",
-			"sender": "zhang3@example.com",
-			"time": "2015-11-10T15:05:09Z08:00",
-			"data": {
-				"repname": "repo001",
-				"itemname": "item123",
-				"plan": {
-					"money": 7.99,
-					"units": 3,
-					"expire": 7,
+	{
+		"total": 100,
+		"results": [
+			{
+				"messageid": 11,
+				"type": "apply_subs",
+				"sender": "zhang3@example.com",
+				"time": "2015-11-10T15:05:09Z08:00",
+				"data": {
+					"repname": "repo001",
+					"itemname": "item123",
+					"plan": {
+						"money": 7.99,
+						"units": 3,
+						"expire": 7,
+					}
+				}
+			},
+			{
+				"messageid": 12,
+				"type": "item_event",
+				"time": "2015-11-10T15:04:09Z08:00",
+				"data": {
+					"event": "tag_added",
+					"eventtime": "2015-11-10T15:04:09Z08:00",
+					"repname": "repo001",
+					"itemname": "item123",
+					"tag": "tag567"
+				}
+			},
+			{
+				"messageid": 19,
+				"type": "subs_event",
+				"time": "2015-11-10T15:03:09Z08:00",
+				"data": {
+					"subscriptionid": 1234567,
+					"eventtime": "2015-11-10T15:04:09Z08:00",
+					"newphase": "freezed"
 				}
 			}
-		},
-		{
-			"messageid": 12,
-			"type": "item_event",
-			"time": "2015-11-10T15:04:09Z08:00",
-			"data": {
-				"event": "tag_added",
-				"eventtime": "2015-11-10T15:04:09Z08:00",
-				"repname": "repo001",
-				"itemname": "item123",
-				"tag": "tag567"
-			}
-		},
-		{
-			"messageid": 19,
-			"type": "subs_event",
-			"time": "2015-11-10T15:03:09Z08:00",
-			"data": {
-				"subscriptionid": 1234567,
-				"eventtime": "2015-11-10T15:04:09Z08:00",
-				"newphase": "freezed"
-			}
-		}
-	]
+		]
+	}
 
 ### GET /notification_stat
 
@@ -117,7 +118,8 @@
 	{
 		"subsapply_event": 6,
 		"item_event": 20,
-		"subs_event": 2
+		"subs_event": 2,
+		"vip_remind": 1
 	}
 	
 输出样例说明：
@@ -125,6 +127,7 @@
 	subsapply_event: 订购申请事件
 	item_event: data item事件
 	subs_event: 订购事件
+	vip_remind: 会员续费提醒
 
 ### DELETE /notification_stat
 
@@ -329,7 +332,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	}
 
 	{
-		"type": "item_news",
+		"type": "item_event",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
@@ -345,7 +348,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 ### 订购事件
 
 	{
-		"type": "sub_event",
+		"type": "subs_event",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
@@ -364,6 +367,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		wthdrawn: 8, 
 		denied: 9, 
 		complained: 10
+		
 ### 会员续费提醒
 
 	{

@@ -157,7 +157,7 @@
 	numpulls: 所有人总共产的pull量
 	nummypulls: 当前用户产生的pull量 (匿名请求无此项)
 
-### GET /transactions/pull?groupbydate=[0|1]&beforetime={beforetime}  (55)
+### GET /transactions/pull?groupbydate=[0|1]&page={page}&size={size}  (55)
 
 说明
 
@@ -166,7 +166,8 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
-	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -176,79 +177,83 @@
 
 输出样例(groupbydate=1)：
 
-	[
-		{
-			"date":"2015-11-18",
-			"pulls":[
-				{
-					"sellername":"li4",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-18T11:48:07Z",
-					"subscriptionid": 12345,
-					"supply_style": "batch"
-				},
-				{
-					"sellername":"li4",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-18T11:29:38Z",
-					"subscriptionid": 567567,
-					"supply_style": "flow"
-				},
-				{
-					"sellername":"li4",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-18T11:29:31Z",
-					"subscriptionid": 99999,
-					"supply_style": "batch"
-				}
-			]
-		},
-		{
-			"date":"2015-11-10",
-			"pulls":[
-				{
-					"sellername":"li4",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-10T10:10:10Z",
-					"subscriptionid": 98765,
-					"supply_style": "flow"
-				}
-			]
-		}
-	]
-
-输出样例(groupbydate=0)：
-        
-	[
-		{
-			"sellername": "Li4",
-			"repname": "repo1231",
-			"itemname": "item9883",
-			"tag": "tag8W",
-			"pulltime": "2015-11-10T15:04:05Z07:00",
-			"subscriptionid": 12345,
-			"supply_style": "batch"
-		},
-		{
-			"sellername": "Li4",
-			"repname": "repo121",
-			"itemname": "item989",
-			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00",
-			"subscriptionid": 98765,
-			"supply_style": "flow"
-		}
-	]
+	{
+		"total": 100,
+		"results": [
+			{
+				"date":"2015-11-18",
+				"pulls":[
+					{
+						"sellername":"li4",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-18T11:48:07Z",
+						"subscriptionid": 12345,
+						"supply_style": "batch"
+					},
+					{
+						"sellername":"li4",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-18T11:29:38Z",
+						"subscriptionid": 567567,
+						"supply_style": "flow"
+					},
+					{
+						"sellername":"li4",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-18T11:29:31Z",
+						"subscriptionid": 99999,
+						"supply_style": "batch"
+					}
+				]
+			},
+			{
+				"date":"2015-11-10",
+				"pulls":[
+					{
+						"sellername":"li4",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-10T10:10:10Z",
+						"subscriptionid": 98765,
+						"supply_style": "flow"
+					}
+				]
+			}
+		]
+	}
 	
-	
+	输出样例(groupbydate=0)：
+	        
+	{
+		"total": 100,
+		"results": [
+			{
+				"sellername": "Li4",
+				"repname": "repo1231",
+				"itemname": "item9883",
+				"tag": "tag8W",
+				"pulltime": "2015-11-10T15:04:05Z07:00",
+				"subscriptionid": 12345,
+				"supply_style": "batch"
+			},
+			{
+				"sellername": "Li4",
+				"repname": "repo121",
+				"itemname": "item989",
+				"tag": "tag09",
+				"pulltime": "2015-11-10T15:04:05Z07:00",
+				"subscriptionid": 98765,
+				"supply_style": "flow"
+			}
+		]
+	}
 
 返回数据说明：
 
@@ -258,7 +263,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/pull/:repname/:itemname?beforetime={beforetime}  (56)
+### GET /transactions/pull/:repname/:itemname?groupbydate=[0|1]&page={page}&size={size}  (56)
 
 说明
 
@@ -266,7 +271,9 @@
 
 输入参数说明：
 	
-	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -276,27 +283,30 @@
 
 输出样例：
         
-	[
-		{
-			"tag": "tag8W",
-			"pulltime": "2015-11-09T15:04:05Z07:00",
-			"subscriptionid": 12345,
-			"supply_style": "batch"
-		},
-		{
-			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00",
-			"subscriptionid": 98765,
-			"supply_style": "flow"
-		}
-	]
+	{
+		"total": 100,
+		"results": [
+			{
+				"tag": "tag8W",
+				"pulltime": "2015-11-09T15:04:05Z07:00",
+				"subscriptionid": 12345,
+				"supply_style": "batch"
+			},
+			{
+				"tag": "tag09",
+				"pulltime": "2015-11-10T15:04:05Z07:00",
+				"subscriptionid": 98765,
+				"supply_style": "flow"
+			}
+		]
+	}
 
 返回数据说明：
 
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/push?groupbydate=[0|1]&beforetime={beforetime}  (57)
+### GET /transactions/push?groupbydate=[0|1]&page={page}&size={size}  (57)
 
 说明
 
@@ -305,7 +315,8 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
-	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -315,77 +326,83 @@
 
 输出样例(groupbydate=1)：
 
-	[
-		{
-			"date":"2015-11-18",
-			"pulls":[
-				{
-					"buyername":"zhang3",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-18T11:48:07Z",
-					"subscriptionid": 678,
-					"supply_style": "flow"
-				},
-				{
-					"buyername":"John",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-18T11:29:38Z",
-					"subscriptionid": 32323,
-					"supply_style": "batch"
-				}
-			]
-		},
-		{
-			"date":"2015-11-10",
-			"pulls":[
-				{
-					"buyername":"zhang3",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-10T10:10:10Z",
-					"subscriptionid": 98765,
-					"supply_style": "flow"
-				},
-				{
-					"buyername":"zhang3",
-					"repname":"repo001",
-					"itemname":"item002",
-					"tag":"tag008",
-					"pulltime":"2015-11-10T10:10:10Z",
-					"subscriptionid": 123456,
-					"supply_style": "batch"
-				},
-			]
-		}
-	]
+	{
+		"total": 100,
+		"results": [
+			{
+				"date":"2015-11-18",
+				"pulls":[
+					{
+						"buyername":"zhang3",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-18T11:48:07Z",
+						"subscriptionid": 678,
+						"supply_style": "flow"
+					},
+					{
+						"buyername":"John",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-18T11:29:38Z",
+						"subscriptionid": 32323,
+						"supply_style": "batch"
+					}
+				]
+			},
+			{
+				"date":"2015-11-10",
+				"pulls":[
+					{
+						"buyername":"zhang3",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-10T10:10:10Z",
+						"subscriptionid": 98765,
+						"supply_style": "flow"
+					},
+					{
+						"buyername":"zhang3",
+						"repname":"repo001",
+						"itemname":"item002",
+						"tag":"tag008",
+						"pulltime":"2015-11-10T10:10:10Z",
+						"subscriptionid": 123456,
+						"supply_style": "batch"
+					},
+				]
+			}
+		]
+	}
 
 输出样例(groupbydate=0)：
         
-	[
-		{
-			"buyername": "Li4",
-			"repname": "repo1231",
-			"itemname": "item9883",
-			"tag": "tag8W",
-			"pulltime": "2015-11-10T15:04:05Z07:00",
-			"subscriptionid": 98765,
-			"supply_style": "flow"
-		},
-		{
-			"buyername": "Smith",
-			"repname": "repo121",
-			"itemname": "item989",
-			"tag": "tag09",
-			"pulltime": "2015-11-10T15:04:05Z07:00",
-			"subscriptionid": 123456,
-			"supply_style": "batch"
-		}
-	]
+	{
+		"total": 100,
+		"results": [
+			{
+				"buyername": "Li4",
+				"repname": "repo1231",
+				"itemname": "item9883",
+				"tag": "tag8W",
+				"pulltime": "2015-11-10T15:04:05Z07:00",
+				"subscriptionid": 98765,
+				"supply_style": "flow"
+			},
+			{
+				"buyername": "Smith",
+				"repname": "repo121",
+				"itemname": "item989",
+				"tag": "tag09",
+				"pulltime": "2015-11-10T15:04:05Z07:00",
+				"subscriptionid": 123456,
+				"supply_style": "batch"
+			}
+		]
+	}
 
 返回数据说明：
 
@@ -395,7 +412,7 @@
 	tag: tag名
 	pulltime: pull time, RFC3339 format
 
-### GET /transactions/push/:repname/:itemname?groupbydate=[0|1]&beforetime={beforetime}  (58)
+### GET /transactions/push/:repname/:itemname?groupbydate=[0|1]&page={page}&size={size}  (58)
 
 说明
 
@@ -404,7 +421,8 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
-	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -414,67 +432,71 @@
 
 输出样例(groupbydate=1)：
 
-	[
-		{
-			"date":"2015-11-10",
-			"pulls"[
-				{
-					"buyername": "Li4",
-					"tag": "tag8W",
-					"pulltime": "2015-11-10T15:04:05Z07:00",
-					"subscriptionid": 123456,
-					"supply_style": "batch"
-				},
-				{
-					"buyername": "Zhang3",
-					"tag": "tag09",
-					"pulltime": "2015-11-10T10:09:05Z07:00",
-					"subscriptionid": 789,
-					"supply_style": "flow"
-				}
-			]
-		},
-		{
-			"date":"2015-11-03",
-			"pulls"[
-				{
-					"buyername": "Zhang3",
-					"tag": "tag09",
-					"pulltime": "2015-11-03T15:06:05Z07:00",
-					"subscriptionid": 789,
-					"supply_style": "flow"
-				}
-			]
-		}
-	]
+	{
+		"total": 100,
+		"results": [
+			{
+				"date":"2015-11-10",
+				"pulls"[
+					{
+						"buyername": "Li4",
+						"tag": "tag8W",
+						"pulltime": "2015-11-10T15:04:05Z07:00",
+						"subscriptionid": 123456,
+						"supply_style": "batch"
+					},
+					{
+						"buyername": "Zhang3",
+						"tag": "tag09",
+						"pulltime": "2015-11-10T10:09:05Z07:00",
+						"subscriptionid": 789,
+						"supply_style": "flow"
+					}
+				]
+			},
+			{
+				"date":"2015-11-03",
+				"pulls"[
+					{
+						"buyername": "Zhang3",
+						"tag": "tag09",
+						"pulltime": "2015-11-03T15:06:05Z07:00",
+						"subscriptionid": 789,
+						"supply_style": "flow"
+					}
+				]
+			}
+		]
+	}
 
 输出样例(groupbydate=0)：
         
-	[
-		{
-			"buyername": "Li4",
-			"tag": "tag8W",
-			"pulltime": "2015-11-10T15:04:05Z07:00",
-			"subscriptionid": 123456,
-			"supply_style": "batch"
-		},
-		{
-			"buyername": "Zhang3",
-			"tag": "tag09",
-			"pulltime": "2015-11-10T15:09:05Z07:00",
-			"subscriptionid": 789,
-			"supply_style": "flow"
-		},
-		{
-			"buyername": "Zhang3",
-			"tag": "tag09",
-			"pulltime": "2015-11-03T15:06:05Z07:00",
-			"subscriptionid": 789,
-			"supply_style": "flow"
-		}
-	]
-	
-	
+	{
+		"total": 100,
+		"results": [
+			{
+				"buyername": "Li4",
+				"tag": "tag8W",
+				"pulltime": "2015-11-10T15:04:05Z07:00",
+				"subscriptionid": 123456,
+				"supply_style": "batch"
+			},
+			{
+				"buyername": "Zhang3",
+				"tag": "tag09",
+				"pulltime": "2015-11-10T15:09:05Z07:00",
+				"subscriptionid": 789,
+				"supply_style": "flow"
+			},
+			{
+				"buyername": "Zhang3",
+				"tag": "tag09",
+				"pulltime": "2015-11-03T15:06:05Z07:00",
+				"subscriptionid": 789,
+				"supply_style": "flow"
+			}
+		]
+	}
 
 返回数据说明：
 

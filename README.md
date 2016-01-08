@@ -3,14 +3,7 @@
 **DataHub**是一个数据P2P流动的平台，详情请见hub.dataos.io.
 本文规定了包括认证、版本控制、流量控制、协议内容等信息。
 
-### 认证方式 ###
 
-支持两种认证方式：对于CLI和CLI-WEB可以采用用户名密码的简单认证方式；对于SDK，必须采用OAUTH2协议下利用Token的第三方认证模式，其中Token在Server端生成（通过User服务）。
-
-由于REST协议是没有状态的，所以每一次认证信息必须在协议中涵盖，利用Header中的Authorization字段来传递认证信息，Basic对应简单认证模式，Token对应Token认证模式。
-
-**例如:**
-**Authorization: Basic akmklmasadalkm==**
 
 ### 版本控制 ###
 在请求的消息头中明确API的版本。
@@ -28,17 +21,17 @@
 ### 返回信息 ###
 HTTP状态码
 
-200 OK
+200 OK (数据体中code=0)
 
-400 Errors (内部错误，具体在数据体中进行说明) 
+40X Errors (用户错误，具体在数据体中进行说明,为用户展示，code非0) 
 
-401 Unauthorized
+50X Internal Error （系统错误，具体在数据体中说明，不为用户展示，code非0）
 
 数据体返回格式：
 
 {
 
-    "code": 0000,
+    "code": 0,
     "msg": "OK",
     "data": {具体返回信息}
 }
@@ -73,8 +66,51 @@ code 及 msg
     8008		duplicate order requset		订单请求重复提交
     8009		order is not exist		订单不存在
     8010		Illegal request			非法请求
-## DataHub API内容 ##
 
+
+### 认证方式 ###
+Basic认证模式通过用户名和md5(密码获取token)，访问的url为／
+**请求报文的header**
+**Authorization: Basic akmklmasadalkm==**
+**正常情况下返回**
+HTTP/1.1 200 OK
+Server: openresty/1.9.3.1
+Date: Fri, 08 Jan 2016 05:53:24 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+{"code": 0,"msg": "OK","data": {"token": "ef47b6d4670b90eb3cf75a39f0854b0a"}}
+
+**密码错误5次内返回**
+HTTP/1.1 403 Forbidden
+Server: openresty/1.9.3.1
+Date: Fri, 08 Jan 2016 05:53:31 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+{"code": 1101,"msg": "username or password not correct","data": {"retry_times": "2","ttl_times":"86400""}}
+
+**密码错误5次以后，账户被锁定24小时**
+HTTP/1.1 403 Forbidden
+Server: openresty/1.9.3.1
+Date: Fri, 08 Jan 2016 05:53:35 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+{"code": 1101,"msg": "retry too many times!!","data": {"retry_times": "5","ttl_times":"86399""}
+
+Token认证模式利用上一步获取的token来对需要认证的API提交
+**请求报文的header**
+**Authorization: Token xa12344a**
+
+
+
+
+
+## DataHub API内容 ##
 ### repositories ###
 编号：1
 

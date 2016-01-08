@@ -42,7 +42,7 @@
 
 ## APIs
 
-### (40) GET /subscriptions/pull?phase={phase}&page={page}&size={size}
+### (40) GET /subscriptions/pull?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -50,6 +50,7 @@
 
 输入参数说明：
 	
+	groupbydate: (可选，默认为0) 是否按日期分组
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
@@ -62,7 +63,7 @@
 
 输出样例：
         
-	[
+	{
 		"total": 100,
 		"results": [
 			{
@@ -106,7 +107,7 @@
 				}
 			}
 		]
-	]
+	}
 
 返回数据说明：
 
@@ -134,7 +135,7 @@
 	withdrawtime: 交易申请撤回时间, 只对phase=8有效。
 	denytime: 交易申请被拒绝时间, 只对phase=9有效。
 
-### (41) GET /subscriptions/pull/:repname?phase={phase}&page={page}&size={size}
+### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -142,6 +143,7 @@
 
 输入参数说明：
 	
+	groupbydate: (可选，默认为0) 是否按日期分组
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
@@ -154,7 +156,7 @@
 
 输出样例：
         
-	[
+	{
 		"total": 100,
 		"results": [
 			{
@@ -196,9 +198,9 @@
 				}
 			}
 		]
-	]
+	}
 
-### (42) GET /subscriptions/pull/:repname/:itemname?phase={phase}&page={page}&size={size}
+### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -206,6 +208,7 @@
 
 输入参数说明：
 	
+	groupbydate: (可选，默认为0) 是否按日期分组
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
@@ -218,7 +221,7 @@
 
 输出样例：
         
-	[
+	{
 		"total": 100,
 		"results": [
 			{
@@ -258,9 +261,9 @@
 				}
 			}
 		]
-	]
+	}
 
-### (43) GET /subscriptions/push?phase={phase}&page={page}&size={size}
+### (43) GET /subscriptions/push?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -268,6 +271,7 @@
 
 输入参数说明：
 	
+	groupbydate: (可选，默认为0) 是否按日期分组
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
@@ -280,7 +284,7 @@
 
 输出样例：
         
-	[
+	{
 		"total": 100,
 		"results": [
 			{
@@ -324,13 +328,13 @@
 				}
 			}
 		]
-	]
+	}
 
 返回数据说明：
 
 	buyername: 数据消费者
 
-### (44) GET /subscriptions/push/:repname?phase={phase}&page={page}&size={size}
+### (44) GET /subscriptions/push/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -338,6 +342,7 @@
 
 输入参数说明：
 	
+	groupbydate: (可选，默认为0) 是否按日期分组
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
@@ -350,7 +355,7 @@
 
 输出样例：
         
-	[
+	{
 		"total": 100,
 		"results": [
 			{
@@ -392,9 +397,9 @@
 				}
 			}
 		]
-	]
+	}
 
-### (45) GET /subscriptions/push/:repname/:itemname?phase={phase}&page={page}&size={size}
+### (45) GET /subscriptions/push/:repname/:itemname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -402,6 +407,7 @@
 
 输入参数说明：
 	
+	groupbydate: (可选，默认为0) 是否按日期分组
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
@@ -414,7 +420,7 @@
 
 输出样例：
         
-	[
+	{
 		"total": 100,
 		"results": [
 			{
@@ -454,7 +460,7 @@
 				}
 			}
 		]
-	]
+	}
 
 ### (46) GET /subscription/:repname/:itemname
 

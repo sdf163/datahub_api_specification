@@ -75,7 +75,7 @@
 
 	(空)
 
-### (B3) GET /comments/:repname/:itemname?beforetime={beforetime}
+### (B3) GET /comments/:repname/:itemname?page={page}&size={size}
 
 说明
 
@@ -83,7 +83,8 @@
 
 输入参数说明：
 	
-	beforetime: （可选，默认为当前时间）最晚时间, 格式：2015-11-23T09:02:52Z（可以使用上次返回的评论列表中的最后一个评论的createtime）
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -92,33 +93,36 @@
 
 输出样例：
 
-	[
-		{
-			"commentid": "1234567"
-			"username": "zhang3@aaa.com",
-			"createtime": "2015-11-10T15:04:05Z08:00",
-			"content": "bla bla ...",
-			"replyto": {
-				"commentid": "1234569",
+	{
+		"total": 100,
+		"results": [
+			{
+				"commentid": "1234567"
+				"username": "zhang3@aaa.com",
+				"createtime": "2015-11-10T15:04:05Z08:00",
+				"content": "bla bla ...",
+				"replyto": {
+					"commentid": "1234569",
+					"username": "li4@bbb.com",
+					"content": "cool data! ..."
+				}
+			},
+			{
+				"commentid": "1234568"
+				"username": "li4@aaa.com",
+				"createtime": "2015-11-10T15:04:09Z08:00",
+				"content": "bla bla ...",
+				"replyto": null
+			},
+			{
+				"commentid": "1234569"
 				"username": "li4@bbb.com",
-				"content": "cool data! ..."
+				"createtime": "2015-11-10T15:06:09Z08:00",
+				"content": "bla bla ...",
+				"replyto": null
 			}
-		},
-		{
-			"commentid": "1234568"
-			"username": "li4@aaa.com",
-			"createtime": "2015-11-10T15:04:09Z08:00",
-			"content": "bla bla ...",
-			"replyto": null
-		},
-		{
-			"commentid": "1234569"
-			"username": "li4@bbb.com",
-			"createtime": "2015-11-10T15:06:09Z08:00",
-			"content": "bla bla ...",
-			"replyto": null
-		}
-	]
+		]
+	}
 
 ### (B4) GET /comment_stat/:repname/:itemname
 

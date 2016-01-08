@@ -96,7 +96,7 @@ Content-Type: application/json
 Transfer-Encoding: chunked
 Connection: keep-alive
 
-{"code": 1101,"msg": "username or password not correct","data": {"retry_times": "2","ttl_times":"86400""}}
+{"code": 1101,"msg": "username or password not correct","data": {"retry_times": "2","ttl_times":"86400"}}
 ```
 #####密码错误5次以后，账户被锁定24小时#####
 ```
@@ -107,7 +107,7 @@ Content-Type: application/json
 Transfer-Encoding: chunked
 Connection: keep-alive
 
-{"code": 1101,"msg": "retry too many times!!","data": {"retry_times": "5","ttl_times":"86399""}
+{"code": 1101,"msg": "retry too many times!!","data": {"retry_times": "5","ttl_times":"86399"}}
 ```
 ####Token认证模式利用上一步获取的token来对需要认证的API提交####
 #####请求报文的header#####

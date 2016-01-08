@@ -69,10 +69,11 @@ code 及 msg
 
 
 ### 认证方式 ###
-Basic认证模式通过用户名和md5(密码获取token)，访问的url为／
-**请求报文的header**
+####Basic认证模式通过用户名和md5(密码获取token)，访问的url为／####
+#####请求报文的header#####
 **Authorization: Basic akmklmasadalkm==**
-**正常情况下返回**
+#####正常情况下返回#####
+
 HTTP/1.1 200 OK
 Server: openresty/1.9.3.1
 Date: Fri, 08 Jan 2016 05:53:24 GMT
@@ -82,7 +83,8 @@ Connection: keep-alive
 
 {"code": 0,"msg": "OK","data": {"token": "ef47b6d4670b90eb3cf75a39f0854b0a"}}
 
-**密码错误5次内返回**
+#####密码错误5次内返回#####
+
 HTTP/1.1 403 Forbidden
 Server: openresty/1.9.3.1
 Date: Fri, 08 Jan 2016 05:53:31 GMT
@@ -92,7 +94,8 @@ Connection: keep-alive
 
 {"code": 1101,"msg": "username or password not correct","data": {"retry_times": "2","ttl_times":"86400""}}
 
-**密码错误5次以后，账户被锁定24小时**
+#####密码错误5次以后，账户被锁定24小时#####
+
 HTTP/1.1 403 Forbidden
 Server: openresty/1.9.3.1
 Date: Fri, 08 Jan 2016 05:53:35 GMT
@@ -102,8 +105,8 @@ Connection: keep-alive
 
 {"code": 1101,"msg": "retry too many times!!","data": {"retry_times": "5","ttl_times":"86399""}
 
-Token认证模式利用上一步获取的token来对需要认证的API提交
-**请求报文的header**
+####Token认证模式利用上一步获取的token来对需要认证的API提交####
+#####请求报文的header#####
 **Authorization: Token xa12344a**
 
 

@@ -70,7 +70,8 @@
 		registTime:注册时间
 		invalidTime:失效时间
 	返回数据示例
-		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
+		{"data":{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
+
 ##指令：GET /users/search/user 查询用户列表
 	说明
 		【管理员】 分页查询用户列表（查询条件可选）
@@ -94,8 +95,7 @@
 		registTime:注册时间
 		invalidTime:失效时间
 	返回数据示例
-		{"data":{"total":86,"results":[{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"}]},"code":0,"msg":"ok"}
-
+		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：

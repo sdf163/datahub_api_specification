@@ -119,7 +119,6 @@
 	Example Request：
 		PUT /users/aaa@126.com/active HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		Authorization: token
  
 		{"sid":"aaaaaa"}
 	返回数据说明
@@ -138,7 +137,6 @@
 	Example Request：
 		PUT /users/aaa@126.com/pwd HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		Authorization: token
  
 		{"passwd":"aaaaaa","oldpwd":"1234"}
 	返回数据说明
@@ -157,7 +155,6 @@
 	Example Request：
 		PUT /users/aaa@126.com/pwd/reset HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		Authorization: token
  
 		{"sid":"aaaaaa","passwd":"1234"}
 	返回数据说明
@@ -225,7 +222,6 @@
 		DELETE /users/foo HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
                   
 	返回数据说明
 		code:状态码
@@ -293,7 +289,7 @@
 	Example Request：
 		POST /quota/foo/repository HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"private":"20",
 			"public":"50"
@@ -313,7 +309,7 @@
 	Example Request：
 		PUT /quota/foo/repository HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"private":"30",
 			"public":"60"
@@ -334,7 +330,7 @@
 	Example Request：
 		POST /quota/foo/repository/use HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		USER:foo
+		Authorization: token
 		{
 			"private":"1",
 			"public":"1"
@@ -354,6 +350,7 @@
 	Example Request：
 		GET /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
+		Authorization: token
 
 	返回数据说明
 		code:状态码
@@ -376,7 +373,7 @@
 	Example Request：
 		POST /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 
 		{
 			"quota":"200",
@@ -395,7 +392,7 @@
 	Example Request：
 		PUT /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"quota":"300"
 		}
@@ -414,7 +411,7 @@
 	Example Request：
 		GET /quota/foo/pullnum HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-
+		Authorization: token
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
@@ -435,7 +432,7 @@
 	Example Request：
 		POST /quota/foo/pullnum HTTP/1.1 
 		Content-Type:text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 
 		{
 			"quota":"20000",
@@ -454,6 +451,8 @@
 	Example Request：
     	POST /quota/foo/pullnum/use HTTP/1.1 
    		Content-Type:text/json;charset=UTF-8
+		Authorization: token
+		
   	  	{
        	 "use":"10"
    		 }
@@ -471,7 +470,7 @@
 	Example Request：
 		PUT /quota/foo/pullnum HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"quota":"300000",
 		}
@@ -489,7 +488,7 @@
 		GET /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:foo
+
 	返回数据说明：
 		userType:会员级别
 		repoPub:共有repo资源量
@@ -520,7 +519,6 @@
 		GET /vip/foo/cost?type=4 HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:foo
 	返回数据说明：
 		cost:金额
 	返回数据示例：
@@ -549,7 +547,6 @@
 		PUT /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
 		{
 			"userType":"3",
 			"cost":"1400",

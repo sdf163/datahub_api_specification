@@ -17,6 +17,8 @@
 
 - [GET] /users/:loginname/pwd/validate 验证密码是否正确
 
+- [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
+
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
 - [POST] /quota/:loginname/repository 创建repo配额信息
@@ -111,9 +113,15 @@
 
 ##指令：PUT /users/:loginname/active 激活用户(83)
 	说明：
-		【管理员】激活用户
+		【任意】激活用户
 	输入参数说明：
-		无
+		sid:秘钥
+	Example Request：
+		PUT /users/aaa@126.com/active HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+		Authorization: token
+ 
+		{"sid":"aaaaaa"}
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
@@ -122,16 +130,36 @@
 
 ##指令：PUT /users/:loginname/pwd 修改密码(84)
 	说明：
-		【自己或者管理员】修改用户密码
-	输入参数说明：
+		【自己或管理员】修改用户密码
+		输入参数说明：
 		oldpwd：修改前密码（md5）
 		passwd：修改后密码（md5）
+		sid:验证标识（用于忘记密码后的重置密码）
 	Example Request：
 		PUT /users/aaa@126.com/pwd HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		Authorization: token
  
 		{"passwd":"aaaaaa","oldpwd":"1234"}
+	返回数据说明
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
+##指令：PUT /users/:loginname/pwd/reset 重置密码
+	说明：
+		【任意】重置密码
+		输入参数说明：
+		sid：秘钥
+		passwd：修改后密码（md5）
+		sid:验证标识（用于忘记密码后的重置密码）
+	Example Request：
+		PUT /users/aaa@126.com/pwd/reset HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+		Authorization: token
+ 
+		{"sid":"aaaaaa","passwd":"1234"}
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
@@ -215,6 +243,20 @@
                   
 	返回数据说明
 		code:状态码 0：密码正确，8004：密码错误，1007：参数错误，1001：其他系统异常
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+##指令：PUT /users/:loginname/forget/pwd 忘记密码发邮件
+	说明：
+		【任意】忘记密码发邮件
+	输入参数说明：
+		无
+	Example Request：
+		PUT /users/liuxy10/forget/pwd HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+                  
+	返回数据说明
+		code:状态码 0：密码正确，1001：其他系统异常
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}

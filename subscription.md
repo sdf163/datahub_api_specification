@@ -125,15 +125,16 @@
 	plan.subs: 当前订购次数
 	plan.expire: 交易有效期（天数）
 	
-	以下时间只在特定phase有效
+	不同的时间只在特定phase有效
 
-	canceltime：订单（因为data item被删除)取消时间, 只对phase=5有效。
-	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）, 只对phase=1有效。
-	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）, 只对phase=2,3有效。
-	removetime: 订单被（管理员）删除时间, 只对phase=6有效。
-	applytime: 交易申请时间, 只对phase=7有效。
-	withdrawtime: 交易申请撤回时间, 只对phase=8有效。
-	denytime: 交易申请被拒绝时间, 只对phase=9有效。
+	consuming, 1: signtime, expiretime 有效
+	freezed, 2: signtime, expiretime, freezetime 有效
+	finished, 3: signtime, expiretime, freezetime, finishtime 有效
+	cancelled, 5: signtime, expiretime, canceltime 有效
+	removed, 6: signtime, expiretime, freezetime, removetime 有效
+	applying, 7: applytime, expiretime 有效
+	wthdrawn, 8: applytime, withdrawtime 有效
+	denied, 9: applytime, denytime 有效
 
 ### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 

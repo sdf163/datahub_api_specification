@@ -63,12 +63,17 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
-		nickname：昵称 
-		username:真实名称
-		comments：描述信息
-		registTime:注册时间
+		data：数据结果
+
+		comment：描述信息
 		invalidTime:失效时间
+		nickname：昵称 
+		registTime:注册时间
+		userId:用户id
+		username:真实名称
+		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
+		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+		
 	返回数据示例
 		{"data":{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
 
@@ -90,10 +95,14 @@
 		msg:操作信息，用来记录失败信息
 		total：总记录数
 		data：数据集合 
-		username:真实名称
-		comments：描述信息
-		registTime:注册时间
+		comment：描述信息
 		invalidTime:失效时间
+		nickname：昵称 
+		registTime:注册时间
+		userId:用户id
+		username:真实名称
+		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
+		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 	返回数据示例
 		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
 

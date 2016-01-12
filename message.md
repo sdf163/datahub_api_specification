@@ -4,9 +4,9 @@
 
 说明
 
-	【用户】 创建一条用户提醒。
-	此接口主要作为一个public API给客户端使用，目前只有一个用处：用户从客户端申请某个dataitem的白名单。
-	内部接口需使用下面的kafka API通信。
+	【需求者】申请某个dataitem的白名单。
+	【管理员】给用户发消息。
+	【管理员】发站内广播消息
 
 输入参数说明：	
 	
@@ -24,6 +24,29 @@
 		"data": {
 			"repname": "repo001",
 			"itemname": "item123"
+		}
+	}
+	
+输入样例(管理员给用户发消息)：
+
+	POST /notifications HTTP/1.1
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"type": "admin_message",
+		"receiver": "zhang3@example.com li4@example.com john@example.com",
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
+	
+输入样例(管理员发站内广播消息)：
+
+	{
+		"type": "site_broadcast",
+		"data": {
+			"content": "bla bla ..."
 		}
 	}
 
@@ -119,7 +142,9 @@
 		"subsapply_event": 6,
 		"item_event": 20,
 		"subs_event": 2,
-		"vip_remind": 1
+		"vip_remind": 1,
+		"apply_whitelist": 1,
+		"admin_message": 1
 	}
 	
 输出样例说明：
@@ -128,6 +153,8 @@
 	item_event: data item事件
 	subs_event: 订购事件
 	vip_remind: 会员续费提醒
+	apply_whitelist: 申请白名单
+	admin_message: 管理员消息
 
 ### DELETE /notification_stat
 
@@ -296,24 +323,53 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 当发送消息至to_notifications.json topic时，可以在key中加入特定字符串暗示此消息是否是一个前端消息或者是一个客户端消息。
 当key中包含forclient字段时，此消息将被存入MessageTabel_ForClient。当key中不包含notforbrowser字段时，此消息将被存入MessageTable_ForBorser。
 
-### 发送一条网站广播
+### 网站广播
 
 	{
 		"type": "site_broadcast",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
-		"data": "bla bla ..."
+		"data": {
+			"content": "bla bla ..."
+		}
 	}
 
-### 发送一条私信
+### 管理员消息
+	
+	{
+		"type": "admin_message",
+		"receiver": "zhang3@example.com li4@example.com john@example.com",
+		"sender": "admin@hub.dataio.com",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
+
+### 私信
 
 	{
 		"type": "private_message",
 		"receiver": "zhang3@example.com",
 		"sender": "li4@example.com",
 		"time": "2015-11-10T15:06:09Z08:00",
-		"data": "bla bla ..."
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
+
+### apply white list
+	
+	{
+		"type": "apply_whitelist",
+		"receiver": "zhang3@example.com",
+		"sender": "li4@example.com",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"repname": "repo001",
+			"itemname": "item123"
+		}
 	}
 
 ### dataitem events

@@ -315,6 +315,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 当key中包含forclient字段时，此消息将被存入MessageTabel_ForClient。当key中不包含notforbrowser字段时，此消息将被存入MessageTable_ForBorser。
 
 当发送一个message时，可以带一个可选level字段(默认为0)，表示重要度。
+
 	level=0: general
 	level=50: 需要用户进一步处理
 

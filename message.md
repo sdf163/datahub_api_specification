@@ -45,7 +45,7 @@
 
 	空
 
-### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&page={page}&size={size}
+### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&level={level}&page={page}&size={size}
 
 说明
 
@@ -56,6 +56,7 @@
 	type: （可选）消息类型
 	sender: (可选) 消息发送者
 	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
+	level: (可选，默认为0) 0: 普通消息，50: 需用户进一步确认的消息
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
 	forclient: （可选，默认为0），是否返回浏览器或者客户端感兴趣的消息。(0: 浏览器感兴趣的消息；1: 客户端感兴趣的消息)

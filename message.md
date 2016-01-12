@@ -314,6 +314,10 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 当发送消息至to_notifications.json topic时，可以在key中加入特定字符串暗示此消息是否是一个前端消息或者是一个客户端消息。
 当key中包含forclient字段时，此消息将被存入MessageTabel_ForClient。当key中不包含notforbrowser字段时，此消息将被存入MessageTable_ForBorser。
 
+当发送一个message时，可以带一个可选level字段(默认为0)，表示重要度。
+	level=0: general
+	level=50: 需要用户进一步处理
+
 ### 网站广播
 
 	{
@@ -356,6 +360,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"type": "apply_whitelist",
 		"receiver": "zhang3@example.com",
 		"sender": "li4@example.com",
+		"level": 50,
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"repname": "repo001",
@@ -421,9 +426,10 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"type": "vip_remind",
 		"receiver": "zhang3@example.com",
 		"sender": "",
+		"level": 50,
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
-			"level": 4,
+			"level": 4,s
 			"invalide": "2015-01-02 11:12:00"
 		}
 	}

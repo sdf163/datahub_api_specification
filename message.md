@@ -35,7 +35,7 @@
 	
 	{
 		"type": "admin_message",
-		"receiver": "zhang3@example.com li4@example.com john@example.com",
+		"receiver": "zhang3@example.com,li4@example.com,john@example.com",
 		"data": {
 			"content": "bla bla ..."
 		}

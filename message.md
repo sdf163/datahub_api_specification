@@ -27,7 +27,7 @@
 		}
 	}
 	
-输入样例(管理员给用户发消息)：
+输入样例(管理员给用户发消息，最多同时100个用户)：
 
 	POST /notifications HTTP/1.1
 	Accept: application/json

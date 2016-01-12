@@ -411,15 +411,33 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为2,3,5-10，意义：
+	newphase可能为：
 		freezed: 2, 
 		finished: 3, 
 		cancelled: 5, 
 		removed: 6, 
+		complained: 10
+
+### 订购申请事件
+
+	{
+		"type": "subsapply_event",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"subscriptionid": 1234567,
+			"newphase": "freezed"
+		}
+	}
+	
+	newphase可能为：
 		applying: 7, 
 		wthdrawn: 8, 
 		denied: 9, 
-		complained: 10
+		agreed: 110,
+		agreed_but_insufficient_balance: 111
+		agreed_but_failed_to_subscribe: 112
 		
 ### 会员续费提醒
 

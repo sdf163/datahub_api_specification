@@ -40,15 +40,6 @@
 			"content": "bla bla ..."
 		}
 	}
-	
-输入样例(管理员发站内广播消息)：
-
-	{
-		"type": "site_broadcast",
-		"data": {
-			"content": "bla bla ..."
-		}
-	}
 
 输出样例：
 

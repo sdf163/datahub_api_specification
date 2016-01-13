@@ -65,7 +65,6 @@ Example Request：
 	GET /daemon/status HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
 	
 
 返回数据示例

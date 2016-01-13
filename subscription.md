@@ -678,7 +678,7 @@
 
 输入参数说明：
 	
-	phase: (可选) 限定订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
+	phase: (可选) 订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
 
 输入样例：
 
@@ -709,30 +709,57 @@
 
 	"numsigns":1
 
-### (4d) GET /subscriptions/subscriptors/:repname
+### (4d) GET /subscriptions/subscriptors/:repname?phase=1
 
 说明
 
-	【提供者】查询所有订购
+	【提供者】查询在自己的某个repo上的所有订购者
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	phase: (必选) 订购的phase, 目前只能为1(生效中但没完成)
 
 输入样例：
 
-	GET /subscriptions/pull HTTP/1.1 
+	GET /subscriptions/subscriptors/repo001?phase=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 输出样例：
         
 	{
-		"total": 100,
+		"total": 3,
 		"results": [
-			{
-				"subscriptionid": 1234567,
-				"sellername": "li4@example.com"
+			"zhang3@example.com",
+			"li4@example.com",
+			"johe@2xample.com"
+		]
+	}
+
+### (4e) GET /subscriptions/subscriptors/:repname/:itemname?phase=1
+
+说明
+
+	【提供者】查询在自己的某个date item上的所有订购者
+
+输入参数说明：
+	
+	phase: (必选) 订购的phase, 目前只能为1(生效中但没完成)
+
+输入样例：
+
+	GET /subscriptions/subscriptors/repo001/item002?phase=1 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	{
+		"total": 3,
+		"results": [
+			"zhang3@example.com",
+			"li4@example.com",
+			"johe@2xample.com"
+		]
+	}
+

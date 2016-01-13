@@ -3,6 +3,8 @@
 
 - [GET] /users/:loginname 查询用户
 
+- [GET] /users/search/user 查询用户列表
+
 - [POST] /users/:loginname 创建用户
 
 - [PUT] /users/:loginname 修改用户
@@ -14,6 +16,8 @@
 - [PUT] /users/:loginname/pwd 修改密码
 
 - [GET] /users/:loginname/pwd/validate 验证密码是否正确
+
+- [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
 
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
@@ -59,14 +63,48 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
-		nickname：昵称 
-		username:真实名称
-		comments：描述信息
-		registTime:注册时间
+		data：数据结果
+
+		comment：描述信息
 		invalidTime:失效时间
+		nickname：昵称 
+		registTime:注册时间
+		userId:用户id
+		username:真实名称
+		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
+		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+		
 	返回数据示例
-		{"data":{"comment":"abc","nickName":"foo","userName":"FOO","userType":1,"quata":"","registTime":"2015-12-01","invalidTime":"2016-12-01"},"code":0,"msg":"ok"}
+		{"data":{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
+
+##指令：GET /users/search/user 查询用户列表
+	说明
+		【管理员】 分页查询用户列表（查询条件可选）
+	输入参数说明：
+		page:当前页数
+		size:每页数据量
+		loginName:登录名，（模糊匹配）
+		userName:真实名称，（模糊匹配）
+	Example Request：
+		GET /users/search/user?page=1&size=20&loginName=a&userName=b HTTP/1.1 
+		Accept: text/json;charset=UTF-8
+		USER:admin
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		total：总记录数
+		data：数据集合 
+		comment：描述信息
+		invalidTime:失效时间
+		nickname：昵称 
+		registTime:注册时间
+		userId:用户id
+		username:真实名称
+		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
+		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+	返回数据示例
+		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
@@ -84,9 +122,14 @@
 
 ##指令：PUT /users/:loginname/active 激活用户(83)
 	说明：
-		【管理员】激活用户
+		【任意】激活用户
 	输入参数说明：
-		无
+		sid:秘钥
+	Example Request：
+		PUT /users/aaa@126.com/active HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+ 
+		{"sid":"aaaaaa"}
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
@@ -95,16 +138,34 @@
 
 ##指令：PUT /users/:loginname/pwd 修改密码(84)
 	说明：
-		【自己或者管理员】修改用户密码
-	输入参数说明：
+		【自己或管理员】修改用户密码
+		输入参数说明：
 		oldpwd：修改前密码（md5）
 		passwd：修改后密码（md5）
+		sid:验证标识（用于忘记密码后的重置密码）
 	Example Request：
 		PUT /users/aaa@126.com/pwd HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		Authorization: token
  
 		{"passwd":"aaaaaa","oldpwd":"1234"}
+	返回数据说明
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
+##指令：PUT /users/:loginname/pwd/reset 重置密码
+	说明：
+		【任意】重置密码
+		输入参数说明：
+		sid：秘钥
+		passwd：修改后密码（md5）
+		sid:验证标识（用于忘记密码后的重置密码）
+	Example Request：
+		PUT /users/aaa@126.com/pwd/reset HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+ 
+		{"sid":"aaaaaa","passwd":"1234"}
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
@@ -170,7 +231,6 @@
 		DELETE /users/foo HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
                   
 	返回数据说明
 		code:状态码
@@ -188,6 +248,20 @@
                   
 	返回数据说明
 		code:状态码 0：密码正确，8004：密码错误，1007：参数错误，1001：其他系统异常
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+##指令：PUT /users/:loginname/forget/pwd 忘记密码发邮件
+	说明：
+		【任意】忘记密码发邮件
+	输入参数说明：
+		无
+	Example Request：
+		PUT /users/liuxy10/forget/pwd HTTP/1.1 
+		Content-Type: text/json;charset=UTF-8
+                  
+	返回数据说明
+		code:状态码 0：密码正确，1001：其他系统异常
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
@@ -224,7 +298,7 @@
 	Example Request：
 		POST /quota/foo/repository HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"private":"20",
 			"public":"50"
@@ -244,7 +318,7 @@
 	Example Request：
 		PUT /quota/foo/repository HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"private":"30",
 			"public":"60"
@@ -265,7 +339,7 @@
 	Example Request：
 		POST /quota/foo/repository/use HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		USER:foo
+		Authorization: token
 		{
 			"private":"1",
 			"public":"1"
@@ -285,6 +359,7 @@
 	Example Request：
 		GET /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
+		Authorization: token
 
 	返回数据说明
 		code:状态码
@@ -307,7 +382,7 @@
 	Example Request：
 		POST /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 
 		{
 			"quota":"200",
@@ -326,7 +401,7 @@
 	Example Request：
 		PUT /quota/foo/deposit HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"quota":"300"
 		}
@@ -345,7 +420,7 @@
 	Example Request：
 		GET /quota/foo/pullnum HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-
+		Authorization: token
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
@@ -366,7 +441,7 @@
 	Example Request：
 		POST /quota/foo/pullnum HTTP/1.1 
 		Content-Type:text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 
 		{
 			"quota":"20000",
@@ -385,6 +460,8 @@
 	Example Request：
     	POST /quota/foo/pullnum/use HTTP/1.1 
    		Content-Type:text/json;charset=UTF-8
+		Authorization: token
+		
   	  	{
        	 "use":"10"
    		 }
@@ -402,7 +479,7 @@
 	Example Request：
 		PUT /quota/foo/pullnum HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8
-		User:admin
+		Authorization: token
 		{
 			"quota":"300000",
 		}
@@ -420,7 +497,7 @@
 		GET /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:foo
+
 	返回数据说明：
 		userType:会员级别
 		repoPub:共有repo资源量
@@ -451,7 +528,6 @@
 		GET /vip/foo/cost?type=4 HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:foo
 	返回数据说明：
 		cost:金额
 	返回数据示例：
@@ -480,7 +556,6 @@
 		PUT /vip/foo HTTP/1.1 
 		Accept: text/json;charset=UTF-8
 		Authorization: token
-		USER:admin
 		{
 			"userType":"3",
 			"cost":"1400",

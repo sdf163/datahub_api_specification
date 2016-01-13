@@ -42,7 +42,7 @@
 
 ## APIs
 
-### (40) GET /subscriptions/pull?phase={phase}&beforetime={beforetime}
+### (40) GET /subscriptions/pull?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -50,8 +50,10 @@
 
 输入参数说明：
 	
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, flagged: 10)。
-	beforetime: (可选) 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -61,48 +63,51 @@
 
 输出样例：
         
-	[
-		{
-			"subscriptionid": 1234567,
-			"sellername": "li4@example.com"
-			"repname":"NBA",
-			"itemname":"bear",
-			"supply_style":"batch",
-			"signtime":"2015-11-10T15:04:05Z08:00",
-			"expiretime":"2016-01-15T11:28:21Z",
-			"freezetime":"2015-12-11T10:51:11Z",
-			"finishtime":"2016-01-10T10:51:11Z",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"sellername": "li4@example.com"
+				"repname":"NBA",
+				"itemname":"bear",
+				"supply_style":"batch",
+				"signtime":"2015-11-10T15:04:05Z08:00",
+				"expiretime":"2016-01-15T11:28:21Z",
+				"freezetime":"2015-12-11T10:51:11Z",
+				"finishtime":"2016-01-10T10:51:11Z",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
+			},
+			{
+				"subscriptionid": 1234568,
+				"sellername": "zhang3@example.com"
+				"repname":"CBA",
+				"itemname":"triger",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-12-01T15:04:05Z08:00"
+				"freezetime":"2015-11-22T15:04:05Z08:00",
+				"finishtime":"2016-01-22T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
 			}
-		},
-		{
-			"subscriptionid": 1234568,
-			"sellername": "zhang3@example.com"
-			"repname":"CBA",
-			"itemname":"triger",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	]
+		]
+	}
 
 返回数据说明：
 
@@ -112,17 +117,26 @@
 	supply_style: flow | batch 
 	signtime: 订购时间
 	expiretime: 自动过期时间
-	freezetime: 交易成功时间（在未达到freezed phase之前，此值为空）
-	finishtime: 交易完成时间（在未达到freezed phase之前，此值为空）
-	phase: 1-3, 5-10 (意义：consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, flagged: 10)
+	phase: 1-3, 5-10 (意义：consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)
 	plan.money: 交易金额
 	plan.units: 最大下载次数（supply_style=batch）,最大下载天数（supply_style=flow)
 	plan.used: 已经使用量　
 	plan.limit: 最多可以订购次数
 	plan.subs: 当前订购次数
 	plan.expire: 交易有效期（天数）
+	
+	不同的时间只在特定phase有效
 
-### (41) GET /subscriptions/pull/:repname?phase={phase}&beforetime={beforetime}
+	consuming, 1: signtime, expiretime 有效
+	freezed, 2: signtime, expiretime, freezetime 有效
+	finished, 3: signtime, expiretime, freezetime, finishtime 有效
+	cancelled, 5: signtime, expiretime, canceltime 有效
+	removed, 6: signtime, expiretime, freezetime, removetime 有效
+	applying, 7: applytime, expiretime 有效
+	wthdrawn, 8: applytime, withdrawtime 有效
+	denied, 9: applytime, denytime 有效
+
+### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -130,8 +144,10 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
-	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -141,48 +157,51 @@
 
 输出样例：
         
-	[
-		{
-			"subscriptionid": 1234567,
-			"sellername": "zhang3@example.com",
-			"itemname":"bear",
-			"supply_style":"batch",
-			"signtime":"2015-11-10T15:04:05Z08:00",
-			"expiretime":"2016-01-15T11:28:21Z",
-			"freezetime":"2015-12-11T10:51:11Z",
-			"finishtime":"2016-01-10T10:51:11Z",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"sellername": "zhang3@example.com",
+				"itemname":"bear",
+				"supply_style":"batch",
+				"signtime":"2015-11-10T15:04:05Z08:00",
+				"expiretime":"2016-01-15T11:28:21Z",
+				"freezetime":"2015-12-11T10:51:11Z",
+				"finishtime":"2016-01-10T10:51:11Z",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
+			},
+			{
+				"subscriptionid": 1234568,
+				"sellername": "zhang3@example.com",
+				"itemname":"triger",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
 			}
-		},
-		{
-			"subscriptionid": 1234568,
-			"sellername": "zhang3@example.com",
-			"itemname":"triger",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	]
+		]
+	}
 
-### (42) GET /subscriptions/pull/:repname/:itemname?phase={phase}&beforetime={beforetime}
+### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -190,8 +209,10 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
-	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -201,46 +222,49 @@
 
 输出样例：
         
-	[
-		{
-			"subscriptionid": 1234567,
-			"sellername": "li4@example.com",
-			"supply_style":"batch",
-			"signtime":"2015-11-10T15:04:05Z08:00",
-			"expiretime":"2016-01-15T11:28:21Z",
-			"freezetime":"2015-12-11T10:51:11Z",
-			"finishtime":"2016-01-10T10:51:11Z",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"sellername": "li4@example.com",
+				"supply_style":"batch",
+				"signtime":"2015-11-10T15:04:05Z08:00",
+				"expiretime":"2016-01-15T11:28:21Z",
+				"freezetime":"2015-12-11T10:51:11Z",
+				"finishtime":"2016-01-10T10:51:11Z",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
+			},
+			{
+				"subscriptionid": 1234568,
+				"sellername": li4@example.com",
+				"supply_style":"flow",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
 			}
-		},
-		{
-			"subscriptionid": 1234568,
-			"sellername": li4@example.com",
-			"supply_style":"flow",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	]
+		]
+	}
 
-### (43) GET /subscriptions/push?phase={phase}&beforetime={beforetime}
+### (43) GET /subscriptions/push?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -248,8 +272,10 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
-	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -259,57 +285,57 @@
 
 输出样例：
         
-	[
-		{
-			"subscriptionid": 1234567,
-			"buyername":"zhang3@example.com",
-			"repname":"NBA",
-			"itemname":"bear",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"buyername":"zhang3@example.com",
+				"repname":"NBA",
+				"itemname":"bear",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
+			},
+			{
+				"subscriptionid": 1234568,
+				"buyername":"li4@example.com",
+				"repname":"CBA",
+				"itemname":"triger",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
 			}
-		},
-		{
-			"subscriptionid": 1234568,
-			"buyername":"li4@example.com",
-			"repname":"CBA",
-			"itemname":"triger",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	]
+		]
+	}
 
 返回数据说明：
 
 	buyername: 数据消费者
-	repname: repository name
-	itemname: data item name
-	signtime: 订购时间
 
-### (44) GET /subscriptions/push/:repname?phase={phase}&beforetime={beforetime}
+### (44) GET /subscriptions/push/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -317,8 +343,10 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
-	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -328,48 +356,51 @@
 
 输出样例：
         
-	[
-		{
-			"subscriptionid": 1234567,
-			"buyername":"zhang3@example.com",
-			"itemname":"bear",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"buyername":"zhang3@example.com",
+				"itemname":"bear",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
+			},
+			{
+				"subscriptionid": 1234568,
+				"buyername":"li4@example.com",
+				"itemname":"triger",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
 			}
-		},
-		{
-			"subscriptionid": 1234568,
-			"buyername":"li4@example.com",
-			"itemname":"triger",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	]
+		]
+	}
 
-### (45) GET /subscriptions/push/:repname/:itemname?phase={phase}&beforetime={beforetime}
+### (45) GET /subscriptions/push/:repname/:itemname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -377,8 +408,10 @@
 
 输入参数说明：
 	
-	phase:[可选] 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6)。
-	beforetime: [可选] 最晚时间, 格式：2015-11-23T09:02:52Z
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 
 输入样例：
 
@@ -388,44 +421,47 @@
 
 输出样例：
         
-	[
-		{
-			"subscriptionid": 1234567,
-			"buyername":"zhang3@example.com",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"buyername":"zhang3@example.com",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
+			},
+			{
+				"subscriptionid": 1234568,
+				"buyername":"li4@example.com",
+				"supply_style":"batch",
+				"signtime":"2015-11-01T15:04:05Z08:00",
+				"expiretime":"2015-11-04T15:04:05Z08:00"
+				"freezetime":"2015-12-04T15:04:05Z08:00",
+				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"phase":"consuming",
+				"plan":{
+					"money":5,
+					"units":3,
+					"used":0,
+					"limit":0,
+					"subs":1,
+					"expire":30
+				}
 			}
-		},
-		{
-			"subscriptionid": 1234568,
-			"buyername":"li4@example.com",
-			"supply_style":"batch",
-			"signtime":"2015-11-01T15:04:05Z08:00",
-			"expiretime":"2015-11-04T15:04:05Z08:00"
-			"freezetime":"2015-12-04T15:04:05Z08:00",
-			"finishtime":"2016-01-04T15:04:05Z08:00",
-			"phase":"consuming",
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	]
+		]
+	}
 
 ### (46) GET /subscription/:repname/:itemname
 
@@ -451,7 +487,7 @@
 
 说明
 
-	【需求者】查询是否已经有订购申请存在
+	【需求者】查询当前的订购申请，如果没有，返回空
 
 输入参数说明：
 	
@@ -463,12 +499,16 @@
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例1：
         
 	{
 		"subscriptionid": 1234568,
 		"applytime":"2015-11-01T15:04:05Z08:00",
 	}
+
+输出样例2：
+        
+	null
 
 ### (47) POST /subscription/:repname/:itemname
 
@@ -534,8 +574,10 @@
 
 输入参数说明：
 	
-	subscriptionid: 预订购id (purpose=withdraw时不需要)
-	planid: DataItem上的某个收费计划的uuid (只对purpose=subscribe和purpose=apply有效)
+	action: (可选，默认为sign) sign | complain | deny_complain | accept_complain
+	subscriptionid: 订购id (对于action=sign, 为预订购id)
+	planid: DataItem上的某个收费计划的uuid (只对action=sign有效)
+	reason: 对action的简短解释（小于255个字符，只对complain | deny_complain | accept_complain有意义）。
 
 输入样例：
 
@@ -564,7 +606,7 @@
 输入参数说明：
 	
 	action: apply | withdraw | agree | deny
-	subscriptionid: 预订购id 
+	subscriptionid: 订购id (对于action=apply, 为预订购id)
 	planid: DataItem上的某个收费计划的uuid (只对action=apply有效)
 
 输入样例：
@@ -583,7 +625,7 @@
         
 	无
 
-### (49) PUT /subscription/:subscriptionid 
+### (49) PUT /subscription/:subscriptionid (已废弃，请用api#48 with action=accept_complain instead)
 
 说明
 

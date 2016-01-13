@@ -4,9 +4,9 @@
 
 说明
 
-	【用户】 创建一条用户提醒。
-	此接口主要作为一个public API给客户端使用，目前只有一个用处：用户从客户端申请某个dataitem的白名单。
-	内部接口需使用下面的kafka API通信。
+	【需求者】申请某个dataitem的白名单。
+	【管理员】给用户发消息。
+	【管理员】发站内广播消息
 
 输入参数说明：	
 	
@@ -26,12 +26,26 @@
 			"itemname": "item123"
 		}
 	}
+	
+输入样例(管理员给用户发消息，最多同时100个用户)：
+
+	POST /notifications HTTP/1.1
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"type": "admin_message",
+		"receiver": "zhang3@example.com,li4@example.com,john@example.com",
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
 
 输出样例：
 
 	空
 
-### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&beforetime={beforetime}&aftertime={aftertime}
+### GET /notifications?forclient={forclient}&&type={type}&sender={sender}&status={status}&level={level}&page={page}&size={size}
 
 说明
 
@@ -42,11 +56,10 @@
 	type: （可选）消息类型
 	sender: (可选) 消息发送者
 	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
-	beforetime: （可选，默认为now）最晚时间, 例子：2015-12-25T16:04:07.017232946+08:00
-	aftertime: （可选，默认为2000-01-01）最早时间, 例子：2015-12-25T16:04:07.017232946+08:00
+	level: (可选，默认为0) 0: 普通消息，50: 需用户进一步确认的消息
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
 	forclient: （可选，默认为0），是否返回浏览器或者客户端感兴趣的消息。(0: 浏览器感兴趣的消息；1: 客户端感兴趣的消息)
-	
-	注意：beforetime和aftertime不能同时指定
 
 输入样例：
 
@@ -56,42 +69,48 @@
 
 输出样例：
 
-	[
-		{
-			"messageid": 11,
-			"type": "apply_subs",
-			"sender": "zhang3@example.com",
-			"data": {
-				"repname": "repo001",
-				"itemname": "item123",
-				"plan": {
-					"money": 7.99,
-					"units": 3,
-					"expire": 7,
+	{
+		"total": 100,
+		"results": [
+			{
+				"messageid": 11,
+				"type": "apply_subs",
+				"sender": "zhang3@example.com",
+				"time": "2015-11-10T15:05:09Z08:00",
+				"data": {
+					"repname": "repo001",
+					"itemname": "item123",
+					"plan": {
+						"money": 7.99,
+						"units": 3,
+						"expire": 7,
+					}
+				}
+			},
+			{
+				"messageid": 12,
+				"type": "item_event",
+				"time": "2015-11-10T15:04:09Z08:00",
+				"data": {
+					"event": "tag_added",
+					"eventtime": "2015-11-10T15:04:09Z08:00",
+					"repname": "repo001",
+					"itemname": "item123",
+					"tag": "tag567"
+				}
+			},
+			{
+				"messageid": 19,
+				"type": "subs_event",
+				"time": "2015-11-10T15:03:09Z08:00",
+				"data": {
+					"subscriptionid": 1234567,
+					"eventtime": "2015-11-10T15:04:09Z08:00",
+					"newphase": "freezed"
 				}
 			}
-		},
-		{
-			"messageid": 12,
-			"type": "item_event",
-			"data": {
-				"event": "tag_added",
-				"eventtime": "2015-11-10T15:04:09Z08:00",
-				"repname": "repo001",
-				"itemname": "item123",
-				"tag": "tag567"
-			}
-		},
-		{
-			"messageid": 19,
-			"type": "subs_event",
-			"data": {
-				"subscriptionid": 1234567,
-				"eventtime": "2015-11-10T15:04:09Z08:00",
-				"newphase": "freezed"
-			}
-		}
-	]
+		]
+	}
 
 ### GET /notification_stat
 
@@ -112,10 +131,22 @@
 输出样例：
 
 	{
-		"apply_subs": 6,
+		"subsapply_event": 6,
 		"item_event": 20,
-		"subs_event": 2
+		"subs_event": 2,
+		"vip_remind": 1,
+		"apply_whitelist": 1,
+		"admin_message": 1
 	}
+	
+输出样例说明：
+
+	subsapply_event: 订购申请事件
+	item_event: data item事件
+	subs_event: 订购事件
+	vip_remind: 会员续费提醒
+	apply_whitelist: 申请白名单
+	admin_message: 管理员消息
 
 ### DELETE /notification_stat
 
@@ -284,30 +315,65 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 当发送消息至to_notifications.json topic时，可以在key中加入特定字符串暗示此消息是否是一个前端消息或者是一个客户端消息。
 当key中包含forclient字段时，此消息将被存入MessageTabel_ForClient。当key中不包含notforbrowser字段时，此消息将被存入MessageTable_ForBorser。
 
-### 发送一条网站广播
+当发送一个message时，可以带一个可选level字段(默认为0)，表示重要度。
+
+	level=0: general
+	level=50: 需要用户进一步处理
+
+### 网站广播
 
 	{
 		"type": "site_broadcast",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
-		"data": "bla bla ..."
+		"data": {
+			"content": "bla bla ..."
+		}
 	}
 
-### 发送一条私信
+### 管理员消息
+	
+	{
+		"type": "admin_message",
+		"receiver": "zhang3@example.com li4@example.com john@example.com",
+		"sender": "admin@hub.dataio.com",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
+
+### 私信
 
 	{
 		"type": "private_message",
 		"receiver": "zhang3@example.com",
 		"sender": "li4@example.com",
 		"time": "2015-11-10T15:06:09Z08:00",
-		"data": "bla bla ..."
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
+
+### apply white list
+	
+	{
+		"type": "apply_whitelist",
+		"receiver": "zhang3@example.com",
+		"sender": "li4@example.com",
+		"level": 50,
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"repname": "repo001",
+			"itemname": "item123"
+		}
 	}
 
 ### dataitem events
 
 	{
-		"type": "item_events",
+		"type": "item_event",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
@@ -320,7 +386,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	}
 
 	{
-		"type": "item_news",
+		"type": "item_event",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
@@ -336,7 +402,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 ### 订购事件
 
 	{
-		"type": "sub_event",
+		"type": "subs_event",
 		"receiver": "zhang3@example.com",
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
@@ -346,15 +412,50 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为2,3,5-10，意义：
+	newphase可能为：
 		freezed: 2, 
 		finished: 3, 
 		cancelled: 5, 
 		removed: 6, 
+		complained: 10
+
+### 订购申请事件
+
+	{
+		"type": "subsapply_event",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"subscriptionid": 1234567,
+			"newphase": "freezed"
+		}
+	}
+	
+	newphase可能为：
 		applying: 7, 
 		wthdrawn: 8, 
 		denied: 9, 
-		flagged: 10
+		agreed: 110,
+		agreed_but_insufficient_balance: 111
+		agreed_but_failed_to_subscribe: 112
+		
+### 会员续费提醒
+
+	{
+		"type": "vip_remind",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"level": 50,
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"level": 4,s
+			"invalide": "2015-01-02 11:12:00"
+		}
+	}
+	
+	level：用户会员级别
+	invalide：会员到期时间
 
 ## topic: to_emails.json
 
@@ -363,7 +464,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	{
 		"to": "zhang3@example.com",
 		"subject": "你的订购申请通过了",
-		"message": "你的订购申请通过了，请可以下载数据了。http://hub.dataos.io/mySubscribe.html 。此邮件是系统自动转发，请不要回复。",
+		"content": "你的订购申请通过了，请可以下载数据了。http://hub.dataos.io/mySubscribe.html 。此邮件是系统自动转发，请不要回复。",
 		"ishtml": false
 	}
 

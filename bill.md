@@ -43,10 +43,12 @@
 	输入参数说明：
 		start_time:账单开始时间
 		end_time:账单结束时间
+		order:订单号
+		trade_user:交易对方
 		op_type:类型，-1:所有；1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
 		
 	Example Request：
-		GET /bill/foo/detail?start_time=2015-09-02&end_time=2015-10-01&op_type=1 HTTP/1.1 
+		GET /bill/foo/detail?start_time=2015-09-02&end_time=2015-10-01&order=1&trade_user=xxx&op_type=1 HTTP/1.1 
 		Authorization: token
 		
 	返回数据说明：

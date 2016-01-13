@@ -19,7 +19,8 @@
 说明
 
 	【拥有者】
-	 		如果后面没有username的参数,则返回本人创建或具备写权限的所有repository
+	 		如果后面没有username的参数,则返回本人创建或具备写权限的所有repository,
+	 		如果该repository名下有协作者,repository创建这返回repname及cooperate_status
 	【任意】 
 			如果带有参数?username=XXX，则表示查询XXX的所有repository，这里只能反馈查询者具备读权限的repositories名字（比如public或者在private白名单中的）
 
@@ -38,18 +39,22 @@ Example Request：
 返回数据说明：
 	
 	repname：数据仓库的名字
+	cooperatestate: rep协作状态[协作中,协作]
 	
 返回值示例
         
 	[
 		{
-			"repname": "mobile"
+			"repname": "mobile",
+			"cooperatestate": "",
 		}，
 		{
-			"repname": "mobile"
+			"repname": "mobile",
+			"cooperatestate": "协作中",
 		},
 		{
-			"repname": "mobile"
+			"repname": "mobile", 
+			"cooperatestate": "协作",
 		}
 	]
 
@@ -191,7 +196,7 @@ Example Response：
 
 	page                                          taglist分页页数[1 - N，  默认=1（page=1可以不传）]
 	size				                          taglist页面大小[1 - N，  默认=6]
-	abstract		                              是否只显示摘要信息[1 只显示Item（optime，comment，label, tags）4个属性]
+	abstract		                              是否只显示摘要信息[1 只显示Item（optime，comment，label, tags, cooperate_status）5个属性]
 	haspermission			                      返回是否具有订阅权限[1 显示是否具有订阅权限,不传则不显示订阅权限]
 
 Example Request：
@@ -221,6 +226,7 @@ Example Request：
 	taglist					item下所有tag的详细信息
 	permission              订阅权限[true, false]
 	pricestate              价格状态[免费, 限量免费, 付费]
+	cooperatestate          协作状态[协作,协作中]
 
 返回值示例
         
@@ -279,7 +285,8 @@ Example Request：
 				}
 			]
 	   "permission": true,
-	   "pricestate":"免费"
+	   "pricestate": "免费",
+	   "cooperatestate": "协作中",
 	}
 
 ----------

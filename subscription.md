@@ -651,7 +651,7 @@
         
 	null
 
-### (4a) GET /subscription_stat/:repname/:itemname 
+### (4a) GET /subscription_stat/:repname/:itemname?phase={phase}
 
 说明
 
@@ -659,7 +659,7 @@
 
 输入参数说明：
 	
-	无
+	phase: (可选) 限定订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
 
 输入样例：
 
@@ -670,7 +670,7 @@
 
 	"numsubs":567
 
-### (4b) GET /subscription_stat/:repname 
+### (4b) GET /subscription_stat/:repname?phase={phase}
 
 说明
 
@@ -678,7 +678,7 @@
 
 输入参数说明：
 	
-	无
+	phase: (可选) 限定订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
 
 输入样例：
 
@@ -709,3 +709,30 @@
 
 	"numsigns":1
 
+### (4d) GET /subscriptions/subscriptors/:repname
+
+说明
+
+	【提供者】查询所有订购
+
+输入参数说明：
+	
+	groupbydate: (可选，默认为0) 是否按日期分组
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
+
+输入样例：
+
+	GET /subscriptions/pull HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	{
+		"total": 100,
+		"results": [
+			{
+				"subscriptionid": 1234567,
+				"sellername": "li4@example.com"

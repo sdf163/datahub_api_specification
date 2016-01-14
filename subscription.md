@@ -659,7 +659,7 @@
 
 输入参数说明：
 	
-	phase: (可选) 限定订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
+	phase: (可选) 限定订购的phase, 如果不忽略此参数，目前其值只能为1 (表示consuming)。如果此值被忽略，返回所有已扣款的订购的数量。
 	
 	注意：如果phase被指定，http header中必须加上auth头
 
@@ -680,7 +680,7 @@
 
 输入参数说明：
 	
-	phase: (可选) 订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
+	phase: (可选) 订购的phase, 如果不忽略此参数，目前其值只能为1 (表示consuming)。如果此值被忽略，返回所有已扣款的订购的数量。
 	
 	注意：如果phase被指定，http header中必须加上auth头
 
@@ -767,7 +767,7 @@
 		]
 	}
 
-### (4e) GET /subscriptions/dataitems?phase=1
+### (4f) GET /subscriptions/dataitems?phase=1&repname={repname}
 
 说明
 
@@ -776,6 +776,7 @@
 输入参数说明：
 	
 	phase: (必选) 订购的phase, 目前只能为1(生效中但没完成)
+	repname: (可选) 过滤条件，限定repository
 
 输入样例：
 

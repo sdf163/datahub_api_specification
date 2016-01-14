@@ -767,3 +767,29 @@
 		]
 	}
 
+### (4e) GET /subscriptions/dataitems?phase=1
+
+说明
+
+	【提供者】查询自己所有订购的date items
+
+输入参数说明：
+	
+	phase: (必选) 订购的phase, 目前只能为1(生效中但没完成)
+
+输入样例：
+
+	GET /subscriptions/dataitems?phase=1 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	{
+		"total": 2,
+		"results": [
+			{"repname":"CBA", "itemname":"triger"},
+			{"repname":"repo0", "itemname":"item1"}
+		]
+	}
+

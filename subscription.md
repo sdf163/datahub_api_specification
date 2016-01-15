@@ -76,7 +76,7 @@
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -96,7 +96,7 @@
 				"expiretime":"2015-12-01T15:04:05Z08:00"
 				"freezetime":"2015-11-22T15:04:05Z08:00",
 				"finishtime":"2016-01-22T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -169,7 +169,7 @@
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -188,7 +188,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -233,7 +233,7 @@
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -251,7 +251,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -298,7 +298,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -318,7 +318,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -368,7 +368,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -387,7 +387,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -432,7 +432,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -450,7 +450,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,

@@ -713,7 +713,7 @@
 
 	"numsigns":1
 
-### (4d) GET /subscriptions/subscriptors/:repname?phase=1
+### (4d) GET /subscriptions/subscribers/:repname?phase=1
 
 说明
 
@@ -725,7 +725,7 @@
 
 输入样例：
 
-	GET /subscriptions/subscriptors/repo001?phase=1 HTTP/1.1 
+	GET /subscriptions/subscribers/repo001?phase=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -740,7 +740,7 @@
 		]
 	}
 
-### (4e) GET /subscriptions/subscriptors/:repname/:itemname?phase=1
+### (4e) GET /subscriptions/subscribers/:repname/:itemname?phase=1
 
 说明
 
@@ -752,7 +752,7 @@
 
 输入样例：
 
-	GET /subscriptions/subscriptors/repo001/item002?phase=1 HTTP/1.1 
+	GET /subscriptions/subscribers/repo001/item002?phase=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 

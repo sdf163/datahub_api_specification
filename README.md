@@ -87,6 +87,18 @@ Connection: keep-alive
 {"code": 0,"msg": "OK","data": {"token": "ef47b6d4670b90eb3cf75a39f0854b0a"}}
 ```
 
+#####用户没有激活#####
+```
+HTTP/1.1 403 Forbidden
+Server: openresty/1.9.3.1
+Date: Fri, 08 Jan 2016 05:53:31 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+{"code": 1102,"msg": "user inactive","data": {}}
+```
+
 #####密码错误5次内返回#####
 ```
 HTTP/1.1 403 Forbidden
@@ -107,7 +119,7 @@ Content-Type: application/json
 Transfer-Encoding: chunked
 Connection: keep-alive
 
-{"code": 1101,"msg": "retry too many times!!","data": {"retry_times": "5","ttl_times":"86399"}}
+{"code": 1103,"msg": "retry too many times!!","data": {"retry_times": "5","ttl_times":"86399"}}
 ```
 ####Token认证模式利用上一步获取的token来对需要认证的API提交####
 #####请求报文的header#####

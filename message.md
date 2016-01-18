@@ -499,7 +499,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00"
 	}
 
-### 删除repository
+### 删除repository (此事件已经取消，repository下的所有dataitems将发送一个被删除消息)
 
 	{
 		"type": "0x00020003",

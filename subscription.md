@@ -76,7 +76,7 @@
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -96,7 +96,7 @@
 				"expiretime":"2015-12-01T15:04:05Z08:00"
 				"freezetime":"2015-11-22T15:04:05Z08:00",
 				"finishtime":"2016-01-22T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -169,7 +169,7 @@
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -188,7 +188,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -233,7 +233,7 @@
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -251,7 +251,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -298,7 +298,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -318,7 +318,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -368,7 +368,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -387,7 +387,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -432,7 +432,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -450,7 +450,7 @@
 				"expiretime":"2015-11-04T15:04:05Z08:00"
 				"freezetime":"2015-12-04T15:04:05Z08:00",
 				"finishtime":"2016-01-04T15:04:05Z08:00",
-				"phase":"consuming",
+				"phase":1,
 				"plan":{
 					"money":5,
 					"units":3,
@@ -659,7 +659,7 @@
 
 输入参数说明：
 	
-	phase: (可选) 限定订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
+	phase: (可选) 限定订购的phase, 如果不忽略此参数，目前其值只能为1 (表示consuming)。如果此值被忽略，返回所有已扣款的订购的数量。
 	
 	注意：如果phase被指定，http header中必须加上auth头
 
@@ -680,7 +680,7 @@
 
 输入参数说明：
 	
-	phase: (可选) 订购的phase, 如果不忽略此参数，其值只能为1 (表示consuming)。如果此值被忽略，返回有效订购的数量（已扣款的订购的数量）
+	phase: (可选) 订购的phase, 如果不忽略此参数，目前其值只能为1 (表示consuming)。如果此值被忽略，返回所有已扣款的订购的数量。
 	
 	注意：如果phase被指定，http header中必须加上auth头
 
@@ -713,7 +713,7 @@
 
 	"numsigns":1
 
-### (4d) GET /subscriptions/subscriptors/:repname?phase=1
+### (4d) GET /subscriptions/subscribers/:repname?phase=1
 
 说明
 
@@ -725,7 +725,7 @@
 
 输入样例：
 
-	GET /subscriptions/subscriptors/repo001?phase=1 HTTP/1.1 
+	GET /subscriptions/subscribers/repo001?phase=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -740,7 +740,7 @@
 		]
 	}
 
-### (4e) GET /subscriptions/subscriptors/:repname/:itemname?phase=1
+### (4e) GET /subscriptions/subscribers/:repname/:itemname?phase=1
 
 说明
 
@@ -752,7 +752,7 @@
 
 输入样例：
 
-	GET /subscriptions/subscriptors/repo001/item002?phase=1 HTTP/1.1 
+	GET /subscriptions/subscribers/repo001/item002?phase=1 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -764,6 +764,33 @@
 			"zhang3@example.com",
 			"li4@example.com",
 			"johe@2xample.com"
+		]
+	}
+
+### (4f) GET /subscriptions/dataitems?phase=1&repname={repname}
+
+说明
+
+	【提供者】查询自己所有订购的date items
+
+输入参数说明：
+	
+	phase: (必选) 订购的phase, 目前只能为1(生效中但没完成)
+	repname: (可选) 过滤条件，限定repository
+
+输入样例：
+
+	GET /subscriptions/dataitems?phase=1 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例：
+        
+	{
+		"total": 2,
+		"results": [
+			{"repname":"CBA", "itemname":"triger"},
+			{"repname":"repo0", "itemname":"item1"}
 		]
 	}
 

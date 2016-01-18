@@ -158,9 +158,8 @@
 	说明：
 		【任意】重置密码
 		输入参数说明：
-		sid：秘钥
 		passwd：修改后密码（md5）
-		sid:验证标识（用于忘记密码后的重置密码）
+		sid:秘钥.验证标识（用于忘记密码后的重置密码）
 	Example Request：
 		PUT /users/aaa@126.com/pwd/reset HTTP/1.1 
 		Content-Type: text/json;charset=UTF-8

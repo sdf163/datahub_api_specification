@@ -11,6 +11,7 @@
 
 - [GET] /repositories/:repname/:itemname/subpermission
 
+- [GET] /repositories/deleted
 	
 ----------
 
@@ -573,6 +574,405 @@ Example Response：
 		     "other": {}
 		}	
 	}
+
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+
+## 14 [GET] /repositories/deleted
+
+说明
+
+   【拥有者】查询删除的rep和item
+
+输入参数说明：
+
+	无
+
+Example Request：
+
+	GET /repositories/deleted HTTP/1.1
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb 
+	
+Example Response：
+	
+	HTTP/1.1 200 
+	Vary: Accept 
+	Content-Type: application/json
+	[
+        {
+            "repository": {
+                "create_user": "panxy3@asiainfo.com",
+                "repaccesstype": "public",
+                "comment": "test",
+                "optime": "2016-01-12 11:24:59.902328349 +0800 CST",
+                "items": 0,
+                "cooperateitems": 0,
+                "label": {
+                    "opt": {},
+                    "other": {},
+                    "owner": {},
+                    "sys": {}
+                },
+                "St": "0001-01-01T00:00:00Z",
+                "Cooperate": null
+            },
+            "dataitems": [
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:26:45.266051955 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:26:39.213718944 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:02:28.28178537 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:02:09.142122461 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:01:41.718104405 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "repository": {
+                "create_user": "panxy3@asiainfo.com",
+                "repaccesstype": "public",
+                "comment": "中国移动北京终端详情",
+                "optime": "2016-01-13 19:25:14.723231253 +0800 CST",
+                "items": 0,
+                "cooperateitems": 0,
+                "label": {
+                    "opt": {},
+                    "other": {},
+                    "owner": {},
+                    "sys": {}
+                },
+                "St": "0001-01-01T00:00:00Z",
+                "Cooperate": null
+            },
+            "dataitems": [
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:26:45.266051955 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:26:39.213718944 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:02:28.28178537 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:02:09.142122461 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:01:41.718104405 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "repository": {
+                "create_user": "panxy3@asiainfo.com",
+                "repaccesstype": "public",
+                "comment": "中国移动北京终端详情",
+                "optime": "2016-01-13 19:26:45.266051955 +0800 CST",
+                "items": 2,
+                "cooperateitems": 0,
+                "label": {
+                    "opt": {},
+                    "other": {},
+                    "owner": {},
+                    "sys": {}
+                },
+                "St": "0001-01-01T00:00:00Z",
+                "Cooperate": null
+            },
+            "dataitems": [
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:26:45.266051955 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:26:39.213718944 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "publ         ic",
+                    "optime": "2016-01-13 19:02:28.28178537 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:02:09.142122461 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                },
+                {
+                    "create_user": "panxy3@asiainfo.com",
+                    "itemaccesstype": "public",
+                    "optime": "2016-01-13 19:01:41.718104405 +0800 CST",
+                    "Meta": "",
+                    "Sample": "",
+                    "comment": "中国移动北京终端详情",
+                    "tags": 0,
+                    "label": {
+                        "opt": {},
+                        "other": {},
+                        "owner": {},
+                        "sys": {
+                            "supply_style": "api"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "repository": {
+                "create_user": "panxy3@asiainfo.com",
+                "repaccesstype": "public",
+                "comment": "update中国移动北京终端详情",
+                "optime": "2016-01-15 16:07:03.896363198 +0800 CST",
+                "items": 0,
+                "cooperateitems": 0,
+                "label": {
+                    "opt": {},
+                    "other": {},
+                    "owner": {},
+                    "sys": {}
+                },
+                "St": "0001-01-01T00:00:00Z",
+                "Cooperate": null
+            },
+            "dataitems": []
+        },
+        {
+            "repository": {
+                "create_user": "panxy3@asiainfo.com",
+                "repaccesstype": "public",
+                "comment": "update中国移动北京终端详情",
+                "optime": "2016-01-15 16:02:18.388574131 +0800 CST",
+                "items": 0,
+                "cooperateitems": 0,
+                "label": {
+                    "opt": {},
+                    "other": {},
+                    "owner": {},
+                    "sys": {}
+                },
+                "St": "2016-01-15T16:09:46.207+08:00",
+                "Cooperate": null
+            },
+            "dataitems": []
+        },
+        {
+            "repository": {
+                "create_user": "panxy3@asiainfo.com",
+                "repaccesstype": "public",
+                "comment": "update中国移动北京终端详情",
+                "optime": "2016-01-15 16:11:13.263683341 +0800 CST",
+                "items": 0,
+                "cooperateitems": 0,
+                "label": {
+                    "opt": {},
+                    "other": {},
+                    "owner": {},
+                    "sys": {}
+                },
+                "St": "2016-01-15T16:11:42.4+08:00",
+                "Cooperate": null
+            },
+            "dataitems": []
+        }
+    ]
 
 	HTTP/1.1 200 
 	Vary: Accept 

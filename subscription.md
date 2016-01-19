@@ -593,7 +593,26 @@
 	
 输出样例：
         
-	无
+	{
+		"subscriptionid": 1234567,
+		"sellername": "li4@example.com"
+		"repname":"NBA",
+		"itemname":"bear",
+		"supply_style":"batch",
+		"signtime":"2015-11-10T15:04:05Z08:00",
+		"expiretime":"2016-01-15T11:28:21Z",
+		"freezetime":"2015-12-11T10:51:11Z",
+		"finishtime":"2016-01-10T10:51:11Z",
+		"phase":1,
+		"plan":{
+			"money":5,
+			"units":3,
+			"used":0,
+			"limit":0,
+			"subs":1,
+			"expire":30
+		}
+	}
 
 ### (48b) PUT /subscription/:repname/:itemname/apply
 
@@ -624,7 +643,24 @@
 	
 输出样例：
         
-	无
+	{
+		"subscriptionid": 1234567,
+		"sellername": "li4@example.com"
+		"repname":"NBA",
+		"itemname":"bear",
+		"supply_style":"batch",
+		"applytime":"2015-11-10T15:04:05Z08:00",
+		"expiretime":"2016-11-17T15:04:05Z08:00",
+		"phase":7,
+		"plan":{
+			"money":5,
+			"units":3,
+			"used":0,
+			"limit":0,
+			"subs":1,
+			"expire":30
+		}
+	}
 
 ### (49) PUT /subscription/:subscriptionid (已废弃，请用api#48 with action=accept_complain instead)
 

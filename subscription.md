@@ -51,7 +51,7 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
 
@@ -135,6 +135,7 @@
 	applying, 7: applytime, expiretime 有效
 	wthdrawn, 8: applytime, withdrawtime 有效
 	denied, 9: applytime, denytime 有效
+	agreed_but_insufficient_balance, 10: applytime, agreetime 有效
 
 ### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 

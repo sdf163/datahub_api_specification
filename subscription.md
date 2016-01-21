@@ -51,7 +51,7 @@
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。
 	page: (可选) 第几页，最小值为1
 	size: (可选) 每页最多返回多少条数据
 
@@ -135,6 +135,7 @@
 	applying, 7: applytime, expiretime 有效
 	wthdrawn, 8: applytime, withdrawtime 有效
 	denied, 9: applytime, denytime 有效
+	agreed_but_insufficient_balance, 10: applytime, agreetime 有效
 
 ### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
@@ -592,7 +593,26 @@
 	
 输出样例：
         
-	无
+	{
+		"subscriptionid": 1234567,
+		"sellername": "li4@example.com"
+		"repname":"NBA",
+		"itemname":"bear",
+		"supply_style":"batch",
+		"signtime":"2015-11-10T15:04:05Z08:00",
+		"expiretime":"2016-01-15T11:28:21Z",
+		"freezetime":"2015-12-11T10:51:11Z",
+		"finishtime":"2016-01-10T10:51:11Z",
+		"phase":1,
+		"plan":{
+			"money":5,
+			"units":3,
+			"used":0,
+			"limit":0,
+			"subs":1,
+			"expire":30
+		}
+	}
 
 ### (48b) PUT /subscription/:repname/:itemname/apply
 
@@ -623,7 +643,24 @@
 	
 输出样例：
         
-	无
+	{
+		"subscriptionid": 1234567,
+		"sellername": "li4@example.com"
+		"repname":"NBA",
+		"itemname":"bear",
+		"supply_style":"batch",
+		"applytime":"2015-11-10T15:04:05Z08:00",
+		"expiretime":"2016-11-17T15:04:05Z08:00",
+		"phase":7,
+		"plan":{
+			"money":5,
+			"units":3,
+			"used":0,
+			"limit":0,
+			"subs":1,
+			"expire":30
+		}
+	}
 
 ### (49) PUT /subscription/:subscriptionid (已废弃，请用api#48 with action=accept_complain instead)
 

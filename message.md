@@ -136,7 +136,8 @@
 		"subs_event": 2,
 		"vip_remind": 1,
 		"apply_whitelist": 1,
-		"admin_message": 1
+		"admin_message": 1,
+		"comment_reply": 2
 	}
 	
 输出样例说明：
@@ -147,6 +148,7 @@
 	vip_remind: 会员续费提醒
 	apply_whitelist: 申请白名单
 	admin_message: 管理员消息
+	comment_reply: 留言被回复消息
 
 ### DELETE /notification_stat
 
@@ -367,6 +369,27 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"data": {
 			"repname": "repo001",
 			"itemname": "item123"
+		}
+	}
+	
+### comment reply
+	
+	{
+		"type": "comment_reply",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"level": 0,
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"commentid": 1234567
+			"username": "li4@bbb.com",
+			"nickname", "小李",
+			"createtime": "2015-11-10T15:04:05Z08:00",
+			"content": "agree!",
+			"replyto": {
+				"commentid": 1234560,
+				"content": "cool data! ..."
+			}
 		}
 	}
 

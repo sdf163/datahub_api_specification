@@ -436,8 +436,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		applying: 7, 
 		wthdrawn: 8, 
 		denied: 9, 
+		agreed_but_insufficient_balance: 10
 		agreed: 110,
-		agreed_but_insufficient_balance: 111
 		agreed_but_failed_to_subscribe: 112
 		
 ### 会员续费提醒

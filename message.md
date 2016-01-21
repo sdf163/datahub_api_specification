@@ -381,7 +381,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"level": 0,
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
-			"commentid": 1234567
+			"commentid": 1234567,
 			"username": "li4@bbb.com",
 			"nickname", "小李",
 			"createtime": "2015-11-10T15:04:05Z08:00",

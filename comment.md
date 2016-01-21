@@ -99,17 +99,20 @@
 			{
 				"commentid": "1234567"
 				"username": "zhang3@aaa.com",
+				"nickname", "老张",
 				"createtime": "2015-11-10T15:04:05Z08:00",
 				"content": "bla bla ...",
 				"replyto": {
 					"commentid": "1234569",
 					"username": "li4@bbb.com",
+					"nickname", "小李",
 					"content": "cool data! ..."
 				}
 			},
 			{
 				"commentid": "1234568"
 				"username": "li4@aaa.com",
+				"nickname", "小李",
 				"createtime": "2015-11-10T15:04:09Z08:00",
 				"content": "bla bla ...",
 				"replyto": null
@@ -117,6 +120,7 @@
 			{
 				"commentid": "1234569"
 				"username": "li4@bbb.com",
+				"nickname", "小李",
 				"createtime": "2015-11-10T15:06:09Z08:00",
 				"content": "bla bla ...",
 				"replyto": null

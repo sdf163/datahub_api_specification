@@ -414,10 +414,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	
 	newphase可能为：
 		freezed: 2, 
-		finished: 3, 
 		cancelled: 5, 
-		removed: 6, 
-		complained: 10
+		removed: 6
 
 ### 订购申请事件
 

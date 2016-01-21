@@ -408,7 +408,23 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"subscriptionid": 1234567,
-			"newphase": "freezed"
+			"sellername": "li4@example.com"
+			"repname":"NBA",
+			"itemname":"bear",
+			"supply_style":"batch",
+			"signtime":"2015-11-10T15:04:05Z08:00",
+			"expiretime":"2016-01-15T11:28:21Z",
+			"freezetime":"2015-12-11T10:51:11Z",
+			"finishtime":"2016-01-10T10:51:11Z",
+			"phase":1,
+			"plan":{
+				"money":5,
+				"units":3,
+				"used":0,
+				"limit":0,
+				"subs":1,
+				"expire":30
+			}
 		}
 	}
 	
@@ -416,6 +432,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		freezed: 2, 
 		cancelled: 5, 
 		removed: 6
+	
+	其它字段含意请参考(/subscription.md/)
 
 ### 订购申请事件
 
@@ -426,7 +444,21 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"subscriptionid": 1234567,
-			"newphase": "freezed"
+			"sellername": "li4@example.com"
+			"repname":"NBA",
+			"itemname":"bear",
+			"supply_style":"batch",
+			"applytime":"2015-11-10T15:04:05Z08:00",
+			"expiretime":"2016-11-17T15:04:05Z08:00",
+			"phase":7,
+			"plan":{
+				"money":5,
+				"units":3,
+				"used":0,
+				"limit":0,
+				"subs":1,
+				"expire":30
+			}
 		}
 	}
 	
@@ -437,6 +469,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		agreed_but_insufficient_balance: 10
 		agreed: 110,
 		agreed_but_failed_to_subscribe: 112
+	
+	其它字段含意请参考(/subscription.md/)
 		
 ### 会员续费提醒
 

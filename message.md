@@ -507,3 +507,21 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00"
 	}
 	
+## topic: to_repositories.json
+
+### 增加repository rank
+
+	{
+		"repname": "repo001",
+        "rank": 10.5		
+	}
+	注意:rank不是字符串
+
+### 增加dataitem rank
+
+	{
+		"repname": "repo001",
+		"itemname": "item002",
+        "rank": 10.2		
+	}	
+	注意:rank不是字符串

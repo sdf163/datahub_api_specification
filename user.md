@@ -57,8 +57,7 @@
 		无
 	Example Request：
 		GET /users/foo HTTP/1.1 
-		Accept: text/json;charset=UTF-8
-		USER:admin
+		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
 		code:状态码
@@ -87,8 +86,8 @@
 		userName:真实名称，（模糊匹配）
 	Example Request：
 		GET /users/search/user?page=1&size=20&loginName=a&userName=b HTTP/1.1 
-		Accept: text/json;charset=UTF-8
-		USER:admin
+		Accept: application/json;charset=UTF-8
+		Authorization: token
 
 	返回数据说明：
 		code:状态码
@@ -127,7 +126,7 @@
 		sid:秘钥
 	Example Request：
 		PUT /users/aaa@126.com/active HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
  
 		{"sid":"aaaaaa"}
 	返回数据说明
@@ -142,11 +141,11 @@
 		输入参数说明：
 		oldpwd：修改前密码（md5）
 		passwd：修改后密码（md5）
-		sid:验证标识（用于忘记密码后的重置密码）
 	Example Request：
 		PUT /users/aaa@126.com/pwd HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
- 
+		Content-Type: application/json;charset=UTF-8
+		Authorization: token
+
 		{"passwd":"aaaaaa","oldpwd":"1234"}
 	返回数据说明
 		code:状态码
@@ -162,7 +161,7 @@
 		sid:秘钥.验证标识（用于忘记密码后的重置密码）
 	Example Request：
 		PUT /users/aaa@126.com/pwd/reset HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
  
 		{"sid":"aaaaaa","passwd":"1234"}
 	返回数据说明
@@ -184,12 +183,12 @@
 
 	【管理员角色】Example Request：
 		PUT /users/foo HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
-		USER:admin
+		Authorization: token
  
 		{
-			"userstatus":"3",
+			"userstatus":3,
 			"nickname":"foo",
 			"username":"FOO",
 			"comments":"测试用户",
@@ -207,7 +206,7 @@
 
 	【普通用户】Example Request：
 		PUT /users/foo HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
  	
 		{
@@ -228,7 +227,7 @@
 		无 
 	Example Request：
 		DELETE /users/foo HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
                   
 	返回数据说明
@@ -243,7 +242,7 @@
 		pwd:用户密码(md5加密过的)
 	Example Request：
 		GET /users/foo@asiainfo.com/pwd/validate?pwd=abc HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
                   
 	返回数据说明
 		code:状态码 0：密码正确，8004：密码错误，1007：参数错误，1001：其他系统异常
@@ -257,7 +256,7 @@
 		无
 	Example Request：
 		PUT /users/liuxy10/forget/pwd HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
                   
 	返回数据说明
 		code:状态码 0：密码正确，1001：其他系统异常
@@ -271,7 +270,7 @@
 		无
 	Example Request：
 		GET /quota/foo/repository HTTP/1.1 
-		Content-Type: multipart/form-data
+		Content-Type: application/json
 		
 	返回数据说明
 		code:状态码
@@ -296,11 +295,11 @@
 
 	Example Request：
 		POST /quota/foo/repository HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"private":"20",
-			"public":"50"
+			"private":20,
+			"public":50
 		}	
 	返回数据说明
 		code:状态码
@@ -316,11 +315,11 @@
 		注：输入参数可单独使用
 	Example Request：
 		PUT /quota/foo/repository HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"private":"30",
-			"public":"60"
+			"private":30,
+			"public":60
 		}
 	返回数据说明
 		code:状态码
@@ -337,11 +336,11 @@
 		注：输入参数可单独使用
 	Example Request：
 		POST /quota/foo/repository/use HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"private":"1",
-			"public":"1"
+			"private":1,
+			"public":1
 		}
 	返回数据说明
 		code:状态码
@@ -357,7 +356,7 @@
 		无
 	Example Request：
 		GET /quota/foo/deposit HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 
 	返回数据说明
@@ -380,11 +379,11 @@
 
 	Example Request：
 		POST /quota/foo/deposit HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 
 		{
-			"quota":"200",
+			"quota":200,
 			"unit":"M"
 		}	
 	返回数据说明
@@ -399,10 +398,10 @@
 		quota:托管配额空间大小
 	Example Request：
 		PUT /quota/foo/deposit HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"quota":"300"
+			"quota":300
 		}
 	返回数据说明
 		code:状态码
@@ -418,7 +417,7 @@
 		无
 	Example Request：
 		GET /quota/foo/pullnum HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 	返回数据说明
 		code:状态码
@@ -439,11 +438,11 @@
 
 	Example Request：
 		POST /quota/foo/pullnum HTTP/1.1 
-		Content-Type:text/json;charset=UTF-8
+		Content-Type:application/json;charset=UTF-8
 		Authorization: token
 
 		{
-			"quota":"20000",
+			"quota":20000,
 		}	
 	返回数据说明
 		code:状态码
@@ -458,17 +457,16 @@
    	 	use:下载数量
 	Example Request：
     	POST /quota/foo/pullnum/use HTTP/1.1 
-   		Content-Type:text/json;charset=UTF-8
+		Content-Type:application/json;charset=UTF-8
 		Authorization: token
-		
-  	  	{
-       	 "use":"10"
-   		 }
+		{
+       	 "use":10
+		}
 	返回数据说明
- 	   code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
- 	   msg:操作信息，用来记录失败信息
+		code:状态码，(0：成功；7000:未知错误；7005：未登录；7006：权限不够)
+		msg:操作信息，用来记录失败信息
 	返回数据示例
-   		{"code":0,"msg":"ok"}
+		{"code":0,"msg":"ok"}
 
 ##指令：PUT /quota/:loginname/pullnum 修改用户的下载量配额（8i）
 	说明：
@@ -477,10 +475,10 @@
 		quota:下载量配额
 	Example Request：
 		PUT /quota/foo/pullnum HTTP/1.1 
-		Content-Type: text/json;charset=UTF-8
+		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"quota":"300000",
+			"quota":300000,
 		}
 	返回数据说明
 		code:状态码
@@ -494,7 +492,7 @@
 		无
 	Example Request：
 		GET /vip/foo HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 
 	返回数据说明：
@@ -525,7 +523,7 @@
 		type：会员级别
 	Example Request：
 		GET /vip/foo/cost?type=4 HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 	返回数据说明：
 		cost:金额
@@ -550,15 +548,13 @@
 	输入参数说明：
 		userType：会员级别(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 		cost:费用
-		validity:有效期（单位：年）,如果不传此参数，默认为1
 	Example Request：
 		PUT /vip/foo HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"userType":"3",
-			"cost":"1400",
-			"validity":"2"
+			"userType":3,
+			"cost":1400
 		}
 	返回数据说明：
 		code:状态码

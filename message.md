@@ -420,7 +420,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	event可能为tag_added, tag_deleted, item_deleted, repo_deleted
+	event可能为tag_added, tag_deleted, item_deleted
 
 ### 订购事件
 

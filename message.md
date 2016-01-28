@@ -74,16 +74,26 @@
 		"results": [
 			{
 				"messageid": 11,
-				"type": "apply_subs",
-				"sender": "zhang3@example.com",
-				"time": "2015-11-10T15:05:09Z08:00",
+				"type": "subs_event",
+				"time": "2015-11-10T15:06:09Z08:00",
 				"data": {
-					"repname": "repo001",
-					"itemname": "item123",
-					"plan": {
-						"money": 7.99,
-						"units": 3,
-						"expire": 7,
+					"subscriptionid": 1234567,
+					"sellername": "li4@example.com"
+					"repname":"NBA",
+					"itemname":"bear",
+					"supply_style":"batch",
+					"signtime":"2015-11-10T15:04:05Z08:00",
+					"expiretime":"2016-01-15T11:28:21Z",
+					"freezetime":"2015-12-11T10:51:11Z",
+					"finishtime":"2016-01-10T10:51:11Z",
+					"phase":1,
+					"plan":{
+						"money":5,
+						"units":3,
+						"used":0,
+						"limit":0,
+						"subs":1,
+						"expire":30
 					}
 				}
 			},
@@ -101,12 +111,25 @@
 			},
 			{
 				"messageid": 19,
-				"type": "subs_event",
-				"time": "2015-11-10T15:03:09Z08:00",
+				"type": "subsapply_event",
+				"time": "2015-11-10T15:06:09Z08:00",
 				"data": {
 					"subscriptionid": 1234567,
-					"eventtime": "2015-11-10T15:04:09Z08:00",
-					"newphase": "freezed"
+					"sellername": "li4@example.com"
+					"repname":"NBA",
+					"itemname":"bear",
+					"supply_style":"batch",
+					"applytime":"2015-11-10T15:04:05Z08:00",
+					"expiretime":"2016-11-17T15:04:05Z08:00",
+					"phase":7,
+					"plan":{
+						"money":5,
+						"units":3,
+						"used":0,
+						"limit":0,
+						"subs":1,
+						"expire":30
+					}
 				}
 			}
 		]
@@ -451,7 +474,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为：
+	phase可能为：
 		freezed: 2, 
 		cancelled: 5, 
 		removed: 6
@@ -485,7 +508,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为：
+	phase可能为：
 		applying: 7, 
 		wthdrawn: 8, 
 		denied: 9, 

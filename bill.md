@@ -46,6 +46,8 @@
 		order:订单号
 		trade_user:交易对方
 		op_type:类型，-1:所有；1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
+		page:页码
+		size：每页显示的记录数量
 		
 	Example Request：
 		GET /bill/foo/detail?start_time=2015-09-02&end_time=2015-10-01&order=1&trade_user=xxx&op_type=1 HTTP/1.1 
@@ -66,13 +68,27 @@
 		
 	
 	返回数据示例：
-
-		{"data":[{"Id":"123","orderId":"111","planId":"11","opTime":"2015-09-02","tradeItem":"repo1_item","opType":1,"tradeAmount":100,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":800},
-				 {"Id":"124","orderId":"112","planId":"11","opTime":"2015-09-03","tradeItem":"repo1_item","opType":1,"tradeAmount":200,"channel":"网银","tradeUser":"foo","actualAmount":1000,"availableAmount":600},
-			    ]
-		"code":0,"msg":"ok"
+		{"data":{"total":13,
+		 		"result":[
+					{"date":"2016-01-15",
+					 "detail":	[
+						{"Id":"123",
+						"orderId":"111",
+						"planId":"11",
+						"opTime":"2015-09-02",
+						"tradeItem":"repo1_item",
+						"opType":1,
+						"tradeAmount":100,
+						"channel":"网银",
+						"tradeUser":"foo",
+						"actualAmount":1000,
+						"availableAmount":800}
+						]
+					}
+					]},
+			"code":0,
+			"msg":"ok"
 		}
-
 
 #指令：PUT /bill/:loginname/recharge 充值，提现
 	说明：

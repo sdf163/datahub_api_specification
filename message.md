@@ -56,8 +56,8 @@
 	type: （可选）消息类型
 	sender: (可选) 消息发送者
 	status: (可选, 默认为2) 0: 未读, 1: 已读, 2: either
-	level: (可选，默认为0) 0: 普通消息，50: 需用户进一步确认的消息
-	page: (可选) 第几页，最小值为1
+	level: (可选) 0: 普通消息，50: 需用户进一步确认的消息。如果不指定，则表示所有等级的消息。
+	page: (可选) 第几页，最小值为1。
 	size: (可选) 每页最多返回多少条数据
 	forclient: （可选，默认为0），是否返回浏览器或者客户端感兴趣的消息。(0: 浏览器感兴趣的消息；1: 客户端感兴趣的消息)
 
@@ -74,16 +74,26 @@
 		"results": [
 			{
 				"messageid": 11,
-				"type": "apply_subs",
-				"sender": "zhang3@example.com",
-				"time": "2015-11-10T15:05:09Z08:00",
+				"type": "subs_event",
+				"time": "2015-11-10T15:06:09Z08:00",
 				"data": {
-					"repname": "repo001",
-					"itemname": "item123",
-					"plan": {
-						"money": 7.99,
-						"units": 3,
-						"expire": 7,
+					"subscriptionid": 1234567,
+					"sellername": "li4@example.com"
+					"repname":"NBA",
+					"itemname":"bear",
+					"supply_style":"batch",
+					"signtime":"2015-11-10T15:04:05Z08:00",
+					"expiretime":"2016-01-15T11:28:21Z",
+					"freezetime":"2015-12-11T10:51:11Z",
+					"finishtime":"2016-01-10T10:51:11Z",
+					"phase":1,
+					"plan":{
+						"money":5,
+						"units":3,
+						"used":0,
+						"limit":0,
+						"subs":1,
+						"expire":30
 					}
 				}
 			},
@@ -101,12 +111,25 @@
 			},
 			{
 				"messageid": 19,
-				"type": "subs_event",
-				"time": "2015-11-10T15:03:09Z08:00",
+				"type": "subsapply_event",
+				"time": "2015-11-10T15:06:09Z08:00",
 				"data": {
 					"subscriptionid": 1234567,
-					"eventtime": "2015-11-10T15:04:09Z08:00",
-					"newphase": "freezed"
+					"sellername": "li4@example.com"
+					"repname":"NBA",
+					"itemname":"bear",
+					"supply_style":"batch",
+					"applytime":"2015-11-10T15:04:05Z08:00",
+					"expiretime":"2016-11-17T15:04:05Z08:00",
+					"phase":7,
+					"plan":{
+						"money":5,
+						"units":3,
+						"used":0,
+						"limit":0,
+						"subs":1,
+						"expire":30
+					}
 				}
 			}
 		]
@@ -420,7 +443,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	event可能为tag_added, tag_deleted, item_deleted, repo_deleted
+	event可能为tag_added, tag_deleted, item_deleted
 
 ### 订购事件
 
@@ -451,7 +474,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为：
+	phase可能为：
 		freezed: 2, 
 		cancelled: 5, 
 		removed: 6
@@ -485,7 +508,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	newphase可能为：
+	phase可能为：
 		applying: 7, 
 		wthdrawn: 8, 
 		denied: 9, 
@@ -504,13 +527,13 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"level": 50,
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
-			"level": 4,s
-			"invalide": "2015-01-02 11:12:00"
+			"level": 4
+			"invalide": 7
 		}
 	}
 	
 	level：用户会员级别
-	invalide：会员到期时间
+	invalide：会员还有几天到期
 
 ## topic: to_emails.json
 

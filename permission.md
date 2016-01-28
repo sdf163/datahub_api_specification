@@ -75,6 +75,7 @@ Example Request：
 输入参数说明：
 
 	username 		被从白名单删除的用户名,可以传多个username
+	delcooperate    删除协作者
 	delall          是否删除所有白名单用户[delall=1 删除所有]
    
 Example Request：
@@ -84,6 +85,10 @@ Example Request：
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	DELETE /permission/rep00001?delall=1 HTTP/1.1 
+    Accept: application/json
+    Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+    DELETE /permission/rep00001?delall=1&delcooperate=1 HTTP/1.1
     Accept: application/json
     Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	

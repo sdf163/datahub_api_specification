@@ -527,3 +527,16 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 			"content": "bla bla ..."
 		}
 	}
+
+	message服务期望user服务的返回格式(to_notifications.json)：
+	(加一个receiver, 改type为admin_message)
+	
+	{
+		"type": "admin_message",
+		"receiver": "zhang3@example.com",
+		"sender": "admin@example.com",
+		"level": 0,
+		"data": {
+			"content": "bla bla ..."
+		}
+	}

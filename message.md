@@ -463,7 +463,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	}
 	
 	level：用户会员级别
-	invalide：会员还有几天到期
+	invalid：会员还有几天到期
 
 ## topic: to_emails.json
 

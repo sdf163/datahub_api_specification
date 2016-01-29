@@ -1,9 +1,13 @@
 # API 列表
 	
 	
-- [GET] [DELETE] [PUT] /permission/:repname
+- [GET] [PUT] /permission/:repname
 
-- [GET] [DELETE] [PUT] /permission/:repname/:itemname
+- [GET] [PUT] /permission/:repname/:itemname
+
+- [DELETE] /permission/repository/:repname/whitelist/:username
+
+- [DELETE] /permission/repository/:repname/cooperator/:username
 
 	
 ----------
@@ -66,32 +70,48 @@ Example Request：
 	
 	无
 		
-## 3 指令：DELETE /permission/:repname
-	
+## 3 指令：DELETE /permission/repository/:repname/whitelist/:username
+
 说明：
 	
 	【rep拥有者】将某些用户（非自己）从rep白名单中删除
 
 输入参数说明：
 
-	username 		被从白名单删除的用户名,可以传多个username
-	delcooperate    删除协作者
-	delall          是否删除所有白名单用户[delall=1 删除所有]
+	delall(可选)          是否删除所有白名单用户[delall=1 删除所有]
    
 Example Request：
 
-	DELETE /permission/rep00001?username=nike&username=peter HTTP/1.1 
+	DELETE /permission/repository/rep001/whitelist/peter HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
-	DELETE /permission/rep00001?delall=1 HTTP/1.1 
+	DELETE /permission/repository/rep001/whitelist/peter?delall=1 HTTP/1.1
     Accept: application/json
     Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-    DELETE /permission/rep00001?delall=1&delcooperate=1 HTTP/1.1
+
+## 4 指令： DELETE /permission/repository/:repname/cooperator/:username
+
+说明：
+
+	【rep拥有者】将某些用户（非自己）从rep协作者中删除
+
+输入参数说明：
+
+	delall(可选)          是否删除所有白名单用户[delall=1 删除所有]
+
+Example Request：
+
+	DELETE /permission/repository/rep001/cooperator/peter HTTP/1.1
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+	DELETE /permission/repository/rep001/cooperator/peter?delall=1 HTTP/1.1
     Accept: application/json
     Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
+
+
 ## 4 指令：GET /permission/:repname/:itemname
 
 说明
